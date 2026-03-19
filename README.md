@@ -1,4 +1,4 @@
-# VeriTac
+# VeriTac - an ML Compiler concept for the agentic era. (in exploration)
 
 A verified tactic-based ML compiler. Tensor optimizations are expressed as formally verified Lean 4 tactics, and an AI search agent proposes tactic sequences that are correct by construction.
 
