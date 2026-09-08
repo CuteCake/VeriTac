@@ -44,6 +44,42 @@ def flat_index_expr(buf: str, indices: list[CExpr]) -> str:
     return " + ".join(parts)
 
 
+def expr_mentions(e: CExpr, name: str) -> bool:
+    """True if the expression references variable `name`."""
+    if isinstance(e, CLit):
+        return False
+    if isinstance(e, CVar):
+        return e.name == name
+    if isinstance(e, CBinOp):
+        return expr_mentions(e.left, name) or expr_mentions(e.right, name)
+    if isinstance(e, CBufRead):
+        return any(expr_mentions(i, name) for i in e.indices)
+    return False
+
+
+def writes_local_to(loop_var: str, stmt: CStmt) -> bool:
+    """True iff *every* buffer write inside `stmt` depends on `loop_var`.
+
+    This is the safe condition for both `parallel` (distinct threads touch
+    distinct cells) and `vectorize` (distinct lanes touch distinct cells).
+    A loop that writes to a cell *without* mentioning its own variable is a
+    cross-iteration reduction/accumulation and must NOT get a pragma — that is
+    exactly when OpenMP races or a SIMD lane conflict would change semantics.
+    This mirrors the Lean `checkIndependence` guard and the proved
+    `indexLocalP_flat_leading` criterion.
+    """
+    if isinstance(stmt, CBufWrite):
+        return any(expr_mentions(i, loop_var) for i in stmt.indices)
+    if isinstance(stmt, CLoop):
+        return writes_local_to(loop_var, stmt.body)
+    if isinstance(stmt, CSeq):
+        return all(writes_local_to(loop_var, sub) for sub in stmt.stmts)
+    if isinstance(stmt, CAlloc):
+        return writes_local_to(loop_var, stmt.body)
+    # CSkip and anything else: no writes, vacuously local
+    return True
+
+
 def emit_stmt(s: CStmt, indent: int = 1) -> str:
     """Emit a C statement string."""
     pad = "    " * indent
@@ -59,9 +95,18 @@ def emit_stmt(s: CStmt, indent: int = 1) -> str:
         hi = emit_expr(s.hi)
         pragma = ""
         if s.annotation == "parallel":
-            pragma = f"{pad}#pragma omp parallel for\n"
+            local = writes_local_to(s.var, s.body)
+            if local:
+                pragma = f"{pad}#pragma omp parallel for\n"
+            else:
+                pragma = (f"{pad}/* parallel suppressed: body writes cells "
+                          f"not local to {s.var} */\n")
         elif s.annotation == "vectorize":
-            pragma = f"{pad}#pragma omp simd\n"
+            if writes_local_to(s.var, s.body):
+                pragma = f"{pad}#pragma omp simd\n"
+            else:
+                pragma = (f"{pad}/* simd suppressed: reduction/accumulation "
+                          f"over {s.var} */\n")
         header = f"{pad}for (int {s.var} = {lo}; {s.var} < {hi}; {s.var}++)"
         body = emit_stmt(s.body, indent + 1)
         return f"{pragma}{header} {{\n{body}{pad}}}\n"
