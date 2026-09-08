@@ -11,5 +11,4 @@ import VeriTac.Schedule.Equiv
 import VeriTac.Schedule.Lower
 import VeriTac.Tactic.Library
 import VeriTac.Compose.Engine
-import VeriTac.Util.Finset
 import VeriTac.Util.List

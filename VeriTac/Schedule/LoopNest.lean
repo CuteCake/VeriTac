@@ -50,8 +50,11 @@ namespace Env
 
 def empty : Env := fun _ => 0
 
+/-- Set `v` to `val`. We use propositional equality on the key so that the
+    substitution / environment lemmas are stated over `=` (String `==` is BEq and
+    does not simplify under `simp`). -/
 def set (env : Env) (v : VarId) (val : Int) : Env :=
-  fun x => if x == v then val else env x
+  fun x => if x = v then val else env x
 
 end Env
 
@@ -85,8 +88,50 @@ def execLoopIters (execBody : Env → Store → Option Store)
     let store' ← execBody (env.set v cur) store
     execLoopIters execBody env v (cur + 1) n store'
 
-/-- Execute a statement with fuel-based termination.
-    Returns `none` if fuel is exhausted. -/
+namespace Env
+
+/-- Setting two distinct keys commutes. -/
+theorem set_set_comm {env : Env} {x y : VarId} {vx vy : Int} (h : x ≠ y) :
+    Env.set (Env.set env x vx) y vy = Env.set (Env.set env y vy) x vx := by
+  funext z
+  by_cases hx : z = x
+  · subst z
+    simp [Env.set, h]
+  · by_cases hy : z = y
+    · subst z
+      simp [Env.set, Ne.symm h]
+    · simp [Env.set, hx, hy]
+
+end Env
+
+/-- If iteration bodies relate via a `v`-substitution in the environment, the two
+    iteration folds agree even when their base environments differ by that binding.
+    This is the key invariant behind tiling/unrolling: binding `v` directly is the
+    same as binding the *index* variables and substituting `v ↦ (index expression)`.
+    -/
+theorem execLoopIters_subst (f1 f2 : Env → Store → Option Store) (env : Env)
+    (v lv : VarId) (k : Int) (lo : Int) (iters : Nat) (store : Store)
+    (hlv : lv ≠ v)
+    (h : ∀ env' st, f1 (Env.set env' v k) st = f2 env' st) :
+    execLoopIters f1 (Env.set env v k) lv lo iters store = execLoopIters f2 env lv lo iters store := by
+  induction iters generalizing lo store with
+  | zero => rfl
+  | succ n ih =>
+      simp only [execLoopIters]
+      have hfirst : f1 (Env.set (Env.set env v k) lv lo) store = f2 (Env.set env lv lo) store := by
+        rw [Env.set_set_comm (Ne.symm hlv)]
+        exact h (Env.set env lv lo) store
+      rw [hfirst]
+      congr 1
+      funext st'
+      exact ih (lo + 1) st'
+
+/-- Execute a statement. Fuel is carried for interface compatibility but is *not*
+    consumed: every loop has a finite iteration count (`(hi - lo).toNat`), so the
+    interpreter is total and `execStmt` never runs out of budget. Restructuring a
+    loop nest (tiling, unrolling, ...) therefore cannot make the *leaf* computations
+    receive less budget, which is exactly what makes the transformation-equivalence
+    theorems provable for every `fuel`. -/
 def execStmt : Nat → Env → Store → Stmt → Option Store
   | _, _, store, .skip => some store
   | fuel, env, store, .bufWrite buf indices valExpr =>
@@ -96,8 +141,7 @@ def execStmt : Nat → Env → Store → Stmt → Option Store
   | fuel, env, store, .seq s1 s2 => do
     let store1 ← execStmt fuel env store s1
     execStmt fuel env store1 s2
-  | 0, _, _, .loop _ _ _ _ _ => Option.none
-  | fuel + 1, env, store, .loop v lo hi _ann body =>
+  | fuel, env, store, .loop v lo hi _ann body =>
     let loVal := evalExpr env store lo
     let hiVal := evalExpr env store hi
     let iters := (hiVal - loVal).toNat

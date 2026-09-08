@@ -39,12 +39,13 @@ def vectorize (stmt : Stmt) (targetVar : VarId) : Option Stmt :=
       | none => none
   | _ => none
 
-/-- Vectorize correctness: annotation doesn't change semantics. -/
+/-- Vectorize correctness: annotation doesn't change semantics.
+    `execStmt` discards the loop annotation (`_ann`), so a loop and its vectorized
+    form execute identically. -/
 theorem vectorize_correct (v : VarId) (lo hi : SExpr) (ann : Annotation) (body : Stmt)
     (_hinner : isInnermostLoop (.loop v lo hi ann body) = true) :
     .loop v lo hi ann body ≈ₛ .loop v lo hi .vectorize body := by
   intro fuel env store
-  -- Annotations are ignored by execStmt, so both sides evaluate identically
-  sorry
+  cases fuel <;> rfl
 
 end VeriTac.Tactic
