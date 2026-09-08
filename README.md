@@ -2,6 +2,8 @@
 
 A verified tactic-based ML compiler. Tensor optimizations are expressed as formally verified Lean 4 tactics, and an AI search agent proposes tactic sequences that are correct by construction.
 
+The difference between this repo vs many other agentic kernel writing repo is, they require a vendor provided compiler, like CUDA, to validate the code. However, what if you are the ASIC vendor and there is nothing to refer? This repo ensures 1. every step of the optimization is correct, 2. correctness of optimization can be ver
+
 ### End-to-end GEMM demo
 
 `examples/gemm_demo.py` runs the full pipeline on a square matmul:
@@ -15,22 +17,25 @@ A verified tactic-based ML compiler. Tensor optimizations are expressed as forma
    instead of a pragma.
 3. The C is compiled with an OpenMP compiler and benchmarked against numpy.
 
-Measured on this machine (gcc-15, 10 threads, 128³ matmul): the agent's top
-schedule (`parallel i0`, `vectorize i2`, `parallel i1`) runs **4.5x** faster
-than the plain nest and matches numpy exactly. At 256³, `tile(32)` + `parallel`
-+ `vectorize` is **~7x**. The Lean proofs and the codegen guard together ensure
-the annotated loops really are safe to parallelize.
+Measured on this machine (gcc-15, 10 threads): the agent's top schedule
+(`parallel i0`, `vectorize i2`, `parallel i1`) runs **4.5x** faster at 128³,
+and a full register-tiling chain (`tile(32)`×2 → `reorder i1_inner i2` →
+`vectorize i1_inner` → `parallel i0_outer`) reaches **12.8x** at 256³
+(18.9 ms → 1.47 ms), all matching numpy exactly. The Lean proofs and the
+codegen guard together ensure the annotated loops really are safe to
+parallelize.
 
 There are two demo entry points:
 
 - `examples/gemm_demo.py [dim]` — offline pipeline: search agent → Lean CLI →
   C → benchmark.
 - `examples/llm_gemm_demo.py` — LLM-driven pipeline with full trace output.
-  It asks for an OpenAI API key (stored in `.env`, or via `OPENAI_API_KEY`);
-  each turn an LLM proposes one tactic, the Lean CLI verifies and applies it,
-  and the trace prints the proposed tactic, the resulting statement tree, and
-  any rejection — then benchmarks the final schedule. `--mock` runs the same
-  trace with a fixed schedule and no API key.
+  It reads the API key/model from `OPENAI_API_KEY` / `OPENAI_MODEL` /
+  `OPENAI_BASE_URL` (or a root `.env`, or interactive prompt); each turn an LLM
+  proposes one tactic, the Lean CLI verifies and applies it, and the trace
+  prints the proposed tactic, the resulting statement tree, and any rejection
+  (which is fed back to the model) — then benchmarks the final schedule.
+  `--mock` runs the same trace with a fixed schedule and no API key.
 
 ## Overview
 

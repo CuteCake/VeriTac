@@ -18,10 +18,7 @@ structure ApplyResult where
 def applyOne (app : TacticApp) (stmt : VeriTac.Stmt) : Except String VeriTac.Stmt :=
   match checkPrecondition app stmt with
   | .err msg => .error s!"Precondition failed for {repr app.kind}: {msg}"
-  | .ok =>
-    match applyTactic app stmt with
-    | some result => .ok result
-    | none => .error s!"Tactic {repr app.kind} failed to apply"
+  | .ok => applyTactic app stmt
 
 /-- Apply a sequence of tactics left-to-right.
     Stops and reports on the first failure. -/

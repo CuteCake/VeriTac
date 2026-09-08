@@ -187,8 +187,10 @@ def dump_stmt(node, depth: int = 0, out: list[str] | None = None) -> list[str]:
 MOCK_SEQUENCE = [
     {"kind": "tile", "vars": ["i0"], "int_params": [32], "str_params": []},
     {"kind": "tile", "vars": ["i1"], "int_params": [32], "str_params": []},
+    # register tiling: move k (i2) above i1_inner so i1_inner becomes innermost
+    {"kind": "reorder", "vars": ["i1_inner", "i2"], "int_params": [], "str_params": []},
+    {"kind": "vectorize", "vars": ["i1_inner"], "int_params": [], "str_params": []},
     {"kind": "parallel", "vars": ["i0_outer"], "int_params": [], "str_params": []},
-    {"kind": "vectorize", "vars": ["i2"], "int_params": [], "str_params": []},
 ]
 
 
