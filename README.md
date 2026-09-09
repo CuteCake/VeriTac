@@ -1,5 +1,7 @@
 # VeriTac - an ML Compiler concept for the agentic era. (in exploration)
 
+[简体中文](README.zh-CN.md) | **English**
+
 A verified tactic-based ML compiler. Tensor optimizations are expressed as formally verified Lean 4 tactics, and an AI search agent proposes tactic sequences that are correct by construction.
 
 The difference between this repo vs many other agentic kernel writing repo is, they require a vendor provided compiler, like CUDA, to validate the code. However, what if you are the ASIC vendor and there is nothing to refer? This repo ensures 1. every step of the optimization is correct, 2. correctness of optimization can be automatically verified by lean. When it's done, it would be the end game for ML compiler engineering.
