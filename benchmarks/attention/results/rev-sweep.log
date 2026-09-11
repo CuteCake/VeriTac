@@ -1,0 +1,26 @@
+[driver] building extension (mode=sweep, k192=False) ...
+[driver] config info:
+    14 Q32K128-min3-REV {"id": 1, "smem_bytes": 76288, "num_threads": 128, "num_warps": 4, "queries_per_block": 32, "keys_per_block": 128, "max_k": 256, "min_blocks_hint": 3, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 168, "local_size_bytes": 96, "static_shared_bytes": 0, "total_shared_bytes": 76288, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    15 Q64K64-min3-REV {"id": 3, "smem_bytes": 50688, "num_threads": 128, "num_warps": 4, "queries_per_block": 64, "keys_per_block": 64, "max_k": 256, "min_blocks_hint": 3, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 168, "local_size_bytes": 120, "static_shared_bytes": 0, "total_shared_bytes": 50688, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    16 Q32K128-min1-REV {"id": 4, "smem_bytes": 76288, "num_threads": 128, "num_warps": 4, "queries_per_block": 32, "keys_per_block": 128, "max_k": 256, "min_blocks_hint": 1, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 225, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 76288, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    17 Q64K64-min1-REV {"id": 5, "smem_bytes": 50688, "num_threads": 128, "num_warps": 4, "queries_per_block": 64, "keys_per_block": 64, "max_k": 256, "min_blocks_hint": 1, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 230, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 50688, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+[sweep] target sweep ...
+  cfg14(Q32K128-min3-REV) N1024 D192: pass=True graph_pass=True evt=0.4064ms wall=0.4135ms graph=0.4114ms
+  cfg14(Q32K128-min3-REV) N1024 D256: pass=True graph_pass=True evt=0.4675ms wall=0.4741ms graph=0.4708ms
+  cfg14(Q32K128-min3-REV) N2048 D192: pass=True graph_pass=True evt=1.4571ms wall=1.4632ms graph=1.4552ms
+  cfg14(Q32K128-min3-REV) N2048 D256: pass=True graph_pass=True evt=1.6466ms wall=1.6562ms graph=1.6586ms
+  cfg15(Q64K64-min3-REV) N1024 D192: pass=True graph_pass=True evt=0.4434ms wall=0.4505ms graph=0.4577ms
+  cfg15(Q64K64-min3-REV) N1024 D256: pass=True graph_pass=True evt=0.6136ms wall=0.6203ms graph=0.6150ms
+  cfg15(Q64K64-min3-REV) N2048 D192: pass=True graph_pass=True evt=1.4569ms wall=1.4618ms graph=1.4631ms
+  cfg15(Q64K64-min3-REV) N2048 D256: pass=True graph_pass=True evt=1.9655ms wall=1.9774ms graph=1.9509ms
+  cfg16(Q32K128-min1-REV) N1024 D192: pass=True graph_pass=True evt=0.3792ms wall=0.3859ms graph=0.3869ms
+  cfg16(Q32K128-min1-REV) N1024 D256: pass=True graph_pass=True evt=0.4350ms wall=0.4420ms graph=0.4376ms
+  cfg16(Q32K128-min1-REV) N2048 D192: pass=True graph_pass=True evt=1.3520ms wall=1.3577ms graph=1.3579ms
+  cfg16(Q32K128-min1-REV) N2048 D256: pass=True graph_pass=True evt=1.5346ms wall=1.5488ms graph=1.5394ms
+  cfg17(Q64K64-min1-REV) N1024 D192: pass=True graph_pass=True evt=0.3960ms wall=0.4036ms graph=0.4259ms
+  cfg17(Q64K64-min1-REV) N1024 D256: pass=True graph_pass=True evt=0.5581ms wall=0.5640ms graph=0.5568ms
+  cfg17(Q64K64-min1-REV) N2048 D192: pass=True graph_pass=True evt=1.3548ms wall=1.3491ms graph=1.3526ms
+  cfg17(Q64K64-min1-REV) N2048 D256: pass=True graph_pass=True evt=1.7659ms wall=1.7673ms graph=1.7610ms
+[sweep] done.
+[driver] final JSON: results/rev-sweep.json
+[driver] tested_valid=16 failures=0

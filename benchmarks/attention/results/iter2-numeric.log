@@ -1,0 +1,69 @@
+[driver] building extension (mode=numeric, k192=False) ...
+[driver] config info:
+    1 Q32K128-min3 {"id": 1, "smem_bytes": 76288, "num_threads": 128, "num_warps": 4, "queries_per_block": 32, "keys_per_block": 128, "max_k": 256, "min_blocks_hint": 3, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 168, "local_size_bytes": 96, "static_shared_bytes": 0, "total_shared_bytes": 76288, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    2 Q32K64-min6 {"id": 2, "smem_bytes": 37632, "num_threads": 64, "num_warps": 2, "queries_per_block": 32, "keys_per_block": 64, "max_k": 256, "min_blocks_hint": 6, "installed_min_blocks": 6, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 168, "local_size_bytes": 104, "static_shared_bytes": 0, "total_shared_bytes": 37632, "kernel_max_threads": 64, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    3 Q64K64-min3 {"id": 3, "smem_bytes": 50688, "num_threads": 128, "num_warps": 4, "queries_per_block": 64, "keys_per_block": 64, "max_k": 256, "min_blocks_hint": 3, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 168, "local_size_bytes": 120, "static_shared_bytes": 0, "total_shared_bytes": 50688, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    4 Q32K128-min1 {"id": 4, "smem_bytes": 76288, "num_threads": 128, "num_warps": 4, "queries_per_block": 32, "keys_per_block": 128, "max_k": 256, "min_blocks_hint": 1, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 225, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 76288, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    5 Q64K64-min1 {"id": 5, "smem_bytes": 50688, "num_threads": 128, "num_warps": 4, "queries_per_block": 64, "keys_per_block": 64, "max_k": 256, "min_blocks_hint": 1, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 230, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 50688, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    6 Q64K64-min2 {"id": 6, "smem_bytes": 50688, "num_threads": 128, "num_warps": 4, "queries_per_block": 64, "keys_per_block": 64, "max_k": 256, "min_blocks_hint": 2, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 230, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 50688, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    7 Q32K64-min1 {"id": 7, "smem_bytes": 37632, "num_threads": 64, "num_warps": 2, "queries_per_block": 32, "keys_per_block": 64, "max_k": 256, "min_blocks_hint": 1, "installed_min_blocks": 6, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 234, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 37632, "kernel_max_threads": 64, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    12 Q128K64-min1 {"id": 12, "smem_bytes": 76800, "num_threads": 256, "num_warps": 8, "queries_per_block": 128, "keys_per_block": 64, "max_k": 256, "min_blocks_hint": 1, "installed_min_blocks": 1, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 225, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 76800, "kernel_max_threads": 256, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    13 Q128K64-min2 {"id": 13, "smem_bytes": 76800, "num_threads": 256, "num_warps": 8, "queries_per_block": 128, "keys_per_block": 64, "max_k": 256, "min_blocks_hint": 2, "installed_min_blocks": 1, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 128, "local_size_bytes": 280, "static_shared_bytes": 0, "total_shared_bytes": 76800, "kernel_max_threads": 256, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+[numeric] small-N correctness tests ...
+  cfg1(Q32K128-min3) N17 D192: pass=True nmax=1.419e-03
+  cfg1(Q32K128-min3) N17 D256: pass=True nmax=1.358e-03
+  cfg1(Q32K128-min3) N100 D192: pass=True nmax=1.326e-03
+  cfg1(Q32K128-min3) N100 D256: pass=True nmax=1.091e-03
+  cfg1(Q32K128-min3) N257 D192: pass=True nmax=1.230e-03
+  cfg1(Q32K128-min3) N257 D256: pass=True nmax=1.872e-03
+  cfg2(Q32K64-min6) N17 D192: pass=True nmax=1.419e-03
+  cfg2(Q32K64-min6) N17 D256: pass=True nmax=1.358e-03
+  cfg2(Q32K64-min6) N100 D192: pass=True nmax=1.326e-03
+  cfg2(Q32K64-min6) N100 D256: pass=True nmax=1.091e-03
+  cfg2(Q32K64-min6) N257 D192: pass=True nmax=1.230e-03
+  cfg2(Q32K64-min6) N257 D256: pass=True nmax=1.872e-03
+  cfg3(Q64K64-min3) N17 D192: pass=True nmax=1.419e-03
+  cfg3(Q64K64-min3) N17 D256: pass=True nmax=1.358e-03
+  cfg3(Q64K64-min3) N100 D192: pass=True nmax=1.326e-03
+  cfg3(Q64K64-min3) N100 D256: pass=True nmax=1.091e-03
+  cfg3(Q64K64-min3) N257 D192: pass=True nmax=1.230e-03
+  cfg3(Q64K64-min3) N257 D256: pass=True nmax=1.872e-03
+  cfg4(Q32K128-min1) N17 D192: pass=True nmax=1.419e-03
+  cfg4(Q32K128-min1) N17 D256: pass=True nmax=1.358e-03
+  cfg4(Q32K128-min1) N100 D192: pass=True nmax=1.326e-03
+  cfg4(Q32K128-min1) N100 D256: pass=True nmax=1.091e-03
+  cfg4(Q32K128-min1) N257 D192: pass=True nmax=1.230e-03
+  cfg4(Q32K128-min1) N257 D256: pass=True nmax=1.872e-03
+  cfg5(Q64K64-min1) N17 D192: pass=True nmax=1.419e-03
+  cfg5(Q64K64-min1) N17 D256: pass=True nmax=1.358e-03
+  cfg5(Q64K64-min1) N100 D192: pass=True nmax=1.326e-03
+  cfg5(Q64K64-min1) N100 D256: pass=True nmax=1.091e-03
+  cfg5(Q64K64-min1) N257 D192: pass=True nmax=1.230e-03
+  cfg5(Q64K64-min1) N257 D256: pass=True nmax=1.872e-03
+  cfg6(Q64K64-min2) N17 D192: pass=True nmax=1.419e-03
+  cfg6(Q64K64-min2) N17 D256: pass=True nmax=1.358e-03
+  cfg6(Q64K64-min2) N100 D192: pass=True nmax=1.326e-03
+  cfg6(Q64K64-min2) N100 D256: pass=True nmax=1.091e-03
+  cfg6(Q64K64-min2) N257 D192: pass=True nmax=1.230e-03
+  cfg6(Q64K64-min2) N257 D256: pass=True nmax=1.872e-03
+  cfg7(Q32K64-min1) N17 D192: pass=True nmax=1.419e-03
+  cfg7(Q32K64-min1) N17 D256: pass=True nmax=1.358e-03
+  cfg7(Q32K64-min1) N100 D192: pass=True nmax=1.326e-03
+  cfg7(Q32K64-min1) N100 D256: pass=True nmax=1.091e-03
+  cfg7(Q32K64-min1) N257 D192: pass=True nmax=1.230e-03
+  cfg7(Q32K64-min1) N257 D256: pass=True nmax=1.872e-03
+  cfg12(Q128K64-min1) N17 D192: pass=True nmax=1.419e-03
+  cfg12(Q128K64-min1) N17 D256: pass=True nmax=1.358e-03
+  cfg12(Q128K64-min1) N100 D192: pass=True nmax=1.326e-03
+  cfg12(Q128K64-min1) N100 D256: pass=True nmax=1.091e-03
+  cfg12(Q128K64-min1) N257 D192: pass=True nmax=1.230e-03
+  cfg12(Q128K64-min1) N257 D256: pass=True nmax=1.872e-03
+  cfg13(Q128K64-min2) N17 D192: pass=True nmax=1.419e-03
+  cfg13(Q128K64-min2) N17 D256: pass=True nmax=1.358e-03
+  cfg13(Q128K64-min2) N100 D192: pass=True nmax=1.326e-03
+  cfg13(Q128K64-min2) N100 D256: pass=True nmax=1.091e-03
+  cfg13(Q128K64-min2) N257 D192: pass=True nmax=1.230e-03
+  cfg13(Q128K64-min2) N257 D256: pass=True nmax=1.872e-03
+[numeric] done.
+[driver] final JSON: results/iter2-numeric.json
+[driver] tested_valid=54 failures=0

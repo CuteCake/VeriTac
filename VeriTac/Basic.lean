@@ -2,6 +2,7 @@
   VeriTac.Basic
   Root re-export module.
 -/
+import VeriTac.Hardware.Target
 import VeriTac.IR.Shape
 import VeriTac.IR.TExpr
 import VeriTac.IR.Denote

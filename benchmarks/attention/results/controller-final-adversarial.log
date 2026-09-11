@@ -1,0 +1,40 @@
+[adv] building runtime ...
+[adv] modules: {'normal': '/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate.so', 'reverse': '/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_rev.so', 'alias': '/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_alias.so', 'revderiv': '/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_revderiv.so'}
+  cfg20 N257 D192 zeros: pass=True nmax=0.0 maxabs=0.000e+00
+  cfg20 N257 D192 uniform_scores: pass=True nmax=0.0005018370749803806 maxabs=2.384e-07
+  cfg20 N257 D192 constant_values: pass=True nmax=0.0005960464571908016 maxabs=4.768e-07
+  cfg20 N257 D192 large_tied_scores: pass=True nmax=0.0007284180299778982 maxabs=2.384e-07
+  cfg20 N257 D192 peaked_scores: pass=True nmax=0.1854121163820583 maxabs=2.884e-05
+  cfg20 N257 D192 causal_impulse: pass=True nmax=2.9556022222170755e-05 maxabs=5.037e-09
+  cfg20 N257 D256 zeros: pass=True nmax=0.0 maxabs=0.000e+00
+  cfg20 N257 D256 uniform_scores: pass=True nmax=0.0006564100122481731 maxabs=2.384e-07
+  cfg20 N257 D256 constant_values: pass=True nmax=0.0005960464569132462 maxabs=4.768e-07
+  cfg20 N257 D256 large_tied_scores: pass=True nmax=0.0006811226235644508 maxabs=2.384e-07
+  cfg20 N257 D256 peaked_scores: pass=True nmax=0.18106365485007353 maxabs=2.650e-05
+  cfg20 N257 D256 causal_impulse: pass=True nmax=2.9556022222170755e-05 maxabs=5.037e-09
+  cfg25 N257 D192 zeros: pass=True nmax=0.0 maxabs=0.000e+00
+  cfg25 N257 D192 uniform_scores: pass=True nmax=0.0005018370749803806 maxabs=2.384e-07
+  cfg25 N257 D192 constant_values: pass=True nmax=0.0005960464571908016 maxabs=4.768e-07
+  cfg25 N257 D192 large_tied_scores: pass=True nmax=0.0007284180299778982 maxabs=2.384e-07
+  cfg25 N257 D192 peaked_scores: pass=True nmax=0.1854121163820583 maxabs=2.884e-05
+  cfg25 N257 D192 causal_impulse: pass=True nmax=2.9556022222170755e-05 maxabs=5.037e-09
+  cfg25 N257 D256 zeros: pass=True nmax=0.0 maxabs=0.000e+00
+  cfg25 N257 D256 uniform_scores: pass=True nmax=0.0006564100122481731 maxabs=2.384e-07
+  cfg25 N257 D256 constant_values: pass=True nmax=0.0005960464569132462 maxabs=4.768e-07
+  cfg25 N257 D256 large_tied_scores: pass=True nmax=0.0006811226235644508 maxabs=2.384e-07
+  cfg25 N257 D256 peaked_scores: pass=True nmax=0.18106365485007353 maxabs=2.650e-05
+  cfg25 N257 D256 causal_impulse: pass=True nmax=2.9556022222170755e-05 maxabs=5.037e-09
+  cfg26 N257 D192 zeros: pass=True nmax=0.0 maxabs=0.000e+00
+  cfg26 N257 D192 uniform_scores: pass=True nmax=0.0005018370749803806 maxabs=2.384e-07
+  cfg26 N257 D192 constant_values: pass=True nmax=0.0005960464571908016 maxabs=4.768e-07
+  cfg26 N257 D192 large_tied_scores: pass=True nmax=0.0007284180299778982 maxabs=2.384e-07
+  cfg26 N257 D192 peaked_scores: pass=True nmax=0.1854121163820583 maxabs=2.884e-05
+  cfg26 N257 D192 causal_impulse: pass=True nmax=2.9556022222170755e-05 maxabs=5.037e-09
+  cfg26 N257 D256 zeros: pass=True nmax=0.0 maxabs=0.000e+00
+  cfg26 N257 D256 uniform_scores: pass=True nmax=0.0006564100122481731 maxabs=2.384e-07
+  cfg26 N257 D256 constant_values: pass=True nmax=0.0005960464569132462 maxabs=4.768e-07
+  cfg26 N257 D256 large_tied_scores: pass=True nmax=0.0006811226235644508 maxabs=2.384e-07
+  cfg26 N257 D256 peaked_scores: pass=True nmax=0.18106365485007353 maxabs=2.650e-05
+  cfg26 N257 D256 causal_impulse: pass=True nmax=2.9556022222170755e-05 maxabs=5.037e-09
+[adv] final JSON: results/cuda-final-adversarial.json
+[adv] failures=0

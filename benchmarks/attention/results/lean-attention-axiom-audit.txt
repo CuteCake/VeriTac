@@ -1,0 +1,8 @@
+'VeriTac.Attention.merged_equals_direct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Attention.checkPlanTactics_legal' depends on axioms: [propext]
+'VeriTac.Attention.accepted_plan_row_preserves' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Attention.checkCudaTactics_legal' depends on axioms: [propext]
+'VeriTac.Attention.cuda_configs_row_semantics_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Attention.Scheduling.reverseWrite_destination' depends on axioms: [propext]
+'VeriTac.Attention.Scheduling.reverseWrite_dest_unique' depends on axioms: [propext]
+'VeriTac.Attention.Scheduling.drained_implies_pending_zero_in_later_phase' does not depend on any axioms

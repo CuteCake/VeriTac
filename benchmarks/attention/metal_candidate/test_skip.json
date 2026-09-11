@@ -1,0 +1,999 @@
+{
+  "meta": {
+    "date": "2026-09-10T17:51:19.700903+00:00",
+    "python": "3.14.6",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "numpy": "2.5.2",
+    "swift_toolchain": "Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0",
+    "swift_src": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/attention/metal_candidate/metal_candidate.swift",
+    "build_dir": "/Users/cake/.codex/worktrees/bfe0/VeriTac/.lake/metal_candidate_worker",
+    "grid": {
+      "seqs": [
+        64
+      ],
+      "dims": [
+        192
+      ],
+      "mappings": [
+        "scalar",
+        "simdgroup"
+      ],
+      "query_tiles": [
+        4,
+        8,
+        16
+      ],
+      "key_tiles": [
+        8,
+        16
+      ],
+      "heads": 8,
+      "batch": 1,
+      "warmup": 10,
+      "samples": 1,
+      "inner": 5,
+      "seed": 1234,
+      "verify_only": true
+    }
+  },
+  "timing_caveats": [
+    "All timings are in milliseconds.",
+    "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation (exclude input/output CPU copies and compile/warmup). If timestamps were invalid they are reported unavailable (gpu_timing=null), never mislabeled.",
+    "Wall times are synchronized API latency, timed from before command-buffer allocation through waitUntilCompleted.",
+    "Each timed invocation computes a fresh output; nothing is cached across samples. samples x inner per-invocation timings are kept in wall_timing.samples_ms (and gpu_timing.samples_ms).",
+    "Configurations (mapping, query_tile, key_tile) run serially per case in a deterministic, seed-shuffled order (recorded in config_order); invalid (mapping, query_tile) pairs are skipped deterministically (recorded in skipped_configs).",
+    "This candidate is a correctness-first flash-style kernel; no vendor speedup is claimed."
+  ],
+  "cases": [
+    {
+      "seq": 64,
+      "dim": 192,
+      "dtype": "float32",
+      "heads": 8,
+      "batch": 1,
+      "scale": 0.07216878364870322,
+      "seed": 1234,
+      "case_seed": 84109394,
+      "config_order": [
+        [
+          "simdgroup",
+          4,
+          8
+        ],
+        [
+          "scalar",
+          8,
+          16
+        ],
+        [
+          "scalar",
+          16,
+          16
+        ],
+        [
+          "simdgroup",
+          8,
+          16
+        ],
+        [
+          "simdgroup",
+          8,
+          8
+        ],
+        [
+          "scalar",
+          16,
+          8
+        ],
+        [
+          "scalar",
+          8,
+          8
+        ],
+        [
+          "simdgroup",
+          4,
+          16
+        ]
+      ],
+      "inputs_sha256": {
+        "q": "c889782b794d43a6161b25f0d842ad26a93bea767ce8d9759d5a1e573dced158",
+        "k": "e65872ee9fae8ca157c1d5ae04ec0d4ba093e5cdc10dd43e48479ec1e8ab3e8e",
+        "v": "d33ff6cccdaa62f0c5fc5ccc18404313b014618d10bea400745df9dd4c29e7c8"
+      },
+      "results": {
+        "simdgroup_qt4_kt8": {
+          "mapping": "simdgroup",
+          "query_tile": 4,
+          "key_tile": 8,
+          "output_shape": [
+            1,
+            8,
+            64,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.7565193766166942e-07,
+            "max_abs_error_normalized": 0.0005274176555525332,
+            "rms_error": 1.4245429926869851e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            },
+            "threadgroup_memory_bytes": 12288,
+            "threadgroup_memory_within_limit": true
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 12288,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "simd_width_ok_for_simdgroup": true,
+            "static_threadgroup_memory_length": 0,
+            "threadgroup_memory_within_limit": true,
+            "threads_per_threadgroup_within_max_total": true,
+            "total_threadgroup_memory_length": 12288
+          },
+          "launch": {
+            "dynamic_tg_staging": "k_and_v_in_single_allocation",
+            "dynamic_threadgroup_memory_bytes": 12288,
+            "grid": {
+              "x": 16,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "causal_prefill_metal_simd",
+            "mapping": "simdgroup",
+            "no_n_by_n_buffer": true,
+            "static_threadgroup_memory_bytes": 0,
+            "threadgroup_memory_float_elements": 3072,
+            "threads_per_threadgroup": 128,
+            "total_threadgroup_memory_bytes": 12288,
+            "total_threads_dispatched": 16384,
+            "valid_query_rows": 512
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.1888749431818724,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation, read after waitUntilCompleted; they exclude input/output CPU copies (preallocated shared MTLBuffers reused) and exclude compile/warmup.",
+            "Wall times are synchronized API latency, timed from before command-buffer allocation through waitUntilCompleted, per invocation.",
+            "The Metal shader is compiled once at startup via MTLLibrary makeLibrary(source:) and reused across all invocations.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing.",
+            "Mapping \"scalar\" launches one thread per query row (threads_per_threadgroup == query_tile); mapping \"simdgroup\" launches one 32-lane SIMD-group per query row (threads_per_threadgroup == query_tile * 32) with a SIMD reduction to finish each dot product.",
+            "This candidate kernel is a correctness-first flash-style streaming online-softmax implementation; no vendor speedup is claimed."
+          ],
+          "wall_timing": {
+            "median_ms": 0.4645417211577296,
+            "p10_ms": 0.4574917256832123,
+            "p90_ms": 0.4678666824474931,
+            "samples_ms": [
+              0.45445840805768967,
+              0.4620417021214962,
+              0.4645417211577296,
+              0.4656666424125433,
+              0.46933337580412626
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 0.24425005912780762,
+            "p10_ms": 0.24380834102630616,
+            "p90_ms": 0.24480841159820557,
+            "samples_ms": [
+              0.24425005912780762,
+              0.24354159832000732,
+              0.24487507343292236,
+              0.2442084550857544,
+              0.24470841884613037
+            ]
+          },
+          "status": "ok"
+        },
+        "scalar_qt8_kt16": {
+          "mapping": "scalar",
+          "query_tile": 8,
+          "key_tile": 16,
+          "output_shape": [
+            1,
+            8,
+            64,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.3486440886278928e-07,
+            "max_abs_error_normalized": 0.001000351767516216,
+            "rms_error": 1.5825525934488103e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            },
+            "threadgroup_memory_bytes": 24576,
+            "threadgroup_memory_within_limit": true
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 24576,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "simd_width_ok_for_simdgroup": true,
+            "static_threadgroup_memory_length": 0,
+            "threadgroup_memory_within_limit": true,
+            "threads_per_threadgroup_within_max_total": true,
+            "total_threadgroup_memory_length": 24576
+          },
+          "launch": {
+            "dynamic_tg_staging": "k_and_v_in_single_allocation",
+            "dynamic_threadgroup_memory_bytes": 24576,
+            "grid": {
+              "x": 8,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "causal_prefill_metal",
+            "mapping": "scalar",
+            "no_n_by_n_buffer": true,
+            "static_threadgroup_memory_bytes": 0,
+            "threadgroup_memory_float_elements": 6144,
+            "threads_per_threadgroup": 8,
+            "total_threadgroup_memory_bytes": 24576,
+            "total_threads_dispatched": 512,
+            "valid_query_rows": 512
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.1064583668485284,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation, read after waitUntilCompleted; they exclude input/output CPU copies (preallocated shared MTLBuffers reused) and exclude compile/warmup.",
+            "Wall times are synchronized API latency, timed from before command-buffer allocation through waitUntilCompleted, per invocation.",
+            "The Metal shader is compiled once at startup via MTLLibrary makeLibrary(source:) and reused across all invocations.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing.",
+            "Mapping \"scalar\" launches one thread per query row (threads_per_threadgroup == query_tile); mapping \"simdgroup\" launches one 32-lane SIMD-group per query row (threads_per_threadgroup == query_tile * 32) with a SIMD reduction to finish each dot product.",
+            "This candidate kernel is a correctness-first flash-style streaming online-softmax implementation; no vendor speedup is claimed."
+          ],
+          "wall_timing": {
+            "median_ms": 2.6406666729599237,
+            "p10_ms": 2.630466711707413,
+            "p90_ms": 2.702333335764706,
+            "samples_ms": [
+              2.6268333895131946,
+              2.7106666238978505,
+              2.6898334035649896,
+              2.6406666729599237,
+              2.635916694998741
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 2.4050416946411133,
+            "p10_ms": 2.4045916318893434,
+            "p90_ms": 2.4304916620254517,
+            "samples_ms": [
+              2.4043749570846558,
+              2.4442917108535767,
+              2.409791588783264,
+              2.4049166440963745,
+              2.4050416946411133
+            ]
+          },
+          "status": "ok"
+        },
+        "scalar_qt16_kt16": {
+          "mapping": "scalar",
+          "query_tile": 16,
+          "key_tile": 16,
+          "output_shape": [
+            1,
+            8,
+            64,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.3486440886278928e-07,
+            "max_abs_error_normalized": 0.001000351767516216,
+            "rms_error": 1.5825525934488103e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            },
+            "threadgroup_memory_bytes": 24576,
+            "threadgroup_memory_within_limit": true
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 24576,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "simd_width_ok_for_simdgroup": true,
+            "static_threadgroup_memory_length": 0,
+            "threadgroup_memory_within_limit": true,
+            "threads_per_threadgroup_within_max_total": true,
+            "total_threadgroup_memory_length": 24576
+          },
+          "launch": {
+            "dynamic_tg_staging": "k_and_v_in_single_allocation",
+            "dynamic_threadgroup_memory_bytes": 24576,
+            "grid": {
+              "x": 4,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "causal_prefill_metal",
+            "mapping": "scalar",
+            "no_n_by_n_buffer": true,
+            "static_threadgroup_memory_bytes": 0,
+            "threadgroup_memory_float_elements": 6144,
+            "threads_per_threadgroup": 16,
+            "total_threadgroup_memory_bytes": 24576,
+            "total_threads_dispatched": 512,
+            "valid_query_rows": 512
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.1979166883975267,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation, read after waitUntilCompleted; they exclude input/output CPU copies (preallocated shared MTLBuffers reused) and exclude compile/warmup.",
+            "Wall times are synchronized API latency, timed from before command-buffer allocation through waitUntilCompleted, per invocation.",
+            "The Metal shader is compiled once at startup via MTLLibrary makeLibrary(source:) and reused across all invocations.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing.",
+            "Mapping \"scalar\" launches one thread per query row (threads_per_threadgroup == query_tile); mapping \"simdgroup\" launches one 32-lane SIMD-group per query row (threads_per_threadgroup == query_tile * 32) with a SIMD reduction to finish each dot product.",
+            "This candidate kernel is a correctness-first flash-style streaming online-softmax implementation; no vendor speedup is claimed."
+          ],
+          "wall_timing": {
+            "median_ms": 2.4884582962840796,
+            "p10_ms": 2.4384249467402697,
+            "p90_ms": 2.6888499036431313,
+            "samples_ms": [
+              2.443249919451773,
+              2.677624928764999,
+              2.4884582962840796,
+              2.696333220228553,
+              2.435208298265934
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 2.2228331565856934,
+            "p10_ms": 2.218175005912781,
+            "p90_ms": 2.23534996509552,
+            "samples_ms": [
+              2.218250036239624,
+              2.2228331565856934,
+              2.2181249856948853,
+              2.238249897956848,
+              2.231000065803528
+            ]
+          },
+          "status": "ok"
+        },
+        "simdgroup_qt8_kt16": {
+          "mapping": "simdgroup",
+          "query_tile": 8,
+          "key_tile": 16,
+          "output_shape": [
+            1,
+            8,
+            64,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.7565193766166942e-07,
+            "max_abs_error_normalized": 0.0005274176555525332,
+            "rms_error": 1.4245429926869851e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            },
+            "threadgroup_memory_bytes": 24576,
+            "threadgroup_memory_within_limit": true
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 24576,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "simd_width_ok_for_simdgroup": true,
+            "static_threadgroup_memory_length": 0,
+            "threadgroup_memory_within_limit": true,
+            "threads_per_threadgroup_within_max_total": true,
+            "total_threadgroup_memory_length": 24576
+          },
+          "launch": {
+            "dynamic_tg_staging": "k_and_v_in_single_allocation",
+            "dynamic_threadgroup_memory_bytes": 24576,
+            "grid": {
+              "x": 8,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "causal_prefill_metal_simd",
+            "mapping": "simdgroup",
+            "no_n_by_n_buffer": true,
+            "static_threadgroup_memory_bytes": 0,
+            "threadgroup_memory_float_elements": 6144,
+            "threads_per_threadgroup": 256,
+            "total_threadgroup_memory_bytes": 24576,
+            "total_threads_dispatched": 16384,
+            "valid_query_rows": 512
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.0738333221524954,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation, read after waitUntilCompleted; they exclude input/output CPU copies (preallocated shared MTLBuffers reused) and exclude compile/warmup.",
+            "Wall times are synchronized API latency, timed from before command-buffer allocation through waitUntilCompleted, per invocation.",
+            "The Metal shader is compiled once at startup via MTLLibrary makeLibrary(source:) and reused across all invocations.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing.",
+            "Mapping \"scalar\" launches one thread per query row (threads_per_threadgroup == query_tile); mapping \"simdgroup\" launches one 32-lane SIMD-group per query row (threads_per_threadgroup == query_tile * 32) with a SIMD reduction to finish each dot product.",
+            "This candidate kernel is a correctness-first flash-style streaming online-softmax implementation; no vendor speedup is claimed."
+          ],
+          "wall_timing": {
+            "median_ms": 0.288125011138618,
+            "p10_ms": 0.2818833338096738,
+            "p90_ms": 0.29163339640945196,
+            "samples_ms": [
+              0.28024998027831316,
+              0.2890833420678973,
+              0.2843333641067147,
+              0.288125011138618,
+              0.29333343263715506
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 0.10387492179870605,
+            "p10_ms": 0.1036916732788086,
+            "p90_ms": 0.10437500476837158,
+            "samples_ms": [
+              0.10379159450531006,
+              0.1038750410079956,
+              0.10387492179870605,
+              0.10362505912780762,
+              0.10470831394195557
+            ]
+          },
+          "status": "ok"
+        },
+        "simdgroup_qt8_kt8": {
+          "mapping": "simdgroup",
+          "query_tile": 8,
+          "key_tile": 8,
+          "output_shape": [
+            1,
+            8,
+            64,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.7565193766166942e-07,
+            "max_abs_error_normalized": 0.0005274176555525332,
+            "rms_error": 1.4245429926869851e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            },
+            "threadgroup_memory_bytes": 12288,
+            "threadgroup_memory_within_limit": true
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 12288,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "simd_width_ok_for_simdgroup": true,
+            "static_threadgroup_memory_length": 0,
+            "threadgroup_memory_within_limit": true,
+            "threads_per_threadgroup_within_max_total": true,
+            "total_threadgroup_memory_length": 12288
+          },
+          "launch": {
+            "dynamic_tg_staging": "k_and_v_in_single_allocation",
+            "dynamic_threadgroup_memory_bytes": 12288,
+            "grid": {
+              "x": 8,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "causal_prefill_metal_simd",
+            "mapping": "simdgroup",
+            "no_n_by_n_buffer": true,
+            "static_threadgroup_memory_bytes": 0,
+            "threadgroup_memory_float_elements": 3072,
+            "threads_per_threadgroup": 256,
+            "total_threadgroup_memory_bytes": 12288,
+            "total_threads_dispatched": 16384,
+            "valid_query_rows": 512
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.0407500667497516,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation, read after waitUntilCompleted; they exclude input/output CPU copies (preallocated shared MTLBuffers reused) and exclude compile/warmup.",
+            "Wall times are synchronized API latency, timed from before command-buffer allocation through waitUntilCompleted, per invocation.",
+            "The Metal shader is compiled once at startup via MTLLibrary makeLibrary(source:) and reused across all invocations.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing.",
+            "Mapping \"scalar\" launches one thread per query row (threads_per_threadgroup == query_tile); mapping \"simdgroup\" launches one 32-lane SIMD-group per query row (threads_per_threadgroup == query_tile * 32) with a SIMD reduction to finish each dot product.",
+            "This candidate kernel is a correctness-first flash-style streaming online-softmax implementation; no vendor speedup is claimed."
+          ],
+          "wall_timing": {
+            "median_ms": 0.2981666475534439,
+            "p10_ms": 0.2854583552107215,
+            "p90_ms": 0.3286667400971055,
+            "samples_ms": [
+              0.3406667383387685,
+              0.31066674273461103,
+              0.28733338695019484,
+              0.2842083340510726,
+              0.2981666475534439
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 0.10466670989990234,
+            "p10_ms": 0.10449998378753662,
+            "p90_ms": 0.10479173660278321,
+            "samples_ms": [
+              0.10450005531311035,
+              0.10466670989990234,
+              0.10466670989990234,
+              0.1044999361038208,
+              0.10487508773803711
+            ]
+          },
+          "status": "ok"
+        },
+        "scalar_qt16_kt8": {
+          "mapping": "scalar",
+          "query_tile": 16,
+          "key_tile": 8,
+          "output_shape": [
+            1,
+            8,
+            64,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.3486440886278928e-07,
+            "max_abs_error_normalized": 0.001000351767516216,
+            "rms_error": 1.5825525934488103e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            },
+            "threadgroup_memory_bytes": 12288,
+            "threadgroup_memory_within_limit": true
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 12288,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "simd_width_ok_for_simdgroup": true,
+            "static_threadgroup_memory_length": 0,
+            "threadgroup_memory_within_limit": true,
+            "threads_per_threadgroup_within_max_total": true,
+            "total_threadgroup_memory_length": 12288
+          },
+          "launch": {
+            "dynamic_tg_staging": "k_and_v_in_single_allocation",
+            "dynamic_threadgroup_memory_bytes": 12288,
+            "grid": {
+              "x": 4,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "causal_prefill_metal",
+            "mapping": "scalar",
+            "no_n_by_n_buffer": true,
+            "static_threadgroup_memory_bytes": 0,
+            "threadgroup_memory_float_elements": 3072,
+            "threads_per_threadgroup": 16,
+            "total_threadgroup_memory_bytes": 12288,
+            "total_threads_dispatched": 512,
+            "valid_query_rows": 512
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.0499167256057262,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation, read after waitUntilCompleted; they exclude input/output CPU copies (preallocated shared MTLBuffers reused) and exclude compile/warmup.",
+            "Wall times are synchronized API latency, timed from before command-buffer allocation through waitUntilCompleted, per invocation.",
+            "The Metal shader is compiled once at startup via MTLLibrary makeLibrary(source:) and reused across all invocations.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing.",
+            "Mapping \"scalar\" launches one thread per query row (threads_per_threadgroup == query_tile); mapping \"simdgroup\" launches one 32-lane SIMD-group per query row (threads_per_threadgroup == query_tile * 32) with a SIMD reduction to finish each dot product.",
+            "This candidate kernel is a correctness-first flash-style streaming online-softmax implementation; no vendor speedup is claimed."
+          ],
+          "wall_timing": {
+            "median_ms": 2.414208371192217,
+            "p10_ms": 2.3952916264533997,
+            "p90_ms": 2.4648583494126797,
+            "samples_ms": [
+              2.4943749886006117,
+              2.4205833906307817,
+              2.3979166289791465,
+              2.414208371192217,
+              2.3935416247695684
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 2.2126249074935913,
+            "p10_ms": 2.211916708946228,
+            "p90_ms": 2.2192583799362184,
+            "samples_ms": [
+              2.223625063896179,
+              2.212708353996277,
+              2.212541699409485,
+              2.21150004863739,
+              2.2126249074935913
+            ]
+          },
+          "status": "ok"
+        },
+        "scalar_qt8_kt8": {
+          "mapping": "scalar",
+          "query_tile": 8,
+          "key_tile": 8,
+          "output_shape": [
+            1,
+            8,
+            64,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.3486440886278928e-07,
+            "max_abs_error_normalized": 0.001000351767516216,
+            "rms_error": 1.5825525934488103e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            },
+            "threadgroup_memory_bytes": 12288,
+            "threadgroup_memory_within_limit": true
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 12288,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "simd_width_ok_for_simdgroup": true,
+            "static_threadgroup_memory_length": 0,
+            "threadgroup_memory_within_limit": true,
+            "threads_per_threadgroup_within_max_total": true,
+            "total_threadgroup_memory_length": 12288
+          },
+          "launch": {
+            "dynamic_tg_staging": "k_and_v_in_single_allocation",
+            "dynamic_threadgroup_memory_bytes": 12288,
+            "grid": {
+              "x": 8,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "causal_prefill_metal",
+            "mapping": "scalar",
+            "no_n_by_n_buffer": true,
+            "static_threadgroup_memory_bytes": 0,
+            "threadgroup_memory_float_elements": 3072,
+            "threads_per_threadgroup": 8,
+            "total_threadgroup_memory_bytes": 12288,
+            "total_threads_dispatched": 512,
+            "valid_query_rows": 512
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 0.9904166217893362,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation, read after waitUntilCompleted; they exclude input/output CPU copies (preallocated shared MTLBuffers reused) and exclude compile/warmup.",
+            "Wall times are synchronized API latency, timed from before command-buffer allocation through waitUntilCompleted, per invocation.",
+            "The Metal shader is compiled once at startup via MTLLibrary makeLibrary(source:) and reused across all invocations.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing.",
+            "Mapping \"scalar\" launches one thread per query row (threads_per_threadgroup == query_tile); mapping \"simdgroup\" launches one 32-lane SIMD-group per query row (threads_per_threadgroup == query_tile * 32) with a SIMD reduction to finish each dot product.",
+            "This candidate kernel is a correctness-first flash-style streaming online-softmax implementation; no vendor speedup is claimed."
+          ],
+          "wall_timing": {
+            "median_ms": 2.6215834077447653,
+            "p10_ms": 2.6104166405275464,
+            "p90_ms": 2.758933324366808,
+            "samples_ms": [
+              2.6470832526683807,
+              2.6215834077447653,
+              2.833500038832426,
+              2.6098332600668073,
+              2.611291711218655
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 2.4083331823349,
+            "p10_ms": 2.407900023460388,
+            "p90_ms": 2.4111249923706053,
+            "samples_ms": [
+              2.4083331823349,
+              2.412874937057495,
+              2.408500075340271,
+              2.4077500104904175,
+              2.4081250429153442
+            ]
+          },
+          "status": "ok"
+        },
+        "simdgroup_qt4_kt16": {
+          "mapping": "simdgroup",
+          "query_tile": 4,
+          "key_tile": 16,
+          "output_shape": [
+            1,
+            8,
+            64,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              64,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.7565193766166942e-07,
+            "max_abs_error_normalized": 0.0005274176555525332,
+            "rms_error": 1.4245429926869851e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            },
+            "threadgroup_memory_bytes": 24576,
+            "threadgroup_memory_within_limit": true
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 24576,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "simd_width_ok_for_simdgroup": true,
+            "static_threadgroup_memory_length": 0,
+            "threadgroup_memory_within_limit": true,
+            "threads_per_threadgroup_within_max_total": true,
+            "total_threadgroup_memory_length": 24576
+          },
+          "launch": {
+            "dynamic_tg_staging": "k_and_v_in_single_allocation",
+            "dynamic_threadgroup_memory_bytes": 24576,
+            "grid": {
+              "x": 16,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "causal_prefill_metal_simd",
+            "mapping": "simdgroup",
+            "no_n_by_n_buffer": true,
+            "static_threadgroup_memory_bytes": 0,
+            "threadgroup_memory_float_elements": 6144,
+            "threads_per_threadgroup": 128,
+            "total_threadgroup_memory_bytes": 24576,
+            "total_threads_dispatched": 16384,
+            "valid_query_rows": 512
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 0.987500068731606,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation, read after waitUntilCompleted; they exclude input/output CPU copies (preallocated shared MTLBuffers reused) and exclude compile/warmup.",
+            "Wall times are synchronized API latency, timed from before command-buffer allocation through waitUntilCompleted, per invocation.",
+            "The Metal shader is compiled once at startup via MTLLibrary makeLibrary(source:) and reused across all invocations.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing.",
+            "Mapping \"scalar\" launches one thread per query row (threads_per_threadgroup == query_tile); mapping \"simdgroup\" launches one 32-lane SIMD-group per query row (threads_per_threadgroup == query_tile * 32) with a SIMD reduction to finish each dot product.",
+            "This candidate kernel is a correctness-first flash-style streaming online-softmax implementation; no vendor speedup is claimed."
+          ],
+          "wall_timing": {
+            "median_ms": 0.3295833012089133,
+            "p10_ms": 0.3216500161215663,
+            "p90_ms": 0.3345833392813802,
+            "samples_ms": [
+              0.3172500291839242,
+              0.3343332791700959,
+              0.32824999652802944,
+              0.3295833012089133,
+              0.33475004602223635
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 0.14075005054473877,
+            "p10_ms": 0.14061667919158935,
+            "p90_ms": 0.1419832706451416,
+            "samples_ms": [
+              0.1419999599456787,
+              0.14075005054473877,
+              0.14066660404205322,
+              0.14058339595794678,
+              0.14195823669433594
+            ]
+          },
+          "status": "ok"
+        }
+      },
+      "skipped_configs": [
+        [
+          "scalar",
+          4
+        ],
+        [
+          "simdgroup",
+          16
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1143 @@
+{
+  "meta": {
+    "date": "2026-09-11T08:13:54.283560+00:00",
+    "python": "3.14.6",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "numpy": "2.5.3",
+    "swift_toolchain": "Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0",
+    "swift_src": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/attention/partitioned/matrix_attention.swift",
+    "build_dir": "/Users/cake/.codex/worktrees/bfe0/VeriTac/.lake/partitioned_worker",
+    "grid": {
+      "seqs": [
+        1024,
+        2048
+      ],
+      "dims": [
+        192,
+        256
+      ],
+      "kts": [
+        8,
+        16
+      ],
+      "qt": 8,
+      "heads": 8,
+      "batch": 1,
+      "warmup": 10,
+      "samples": 5,
+      "inner": 2,
+      "seed": 1234,
+      "verify_only": false
+    }
+  },
+  "timing_caveats": [
+    "All timings are in milliseconds.",
+    "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation of the FULL single-kernel two-pass matrix pipeline (pass1 row max + pass2 causal weighted sum + finalize). They exclude input/output CPU copies and compile/warmup. Invalid timestamps are reported unavailable (gpu_timing=null).",
+    "Wall times are synchronized API latency per invocation.",
+    "Each timed invocation computes a fresh output; nothing is cached across samples. samples x inner per-invocation timings are kept.",
+    "Configurations (kt) run serially per case in a deterministic, seed-shuffled order (recorded in config_order)."
+  ],
+  "cases": [
+    {
+      "seq": 1024,
+      "dim": 192,
+      "dtype": "float32",
+      "heads": 8,
+      "batch": 1,
+      "scale": 0.07216878364870322,
+      "seed": 1234,
+      "case_seed": 1045029771,
+      "config_order": [
+        16,
+        8
+      ],
+      "inputs_sha256": {
+        "q": "0a1f7566ff2383502255d2f1048c7bdd39d0bdfcdd81cc6035bb7537b090db30",
+        "k": "f39fd3cf3c1eb906ab317fa12ef38b3e0126bbc894cc8bef31152eeee4549998",
+        "v": "24860057cfd813a79b89d4514af7e0f0bc3af33ebeb6b7a5c3ba3cb59603f879"
+      },
+      "results": {
+        "qt8_kt16": {
+          "qt": 8,
+          "kt": 16,
+          "output_shape": [
+            1,
+            8,
+            1024,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              1024,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              1024,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.4493097622025886e-07,
+            "max_abs_error_normalized": 0.0007056798552824745,
+            "rms_error": 1.0046690415474658e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            }
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 19008,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "specialization": {
+              "D": 192,
+              "kt": 16,
+              "qt": 8
+            },
+            "static_threadgroup_memory_length": 0
+          },
+          "launch": {
+            "dynamic_threadgroup_memory_bytes": 19008,
+            "grid": {
+              "x": 128,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "matrix_attention",
+            "key_tile": 16,
+            "lanes_per_simdgroup": 32,
+            "mapping": "one_simdgroup_per_8_query_rows",
+            "matrix_units": {
+              "dtype": "float32",
+              "pv": "simdgroup_float8x8 over D/8 column blocks",
+              "qk_contraction": "simdgroup_float8x8 over 8-wide D slabs"
+            },
+            "no_n_by_n_buffer": true,
+            "passes": [
+              "pass1_row_max",
+              "pass2_causal_weighted_sum",
+              "finalize_normalize"
+            ],
+            "query_rows_per_simdgroup": 8,
+            "static_threadgroup_memory_bytes": 0,
+            "threads_per_threadgroup": 32,
+            "total_threads_dispatched": 32768,
+            "valid_query_rows": 8192
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.3200833927839994,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation of the FULL single-kernel two-pass pipeline (pass1 max, pass2 weighted sum, finalize). They exclude input/output CPU copies and compile/warmup.",
+            "Wall times are synchronized API latency per invocation.",
+            "The Metal shader is compiled once at startup with function-constant specialization for (D, kt) and reused across all invocations.",
+            "FP32 matrices throughout; the softmax is done via threadgroup scratch, not fragment-layout dependence.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing."
+          ],
+          "wall_timing": {
+            "median_ms": 9.393291606102139,
+            "p10_ms": 9.362520836293697,
+            "p90_ms": 9.459829179104418,
+            "samples_ms": [
+              9.40454169176519,
+              9.402249939739704,
+              9.410291677340865,
+              9.363291668705642,
+              9.366583311930299,
+              9.384333272464573,
+              9.459708351641893,
+              9.369541658088565,
+              9.355583344586194,
+              9.460916626267135
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 9.184979140758514,
+            "p10_ms": 9.151187515258789,
+            "p90_ms": 9.252058386802673,
+            "samples_ms": [
+              9.200791597366333,
+              9.1847083568573,
+              9.199124932289124,
+              9.15749990940094,
+              9.152666687965393,
+              9.185249924659729,
+              9.25154173374176,
+              9.169000029563904,
+              9.137874960899353,
+              9.256708264350891
+            ]
+          },
+          "status": "ok"
+        },
+        "qt8_kt8": {
+          "qt": 8,
+          "kt": 8,
+          "output_shape": [
+            1,
+            8,
+            1024,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              1024,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              1024,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.4493097622025886e-07,
+            "max_abs_error_normalized": 0.0007543465525156918,
+            "rms_error": 1.0201907292193238e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            }
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 12608,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "specialization": {
+              "D": 192,
+              "kt": 8,
+              "qt": 8
+            },
+            "static_threadgroup_memory_length": 0
+          },
+          "launch": {
+            "dynamic_threadgroup_memory_bytes": 12608,
+            "grid": {
+              "x": 128,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "matrix_attention",
+            "key_tile": 8,
+            "lanes_per_simdgroup": 32,
+            "mapping": "one_simdgroup_per_8_query_rows",
+            "matrix_units": {
+              "dtype": "float32",
+              "pv": "simdgroup_float8x8 over D/8 column blocks",
+              "qk_contraction": "simdgroup_float8x8 over 8-wide D slabs"
+            },
+            "no_n_by_n_buffer": true,
+            "passes": [
+              "pass1_row_max",
+              "pass2_causal_weighted_sum",
+              "finalize_normalize"
+            ],
+            "query_rows_per_simdgroup": 8,
+            "static_threadgroup_memory_bytes": 0,
+            "threads_per_threadgroup": 32,
+            "total_threads_dispatched": 32768,
+            "valid_query_rows": 8192
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.0669166222214699,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation of the FULL single-kernel two-pass pipeline (pass1 max, pass2 weighted sum, finalize). They exclude input/output CPU copies and compile/warmup.",
+            "Wall times are synchronized API latency per invocation.",
+            "The Metal shader is compiled once at startup with function-constant specialization for (D, kt) and reused across all invocations.",
+            "FP32 matrices throughout; the softmax is done via threadgroup scratch, not fragment-layout dependence.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing."
+          ],
+          "wall_timing": {
+            "median_ms": 7.539708341937512,
+            "p10_ms": 7.364325050730258,
+            "p90_ms": 7.567583373747766,
+            "samples_ms": [
+              7.542749983258545,
+              7.555083371698856,
+              7.541458355262876,
+              7.543041720055044,
+              7.530958275310695,
+              7.535833399742842,
+              7.364416727796197,
+              7.680083392187953,
+              7.537958328612149,
+              7.36349995713681
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 7.328812539577484,
+            "p10_ms": 7.157983291149139,
+            "p90_ms": 7.334941720962524,
+            "samples_ms": [
+              7.321250081062317,
+              7.327833414077759,
+              7.334750056266785,
+              7.336666703224182,
+              7.3297916650772095,
+              7.317999958992004,
+              7.1584999561309814,
+              7.33175003528595,
+              7.330250024795532,
+              7.153333306312561
+            ]
+          },
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "seq": 1024,
+      "dim": 256,
+      "dtype": "float32",
+      "heads": 8,
+      "batch": 1,
+      "scale": 0.0625,
+      "seed": 1234,
+      "case_seed": 1051732427,
+      "config_order": [
+        8,
+        16
+      ],
+      "inputs_sha256": {
+        "q": "e3503031f8ad5168b9229120ea3f41c39aedb251f8b683d57b71eaadeb236919",
+        "k": "2f8f2b830b0cb4cb4005745b8b410bf96dc8d2fe032dfc456d8557a2fa764483",
+        "v": "e15e97e2033c5fbee05269d56e2e8cf71efbafa7868926bebe5459eef1d40a23"
+      },
+      "results": {
+        "qt8_kt8": {
+          "qt": 8,
+          "kt": 8,
+          "output_shape": [
+            1,
+            8,
+            1024,
+            256
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              1024,
+              256
+            ],
+            "reference_shape": [
+              1,
+              8,
+              1024,
+              256
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.786677230053435e-07,
+            "max_abs_error_normalized": 0.0010441800757494794,
+            "rms_error": 1.0394715072202035e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            }
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 16704,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "specialization": {
+              "D": 256,
+              "kt": 8,
+              "qt": 8
+            },
+            "static_threadgroup_memory_length": 0
+          },
+          "launch": {
+            "dynamic_threadgroup_memory_bytes": 16704,
+            "grid": {
+              "x": 128,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "matrix_attention",
+            "key_tile": 8,
+            "lanes_per_simdgroup": 32,
+            "mapping": "one_simdgroup_per_8_query_rows",
+            "matrix_units": {
+              "dtype": "float32",
+              "pv": "simdgroup_float8x8 over D/8 column blocks",
+              "qk_contraction": "simdgroup_float8x8 over 8-wide D slabs"
+            },
+            "no_n_by_n_buffer": true,
+            "passes": [
+              "pass1_row_max",
+              "pass2_causal_weighted_sum",
+              "finalize_normalize"
+            ],
+            "query_rows_per_simdgroup": 8,
+            "static_threadgroup_memory_bytes": 0,
+            "threads_per_threadgroup": 32,
+            "total_threads_dispatched": 32768,
+            "valid_query_rows": 8192
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.1670832755044103,
+          "warmup_count": 10,
+          "scale": 0.0625,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation of the FULL single-kernel two-pass pipeline (pass1 max, pass2 weighted sum, finalize). They exclude input/output CPU copies and compile/warmup.",
+            "Wall times are synchronized API latency per invocation.",
+            "The Metal shader is compiled once at startup with function-constant specialization for (D, kt) and reused across all invocations.",
+            "FP32 matrices throughout; the softmax is done via threadgroup scratch, not fragment-layout dependence.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing."
+          ],
+          "wall_timing": {
+            "median_ms": 11.299895879346877,
+            "p10_ms": 11.160724982619286,
+            "p90_ms": 11.353345785755664,
+            "samples_ms": [
+              11.27779169473797,
+              11.247083428315818,
+              11.434833286330104,
+              11.320958263240755,
+              11.288958368822932,
+              11.199666652828455,
+              11.311708367429674,
+              11.310833389870822,
+              10.810249950736761,
+              11.34429161902517
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 11.084916651248932,
+            "p10_ms": 10.939349937438966,
+            "p90_ms": 11.138949954509735,
+            "samples_ms": [
+              11.075583338737488,
+              11.039000034332275,
+              11.23562502861023,
+              11.109291553497314,
+              11.08566677570343,
+              10.979583263397217,
+              11.084166526794434,
+              11.099208354949951,
+              10.577250003814697,
+              11.12820827960968
+            ]
+          },
+          "status": "ok"
+        },
+        "qt8_kt16": {
+          "qt": 8,
+          "kt": 16,
+          "output_shape": [
+            1,
+            8,
+            1024,
+            256
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              1024,
+              256
+            ],
+            "reference_shape": [
+              1,
+              8,
+              1024,
+              256
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.786677230053435e-07,
+            "max_abs_error_normalized": 0.0010441800757494794,
+            "rms_error": 1.0242573581913756e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            }
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 25152,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "specialization": {
+              "D": 256,
+              "kt": 16,
+              "qt": 8
+            },
+            "static_threadgroup_memory_length": 0
+          },
+          "launch": {
+            "dynamic_threadgroup_memory_bytes": 25152,
+            "grid": {
+              "x": 128,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "matrix_attention",
+            "key_tile": 16,
+            "lanes_per_simdgroup": 32,
+            "mapping": "one_simdgroup_per_8_query_rows",
+            "matrix_units": {
+              "dtype": "float32",
+              "pv": "simdgroup_float8x8 over D/8 column blocks",
+              "qk_contraction": "simdgroup_float8x8 over 8-wide D slabs"
+            },
+            "no_n_by_n_buffer": true,
+            "passes": [
+              "pass1_row_max",
+              "pass2_causal_weighted_sum",
+              "finalize_normalize"
+            ],
+            "query_rows_per_simdgroup": 8,
+            "static_threadgroup_memory_bytes": 0,
+            "threads_per_threadgroup": 32,
+            "total_threads_dispatched": 32768,
+            "valid_query_rows": 8192
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.1015833588317037,
+          "warmup_count": 10,
+          "scale": 0.0625,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation of the FULL single-kernel two-pass pipeline (pass1 max, pass2 weighted sum, finalize). They exclude input/output CPU copies and compile/warmup.",
+            "Wall times are synchronized API latency per invocation.",
+            "The Metal shader is compiled once at startup with function-constant specialization for (D, kt) and reused across all invocations.",
+            "FP32 matrices throughout; the softmax is done via threadgroup scratch, not fragment-layout dependence.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing."
+          ],
+          "wall_timing": {
+            "median_ms": 14.906750002410263,
+            "p10_ms": 14.664316701237112,
+            "p90_ms": 14.959412545431405,
+            "samples_ms": [
+              14.907083357684314,
+              14.84687498304993,
+              14.682458364404738,
+              14.914166647940874,
+              14.698333339765668,
+              14.906416647136211,
+              14.940916560590267,
+              14.501041732728481,
+              14.958041720092297,
+              14.971749973483384
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 14.690520763397217,
+            "p10_ms": 14.452266716957093,
+            "p90_ms": 14.745087504386902,
+            "samples_ms": [
+              14.69474995136261,
+              14.645708322525024,
+              14.469750046730042,
+              14.686291575431824,
+              14.493374943733215,
+              14.699958443641663,
+              14.722041726112366,
+              14.29491674900055,
+              14.743250012397766,
+              14.761624932289124
+            ]
+          },
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "seq": 2048,
+      "dim": 192,
+      "dtype": "float32",
+      "heads": 8,
+      "batch": 1,
+      "scale": 0.07216878364870322,
+      "seed": 1234,
+      "case_seed": 2069032843,
+      "config_order": [
+        8,
+        16
+      ],
+      "inputs_sha256": {
+        "q": "cb46b908dae31e43cd0df9a5b0085b770e36563dc7d21e1818a4939db28cffbd",
+        "k": "9765a7aa4573885a6e35b54dbf07310dac3770e53f2526e64a7535ef73eb0e07",
+        "v": "f2c5f1f236ae49409ca4532f1ca820303326c82888bc87b07302cddd924d7d99"
+      },
+      "results": {
+        "qt8_kt8": {
+          "qt": 8,
+          "kt": 8,
+          "output_shape": [
+            1,
+            8,
+            2048,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              2048,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              2048,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.263708785670392e-07,
+            "max_abs_error_normalized": 0.0008136393723584409,
+            "rms_error": 9.910400807535736e-09,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            }
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 12608,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "specialization": {
+              "D": 192,
+              "kt": 8,
+              "qt": 8
+            },
+            "static_threadgroup_memory_length": 0
+          },
+          "launch": {
+            "dynamic_threadgroup_memory_bytes": 12608,
+            "grid": {
+              "x": 256,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "matrix_attention",
+            "key_tile": 8,
+            "lanes_per_simdgroup": 32,
+            "mapping": "one_simdgroup_per_8_query_rows",
+            "matrix_units": {
+              "dtype": "float32",
+              "pv": "simdgroup_float8x8 over D/8 column blocks",
+              "qk_contraction": "simdgroup_float8x8 over 8-wide D slabs"
+            },
+            "no_n_by_n_buffer": true,
+            "passes": [
+              "pass1_row_max",
+              "pass2_causal_weighted_sum",
+              "finalize_normalize"
+            ],
+            "query_rows_per_simdgroup": 8,
+            "static_threadgroup_memory_bytes": 0,
+            "threads_per_threadgroup": 32,
+            "total_threads_dispatched": 65536,
+            "valid_query_rows": 16384
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.0659582912921906,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation of the FULL single-kernel two-pass pipeline (pass1 max, pass2 weighted sum, finalize). They exclude input/output CPU copies and compile/warmup.",
+            "Wall times are synchronized API latency per invocation.",
+            "The Metal shader is compiled once at startup with function-constant specialization for (D, kt) and reused across all invocations.",
+            "FP32 matrices throughout; the softmax is done via threadgroup scratch, not fragment-layout dependence.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing."
+          ],
+          "wall_timing": {
+            "median_ms": 23.62958330195397,
+            "p10_ms": 23.118104168679565,
+            "p90_ms": 24.130420852452517,
+            "samples_ms": [
+              23.12566665932536,
+              24.102333351038396,
+              23.93291669432074,
+              23.584166658110917,
+              23.481166688725352,
+              23.223500000312924,
+              23.0500417528674,
+              23.674999945797026,
+              23.86687509715557,
+              24.3832083651796
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 23.398625016212463,
+            "p10_ms": 22.886312448978423,
+            "p90_ms": 23.90826244354248,
+            "samples_ms": [
+              22.892249941825867,
+              23.88574993610382,
+              23.71904158592224,
+              23.363791704177856,
+              23.244499921798706,
+              22.992833375930786,
+              22.83287501335144,
+              23.43345832824707,
+              23.613791704177856,
+              24.110875010490417
+            ]
+          },
+          "status": "ok"
+        },
+        "qt8_kt16": {
+          "qt": 8,
+          "kt": 16,
+          "output_shape": [
+            1,
+            8,
+            2048,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              2048,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              2048,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.263708785670392e-07,
+            "max_abs_error_normalized": 0.0008341289163344745,
+            "rms_error": 9.75573417294208e-09,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            }
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 19008,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "specialization": {
+              "D": 192,
+              "kt": 16,
+              "qt": 8
+            },
+            "static_threadgroup_memory_length": 0
+          },
+          "launch": {
+            "dynamic_threadgroup_memory_bytes": 19008,
+            "grid": {
+              "x": 256,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "matrix_attention",
+            "key_tile": 16,
+            "lanes_per_simdgroup": 32,
+            "mapping": "one_simdgroup_per_8_query_rows",
+            "matrix_units": {
+              "dtype": "float32",
+              "pv": "simdgroup_float8x8 over D/8 column blocks",
+              "qk_contraction": "simdgroup_float8x8 over 8-wide D slabs"
+            },
+            "no_n_by_n_buffer": true,
+            "passes": [
+              "pass1_row_max",
+              "pass2_causal_weighted_sum",
+              "finalize_normalize"
+            ],
+            "query_rows_per_simdgroup": 8,
+            "static_threadgroup_memory_bytes": 0,
+            "threads_per_threadgroup": 32,
+            "total_threads_dispatched": 65536,
+            "valid_query_rows": 16384
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.0890000266954303,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation of the FULL single-kernel two-pass pipeline (pass1 max, pass2 weighted sum, finalize). They exclude input/output CPU copies and compile/warmup.",
+            "Wall times are synchronized API latency per invocation.",
+            "The Metal shader is compiled once at startup with function-constant specialization for (D, kt) and reused across all invocations.",
+            "FP32 matrices throughout; the softmax is done via threadgroup scratch, not fragment-layout dependence.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing."
+          ],
+          "wall_timing": {
+            "median_ms": 31.26329166116193,
+            "p10_ms": 30.70991667918861,
+            "p90_ms": 32.03110418980941,
+            "samples_ms": [
+              31.80912497919053,
+              31.61462501157075,
+              32.576166675426066,
+              30.480416608043015,
+              30.812083394266665,
+              31.97054169140756,
+              31.088875024579465,
+              31.26095829065889,
+              30.735416687093675,
+              31.265625031664968
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 31.04108339548111,
+            "p10_ms": 30.485400092601775,
+            "p90_ms": 31.805675053596495,
+            "samples_ms": [
+              31.569999933242798,
+              31.35199999809265,
+              32.32850003242493,
+              30.248250007629395,
+              30.583374977111816,
+              31.747583389282227,
+              30.86762499809265,
+              31.028666734695435,
+              30.511750102043152,
+              31.053500056266785
+            ]
+          },
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "seq": 2048,
+      "dim": 256,
+      "dtype": "float32",
+      "heads": 8,
+      "batch": 1,
+      "scale": 0.0625,
+      "seed": 1234,
+      "case_seed": 2075735499,
+      "config_order": [
+        16,
+        8
+      ],
+      "inputs_sha256": {
+        "q": "fb63e11b935d8906d9241467eeeba94dd197730ac183ead13fd36b5b0f1eb42d",
+        "k": "449901e951da0111b240dc6e2d192b7ba5242a8f5af16a4822448413290e151e",
+        "v": "93a8f23261a2e0b1e91beffa01cc6cf1eb0dd102018eed39db4e19a365a2e1d5"
+      },
+      "results": {
+        "qt8_kt16": {
+          "qt": 8,
+          "kt": 16,
+          "output_shape": [
+            1,
+            8,
+            2048,
+            256
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              2048,
+              256
+            ],
+            "reference_shape": [
+              1,
+              8,
+              2048,
+              256
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.6606777442085274e-07,
+            "max_abs_error_normalized": 0.0008561923128945626,
+            "rms_error": 1.006143423637298e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            }
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 25152,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "specialization": {
+              "D": 256,
+              "kt": 16,
+              "qt": 8
+            },
+            "static_threadgroup_memory_length": 0
+          },
+          "launch": {
+            "dynamic_threadgroup_memory_bytes": 25152,
+            "grid": {
+              "x": 256,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "matrix_attention",
+            "key_tile": 16,
+            "lanes_per_simdgroup": 32,
+            "mapping": "one_simdgroup_per_8_query_rows",
+            "matrix_units": {
+              "dtype": "float32",
+              "pv": "simdgroup_float8x8 over D/8 column blocks",
+              "qk_contraction": "simdgroup_float8x8 over 8-wide D slabs"
+            },
+            "no_n_by_n_buffer": true,
+            "passes": [
+              "pass1_row_max",
+              "pass2_causal_weighted_sum",
+              "finalize_normalize"
+            ],
+            "query_rows_per_simdgroup": 8,
+            "static_threadgroup_memory_bytes": 0,
+            "threads_per_threadgroup": 32,
+            "total_threads_dispatched": 65536,
+            "valid_query_rows": 16384
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.096041640266776,
+          "warmup_count": 10,
+          "scale": 0.0625,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation of the FULL single-kernel two-pass pipeline (pass1 max, pass2 weighted sum, finalize). They exclude input/output CPU copies and compile/warmup.",
+            "Wall times are synchronized API latency per invocation.",
+            "The Metal shader is compiled once at startup with function-constant specialization for (D, kt) and reused across all invocations.",
+            "FP32 matrices throughout; the softmax is done via threadgroup scratch, not fragment-layout dependence.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing."
+          ],
+          "wall_timing": {
+            "median_ms": 53.460687515325844,
+            "p10_ms": 49.84331668820232,
+            "p90_ms": 57.522383402101696,
+            "samples_ms": [
+              53.52554167620838,
+              53.342166589573026,
+              53.8178333081305,
+              43.27504173852503,
+              54.08620834350586,
+              57.383166742511094,
+              50.57312501594424,
+              53.39583335444331,
+              58.77533333841711,
+              52.816666662693024
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 53.21187496185303,
+            "p10_ms": 49.58171662092209,
+            "p90_ms": 57.243837487697604,
+            "samples_ms": [
+              53.28699994087219,
+              53.12300002574921,
+              53.58550000190735,
+              43.05079162120819,
+              53.83399987220764,
+              57.104541659355164,
+              50.30737495422363,
+              53.13674998283386,
+              58.49749994277954,
+              52.52345836162567
+            ]
+          },
+          "status": "ok"
+        },
+        "qt8_kt8": {
+          "qt": 8,
+          "kt": 8,
+          "output_shape": [
+            1,
+            8,
+            2048,
+            256
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              2048,
+              256
+            ],
+            "reference_shape": [
+              1,
+              8,
+              2048,
+              256
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.6606777442085274e-07,
+            "max_abs_error_normalized": 0.0008561923128945626,
+            "rms_error": 1.0213917410143562e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            }
+          },
+          "pipeline": {
+            "dynamic_threadgroup_memory_length": 16704,
+            "max_total_threads_per_threadgroup": 1024,
+            "simd_width": 32,
+            "specialization": {
+              "D": 256,
+              "kt": 8,
+              "qt": 8
+            },
+            "static_threadgroup_memory_length": 0
+          },
+          "launch": {
+            "dynamic_threadgroup_memory_bytes": 16704,
+            "grid": {
+              "x": 256,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "matrix_attention",
+            "key_tile": 8,
+            "lanes_per_simdgroup": 32,
+            "mapping": "one_simdgroup_per_8_query_rows",
+            "matrix_units": {
+              "dtype": "float32",
+              "pv": "simdgroup_float8x8 over D/8 column blocks",
+              "qk_contraction": "simdgroup_float8x8 over 8-wide D slabs"
+            },
+            "no_n_by_n_buffer": true,
+            "passes": [
+              "pass1_row_max",
+              "pass2_causal_weighted_sum",
+              "finalize_normalize"
+            ],
+            "query_rows_per_simdgroup": 8,
+            "static_threadgroup_memory_bytes": 0,
+            "threads_per_threadgroup": 32,
+            "total_threads_dispatched": 65536,
+            "valid_query_rows": 16384
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 1.0968749411404133,
+          "warmup_count": 10,
+          "scale": 0.0625,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation of the FULL single-kernel two-pass pipeline (pass1 max, pass2 weighted sum, finalize). They exclude input/output CPU copies and compile/warmup.",
+            "Wall times are synchronized API latency per invocation.",
+            "The Metal shader is compiled once at startup with function-constant specialization for (D, kt) and reused across all invocations.",
+            "FP32 matrices throughout; the softmax is done via threadgroup scratch, not fragment-layout dependence.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing."
+          ],
+          "wall_timing": {
+            "median_ms": 40.312833327334374,
+            "p10_ms": 39.70890840282664,
+            "p90_ms": 40.81935416907072,
+            "samples_ms": [
+              39.837000076659024,
+              40.436291601508856,
+              40.795833338052034,
+              40.58537492528558,
+              38.556083338335156,
+              40.04445835016668,
+              41.0310416482389,
+              40.41087499354035,
+              40.16262502409518,
+              40.2147916611284
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 40.068999886512756,
+            "p10_ms": 39.46987501382828,
+            "p90_ms": 40.57635426521301,
+            "samples_ms": [
+              39.59587502479553,
+              40.178624868392944,
+              40.55204176902771,
+              40.36412501335144,
+              38.335874915122986,
+              39.77033340930939,
+              40.79516673088074,
+              40.197749972343445,
+              39.923916697502136,
+              39.95937490463257
+            ]
+          },
+          "status": "ok"
+        }
+      }
+    }
+  ]
+}

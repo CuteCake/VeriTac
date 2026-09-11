@@ -1,0 +1,17 @@
+[driver] building runtime (mode=sweep, k192=False) ...
+[driver] modules: {'normal': '/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate.so', 'reverse': '/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_rev.so', 'alias': '/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_alias.so', 'revderiv': '/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_revderiv.so'}
+[driver] config info (effective ids):
+    25 Q32K128-min1-REVDRAIN {"id": 25, "smem_bytes": 76288, "num_threads": 128, "num_warps": 4, "queries_per_block": 32, "keys_per_block": 128, "max_k": 256, "min_blocks_hint": 1, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "preload_v": false, "alias_scratch": false, "async_drains": true, "reversed": true, "num_regs": 225, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 76288, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": "", "base_config_id": 25, "module": "revderiv"}
+    26 Q64K128-min1-REVALIAS {"id": 26, "smem_bytes": 86016, "num_threads": 256, "num_warps": 8, "queries_per_block": 64, "keys_per_block": 128, "max_k": 256, "min_blocks_hint": 1, "installed_min_blocks": 1, "single_value_iteration": false, "keep_output_in_rf": false, "preload_v": false, "alias_scratch": true, "async_drains": true, "reversed": true, "num_regs": 221, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 86016, "kernel_max_threads": 256, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": "", "base_config_id": 26, "module": "revderiv"}
+[sweep] target sweep ...
+  cfg25(Q32K128-min1-REVDRAIN) N1024 D192: pass=True graph_pass=True evt=0.3779ms wall=0.3854ms graph=0.3825ms
+  cfg25(Q32K128-min1-REVDRAIN) N1024 D256: pass=True graph_pass=True evt=0.4326ms wall=0.4387ms graph=0.4338ms
+  cfg25(Q32K128-min1-REVDRAIN) N2048 D192: pass=True graph_pass=True evt=1.3526ms wall=1.3589ms graph=1.3536ms
+  cfg25(Q32K128-min1-REVDRAIN) N2048 D256: pass=True graph_pass=True evt=1.5124ms wall=1.5406ms graph=1.5311ms
+  cfg26(Q64K128-min1-REVALIAS) N1024 D192: pass=True graph_pass=True evt=0.3871ms wall=0.3931ms graph=0.3989ms
+  cfg26(Q64K128-min1-REVALIAS) N1024 D256: pass=True graph_pass=True evt=0.4458ms wall=0.4559ms graph=0.4504ms
+  cfg26(Q64K128-min1-REVALIAS) N2048 D192: pass=True graph_pass=True evt=1.2836ms wall=1.2920ms graph=1.2835ms
+  cfg26(Q64K128-min1-REVALIAS) N2048 D256: pass=True graph_pass=True evt=1.4499ms wall=1.4562ms graph=1.4593ms
+[sweep] done.
+[driver] final JSON: results/revderiv-sweep.json
+[driver] tested_valid=8 failures=0

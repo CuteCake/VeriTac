@@ -1,0 +1,27 @@
+[driver] building runtime (mode=sweep, k192=False) ...
+[driver] modules: {'normal': '/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate.so', 'reverse': '/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_rev.so', 'alias': '/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_alias.so'}
+[driver] config info (effective ids):
+    20 Q64K128-min1-ALIAS {"id": 20, "smem_bytes": 86016, "num_threads": 256, "num_warps": 8, "queries_per_block": 64, "keys_per_block": 128, "max_k": 256, "min_blocks_hint": 1, "installed_min_blocks": 1, "single_value_iteration": false, "keep_output_in_rf": false, "preload_v": false, "alias_scratch": true, "async_drains": true, "num_regs": 221, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 86016, "kernel_max_threads": 256, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": "", "base_config_id": 20, "module": "alias"}
+    21 Q64K128-min2-ALIAS {"id": 21, "smem_bytes": 86016, "num_threads": 256, "num_warps": 8, "queries_per_block": 64, "keys_per_block": 128, "max_k": 256, "min_blocks_hint": 2, "installed_min_blocks": 1, "single_value_iteration": false, "keep_output_in_rf": false, "preload_v": false, "alias_scratch": true, "async_drains": true, "num_regs": 128, "local_size_bytes": 248, "static_shared_bytes": 0, "total_shared_bytes": 86016, "kernel_max_threads": 256, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": "", "base_config_id": 21, "module": "alias"}
+    22 Q32K128-min1-ALIAS {"id": 22, "smem_bytes": 67584, "num_threads": 128, "num_warps": 4, "queries_per_block": 32, "keys_per_block": 128, "max_k": 256, "min_blocks_hint": 1, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "preload_v": false, "alias_scratch": true, "async_drains": true, "num_regs": 225, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 67584, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": "", "base_config_id": 22, "module": "alias"}
+    24 Q32K128-min1-DRAIN {"id": 24, "smem_bytes": 76288, "num_threads": 128, "num_warps": 4, "queries_per_block": 32, "keys_per_block": 128, "max_k": 256, "min_blocks_hint": 1, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "preload_v": false, "alias_scratch": false, "async_drains": true, "num_regs": 225, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 76288, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": "", "base_config_id": 24, "module": "alias"}
+[sweep] target sweep ...
+  cfg20(Q64K128-min1-ALIAS) N1024 D192: pass=True graph_pass=True evt=0.4045ms wall=0.4107ms graph=0.4028ms
+  cfg20(Q64K128-min1-ALIAS) N1024 D256: pass=True graph_pass=True evt=0.4614ms wall=0.4676ms graph=0.4629ms
+  cfg20(Q64K128-min1-ALIAS) N2048 D192: pass=True graph_pass=True evt=1.3406ms wall=1.3465ms graph=1.3384ms
+  cfg20(Q64K128-min1-ALIAS) N2048 D256: pass=True graph_pass=True evt=1.5161ms wall=1.5169ms graph=1.5078ms
+  cfg21(Q64K128-min2-ALIAS) N1024 D192: pass=True graph_pass=True evt=0.5270ms wall=0.5338ms graph=0.5290ms
+  cfg21(Q64K128-min2-ALIAS) N1024 D256: pass=True graph_pass=True evt=0.5959ms wall=0.6026ms graph=0.5990ms
+  cfg21(Q64K128-min2-ALIAS) N2048 D192: pass=True graph_pass=True evt=1.7314ms wall=1.7387ms graph=1.7414ms
+  cfg21(Q64K128-min2-ALIAS) N2048 D256: pass=True graph_pass=True evt=1.9408ms wall=1.9562ms graph=1.9547ms
+  cfg22(Q32K128-min1-ALIAS) N1024 D192: pass=True graph_pass=True evt=0.3973ms wall=0.4107ms graph=0.4012ms
+  cfg22(Q32K128-min1-ALIAS) N1024 D256: pass=True graph_pass=True evt=0.4536ms wall=0.4596ms graph=0.4553ms
+  cfg22(Q32K128-min1-ALIAS) N2048 D192: pass=True graph_pass=True evt=1.4222ms wall=1.4290ms graph=1.4196ms
+  cfg22(Q32K128-min1-ALIAS) N2048 D256: pass=True graph_pass=True evt=1.5943ms wall=1.6045ms graph=1.6029ms
+  cfg24(Q32K128-min1-DRAIN) N1024 D192: pass=True graph_pass=True evt=0.3981ms wall=0.4080ms graph=0.4008ms
+  cfg24(Q32K128-min1-DRAIN) N1024 D256: pass=True graph_pass=True evt=0.4542ms wall=0.4618ms graph=0.4539ms
+  cfg24(Q32K128-min1-DRAIN) N2048 D192: pass=True graph_pass=True evt=1.4219ms wall=1.4282ms graph=1.4200ms
+  cfg24(Q32K128-min1-DRAIN) N2048 D256: pass=True graph_pass=True evt=1.6062ms wall=1.6150ms graph=1.6167ms
+[sweep] done.
+[driver] final JSON: results/alias-sweep.json
+[driver] tested_valid=16 failures=0

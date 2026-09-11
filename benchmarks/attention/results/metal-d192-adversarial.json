@@ -1,0 +1,176 @@
+[
+  {
+    "pattern": "zeros",
+    "comparison": {
+      "shape_ok": true,
+      "output_shape": [
+        1,
+        8,
+        257,
+        192
+      ],
+      "reference_shape": [
+        1,
+        8,
+        257,
+        192
+      ],
+      "finite_out": true,
+      "finite_ref": true,
+      "max_abs_error": 0.0,
+      "max_abs_error_normalized": 0.0,
+      "rms_error": 0.0,
+      "within_tolerance": true
+    },
+    "input_hashes": {
+      "q": "8b8fc8a00ffdaefe3454b64b7ca07d3f6e15b9e3fb35a3cf55450fa5277a0b03",
+      "k": "8b8fc8a00ffdaefe3454b64b7ca07d3f6e15b9e3fb35a3cf55450fa5277a0b03",
+      "v": "8b8fc8a00ffdaefe3454b64b7ca07d3f6e15b9e3fb35a3cf55450fa5277a0b03"
+    }
+  },
+  {
+    "pattern": "uniform_scores",
+    "comparison": {
+      "shape_ok": true,
+      "output_shape": [
+        1,
+        8,
+        257,
+        192
+      ],
+      "reference_shape": [
+        1,
+        8,
+        257,
+        192
+      ],
+      "finite_out": true,
+      "finite_ref": true,
+      "max_abs_error": 7.947285973752827e-08,
+      "max_abs_error_normalized": 0.0004065643924471224,
+      "rms_error": 9.39464739482657e-09,
+      "within_tolerance": true
+    },
+    "input_hashes": {
+      "q": "8b8fc8a00ffdaefe3454b64b7ca07d3f6e15b9e3fb35a3cf55450fa5277a0b03",
+      "k": "2a6fff0940bb7cd07743cafc6264077d2be3fbacf7b5910feb31fc5876585c73",
+      "v": "61982296731b85ed70e7d5b8de48b0e679e2097d4f9714ad317462113c8bb819"
+    }
+  },
+  {
+    "pattern": "constant_values",
+    "comparison": {
+      "shape_ok": true,
+      "output_shape": [
+        1,
+        8,
+        257,
+        192
+      ],
+      "reference_shape": [
+        1,
+        8,
+        257,
+        192
+      ],
+      "finite_out": true,
+      "finite_ref": true,
+      "max_abs_error": 1.192092895285768e-06,
+      "max_abs_error_normalized": 0.0008830317742857538,
+      "rms_error": 2.4237913635323213e-07,
+      "within_tolerance": true
+    },
+    "input_hashes": {
+      "q": "cdb682ba861755cdf8528bea60fc64359b09e2974d0f99a5d613d59ba8ed0805",
+      "k": "82343d69d520a252bad9baf8de98112ae8ed067f11301464f3cdba4d5915a2f3",
+      "v": "7fd398b635cc117b1d5ccbf80f0c397abf0352670765480f9c6045a490335d6d"
+    }
+  },
+  {
+    "pattern": "large_tied_scores",
+    "comparison": {
+      "shape_ok": true,
+      "output_shape": [
+        1,
+        8,
+        257,
+        192
+      ],
+      "reference_shape": [
+        1,
+        8,
+        257,
+        192
+      ],
+      "finite_out": true,
+      "finite_ref": true,
+      "max_abs_error": 9.925237731689407e-08,
+      "max_abs_error_normalized": 0.00041777735011095947,
+      "rms_error": 9.749311701501588e-09,
+      "within_tolerance": true
+    },
+    "input_hashes": {
+      "q": "a785d0ffcf7c93387983ebf82bdd1eaf5e30ce869df83567d3cce25ccc5834e8",
+      "k": "a785d0ffcf7c93387983ebf82bdd1eaf5e30ce869df83567d3cce25ccc5834e8",
+      "v": "78429e36e3ddc1dd849024a688ad20b4371fa34647da5ab9337716e3c207bc03"
+    }
+  },
+  {
+    "pattern": "peaked_scores",
+    "comparison": {
+      "shape_ok": true,
+      "output_shape": [
+        1,
+        8,
+        257,
+        192
+      ],
+      "reference_shape": [
+        1,
+        8,
+        257,
+        192
+      ],
+      "finite_out": true,
+      "finite_ref": true,
+      "max_abs_error": 5.617319231920881e-05,
+      "max_abs_error_normalized": 0.37149587936916556,
+      "rms_error": 1.8033834806257676e-06,
+      "within_tolerance": true
+    },
+    "input_hashes": {
+      "q": "cc7320ea866b5b77482d37f22a2cd0833e4a748290a06a1d37e7c25c27fcfe88",
+      "k": "e8db232e4ec369d0a0ef9093ffc5bd4ca465504df994b22ca96807fc4621f98f",
+      "v": "4df53673bc7f7a6c63235915492498bf0ff88dd314aa53a5d336a002d93bd5c0"
+    }
+  },
+  {
+    "pattern": "causal_impulse",
+    "comparison": {
+      "shape_ok": true,
+      "output_shape": [
+        1,
+        8,
+        257,
+        192
+      ],
+      "reference_shape": [
+        1,
+        8,
+        257,
+        192
+      ],
+      "finite_out": true,
+      "finite_ref": true,
+      "max_abs_error": 5.1928289029889996e-09,
+      "max_abs_error_normalized": 3.160852375293611e-05,
+      "rms_error": 1.4367982286779133e-09,
+      "within_tolerance": true
+    },
+    "input_hashes": {
+      "q": "8b8fc8a00ffdaefe3454b64b7ca07d3f6e15b9e3fb35a3cf55450fa5277a0b03",
+      "k": "482a9029dcf7b01302fcc0311aa68d5d49853605814bed1a82aa8164d990b85e",
+      "v": "0149f29bfc8046148bfa57ac56d6dc8824a684f7ab316d3e36976d2bf1f41bd6"
+    }
+  }
+]

@@ -2,9 +2,56 @@
 
 [简体中文](README.zh-CN.md) | **English**
 
-A verified tactic-based ML compiler. Tensor optimizations are expressed as formally verified Lean 4 tactics, and an AI search agent proposes tactic sequences that are correct by construction.
+VeriTac explores AI-guided kernel generation with Lean-checked optimization and
+lowering, from mathematical definitions to hardware instructions.
 
-The difference between this repo vs many other agentic kernel writing repo is, they require a vendor provided compiler, like CUDA, to validate the code. However, what if you are the ASIC vendor and there is nothing to refer? This repo ensures 1. every step of the optimization is correct, 2. correctness of optimization can be automatically verified by lean. When it's done, it would be the end game for ML compiler engineering.
+The motivating question is: **what if you are the ASIC vendor, and there is no
+existing target compiler, IR validator, or reference kernel to rely on?** VeriTac's
+goal is to supply that verification layer: every accepted optimization step is
+correct under its explicit contract, and its correctness can be automatically
+checked by Lean. Successful compilation or numerical agreement alone cannot
+establish that guarantee.
+
+Think of an expanding graph of implementations from mathematics to hardware.
+LLMs guide its direction, propose transformations and lemmas, and repair failed
+attempts using Lean feedback. Enumeration and other search methods explore
+alternatives alongside them. Reusable verified tactics are a foundation that the
+system can extend, rather than a fixed boundary on what AI may propose. Each
+accepted path should carry a composed correctness proof to the target language.
+
+**Current status:** the attention experiments already combine AI-directed kernel
+development with enumeration and achieve repeatable vendor-derived speedups.
+They have abstract semantic/resource proofs and executable validation, but the
+proofs are not yet connected to the generated kernels by a verified lowering
+chain. The next milestone is a small, complete path to a minimal target ISA,
+including an AI proposal → Lean rejection → repair → verified execution trace.
+
+**Planned: LLM–harness–compiler co-design.** We will develop the model-facing IR
+and action interfaces, proof feedback, and search orchestration together. The
+harness will combine LLM guidance with enumeration, reuse stable prompt prefixes
+and proof context, and turn successful reasoning into reusable tactics. We will
+measure time/cost to a complete verified kernel and its performance, while keeping
+Lean's acceptance boundary unchanged.
+
+See the [compiler design](veritac_design.md) for the implementation graph,
+verification boundaries, mixed search/LLM loop, and planned co-design of the
+LLM, harness, and compiler; the [attention design](docs/cuda_attention_design.md) connects this
+architecture to the current experiments.
+
+### Headline results
+
+| Target | Workload | Measured speedup | Baseline and metric |
+|---|---|---|---|
+| **CPU** — gcc-15, 10 threads | GEMM, M=N=K=256 | **12.8×** (18.9 → 1.47 ms) | Untuned generated C → tiled/parallel/vectorized C; execution time |
+| **Metal** — Apple M3 Ultra | FP32 causal attention, B1/H8, N2048/D192 | **1.087–1.093×** | Fastest tested MLX/MPSGraph calling path; synchronized wall latency |
+| **CUDA** — NVIDIA GB10 | FP32 causal attention, B1/H8, N4096–8192, D192/D256 | **1.12–1.19×** | Fastest successful tested PyTorch SDPA backend; CUDA graph replay time |
+
+The CPU result measures improvement over the untuned generated kernel. The GPU
+results are vendor-derived specializations, confirmed in three paired rounds;
+their ranges cover the reported shapes and rounds. These are performance results
+with Lean-checked transformations and explicit verification boundaries, not yet
+a verified end-to-end lowering chain. See the [CPU demo](#end-to-end-gemm-demo)
+and [GPU results, raw measurements, and methodology](docs/attention_vendor_results.md).
 
 ### End-to-end GEMM demo
 
@@ -23,9 +70,9 @@ Measured on this machine (gcc-15, 10 threads): the agent's top schedule
 (`parallel i0`, `vectorize i2`, `parallel i1`) runs **4.5x** faster at 128³,
 and a full register-tiling chain (`tile(32)`×2 → `reorder i1_inner i2` →
 `vectorize i1_inner` → `parallel i0_outer`) reaches **12.8x** at 256³
-(18.9 ms → 1.47 ms), all matching numpy exactly. The Lean proofs and the
-codegen guard together ensure the annotated loops really are safe to
-parallelize.
+(18.9 ms → 1.47 ms), all matching numpy exactly in those runs. The Lean proofs and codegen guard
+support the parallel annotations, but the Python emitter and downstream C
+compilation are not a verified lowering chain.
 
 There are two demo entry points:
 
@@ -39,15 +86,167 @@ There are two demo entry points:
   (which is fed back to the model) — then benchmarks the final schedule.
   `--mock` runs the same trace with a fixed schedule and no API key.
 
+### Attention accelerator survey
+
+The [attention baseline survey](docs/attention_baseline_survey.md) measures
+causal prefill attention across NVIDIA GB10/CUDA and Apple M3 Ultra/Metal,
+including explicit vendor-backend selection, full-output numerical checks, and
+raw timing distributions. It selects FP32 Metal attention at head dimensions
+192/256 as the first hardware-aware tactics target, followed by CUDA on GB10.
+The benchmark harnesses and reproduction notes live in `benchmarks/attention/`.
+
+### LLM-driven Metal attention demo
+
+`examples/llm_attention_demo.py` runs the attention analogue of the GEMM demo:
+an LLM (or a fixed mock) proposes attention-launch refinements — mapping, query
+tile, key tile — one tactic at a time. Every proposal is machine-checked by Lean
+(`check_attention_tactics`) against a freshly probed, hashed Metal hardware
+profile, then the accepted launch is benchmarked against the MLX and MPSGraph
+vendor baselines.
+
+Generic mock invocation (no API key needed):
+
+```bash
+PYTHONPATH=. python3 examples/llm_attention_demo.py --mock --seq 128 --dim 192 --no-benchmark
+```
+
+> **Honest caveat.** The current SIMD candidate kernel is a correctness-first
+> *demonstration*. It does not yet beat the vendor baseline.
+
+### LLM-driven Metal tiled-attention plan demo
+
+[examples/llm_tiled_attention_demo.py](examples/llm_tiled_attention_demo.py) is the
+tiling-*plan* analogue.  Instead of launch config it refines a **plan**
+(`reuse_kv_storage`, `set_query_tile`, `set_key_tile`) one tactic at a time,
+machine-checked by Lean (`check_attention_plan`) against a freshly probed, hashed
+Metal profile.
+
+A plan carries `alias_kv`. `alias_kv=false` is a *resource-legal planning* state
+that stages Q, K and V separately (`Q + K + V`); the installed vendor shader
+always aliases K and V into one buffer, so **only `alias_kv=true` is
+executable** — the demo never dispatches a non-executable plan. `reuse_kv_storage`
+is the verified transformation that turns a planning state into an executable
+one (and can only reduce the measured shared-memory bytes:
+`Q + max(K,V) ≤ Q + K + V`).
+
+The accepted plan is benchmarked against the **vendor-derived MLX steel
+attention small-tile specialization**
+([benchmarks/attention/partitioned/steel_attention.py](benchmarks/attention/partitioned/steel_attention.py),
+a template-instantiated specialization of the installed `mlx` steel attention
+header) and the MLX / MPSGraph vendor baselines, with matching input hashes.
+
+Generic smoke invocation (no benchmark, no API key — it still probes the local
+Metal device, so a Metal host is required):
+
+```bash
+lake build veritac
+python3 examples/llm_tiled_attention_demo.py --mock --no-benchmark
+```
+
+Full benchmark (needs `numpy` and `mlx`; probes/compiles on the local GPU):
+
+```bash
+python3 examples/llm_tiled_attention_demo.py --mock               # mock schedule
+python3 examples/llm_tiled_attention_demo.py --mock --search      # sweep Q8/16/24 x K8/16, fastest correct
+```
+
+`--search` enumerates accepted executable candidates through Lean (checking
+every intermediate, retaining each candidate's authoritative `checked_plan`,
+`tactic_sequence` and `verification_trace`), benchmarks each with
+`steel_attention.py` at the exact qt/kt/seq/dim, and keeps the fastest *correct*
+(`ok`, finite positive timing) candidate — rejecting any non-executable or
+`numeric_failed` result.  The final report then refers to that winner, and the
+winner is re-probed, re-checked and freshly replayed for the reported
+comparison.  Outputs land in unique `.lake/tiled_attention_demo/run_*`
+directories (JSON report + tactic/proof trace), including every candidate
+loss/rejection.
+
+On this machine (Apple M3 Ultra, Metal, FP32, batch 1 heads 8) the mock's
+**Q16K8, seq 2048, head_dim 192** plan measured wall ≈ **1.906–1.917 ms** across
+three rounds vs the fastest vendor baseline ≈ **2.082–2.085 ms**; GPU time ≈
+**1.715–1.721 ms** vs MPSGraph ≈ **2.099–2.107 ms**. This is a vendor-derived
+specialization for N2048/D192; no claim is made about N1024 or D256.
+
+### LLM-driven CUDA attention demo
+
+[examples/llm_cuda_attention_demo.py](examples/llm_cuda_attention_demo.py) is the
+CUDA analogue: the controller runs on a Mac and drives a **remote** CUDA host
+over SSH.  It pushes a small remote helper
+([examples/cuda_attention_remote.py](examples/cuda_attention_remote.py)) plus a
+copy of `Hardware/profile.py` into a unique `controller_runs/<UUID>` directory,
+probes the actual CUDA hardware, fetches the compiled `config_info` catalogue,
+and feeds an **immutable** normalized target + catalogue into the local Lean
+verifier (`check_cuda_attention_plan`).  It then proposes `select_config` tactics
+(mock or LLM) one per turn, Lean-checks every one, and benchmarks **only**
+authoritative accepted config ids.
+
+Everything the remote helper reports (profile, catalogue, binary/source binding
+hashes) is an **observed trust boundary, not a Lean proof**: Lean only checks
+resource/partition legality given those observations.  Before any final replay
+the demo re-fetches metadata and aborts on drift (profile / catalogue / binding
+changed); benchmark results are matched to the checked state by config/seq/dim;
+and candidate vs vendor input hashes must be identical.
+
+The candidate is the vendor-derived PyTorch/CUTLASS schedule specialization and
+its native `OpMultiplyAddFastF32` (3-component TF32 emulation) — not IEEE scalar
+FP32 and not a new precision reduction. Three paired confirmation rounds show
+1.12–1.19× CUDA graph speedups at N4096–8192, D192/D256, B1H8. See the
+[confirmed results and verification boundaries](docs/attention_vendor_results.md).
+Execution additionally requires explicit async drains and disabled V preloading.
+Older undrained variants remain visible as planning/diagnostic entries, but the
+controller excludes them from execution because of unresolved sanitizer warnings.
+
+Invocation (local controller; the remote CUDA host is reachable over SSH):
+
+```bash
+lake build veritac
+# metadata + Lean only (no remote benchmark):
+python3 examples/llm_cuda_attention_demo.py --mock --no-benchmark
+# recommended: sweep the compiled catalogue, benchmark correct configs, fresh replay:
+python3 examples/llm_cuda_attention_demo.py --mock --search
+OPENAI_API_KEY=sk-... python3 examples/llm_cuda_attention_demo.py   # LLM select_config
+# N8192 D256 reference peak exceeds the default 20 GiB survey cap; raise it
+# (e.g. 32 GiB on a 128 GB GB10):
+python3 examples/llm_cuda_attention_demo.py --mock --seq 8192 --dim 192 --mem-cap-bytes 34359738368
+```
+
+Default shape is seq 2048, dim 192, batch 1, heads 8.  `--config-id` forces an
+explicit config; mock mode proposes config25 for short sequences and config26
+for longer ones when present, starting from the first Lean-legal config.
+`--search` enumerates the whole catalogue. Outputs (full results, logs, metadata, report)
+land in unique `.lake/cuda_attention_demo/run_*` directories.  Comparisons are
+reported event-vs-event and graph-vs-graph separately; unsupported and numerical
+failures are losses/failures, never wins.
+
 ## Overview
 
-VeriTac separates *what* to compute (semantic IR) from *how* to compute it (schedule). Optimizations are applied as composable, verified tactics that transform loop nests while preserving semantics. An AI search agent proposes tactic sequences; the verifier guarantees every accepted sequence produces correct code.
+The intended pipeline connects several semantic levels. Each accepted edge has
+an equivalence, refinement, or explicit error-bound proof appropriate to its
+contract; extraction composes those proofs into an end-to-end argument.
 
+```mermaid
+flowchart LR
+    M[Math specification] --> A[Equivalent algorithms]
+    A --> S[Schedules and storage layouts]
+    S --> P[Parallel instruction programs]
+    P --> H[Target instruction semantics]
+    G[LLM guidance and search] -. proposes and prioritizes .-> A
+    G -.-> S
+    G -.-> P
 ```
-User Program → Semantic IR → [Verified Tactics] → Scheduled IR → C Code
-                                    ↑
-                              AI Search Agent
-```
+
+Lean checks proposed transformations and their side conditions. Rejected attempts
+stay outside the accepted graph and supply feedback for repair or another branch.
+Cost models and measurements guide performance selection; they do not authorize
+an unproved step. Hardware instruction semantics are a declared foundation, with
+physical hardware conformance and any unverified encoding/lowering boundary
+reported explicitly.
+
+The existing semantic IR, scheduled loop IR, tactic library, and demos implement
+parts of this architecture. A real-number attention proof does not yet establish
+floating-point instruction correctness, and the current C/CUDA/Metal execution
+paths still contain unverified connections. These boundaries are the focus of the
+next milestone, rather than being hidden behind vendor compiler acceptance.
 
 ## Project Structure
 

@@ -1,0 +1,1040 @@
+{
+  "meta": {
+    "date": "2026-09-11T10:07:54.232814+00:00",
+    "python": "3.12.3",
+    "platform": "Linux-6.17.0-1032-nvidia-aarch64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "torch": "2.14.0+cu130",
+    "torch_cuda_available": true,
+    "cuda_version": "13.0",
+    "cudnn_version": 92400,
+    "device": {
+      "name": "NVIDIA GB10",
+      "major": 12,
+      "minor": 1,
+      "sm_count": 48,
+      "total_memory_bytes": 130663165952,
+      "capability": "12.1"
+    },
+    "device_name": "NVIDIA GB10",
+    "tf32_settings": {
+      "matmul_allow_tf32": false,
+      "cudnn_allow_tf32": false
+    },
+    "fp16_precision": {
+      "matmul_allow_fp16_reduced_precision_reduction": true,
+      "cudnn_allow_fp16_reduced_precision_reduction": null
+    },
+    "grid": {
+      "seqs": [
+        2048,
+        4096,
+        8192
+      ],
+      "dims": [
+        192
+      ],
+      "dtypes": [
+        "float32"
+      ],
+      "backends": [
+        "auto",
+        "efficient",
+        "cudnn",
+        "flash",
+        "math"
+      ],
+      "heads": 8,
+      "batch": 1,
+      "warmup": 10,
+      "samples": 10,
+      "inner": 3,
+      "seed": 1234
+    }
+  },
+  "timing_caveats": [
+    "CUDA event samples measure repeated fresh output computations (inner=3) and are divided by inner to give ms/invocation.",
+    "CUDA event timing includes the full SDPA op (all kernels); no input transfer, no reference computation, no profiler attached.",
+    "A separate synchronized wall-clock series is reported for a single call per sample.",
+    "graph_timing is CUDA graph replay of inner fresh calls (warmup replays first), divided by inner; it removes most CPU enqueue gaps and reflects GPU throughput, not a raw per-kernel duration.",
+    "The sdpa_kernel context is held open for the whole backend measurement; the timed callable is the raw F.sdpa call.",
+    "Dispatch/operator names are profiled once per backend OUTSIDE the timed region, under the same forced backend context."
+  ],
+  "cases": [
+    {
+      "seq": 2048,
+      "dim": 192,
+      "dtype": "float32",
+      "heads": 8,
+      "batch": 1,
+      "scale": 0.07216878364870322,
+      "case_seed": 2069032843,
+      "backend_order": [
+        "efficient",
+        "auto",
+        "cudnn",
+        "flash",
+        "math"
+      ],
+      "results": {
+        "efficient": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.384185791015625e-07,
+            "normalized_max_error": 0.0010636311525186546,
+            "rms_error": 9.050078097035656e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_efficient_attention_forward",
+              "aten::_scaled_dot_product_efficient_attention",
+              "aten::as_strided",
+              "aten::empty",
+              "aten::fill_",
+              "aten::scaled_dot_product_attention",
+              "aten::transpose",
+              "aten::zero_",
+              "aten::zeros"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 1.379957358042399,
+            "p10_ms": 1.369363276163737,
+            "p90_ms": 1.5278560320536296,
+            "samples_ms": [
+              1.5250560442606609,
+              1.3694400787353516,
+              1.3686720530192058,
+              1.3698773384094238,
+              1.3790292739868164,
+              1.5530559221903484,
+              1.3799360593159993,
+              1.3809706370035808,
+              1.3799786567687988,
+              1.478922684987386
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 1.3883340016036527,
+            "p10_ms": 1.3846748006471898,
+            "p90_ms": 1.4708668986713747,
+            "samples_ms": [
+              1.525270999991335,
+              1.4648219985247124,
+              1.3916059979237616,
+              1.3836379985150415,
+              1.3871100018150173,
+              1.3895580013922881,
+              1.3866139997844584,
+              1.3847900008840952,
+              1.385029998345999,
+              1.3900539997848682
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.384185791015625e-07,
+            "normalized_max_error": 0.0010636311525186546,
+            "rms_error": 9.050078097035656e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 1.3887680371602378,
+            "p10_ms": 1.388108746210734,
+            "p90_ms": 1.4811455726623535,
+            "samples_ms": [
+              1.3885226249694824,
+              1.3884693781534831,
+              1.3887573877970378,
+              1.3887786865234375,
+              1.3882346153259277,
+              1.386975924173991,
+              1.3930880228678386,
+              1.4911680221557617,
+              1.480031967163086,
+              1.400810718536377
+            ]
+          }
+        },
+        "auto": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.384185791015625e-07,
+            "normalized_max_error": 0.0010636311525186546,
+            "rms_error": 9.050078097035656e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_efficient_attention_forward",
+              "aten::_scaled_dot_product_efficient_attention",
+              "aten::as_strided",
+              "aten::empty",
+              "aten::fill_",
+              "aten::scaled_dot_product_attention",
+              "aten::transpose",
+              "aten::zero_",
+              "aten::zeros"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 1.3828533490498862,
+            "p10_ms": 1.371245845158895,
+            "p90_ms": 1.5305920600891114,
+            "samples_ms": [
+              1.3846294085184734,
+              1.3702185948689778,
+              1.5355839729309082,
+              1.5300374031066895,
+              1.3713599840799968,
+              1.375402609507243,
+              1.4743359883626301,
+              1.4549013773600261,
+              1.3810772895812988,
+              1.379850705464681
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 1.3897820008423878,
+            "p10_ms": 1.3876555989554618,
+            "p90_ms": 1.5762933981022798,
+            "samples_ms": [
+              1.3913020011386834,
+              1.3882620005460922,
+              1.3869499998691026,
+              1.4249180021579377,
+              1.6374789993278682,
+              1.5694949979661033,
+              1.4035260028322227,
+              1.3880699989385903,
+              1.3877820019843057,
+              1.387733998853946
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.384185791015625e-07,
+            "normalized_max_error": 0.0010636311525186546,
+            "rms_error": 9.050078097035656e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 1.402661403020223,
+            "p10_ms": 1.401906108856201,
+            "p90_ms": 1.4395936648050942,
+            "samples_ms": [
+              1.402762730916341,
+              1.4034454027811687,
+              1.5453759829203289,
+              1.4278400739034016,
+              1.402133305867513,
+              1.4022080103556316,
+              1.4022186597188313,
+              1.3998613357543945,
+              1.4029547373453777,
+              1.4025600751241047
+            ]
+          }
+        },
+        "cudnn": {
+          "warnings": [
+            "Memory efficient kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1240.)",
+            "Memory Efficient attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:600.)",
+            "Flash attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1242.)",
+            "Flash attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:588.)",
+            "cuDNN attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1244.)",
+            "Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:110.)"
+          ],
+          "status": "unsupported",
+          "error": {
+            "type": "RuntimeError",
+            "message": "No available kernel. Aborting execution."
+          }
+        },
+        "flash": {
+          "warnings": [
+            "Memory efficient kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1240.)",
+            "Memory Efficient attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:600.)",
+            "Flash attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1242.)",
+            "Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:110.)",
+            "cuDNN attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1244.)",
+            "cuDNN attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:922.)"
+          ],
+          "status": "unsupported",
+          "error": {
+            "type": "RuntimeError",
+            "message": "No available kernel. Aborting execution."
+          }
+        },
+        "math": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.597067514902406e-07,
+            "normalized_max_error": 0.0009921767178683483,
+            "rms_error": 9.539289181828799e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_reshape_alias",
+              "aten::_safe_softmax",
+              "aten::_scaled_dot_product_attention_math",
+              "aten::_softmax",
+              "aten::_unsafe_view",
+              "aten::add_",
+              "aten::all",
+              "aten::as_strided",
+              "aten::bmm",
+              "aten::empty",
+              "aten::expand",
+              "aten::fill_",
+              "aten::isneginf",
+              "aten::matmul",
+              "aten::mul",
+              "aten::ones",
+              "aten::reshape",
+              "aten::resize_",
+              "aten::scalar_tensor",
+              "aten::scaled_dot_product_attention",
+              "aten::softmax",
+              "aten::to",
+              "aten::transpose",
+              "aten::tril",
+              "aten::view",
+              "aten::where"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 9.219296137491861,
+            "p10_ms": 9.037012163798014,
+            "p90_ms": 9.307720756530761,
+            "samples_ms": [
+              8.895786921183268,
+              9.052703857421875,
+              9.239893595377604,
+              9.19869867960612,
+              9.307306925455729,
+              9.18825594584147,
+              9.28822390238444,
+              9.244074503580729,
+              9.13645871480306,
+              9.311445236206055
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 9.263992000342114,
+            "p10_ms": 9.16026129743841,
+            "p90_ms": 9.400351600561407,
+            "samples_ms": [
+              9.809947001485853,
+              9.35303200094495,
+              9.184536000248045,
+              9.32586400085711,
+              9.180998997180723,
+              9.354841000458691,
+              9.191223998641362,
+              9.34773599874461,
+              9.202119999827119,
+              8.973621999757597
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.597067514902406e-07,
+            "normalized_max_error": 0.0009921767178683483,
+            "rms_error": 9.539289181828799e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 9.153114636739096,
+            "p10_ms": 8.871989186604818,
+            "p90_ms": 9.326231257120767,
+            "samples_ms": [
+              9.46285883585612,
+              8.854613622029623,
+              9.11683209737142,
+              9.125439961751303,
+              8.885152180989584,
+              9.311050415039062,
+              9.180789311726889,
+              9.255744298299154,
+              9.19221305847168,
+              8.873919804890951
+            ]
+          }
+        }
+      },
+      "input_hashes": {
+        "q": "cb46b908dae31e43cd0df9a5b0085b770e36563dc7d21e1818a4939db28cffbd",
+        "k": "9765a7aa4573885a6e35b54dbf07310dac3770e53f2526e64a7535ef73eb0e07",
+        "v": "f2c5f1f236ae49409ca4532f1ca820303326c82888bc87b07302cddd924d7d99"
+      }
+    },
+    {
+      "seq": 4096,
+      "dim": 192,
+      "dtype": "float32",
+      "heads": 8,
+      "batch": 1,
+      "scale": 0.07216878364870322,
+      "case_seed": 1969555339,
+      "backend_order": [
+        "auto",
+        "efficient",
+        "flash",
+        "cudnn",
+        "math"
+      ],
+      "results": {
+        "auto": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.498056259625514e-07,
+            "normalized_max_error": 0.0011272390332210918,
+            "rms_error": 6.9095088290290955e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_efficient_attention_forward",
+              "aten::_scaled_dot_product_efficient_attention",
+              "aten::as_strided",
+              "aten::empty",
+              "aten::fill_",
+              "aten::scaled_dot_product_attention",
+              "aten::transpose",
+              "aten::zero_",
+              "aten::zeros"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 5.187685330708822,
+            "p10_ms": 5.18480536142985,
+            "p90_ms": 5.337932872772217,
+            "samples_ms": [
+              5.186997413635254,
+              5.324842770894368,
+              5.288106600443522,
+              5.29586124420166,
+              5.183413187662761,
+              5.188138643900554,
+              5.455743789672852,
+              5.185514767964681,
+              5.184960047403972,
+              5.18723201751709
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 5.189886500374996,
+            "p10_ms": 5.187238098369562,
+            "p90_ms": 5.427217600663425,
+            "samples_ms": [
+              5.57519200083334,
+              5.187541999475798,
+              5.1865189998352434,
+              5.187317998206709,
+              5.191958000068553,
+              5.1894949974666815,
+              5.190278003283311,
+              5.410776000644546,
+              5.342198997823289,
+              5.188901999645168
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.498056259625514e-07,
+            "normalized_max_error": 0.0011272390332210918,
+            "rms_error": 6.9095088290290955e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 5.208965301513672,
+            "p10_ms": 5.2047882715861,
+            "p90_ms": 5.227863375345866,
+            "samples_ms": [
+              5.310730616251628,
+              5.207818667093913,
+              5.206528027852376,
+              5.208992004394531,
+              5.203146616617839,
+              5.204970677693685,
+              5.2089385986328125,
+              5.21180788675944,
+              5.218655904134114,
+              5.209738731384277
+            ]
+          }
+        },
+        "efficient": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.498056259625514e-07,
+            "normalized_max_error": 0.0011272390332210918,
+            "rms_error": 6.9095088290290955e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_efficient_attention_forward",
+              "aten::_scaled_dot_product_efficient_attention",
+              "aten::as_strided",
+              "aten::empty",
+              "aten::fill_",
+              "aten::scaled_dot_product_attention",
+              "aten::transpose",
+              "aten::zero_",
+              "aten::zeros"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 5.252229372660318,
+            "p10_ms": 5.183409055074056,
+            "p90_ms": 5.3303979237874355,
+            "samples_ms": [
+              5.191733360290527,
+              5.323189417521159,
+              5.277503967285156,
+              5.298229217529297,
+              5.395274480183919,
+              5.2269547780354815,
+              5.180490811665853,
+              5.295946756998698,
+              5.183733304341634,
+              5.183797200520833
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 5.190094501813292,
+            "p10_ms": 5.18657969769265,
+            "p90_ms": 5.347221400006674,
+            "samples_ms": [
+              5.185253998206463,
+              5.18949500110466,
+              5.19013400116819,
+              5.190055002458394,
+              5.196422000153689,
+              5.192038999666693,
+              5.188437997276196,
+              5.413014998339349,
+              5.3399110001919325,
+              5.18672699763556
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.498056259625514e-07,
+            "normalized_max_error": 0.0011272390332210918,
+            "rms_error": 6.9095088290290955e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 5.210400104522705,
+            "p10_ms": 5.20744956334432,
+            "p90_ms": 5.224522558848063,
+            "samples_ms": [
+              5.212320009867351,
+              5.207647959391276,
+              5.212405204772949,
+              5.209834734598796,
+              5.210432052612305,
+              5.208607991536458,
+              5.211722691853841,
+              5.205663998921712,
+              5.2103681564331055,
+              5.333578745524089
+            ]
+          }
+        },
+        "flash": {
+          "warnings": [
+            "Memory efficient kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1240.)",
+            "Memory Efficient attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:600.)",
+            "Flash attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1242.)",
+            "Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:110.)",
+            "cuDNN attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1244.)",
+            "cuDNN attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:922.)"
+          ],
+          "status": "unsupported",
+          "error": {
+            "type": "RuntimeError",
+            "message": "No available kernel. Aborting execution."
+          }
+        },
+        "cudnn": {
+          "warnings": [
+            "Memory efficient kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1240.)",
+            "Memory Efficient attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:600.)",
+            "Flash attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1242.)",
+            "Flash attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:588.)",
+            "cuDNN attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1244.)",
+            "Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:110.)"
+          ],
+          "status": "unsupported",
+          "error": {
+            "type": "RuntimeError",
+            "message": "No available kernel. Aborting execution."
+          }
+        },
+        "math": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.2952278038991238e-07,
+            "normalized_max_error": 0.0009623728636436911,
+            "rms_error": 9.460784259948171e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_reshape_alias",
+              "aten::_safe_softmax",
+              "aten::_scaled_dot_product_attention_math",
+              "aten::_softmax",
+              "aten::_unsafe_view",
+              "aten::add_",
+              "aten::all",
+              "aten::as_strided",
+              "aten::bmm",
+              "aten::empty",
+              "aten::expand",
+              "aten::fill_",
+              "aten::isneginf",
+              "aten::matmul",
+              "aten::mul",
+              "aten::ones",
+              "aten::reshape",
+              "aten::resize_",
+              "aten::scalar_tensor",
+              "aten::scaled_dot_product_attention",
+              "aten::softmax",
+              "aten::to",
+              "aten::transpose",
+              "aten::tril",
+              "aten::view",
+              "aten::where"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 36.10911432902018,
+            "p10_ms": 35.978111012776694,
+            "p90_ms": 36.19557062784831,
+            "samples_ms": [
+              35.98863983154297,
+              36.18762715657552,
+              36.1123301188151,
+              35.88440450032552,
+              36.16192118326823,
+              36.26706186930338,
+              36.10589853922526,
+              36.022804260253906,
+              35.98852284749349,
+              36.14856465657552
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 36.17611650042818,
+            "p10_ms": 35.56348499805608,
+            "p90_ms": 36.34963969889213,
+            "samples_ms": [
+              35.62804200191749,
+              36.66019099910045,
+              36.06463599862764,
+              36.28188600123394,
+              36.302092998084845,
+              35.11235999758355,
+              35.613609998108586,
+              36.13078100170242,
+              36.22145199915394,
+              36.31513399886899
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.2952278038991238e-07,
+            "normalized_max_error": 0.0009623728636436911,
+            "rms_error": 9.460784259948171e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 36.09832000732422,
+            "p10_ms": 36.00255279541015,
+            "p90_ms": 36.26587804158529,
+            "samples_ms": [
+              36.08335876464844,
+              36.4368642171224,
+              36.109375,
+              36.24687957763672,
+              36.003562927246094,
+              36.168619791666664,
+              35.99346160888672,
+              36.237012227376304,
+              36.08726501464844,
+              36.05347188313802
+            ]
+          }
+        }
+      },
+      "input_hashes": {
+        "q": "3770d42c5128d97ba744f50f849b29a0d49344d3939775977f89cd0dbb6b01cd",
+        "k": "ca67b9584a45dedb3a52c4433f72b0fae3e26017d7145d1b4e3b0c484ac1dddf",
+        "v": "e54f56fd270cfe8e6a18ca2ab0597a94a8a7b9f8f0b1dd84c28a402b6bf2f441"
+      }
+    },
+    {
+      "seq": 8192,
+      "dim": 192,
+      "dtype": "float32",
+      "heads": 8,
+      "batch": 1,
+      "scale": 0.07216878364870322,
+      "case_seed": 1770600331,
+      "backend_order": [
+        "cudnn",
+        "flash",
+        "math",
+        "efficient",
+        "auto"
+      ],
+      "results": {
+        "cudnn": {
+          "warnings": [
+            "Memory efficient kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1240.)",
+            "Memory Efficient attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:600.)",
+            "Flash attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1242.)",
+            "Flash attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:588.)",
+            "cuDNN attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1244.)",
+            "Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:110.)"
+          ],
+          "status": "unsupported",
+          "error": {
+            "type": "RuntimeError",
+            "message": "No available kernel. Aborting execution."
+          }
+        },
+        "flash": {
+          "warnings": [
+            "Memory efficient kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1240.)",
+            "Memory Efficient attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:600.)",
+            "Flash attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1242.)",
+            "Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:110.)",
+            "cuDNN attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1244.)",
+            "cuDNN attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:922.)"
+          ],
+          "status": "unsupported",
+          "error": {
+            "type": "RuntimeError",
+            "message": "No available kernel. Aborting execution."
+          }
+        },
+        "math": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.4718806684577146e-07,
+            "normalized_max_error": 0.0012392459587724446,
+            "rms_error": 9.476846415628213e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_reshape_alias",
+              "aten::_safe_softmax",
+              "aten::_scaled_dot_product_attention_math",
+              "aten::_softmax",
+              "aten::_unsafe_view",
+              "aten::add_",
+              "aten::all",
+              "aten::as_strided",
+              "aten::bmm",
+              "aten::empty",
+              "aten::expand",
+              "aten::fill_",
+              "aten::isneginf",
+              "aten::matmul",
+              "aten::mul",
+              "aten::ones",
+              "aten::reshape",
+              "aten::resize_",
+              "aten::scalar_tensor",
+              "aten::scaled_dot_product_attention",
+              "aten::softmax",
+              "aten::to",
+              "aten::transpose",
+              "aten::tril",
+              "aten::view",
+              "aten::where"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 142.39117431640625,
+            "p10_ms": 142.0683553059896,
+            "p90_ms": 142.75664672851562,
+            "samples_ms": [
+              142.04588826497397,
+              142.538330078125,
+              142.44371541341147,
+              142.13153076171875,
+              142.81161499023438,
+              142.22802734375,
+              142.33863321940103,
+              142.44992065429688,
+              142.07085164388022,
+              142.75053914388022
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 142.7821915021923,
+            "p10_ms": 141.73406200170575,
+            "p90_ms": 144.05009830152267,
+            "samples_ms": [
+              142.85628800280392,
+              147.22513900051126,
+              141.78873100172495,
+              141.24204100153293,
+              143.69731600163504,
+              141.92062000074657,
+              142.70809500158066,
+              142.92019300046377,
+              143.32129800095572,
+              142.1262209987617
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.4718806684577146e-07,
+            "normalized_max_error": 0.0012392459587724446,
+            "rms_error": 9.476846415628213e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 141.94188435872394,
+            "p10_ms": 141.72377421061196,
+            "p90_ms": 142.6623982747396,
+            "samples_ms": [
+              141.985595703125,
+              141.8981730143229,
+              142.0594278971354,
+              141.56812540690103,
+              142.53373209635416,
+              141.77127075195312,
+              143.52751668294272,
+              142.56627400716147,
+              141.84651692708334,
+              141.7410685221354
+            ]
+          }
+        },
+        "efficient": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 3.082337416415726e-07,
+            "normalized_max_error": 0.0015791697519342406,
+            "rms_error": 5.357841430941922e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_efficient_attention_forward",
+              "aten::_scaled_dot_product_efficient_attention",
+              "aten::as_strided",
+              "aten::empty",
+              "aten::fill_",
+              "aten::scaled_dot_product_attention",
+              "aten::transpose",
+              "aten::zero_",
+              "aten::zeros"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 20.437178293863933,
+            "p10_ms": 20.385529454549154,
+            "p90_ms": 20.595166778564455,
+            "samples_ms": [
+              20.272000630696613,
+              20.47925313313802,
+              20.409727732340496,
+              20.398143768310547,
+              20.399200439453125,
+              20.731285095214844,
+              20.419199625651043,
+              20.505172729492188,
+              20.580042521158855,
+              20.455156962076824
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 20.409233999089338,
+            "p10_ms": 20.393645198782906,
+            "p90_ms": 20.423305099393474,
+            "samples_ms": [
+              20.396841999172466,
+              20.410794000781607,
+              20.40767399739707,
+              20.411625002452638,
+              20.429929998499574,
+              20.389353998325532,
+              20.420617001946084,
+              20.40202599891927,
+              20.394121998833725,
+              20.422568999492796
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 3.082337416415726e-07,
+            "normalized_max_error": 0.0015791697519342406,
+            "rms_error": 5.357841430941922e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 20.40877342224121,
+            "p10_ms": 20.39954719543457,
+            "p90_ms": 20.43402608235677,
+            "samples_ms": [
+              20.40980275472005,
+              20.42258071899414,
+              20.41624577840169,
+              20.53703435262044,
+              20.408309936523438,
+              20.402613321940105,
+              20.409236907958984,
+              20.39181900024414,
+              20.400405883789062,
+              20.40185546875
+            ]
+          }
+        },
+        "auto": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 3.082337416415726e-07,
+            "normalized_max_error": 0.0015791697519342406,
+            "rms_error": 5.357841430941922e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_efficient_attention_forward",
+              "aten::_scaled_dot_product_efficient_attention",
+              "aten::as_strided",
+              "aten::empty",
+              "aten::fill_",
+              "aten::scaled_dot_product_attention",
+              "aten::transpose",
+              "aten::zero_",
+              "aten::zeros"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 20.422864278157554,
+            "p10_ms": 20.40697644551595,
+            "p90_ms": 20.531029764811198,
+            "samples_ms": [
+              20.415808359781902,
+              20.60533396402995,
+              20.46062978108724,
+              20.4334716796875,
+              20.413280487060547,
+              20.414379119873047,
+              20.40063985188802,
+              20.40768051147461,
+              20.429920196533203,
+              20.52277374267578
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 20.555178500217153,
+            "p10_ms": 20.406578601978254,
+            "p90_ms": 20.733763999669463,
+            "samples_ms": [
+              20.78092400188325,
+              20.40751300228294,
+              20.40848999968148,
+              20.428298001206713,
+              20.421386001544306,
+              20.682058999227593,
+              20.719930998893688,
+              20.70431600077427,
+              20.398168999236077,
+              20.728523999423487
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 3.082337416415726e-07,
+            "normalized_max_error": 0.0015791697519342406,
+            "rms_error": 5.357841430941922e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 20.42735481262207,
+            "p10_ms": 20.41324717203776,
+            "p90_ms": 20.45447324117025,
+            "samples_ms": [
+              20.41433588663737,
+              20.442175547281902,
+              20.425824483235676,
+              20.430411020914715,
+              20.406229654947918,
+              20.425642649332683,
+              20.565152486165363,
+              20.428885142008465,
+              20.43005879720052,
+              20.414026896158855
+            ]
+          }
+        }
+      },
+      "input_hashes": {
+        "q": "a2be1ce46c7b040c969f2dcea80fad0d26d73150b5621b1f985475c8cd4bffaa",
+        "k": "d343338a6e79671a1d21c002dfd376f737a30e1dd67e849eadefbfe5189de06b",
+        "v": "a553bad0ff9bda1dee96e7f35a57cd4093c03c2dbb5d5f6c4ea7ee58f02a703a"
+      }
+    }
+  ]
+}

@@ -2,7 +2,46 @@
 
 ## 1. Executive Summary
 
-This document proposes **VeriTac**, a next-generation ML compiler that replaces traditional compiler passes with a formally verified **tactic library** and an **AI-driven search agent**. The core idea: correctness is encoded into pre-verified, composable transformation primitives (tactics), while performance optimization is delegated entirely to AI. The AI cannot produce incorrect code — it can only produce slow code.
+VeriTac aims to generate efficient kernels from a mathematical specification and
+formal hardware/instruction semantics, with every accepted optimization and
+lowering step automatically checked by Lean. The motivating user is an ASIC
+vendor building a new target: there may be no existing compiler, target-IR
+validator, or reference kernel to consult. VeriTac supplies that verification
+layer rather than treating successful vendor compilation as correctness evidence.
+
+The central object is an expanding **graph of implementations with proofs on
+its edges**. LLMs guide its expansion, propose transformations and lemmas, and
+repair proposals using verification feedback. Enumeration, local search, and
+cost-guided extraction explore alternatives alongside that guidance. A reusable
+tactic library accelerates this process; it does not bound what the AI may
+propose. New transformations enter the accepted graph only after their proof
+obligations are discharged.
+
+An accepted path must connect the specification all the way to target instruction
+semantics. Correctness comes from composing that path's proofs, conditional on
+its stated assumptions. Performance models and measurements guide selection.
+The proposer may produce incorrect or incomplete candidates; the acceptance
+boundary must prevent them from being reported as verified implementations.
+
+### Current evidence and remaining gap
+
+The current attention work is already AI-guided development: an AI controller
+directed OpenCode workers, reviewed transformations, used enumeration, and
+verified measured results. Whether proposals arrived through the demo's LLM API
+is an orchestration detail, not the definition of AI guidance.
+
+The repository has real-number attention identities, resource/plan checks,
+structural scheduling and conditional scratch-lifetime proofs, and repeatable
+vendor-derived Metal/CUDA performance wins. However, the abstract proofs and the
+executable kernels are **not yet joined by a verified lowering chain**. The
+connection currently relies on controller source review, executable hashes,
+numerical tests, and sanitizers. These are useful evidence, not a replacement for
+that missing proof path. The CPU C emitter is also an unverified boundary.
+See [measured results](docs/attention_vendor_results.md) and the
+[attention design](docs/cuda_attention_design.md).
+
+This document describes the intended architecture. Proposed interfaces and tactic
+examples below are design sketches, not assertions that every layer is implemented.
 
 ---
 
@@ -34,7 +73,7 @@ Extended CompCert-style verification to polyhedral code generation, proving corr
 Verified a compiler from a functional tensor language (ATL) to imperative loop nests, with separate control of compute and storage ordering. Notably, this exercise *revealed a soundness bug* in the original published compilation algorithm, demonstrating the value of formal verification. The work is done in Coq and achieves performance comparable to Halide.
 
 **Halide Translation Validation (Clément & Cohen, OOPSLA 2022)**
-An end-to-end translation validation approach for Halide that checks each compilation output a posteriori, rather than verifying the compiler once and for all. This is an alternative to our approach — instead of pre-verifying tactics, you verify each specific compilation. The tradeoff: translation validation catches bugs per-compilation but doesn't guarantee all future compilations are correct.
+An end-to-end translation validation approach for Halide that checks each compilation output a posteriori, rather than verifying the compiler once and for all. This per-compilation approach complements reusable transformation theorems: VeriTac can accept a specific proposed edge through a checked proof and later generalize it into a reusable rule. In either case, concrete preconditions and proof composition still need checking.
 
 ### 2.3 Equality Saturation and E-Graphs
 
@@ -63,50 +102,74 @@ Lean 4 provides both a dependently-typed proof assistant and an efficient progra
 
 ---
 
-## 3. Architecture Overview
+## 3. Architecture: mathematics to hardware
 
+```mermaid
+flowchart LR
+    M[Mathematical specification] --> A[Equivalent algorithms]
+    A --> S[Schedules and storage layouts]
+    S --> P[Parallel instruction programs]
+    P --> H[Target instruction semantics]
+    G[LLM guidance and search] -. expand and prioritize .-> A
+    G -.-> S
+    G -.-> P
+    V[Lean acceptance and proof composition] -. checks each edge .-> A
+    V -.-> S
+    V -.-> P
+    V -.-> H
 ```
-                        ┌─────────────────────┐
-                        │   User Program       │
-                        │  (PyTorch / JAX)     │
-                        └──────────┬──────────┘
-                                   │ trace/export
-                                   ▼
-                        ┌─────────────────────┐
-                        │   Semantic IR (SIR)  │
-                        │  Typed tensor ops    │
-                        │  with denotational   │
-                        │  semantics           │
-                        └──────────┬──────────┘
-                                   │
-          ┌────────────────────────┼───────────────────────┐
-          │                        │                       │
-          ▼                        ▼                       ▼
-┌──────────────────┐   ┌────────────────────┐   ┌──────────────────┐
-│  Verified Tactic │   │  AI Search Agent   │   │  Hardware Cost   │
-│  Library (Lean4) │◄──│  (LLM / RL)        │──►│  Model           │
-│                  │   │                    │   │                  │
-│  ~30 primitives  │   │  Proposes tactic   │   │  Estimates perf  │
-│  Each with proof │   │  sequences         │   │  of candidates   │
-└──────────────────┘   └────────────────────┘   └──────────────────┘
-          │                        │
-          │   All compositions     │
-          │   are correct by       │
-          │   construction         │
-          ▼                        ▼
-                        ┌─────────────────────┐
-                        │  Execution IR (EIR)  │
-                        │  Scheduled, tiled,   │
-                        │  hardware-specific   │
-                        └──────────┬──────────┘
-                                   │
-                                   ▼
-                        ┌─────────────────────┐
-                        │  Target Code         │
-                        │  (CUDA/PTX, Metal,   │
-                        │   CPU SIMD, etc.)    │
-                        └─────────────────────┘
-```
+
+The diagram shows levels, not one mandatory pass order. Several branches may
+represent different algorithms, layouts, schedules, and instruction selections.
+A slower intermediate may enable a better later implementation. The graph keeps
+these alternatives instead of replacing the current program after every step.
+
+### 3.1 Nodes, edges, and extraction
+
+A node records its typed program, semantic level, workload domain, numerical
+contract, layout/ownership information, target-semantics version, and a canonical
+content hash. Unfinished candidates are marked explicitly; they cannot be
+extracted as complete verified kernels.
+
+An accepted edge records:
+
+- source and destination node hashes and the proposed transformation;
+- the semantic relation being proved, its preconditions, and their witnesses;
+- a Lean-checked proof artifact and the exact semantics/library versions it uses;
+- any change to the numerical contract, with a proved error bound when applicable.
+
+Within a semantic level, exact equivalence permits equivalence classes and
+proof-producing e-graph techniques. Lowering between levels generally requires
+simulation or refinement relations. Approximate transformations require explicit
+error relations. These are not all interchangeable equalities: directed
+refinements and error-bounded edges must not be merged into ordinary e-classes.
+Extraction returns a path whose relations and assumptions compose, together with
+its end-to-end theorem and remaining trust assumptions.
+
+The graph engine, proposer, cost model, and extraction heuristic may be untrusted.
+A suggested path is accepted only after Lean checks its proof and discharged
+preconditions. Reusable tactic theorems avoid proving the same rule repeatedly;
+each concrete application must still establish the theorem's hypotheses.
+
+### 3.2 Hardware semantics and the trust boundary
+
+A target supplies instruction semantics: arithmetic and rounding, registers,
+memory spaces and addressing, control flow, synchronization, asynchronous-copy
+completion, and observable execution behavior. Parallel semantics must describe
+allowed interleavings and ownership, not just erase parallel annotations.
+Resource limits are separate capability assumptions; latency/bandwidth estimates
+are performance advice and cannot establish semantic validity.
+
+Lean checks the target IR against these definitions even if no external target
+validator exists. A small interpreter is useful for execution and diagnostics;
+its outputs are not the correctness oracle. Claims about physical hardware remain
+conditional on the instruction model matching that hardware. If the output is
+encoded machine code, encoding/decoding must also preserve the modeled program,
+or the encoder must be identified as an outstanding trusted boundary.
+
+Existing CUDA/Metal compilers and vendor kernels remain useful execution adapters
+and performance comparators. Successful compilation, numerical agreement, and
+source/binary hashes do not fill a missing semantic refinement edge.
 
 ---
 
@@ -114,7 +177,7 @@ Lean 4 provides both a dependently-typed proof assistant and an efficient progra
 
 ### 4.1 Design Principles
 
-1. **Small, orthogonal set.** We target ~25-35 tactics covering loop transformations, memory transformations, parallelism transformations, and numerical transformations. Each tactic does one thing.
+1. **Small, orthogonal set.** An initial seed library may contain ~25-35 tactics covering loop transformations, memory transformations, parallelism transformations, and numerical transformations. Each tactic does one thing. This is a starting library, not a closed action space; AI-proposed rules can extend it after verification.
 
 2. **Parameterized.** Each tactic takes parameters (tile sizes, axis indices, memory scopes). The proof covers all valid parameter values, with preconditions defining "valid."
 
@@ -302,130 +365,145 @@ The system processes this as follows:
 
 ---
 
-## 5. The AI Search Agent
+## 5. AI guidance, search, and verification feedback
 
-### 5.1 Interface
+### 5.1 One loop, multiple proposal sources
 
-The AI agent receives:
-- The Semantic IR graph
-- The target hardware description (GPU model, memory hierarchy, compute units)
-- The tactic library (available tactics with their parameter spaces)
-- A cost model (learned or analytical)
+The controller receives a workload and target specification, then selects a
+frontier of accepted nodes and unresolved candidate obligations. Proposals may
+come from an LLM, enumeration, local search, or reusable tactics. AI guidance can
+choose algorithms, introduce layouts or instruction mappings, propose a new
+rewrite with a lemma, or repair a failed proof. It is not limited to selecting
+parameters from a fixed registry.
 
-It produces:
-- A sequence of tactic applications (the "schedule")
-- The sequence is verified by the tactic composition engine
+The feedback loop is:
 
-### 5.2 Search Strategies
+1. Select a frontier and present its semantics, numerical contract, available
+   instructions, resource limits, accepted facts, and recent verification results.
+2. Propose an edge, new lemma, or partial lowering. Preserve the parent and put
+   the proposal in a pending area outside the accepted graph.
+3. Elaborate and check the proof in Lean, including concrete side conditions.
+   Distinguish a disproved condition, an unresolved goal, a malformed proposal,
+   and a timeout. A failure need not supply a counterexample.
+4. Return structured feedback: node/edge identity, failed obligation, relevant
+   context, and any checked diagnostic witness. The AI may repair, branch, or
+   abandon the proposal. Only successful checks add accepted edges.
+5. Rank accepted alternatives using cost models and, where executable, measurements.
+   Numerical tests and sanitizers remain valuable diagnostics; they do not admit
+   an unproved edge. Preserve temporarily slower and partial alternatives.
+6. Extract and replay a complete proof path from the original specification to
+   the target program. Report its contract, assumptions, and performance evidence.
 
-**Strategy 1: LLM-based proposal.** Use a large language model (fine-tuned on successful schedules) to propose complete tactic sequences. The verifier accepts or rejects. Failed sequences provide negative training signal.
+Store proposer provenance, accepted and rejected attempts, proof dependencies,
+measurement context, and exact artifact hashes. Developing a reusable rule and
+applying an existing rule are both first-class activities in this loop.
 
-**Strategy 2: RL with tactic actions.** Train an RL agent where:
-- **State** = current IR after partial tactic application
-- **Action** = next tactic with parameters
-- **Reward** = estimated performance improvement (from cost model or profiling)
-- **Invalid actions** are filtered by preconditions — the agent never wastes time on incorrect transformations
+### 5.2 Complementary exploration methods
 
-**Strategy 3: Equality saturation + extraction.** Represent the space of equivalent programs as an e-graph (using techniques from TENSAT/egg), where rewrite rules correspond to verified tactics. Use extraction with a cost function to select the optimal equivalent program.
+Enumeration handles tile sizes and bounded local choices. LLM guidance can choose
+promising regions or propose a structural change absent from the library.
+Proof-producing equality saturation can share exact alternatives. Cost-guided
+search can traverse refinement edges and track error budgets. Learned policies
+may later prioritize this work using verified traces.
 
-**Strategy 4: Hybrid.** Use the LLM to propose a coarse schedule (tile sizes, parallelization strategy), then use RL or equality saturation to refine details (unroll factors, cache placement, vectorization widths).
+No single method is required to discover every edge. The optimization objective
+can include runtime, memory use, energy, proof effort, and search cost. None of
+those objectives may relax the declared correctness contract without a separately
+accepted specification change.
 
-### 5.3 Training the AI
+### 5.3 Harness designed for prefix caching (proposed)
 
-The verified tactic system enables a uniquely clean training loop:
+Organize requests around a stable prefix containing the task contract, pinned
+target instruction semantics, proof interfaces, reusable lemma/tactic catalogue,
+and output schema. Append a compact changing suffix with the selected frontier,
+current goals, proof dependencies, recent failures, and measured costs. Avoid
+placing timestamps, reordered catalogues, or growing logs ahead of the stable
+content. Group requests that share a target and theory version.
 
-```
-for episode in training:
-    program = sample_program()           # e.g., matmul, conv, attention
-    target = sample_hardware()           # e.g., A100, H100, MI300X
+Use content-addressed retrieval to include relevant lemmas rather than repeating
+the entire history. Frontier summaries are guidance, not proof evidence: the
+checker must load the actual referenced definitions and proof artifacts. Cache
+keys include model/request configuration, semantics and library versions, and
+numerical policy. Changes invalidate the affected context and proof caches.
+Provider prefix caching is an optimization, never part of acceptance correctness.
+Measure cache-hit tokens, latency, tokens/cost per accepted edge, proof success,
+and final kernel quality before claiming an efficiency benefit. This harness is
+a proposed extension, not an implemented feature.
 
-    # Agent proposes tactics
-    schedule = agent.propose(program, target)
+<a id="llm-harness-compiler-co-design"></a>
 
-    # Verifier checks (instant, no compilation needed for checking)
-    if not verifier.check_preconditions(program, schedule):
-        reward = INVALID_PENALTY
-        agent.update(reward, schedule)
-        continue
+### 5.4 LLM–harness–compiler co-design (planned)
 
-    # Apply verified schedule, compile, benchmark
-    optimized_ir = apply_tactics(program, schedule)
-    code = codegen(optimized_ir, target)
-    perf = benchmark(code, target)
+Develop the proposer, orchestration harness, and compiler interfaces together.
+The compiler should expose semantic structure and actionable proof obligations;
+the harness should turn these into efficient exploration tasks; the LLM should
+help discover which representations, transformations, and lemmas make progress.
+This plan includes prompt/interface design and, where useful, later model training
+on checked traces. It does not require a specially trained model to start.
 
-    reward = perf / baseline_perf
-    agent.update(reward, schedule)
-```
+| Component | Co-design responsibilities |
+|---|---|
+| LLM | Select promising frontiers, propose algorithms/transformations and proof sketches, repair failed obligations, and identify reusable lemmas |
+| Harness | Combine LLM proposals with enumeration, retrieve proof context, schedule bounded workers, reuse stable prefixes, deduplicate work, and retain replayable attempts and measurements |
+| Compiler and Lean interface | Provide typed IR views, stable node identities, structured edits, explicit semantic contracts, decomposed proof obligations, and checked composition across lowering levels |
 
-Key advantage: **zero time wasted on incorrect programs**. In conventional AI kernel generation (GEAK, TritonRL, etc.), a large fraction of generated kernels fail compilation or produce wrong results. With verified tactics, every proposed schedule that passes precondition checking produces a correct kernel. The agent focuses purely on performance.
+Choose IR representations and action granularity for both reasoning and
+verification. For example, expose a storage-lifetime change with its ownership,
+capacity, and pending-copy obligations, rather than requiring the model to infer
+these from an entire source file. A composite action may generate several graph
+edges, but each accepted edge still needs its own checked justification.
+Repeated successful proofs can become reusable tactics; repeated failures can
+motivate clearer IR invariants, diagnostics, or proof interfaces. Any resulting
+semantic or library change must be versioned and dependent proofs rechecked.
+
+Use a shared, versioned task protocol: parent node and contract hashes, relevant
+IR/context, proposed edit or lemma, generated obligations, acceptance status,
+proof artifact references, and separately labeled performance evidence. Return
+localizable goals and dependency slices instead of only raw compiler logs.
+The harness can group related work around the stable prefix in §5.3 and append
+small state deltas, while loading exact artifacts for verification.
+
+Evaluate the combined system under fixed workloads and budgets. Compare
+enumeration-only, LLM-guided, and hybrid exploration, with ablations for prefix
+caching, action granularity, and structured proof feedback. Track time and cost
+to the first complete verified kernel, kernel performance, proof-checking cost,
+accepted/repaired edges, cache reuse, and behavior on held-out shapes or targets.
+Optimizing acceptance rate alone is insufficient: trivial transformations could
+inflate it without producing useful kernels.
+
+Co-design may change how proposals are expressed and explored; it must preserve
+the specified semantics and Lean acceptance boundary. Model confidence, cache
+hits, cost estimates, and benchmark wins cannot substitute for a checked proof.
+This is a planned workstream alongside the minimal-ISA milestone, not a claim
+that the current demos already implement the full harness.
 
 ---
 
-## 6. Implementation Plan
+## 6. Implementation plan and acceptance milestones
 
-### Phase 1: Foundation (Months 1-6)
+Verified lowering is the next central milestone, rather than a final phase after
+building a large closed tactic library. Performance work and library growth can
+continue alongside it without being confused with completion of the proof chain.
 
-**Deliverable:** Core IR + 8 verified tactics + a simple search agent
+| Milestone | Deliverable and exit condition |
+|---|---|
+| 1. Minimal target semantics | A deliberately small ISA with arithmetic, register, memory, control, and synchronization semantics; a versioned target description and an interpreter for demonstrations |
+| 2. One complete proof path | A small dot product or GEMM lowered from its mathematical specification through schedules/storage to instruction programs, with every edge checked and a composed end-to-end theorem; start with exact bounded arithmetic and explicit overflow conditions |
+| 3. Visible AI feedback loop | An AI proposes an invalid transformation, Lean rejects it with a concrete obligation, the AI repairs it, and the accepted path reaches executable target instructions without a vendor compiler/reference kernel as correctness oracle |
+| 4. Mixed exploration | Enumeration and LLM guidance expand the same graph; replay includes a newly proposed and checked rule, not only fixed catalogue choices; compare quality and search cost under declared budgets |
+| 5. Floating-point attention | Add instruction-level floating-point semantics or a proved approximation contract; connect partition/online-softmax, storage, synchronization, and instruction selection to the end-to-end path |
+| 6. Real targets and efficient orchestration | Connect CUDA/Metal or an ASIC ISA through explicit refinements, account for encoding and hardware-model conformance, evaluate performance, and evaluate LLM–harness–compiler co-design, including prefix caching |
 
-1. Define the Semantic IR in Lean 4, covering: elementwise ops, reductions, matmul (as reduce), reshape, transpose, gather/scatter.
+The first complete example should be small enough that every boundary can be
+reviewed. Its acceptance artifact includes the specification, input domain,
+target semantics, intermediate programs, rejected/repaired proposal, every edge
+proof, composed theorem, and final instruction program. Interpreter runs illustrate
+behavior; Lean establishes the modeled correctness. Unsupported constructs or
+unresolved obligations remain explicit failures or partial nodes.
 
-2. Implement and verify 8 core tactics in Lean 4:
-   - `tile` (with remainder handling)
-   - `split`
-   - `fuse`
-   - `reorder`
-   - `unroll`
-   - `vectorize`
-   - `parallel` (with affine dependence checker)
-   - `cache_read`
-
-3. Build the tactic composition engine in Lean 4 / Rust that checks preconditions and applies tactics sequentially.
-
-4. Build a simple code generator that lowers the scheduled IR to C / CUDA (unverified initially, but tested extensively).
-
-5. Implement a brute-force search agent that enumerates small tactic sequences and benchmarks them.
-
-**Target:** Correctly optimize a dense matmul to within 70% of cuBLAS on a single GPU.
-
-### Phase 2: AI Agent & More Tactics (Months 7-12)
-
-**Deliverable:** RL-based search agent + 15 additional tactics + GPU support
-
-6. Add memory transformation tactics: `cache_write`, `layout_transform`, `pack`, `set_scope (register/shared/global)`.
-
-7. Add GPU-specific tactics: `bind_gpu_block`, `bind_gpu_thread`, `use_tensor_core`.
-
-8. Add numerical tactics: `quantize`, `mixed_precision` with ε-tracking.
-
-9. Train an RL agent using PPO/GRPO on a curriculum of operators: matmul → conv2d → elementwise fusion → attention.
-
-10. Build a learned cost model from profiling data (supplement or replace analytical model).
-
-**Target:** Match or exceed TVM autotuning performance on a standard operator benchmark (matmul, conv2d, depthwise conv, batch norm, softmax) across NVIDIA A100/H100.
-
-### Phase 3: Graph-Level Optimization (Months 13-18)
-
-**Deliverable:** Whole-graph optimization for real models
-
-11. Extend the Semantic IR to represent computation graphs (multiple ops with data dependencies).
-
-12. Add graph-level tactics: `fuse_ops` (operator fusion), `recompute` (trade memory for compute), `pipeline` (overlap stages).
-
-13. Integrate equality saturation (egg/egglog) for graph-level rewrite exploration, with verified rewrite rules.
-
-14. Optimize full models: ResNet-50, BERT, GPT-2 attention blocks.
-
-**Target:** End-to-end inference performance competitive with TensorRT on standard models.
-
-### Phase 4: Verified Code Generation & Ecosystem (Months 19-24)
-
-15. Verify the code generator (CompCert-style) from scheduled IR to LLVM IR or PTX, for at least the core loop transformations.
-
-16. Integrate with PyTorch/JAX via graph tracing — users write normal Python and the VeriTac compiler optimizes the traced graph.
-
-17. Open-source the tactic library and encourage community contributions of new verified tactics.
-
-18. Use LLMs to help *generate proofs* for new tactics: given a proposed transformation and its specification, the LLM suggests Lean 4 proof steps, which are then machine-checked.
+For the later attention milestone, a real-number identity alone is insufficient.
+The path must explain the arithmetic executed by the target, including reduction
+order, rounding, masking, synchronization, and any approximation budget.
 
 ---
 
@@ -443,15 +521,24 @@ The biggest bottleneck is writing the proofs. For each tactic, we need a Lean 4 
 
 ### 7.2 Floating Point
 
-All our proofs over reals must account for floating-point behavior in practice. Three approaches:
+Real-number algebra and floating-point instruction semantics are distinct
+contracts. Floating-point values do not form an ordered field, and changing a
+reduction's grouping or order can change its rounded result even when a
+real-number identity holds. A structural-looking loop transformation is not
+automatically floating-point exact.
 
-1. **Abstract over FP.** Prove correctness over abstract ordered fields, leaving FP as a model. This gives correctness up to FP semantics — the same guarantee CompCert provides.
+An accepted edge must either preserve the specified floating-point operation
+trace/observable behavior, prove equivalence in the target's floating-point
+semantics, or establish an explicit error relation over a declared input domain.
+Error-bounded paths must compose those bounds and account for exceptional values,
+overflow, underflow, and masking. Passing a numerical tolerance on test cases is
+empirical evidence, not a universal error proof.
 
-2. **Use Flocq-style FP formalization.** The Flocq library (used by CompCert) provides Coq-verified IEEE 754 arithmetic. Porting key results to Lean 4 would enable FP-precise proofs.
+Use exact bounded arithmetic for the first complete ISA demonstration. Expand
+the target semantics and proof contracts before claiming an end-to-end verified
+floating-point attention kernel.
 
-3. **Pragmatic:** Prove structural transformations (tiling, reordering, fusion) over abstract arithmetic. Only use FP-specific reasoning for numerical tactics (quantize, fast_math). Structural transforms don't change the arithmetic — they change loop structure — so FP precision is preserved automatically.
-
-Approach 3 is recommended as the starting point.
+---
 
 ### 7.3 Error Budget Tracking
 
@@ -476,21 +563,29 @@ For affine loop nests (which cover ~90% of ML workloads), Presburger arithmetic 
 
 ---
 
-## 8. Comparison with Alternatives
+## 8. What distinguishes the acceptance model
 
-| | Traditional (MLIR/TVM) | Translation Validation | VeriTac (This Proposal) |
-|---|---|---|---|
-| **When is correctness checked?** | Testing only | After each compilation | Before deployment (once per tactic) |
-| **What is trusted?** | Every pass author | The validator | The Lean 4 kernel (~10k loc) |
-| **Can AI generate optimizations?** | Yes, but may be wrong | Yes, validated after | Yes, correct by construction |
-| **Overhead** | None | Per-compilation validation | Per-tactic verification (one-time) |
-| **Handles new ops** | New pass needed | New validation rules | New tactic + proof needed |
-| **Approximate transforms** | Ad hoc | Hard to validate | ε-tracking built in |
+The relevant distinction is where correctness evidence comes from. Existing
+compilers, testing, translation validation, and reusable transformation proofs
+can all be useful engineering components. VeriTac's target is an automatically
+checked path from a specification to modeled target instructions, including for
+a target that has no existing validator.
+
+Both reusable tactic proofs and per-proposal proofs are supported. Preconditions
+and composition are checked at application/extraction time; proving a rule once
+does not authorize arbitrary future uses. The trust boundary includes Lean's
+logical kernel and declared axioms, the specification and instruction model,
+and any explicitly unverified frontend, encoding, or physical-hardware boundary.
+Performance comparisons and artifact hashes are recorded separately from proofs.
 
 ---
 
-## 9. Conclusion
+## 9. Intended outcome
 
-VeriTac represents a convergence of three trends: the maturation of dependent type theory (Lean 4), the explosion of AI-driven code optimization (GEAK, TritonRL, etc.), and the growing need for correctness guarantees as ML systems become safety-critical. By encoding optimization knowledge as a verified tactic library, we create a system where the AI is free to search aggressively — every valid tactic sequence produces correct code. The proof burden is finite, one-time, and amortizable across all future compilations.
-
-The key bet is that a small set (~30) of verified tactics, composed creatively by AI, can match or exceed the performance of thousands of unverified hand-written passes. The prior work on Halide (algorithm/schedule separation), TVM (schedule primitives), CompCert (verified compilation), egg (equality saturation), and recent AI kernel generation suggests this bet is well-founded.
+AI guidance pushes an expanding graph of implementations toward efficient hardware
+programs. Search supplies breadth and local exploration. Lean checks the accepted
+steps and their composition. The intended result is a kernel with a replayable
+correctness argument from mathematics to instructions, even when VeriTac itself
+must supply the target verification layer. The current performance demos are
+useful progress toward that outcome; completing the semantic path is the next
+architectural test.

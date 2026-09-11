@@ -1,0 +1,34 @@
+========= COMPUTE-SANITIZER
+========= Program hit cudaErrorInvalidValue (error 1) due to "invalid argument" on CUDA API call to cudaFuncSetAttribute.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: veritac_cuda::CfgInfo veritac_cuda::prep_impl<32, 256, 256, 3>() [0x13a37] in veritac_attn_candidate.so
+=========         Host Frame: veritac_cuda::prep(int) [0xafe7] in veritac_attn_candidate.so
+=========         Host Frame: config_info(long) [0xd9bb] in veritac_attn_candidate.so
+=========         Host Frame: pybind11::cpp_function::initialize<pybind11::dict (*&)(long), pybind11::dict, long, pybind11::name, pybind11::scope, pybind11::sibling>(pybind11::dict (*&)(long), pybind11::dict (*)(long), pybind11::name const&, pybind11::scope const&, pybind11::sibling const&)::{lambda(pybind11::detail::function_call&)#3}::_FUN(pybind11::detail::function_call&) [0x17c87] in veritac_attn_candidate.so
+=========         Host Frame: pybind11::cpp_function::dispatcher(_object*, _object* const*, unsigned long, _object*) [0x24b97] in veritac_attn_candidate.so
+=========         Host Frame:  [0x103dab] in python
+=========         Host Frame: PyObject_Vectorcall [0xc37fb] in python
+=========         Host Frame: _PyEval_EvalFrameDefault [0x164353] in python
+=========         Host Frame: _PyObject_Call_Prepend [0xc4723] in python
+=========         Host Frame:  [0x122ec3] in python
+=========         Host Frame:  [0x11e603] in python
+=========         Host Frame: _PyObject_MakeTpCall [0xc2c47] in python
+=========         Host Frame: _PyEval_EvalFrameDefault [0x164353] in python
+=========         Host Frame: PyEval_EvalCode [0x1626a3] in python
+=========         Host Frame:  [0x19b883] in python
+=========         Host Frame:  [0x280273] in python
+=========         Host Frame: _PyRun_SimpleFileObject [0x27fe47] in python
+=========         Host Frame: _PyRun_AnyFileObject [0x27fc13] in python
+=========         Host Frame: Py_RunMain [0x28ac1b] in python
+=========         Host Frame: Py_BytesMain [0x28a7d7] in python
+=========         Host Frame: __libc_start_call_main in libc_start_call_main.h:58 [0x284c3] in libc.so.6
+=========         Host Frame: __libc_start_main in libc-start.c:360 [0x28597] in libc.so.6
+=========         Host Frame: _start [0x1f626f] in python
+=========         Host Frame: __init__ in run_candidate.py:126
+=========         Host Frame: main in run_sanitize.py:30
+========= 
+config_info {'id': 4, 'smem_bytes': 76288, 'num_threads': 128, 'num_warps': 4, 'queries_per_block': 32, 'keys_per_block': 128, 'max_k': 256, 'min_blocks_hint': 1, 'installed_min_blocks': 3, 'single_value_iteration': False, 'keep_output_in_rf': False, 'num_regs': 225, 'local_size_bytes': 0, 'static_shared_bytes': 0, 'total_shared_bytes': 76288, 'kernel_max_threads': 128, 'device_max_optin_shared': 101376, 'device_max_threads': 1024, 'supported': True, 'unsupported_reason': ''}
+validate {'ok': True, 'detail': 'ok'}
+comparison {'finite_out': True, 'finite_ref': True, 'max_abs_error': 3.225185939426112e-07, 'normalized_max_error': 0.0013257248613598423, 'rms_error': 2.516644673004445e-08, 'within_tolerance': True}
+OK
+========= ERROR SUMMARY: 1 error

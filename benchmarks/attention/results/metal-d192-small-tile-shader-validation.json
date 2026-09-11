@@ -1,0 +1,366 @@
+{
+  "meta": {
+    "date": "2026-09-11T08:38:48.196410+00:00",
+    "python": "3.14.6",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "numpy": "2.5.3",
+    "mlx_version": "0.32.2",
+    "mlx_include_root": "/private/tmp/veritac-survey-venv/lib/python3.14/site-packages/mlx/include",
+    "swift_toolchain": "Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0",
+    "swift_src": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/attention/partitioned/steel_attention.swift",
+    "build_dir": "/Users/cake/.codex/worktrees/bfe0/VeriTac/.lake/partitioned_worker",
+    "metal_validation_environment": {
+      "MTL_DEBUG_LAYER": "1",
+      "MTL_SHADER_VALIDATION": "1"
+    },
+    "grid": {
+      "seqs": [
+        17,
+        100
+      ],
+      "dims": [
+        192
+      ],
+      "qts": [
+        8
+      ],
+      "kts": [
+        8
+      ],
+      "heads": 8,
+      "batch": 1,
+      "warmup": 10,
+      "samples": 1,
+      "inner": 5,
+      "seed": 1234,
+      "verify_only": true,
+      "valid_configs": [
+        [
+          8,
+          8,
+          192,
+          1,
+          1
+        ]
+      ]
+    }
+  },
+  "vendor": {
+    "note": "Kernel is a template-instantiated specialization of the installed mlx steel attention template (Apple Inc., MIT), NOT an original generated kernel.",
+    "mlx_version": "0.32.2",
+    "steel_attention_header": "/private/tmp/veritac-survey-venv/lib/python3.14/site-packages/mlx/include/mlx/backend/metal/kernels/steel/attn/kernels/steel_attention.h",
+    "generated_kernel_path": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/attention/results/generated_kernel/steel_attention_6a992257df37525002e11c60be336a0c3383cd7370b5206b17e97679393ca557.metal",
+    "generated_kernel_sha256": "6a992257df37525002e11c60be336a0c3383cd7370b5206b17e97679393ca557",
+    "inlined_header_sha256": {
+      "mlx/backend/metal/kernels/steel/attn/attn.h": "67722214ff487ec95df675e2f135ccd7fbe639b6eb6ab98b14bcefa58d66ba95",
+      "mlx/backend/metal/kernels/steel/attn/kernels/steel_attention.h": "3e9334c9ec3298fc7fb21a9468816d1b7c6e3c11da8494df7ae4fc7a4c04f570",
+      "mlx/backend/metal/kernels/steel/attn/loader.h": "e435f413d71d44ca4ad72a59d192046be77388f63936179c58882286f4cc5dab",
+      "mlx/backend/metal/kernels/steel/attn/mma.h": "6f22866c76a1f15cf27681d3a8700f3419412a954d00e0810c87f7dac82ddeab",
+      "mlx/backend/metal/kernels/steel/attn/params.h": "f03c6ed73d7298fa69b75a49e7eec54954b6fafd59530a1f175934215412ed80",
+      "mlx/backend/metal/kernels/steel/attn/transforms.h": "6479114663c5923a7ee2f9fc1cf9d5e99e680d47d793251749989056a8a63141",
+      "mlx/backend/metal/kernels/steel/defines.h": "b03cea6a7d5cfe814e6838d8536e2aacdcafd2744cb408e954fda336ce21759a",
+      "mlx/backend/metal/kernels/steel/gemm/params.h": "6711e72e32310eafb088895d5a6d20fcfca814158f5b38eb72b6e69d9d773e43",
+      "mlx/backend/metal/kernels/steel/utils.h": "d4c36298145d1c5617a94f07dbfabf6ac932afe2fd7ea0c9291f1fb385c5404a",
+      "mlx/backend/metal/kernels/steel/utils/integral_constant.h": "886eccaac4f8f00eab5a10551fdb5315df7ab7462aba13d69bb95765c1a4735e",
+      "mlx/backend/metal/kernels/steel/utils/type_traits.h": "4766c5a3809d3cf7740e63acc5703ef76b6b4e85d8baf16602c9d517a2fd426c"
+    },
+    "artifact_relocation_note": "Controller archived identical source by its recorded SHA-256; timing and numerical records unchanged."
+  },
+  "timing_caveats": [
+    "All timings are in milliseconds.",
+    "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation of the FULL single-kernel pipeline. They exclude input/output CPU copies and compile/warmup. Invalid timestamps are reported unavailable (gpu_timing=null).",
+    "Wall times are synchronized API latency per invocation.",
+    "Configurations (qt,kt) run serially per case in a deterministic, seed-shuffled order."
+  ],
+  "cases": [
+    {
+      "seq": 17,
+      "dim": 192,
+      "dtype": "float32",
+      "heads": 8,
+      "batch": 1,
+      "scale": 0.07216878364870322,
+      "seed": 1234,
+      "case_seed": 38026750,
+      "config_order": [
+        [
+          8,
+          8,
+          192,
+          1,
+          1
+        ]
+      ],
+      "inputs_sha256": {
+        "q": "768a1b0c2e2ed95a3b937ee3d4a92e796097914c4430f4d95491ef7f3f23d596",
+        "k": "11ad4fa0e06de5d4efb8a7608ba586575fa912de6f1a20cca8dfe40e922e0f91",
+        "v": "467d2dc1b1bbe42164205542f4adcbc32ca024aec02ccc2222f397bc38cbb191"
+      },
+      "results": {
+        "qt8_kt8": {
+          "qt": 8,
+          "kt": 8,
+          "tgmem_bytes": 15488,
+          "function": "steel_attn_f32_bq8_bk8_bd192_wm1_wn1",
+          "output_shape": [
+            1,
+            8,
+            17,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              17,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              17,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.3362202819222624e-07,
+            "max_abs_error_normalized": 0.0006114834993442836,
+            "rms_error": 1.8927039372558022e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            }
+          },
+          "pipeline": {
+            "kernel_name": "steel_attn_f32_bq8_bk8_bd192_wm1_wn1",
+            "max_total_threads_per_threadgroup": 32,
+            "simd_width": 32,
+            "specialization": {
+              "align_K": false,
+              "align_Q": false,
+              "D": 192,
+              "do_causal": true,
+              "has_mask": false,
+              "has_sinks": false,
+              "kt": 8,
+              "qt": 8,
+              "WM": 1,
+              "WN": 1
+            },
+            "static_threadgroup_memory_length": 30976,
+            "threads_per_threadgroup": 32
+          },
+          "launch": {
+            "D": 192,
+            "grid": {
+              "x": 3,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "steel_attn_f32_bq8_bk8_bd192_wm1_wn1",
+            "kt": 8,
+            "mapping": "vendor_steel_small_tile_specialization",
+            "qt": 8,
+            "threadgroup_memory_bytes": 15488,
+            "threads_per_threadgroup": 32,
+            "total_threads_dispatched": 768,
+            "valid_query_rows": 136,
+            "vendor": "mlx-steel-attention",
+            "WM": 1,
+            "WN": 1
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 3.0792499892413616,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation of the FULL single-kernel pipeline (QK^T + stable online softmax + PV + normalize). They exclude input/output CPU copies and compile/warmup.",
+            "Wall times are synchronized API latency per invocation.",
+            "The kernel is a vendor-derived specialization of the installed mlx steel attention template (Apple Inc., MIT), not an original generated kernel. Attribution/license are preserved in kernel_path.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing."
+          ],
+          "runner_stderr": "2026-09-11 01:38:48.326 steel_attention[56106:18551159] Metal API Validation Enabled\n2026-09-11 01:38:48.327 steel_attention[56106:18551159] Metal GPU Validation Enabled\n",
+          "wall_timing": {
+            "median_ms": 1.127166673541069,
+            "p10_ms": 1.116216671653092,
+            "p90_ms": 1.1395666282624006,
+            "samples_ms": [
+              1.1433332692831755,
+              1.127166673541069,
+              1.1252916883677244,
+              1.1101666605100036,
+              1.1339166667312384
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 0.6987500190734863,
+            "p10_ms": 0.6956750154495239,
+            "p90_ms": 0.7033750772476196,
+            "samples_ms": [
+              0.7036250829696655,
+              0.6961249113082886,
+              0.7030000686645508,
+              0.6953750848770142,
+              0.6987500190734863
+            ]
+          },
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "seq": 100,
+      "dim": 192,
+      "dtype": "float32",
+      "heads": 8,
+      "batch": 1,
+      "scale": 0.07216878364870322,
+      "seed": 1234,
+      "case_seed": 121026999,
+      "config_order": [
+        [
+          8,
+          8,
+          192,
+          1,
+          1
+        ]
+      ],
+      "inputs_sha256": {
+        "q": "6eadfc0de11f6c577fbe91ac992317ebe079c848abaf669315e58fab5ceeb826",
+        "k": "149a1bcda1c2848b3c3d34e213e0aedaf75da9154834524d4c7bb78d9ca25da9",
+        "v": "880883a91d0c161bff4850cb6d0a6520b7740461ee1aa9896ed94fb8cca18c4c"
+      },
+      "results": {
+        "qt8_kt8": {
+          "qt": 8,
+          "kt": 8,
+          "tgmem_bytes": 15488,
+          "function": "steel_attn_f32_bq8_bk8_bd192_wm1_wn1",
+          "output_shape": [
+            1,
+            8,
+            100,
+            192
+          ],
+          "comparison": {
+            "shape_ok": true,
+            "output_shape": [
+              1,
+              8,
+              100,
+              192
+            ],
+            "reference_shape": [
+              1,
+              8,
+              100,
+              192
+            ],
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.8000367330711642e-07,
+            "max_abs_error_normalized": 0.0013203663505843679,
+            "rms_error": 1.3390205399334072e-08,
+            "within_tolerance": true
+          },
+          "device": {
+            "max_threadgroup_memory_length": 32768,
+            "max_threads_per_threadgroup": {
+              "depth": 1024,
+              "height": 1024,
+              "width": 1024
+            }
+          },
+          "pipeline": {
+            "kernel_name": "steel_attn_f32_bq8_bk8_bd192_wm1_wn1",
+            "max_total_threads_per_threadgroup": 32,
+            "simd_width": 32,
+            "specialization": {
+              "align_K": false,
+              "align_Q": false,
+              "D": 192,
+              "do_causal": true,
+              "has_mask": false,
+              "has_sinks": false,
+              "kt": 8,
+              "qt": 8,
+              "WM": 1,
+              "WN": 1
+            },
+            "static_threadgroup_memory_length": 30976,
+            "threads_per_threadgroup": 32
+          },
+          "launch": {
+            "D": 192,
+            "grid": {
+              "x": 13,
+              "y": 8,
+              "z": 1
+            },
+            "kernel_name": "steel_attn_f32_bq8_bk8_bd192_wm1_wn1",
+            "kt": 8,
+            "mapping": "vendor_steel_small_tile_specialization",
+            "qt": 8,
+            "threadgroup_memory_bytes": 15488,
+            "threads_per_threadgroup": 32,
+            "total_threads_dispatched": 3328,
+            "valid_query_rows": 800,
+            "vendor": "mlx-steel-attention",
+            "WM": 1,
+            "WN": 1
+          },
+          "mtl_device_name": "Apple M3 Ultra",
+          "compile_wall_ms": 3.0336666386574507,
+          "warmup_count": 10,
+          "scale": 0.07216878235340118,
+          "time_unit": "milliseconds",
+          "measurement_notes": [
+            "All timings are in milliseconds (time_unit=milliseconds).",
+            "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation of the FULL single-kernel pipeline (QK^T + stable online softmax + PV + normalize). They exclude input/output CPU copies and compile/warmup.",
+            "Wall times are synchronized API latency per invocation.",
+            "The kernel is a vendor-derived specialization of the installed mlx steel attention template (Apple Inc., MIT), not an original generated kernel. Attribution/license are preserved in kernel_path.",
+            "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing."
+          ],
+          "runner_stderr": "2026-09-11 01:38:48.406 steel_attention[56112:18551184] Metal API Validation Enabled\n2026-09-11 01:38:48.406 steel_attention[56112:18551184] Metal GPU Validation Enabled\n",
+          "wall_timing": {
+            "median_ms": 1.2526665814220905,
+            "p10_ms": 1.2228999752551317,
+            "p90_ms": 1.2632749741896987,
+            "samples_ms": [
+              1.2055833358317614,
+              1.2688749702647328,
+              1.2548749800771475,
+              1.2488749343901873,
+              1.2526665814220905
+            ]
+          },
+          "gpu_time_available": true,
+          "gpu_timing": {
+            "median_ms": 0.8108749389648438,
+            "p10_ms": 0.8101750373840332,
+            "p90_ms": 0.8112582921981811,
+            "samples_ms": [
+              0.8112083673477173,
+              0.8108749389648438,
+              0.8106250762939453,
+              0.8098750114440918,
+              0.8112915754318237
+            ]
+          },
+          "status": "ok"
+        }
+      }
+    }
+  ]
+}

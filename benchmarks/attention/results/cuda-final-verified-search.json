@@ -1,0 +1,4670 @@
+{
+  "mode": "check_cuda_attention_plan",
+  "seed": 2026,
+  "seq": 4096,
+  "dim": 192,
+  "search": true,
+  "hardware": {
+    "device_name": "NVIDIA GB10",
+    "profile_hash": "0e506c439e77cb61ffd7f57001999b2d3f2c4eb8411c5db115319f1992cca5c8"
+  },
+  "label": "vendor-derived PyTorch/CUTLASS schedule specialization and native OpMultiplyAddFastF32 (3-component TF32 emulation), not IEEE scalar FP32 and not new precision reduction",
+  "snapshot": {
+    "profile": {
+      "schema_version": 1,
+      "backend": "cuda",
+      "device_name": "NVIDIA GB10",
+      "max_threads_per_threadgroup": 1024,
+      "max_threadgroup_memory_bytes": 101376,
+      "max_threads_per_block": 1024,
+      "shared_mem_per_block_default_bytes": 49152,
+      "shared_mem_per_block_optin_bytes": 101376,
+      "simd_width": 32,
+      "compute_capability": [
+        12,
+        1
+      ],
+      "total_device_memory_bytes": 130663165952,
+      "performance_hints": {
+        "optin_shared_memory_available": true,
+        "sm_count": 48,
+        "l2_cache_size_bytes": 25165824
+      },
+      "toolchain": {
+        "name": "nvcc",
+        "version": "13.0",
+        "code_target": "sm_121"
+      },
+      "provenance": {
+        "source": "cuda_device_query",
+        "host": "spark-379a"
+      },
+      "features": {
+        "matrix_ops": null,
+        "async_copy": null,
+        "fp16": null,
+        "bfloat16": null
+      }
+    },
+    "profile_hash": "0e506c439e77cb61ffd7f57001999b2d3f2c4eb8411c5db115319f1992cca5c8",
+    "catalogue": [
+      {
+        "id": 0,
+        "smem_bytes": 133632,
+        "num_threads": 256,
+        "num_warps": 8,
+        "queries_per_block": 32,
+        "keys_per_block": 256,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 1,
+        "single_value_iteration": true,
+        "keep_output_in_rf": true,
+        "num_regs": 0,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 133632,
+        "kernel_max_threads": 0,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": false,
+        "unsupported_reason": "dynamic shared 133632 > device opt-in max 101376",
+        "base_config_id": 0,
+        "module": "normal"
+      },
+      {
+        "id": 1,
+        "smem_bytes": 76288,
+        "num_threads": 128,
+        "num_warps": 4,
+        "queries_per_block": 32,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 3,
+        "installed_min_blocks": 3,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 168,
+        "local_size_bytes": 96,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 76288,
+        "kernel_max_threads": 128,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 1,
+        "module": "normal"
+      },
+      {
+        "id": 2,
+        "smem_bytes": 37632,
+        "num_threads": 64,
+        "num_warps": 2,
+        "queries_per_block": 32,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "min_blocks_hint": 6,
+        "installed_min_blocks": 6,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 168,
+        "local_size_bytes": 104,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 37632,
+        "kernel_max_threads": 64,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 2,
+        "module": "normal"
+      },
+      {
+        "id": 3,
+        "smem_bytes": 50688,
+        "num_threads": 128,
+        "num_warps": 4,
+        "queries_per_block": 64,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "min_blocks_hint": 3,
+        "installed_min_blocks": 3,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 168,
+        "local_size_bytes": 120,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 50688,
+        "kernel_max_threads": 128,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 3,
+        "module": "normal"
+      },
+      {
+        "id": 4,
+        "smem_bytes": 76288,
+        "num_threads": 128,
+        "num_warps": 4,
+        "queries_per_block": 32,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 3,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 225,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 76288,
+        "kernel_max_threads": 128,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 4,
+        "module": "normal"
+      },
+      {
+        "id": 5,
+        "smem_bytes": 50688,
+        "num_threads": 128,
+        "num_warps": 4,
+        "queries_per_block": 64,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 3,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 230,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 50688,
+        "kernel_max_threads": 128,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 5,
+        "module": "normal"
+      },
+      {
+        "id": 6,
+        "smem_bytes": 50688,
+        "num_threads": 128,
+        "num_warps": 4,
+        "queries_per_block": 64,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "min_blocks_hint": 2,
+        "installed_min_blocks": 3,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 230,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 50688,
+        "kernel_max_threads": 128,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 6,
+        "module": "normal"
+      },
+      {
+        "id": 7,
+        "smem_bytes": 37632,
+        "num_threads": 64,
+        "num_warps": 2,
+        "queries_per_block": 32,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 6,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 234,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 37632,
+        "kernel_max_threads": 64,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 7,
+        "module": "normal"
+      },
+      {
+        "id": 10,
+        "smem_bytes": 103424,
+        "num_threads": 256,
+        "num_warps": 8,
+        "queries_per_block": 64,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 1,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 0,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 103424,
+        "kernel_max_threads": 0,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": false,
+        "unsupported_reason": "dynamic shared 103424 > device opt-in max 101376",
+        "base_config_id": 10,
+        "module": "normal"
+      },
+      {
+        "id": 11,
+        "smem_bytes": 103424,
+        "num_threads": 256,
+        "num_warps": 8,
+        "queries_per_block": 64,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 2,
+        "installed_min_blocks": 1,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 0,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 103424,
+        "kernel_max_threads": 0,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": false,
+        "unsupported_reason": "dynamic shared 103424 > device opt-in max 101376",
+        "base_config_id": 11,
+        "module": "normal"
+      },
+      {
+        "id": 12,
+        "smem_bytes": 76800,
+        "num_threads": 256,
+        "num_warps": 8,
+        "queries_per_block": 128,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 1,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 225,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 76800,
+        "kernel_max_threads": 256,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 12,
+        "module": "normal"
+      },
+      {
+        "id": 13,
+        "smem_bytes": 76800,
+        "num_threads": 256,
+        "num_warps": 8,
+        "queries_per_block": 128,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "min_blocks_hint": 2,
+        "installed_min_blocks": 1,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 128,
+        "local_size_bytes": 280,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 76800,
+        "kernel_max_threads": 256,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 13,
+        "module": "normal"
+      },
+      {
+        "id": 14,
+        "smem_bytes": 76288,
+        "num_threads": 128,
+        "num_warps": 4,
+        "queries_per_block": 32,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 3,
+        "installed_min_blocks": 3,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 168,
+        "local_size_bytes": 96,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 76288,
+        "kernel_max_threads": 128,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 1,
+        "module": "reverse"
+      },
+      {
+        "id": 15,
+        "smem_bytes": 50688,
+        "num_threads": 128,
+        "num_warps": 4,
+        "queries_per_block": 64,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "min_blocks_hint": 3,
+        "installed_min_blocks": 3,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 168,
+        "local_size_bytes": 120,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 50688,
+        "kernel_max_threads": 128,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 3,
+        "module": "reverse"
+      },
+      {
+        "id": 16,
+        "smem_bytes": 76288,
+        "num_threads": 128,
+        "num_warps": 4,
+        "queries_per_block": 32,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 3,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 225,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 76288,
+        "kernel_max_threads": 128,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 4,
+        "module": "reverse"
+      },
+      {
+        "id": 17,
+        "smem_bytes": 50688,
+        "num_threads": 128,
+        "num_warps": 4,
+        "queries_per_block": 64,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 3,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "num_regs": 230,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 50688,
+        "kernel_max_threads": 128,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 5,
+        "module": "reverse"
+      },
+      {
+        "id": 20,
+        "smem_bytes": 86016,
+        "num_threads": 256,
+        "num_warps": 8,
+        "queries_per_block": 64,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 1,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "preload_v": false,
+        "alias_scratch": true,
+        "async_drains": true,
+        "num_regs": 221,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 86016,
+        "kernel_max_threads": 256,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 20,
+        "module": "alias"
+      },
+      {
+        "id": 21,
+        "smem_bytes": 86016,
+        "num_threads": 256,
+        "num_warps": 8,
+        "queries_per_block": 64,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 2,
+        "installed_min_blocks": 1,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "preload_v": false,
+        "alias_scratch": true,
+        "async_drains": true,
+        "num_regs": 128,
+        "local_size_bytes": 248,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 86016,
+        "kernel_max_threads": 256,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 21,
+        "module": "alias"
+      },
+      {
+        "id": 22,
+        "smem_bytes": 67584,
+        "num_threads": 128,
+        "num_warps": 4,
+        "queries_per_block": 32,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 3,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "preload_v": false,
+        "alias_scratch": true,
+        "async_drains": true,
+        "num_regs": 225,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 67584,
+        "kernel_max_threads": 128,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 22,
+        "module": "alias"
+      },
+      {
+        "id": 23,
+        "smem_bytes": 103424,
+        "num_threads": 256,
+        "num_warps": 8,
+        "queries_per_block": 64,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 1,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "preload_v": false,
+        "alias_scratch": false,
+        "async_drains": true,
+        "num_regs": 221,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 103424,
+        "kernel_max_threads": 256,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": false,
+        "unsupported_reason": "total shared 103424 > device opt-in max 101376",
+        "base_config_id": 23,
+        "module": "alias"
+      },
+      {
+        "id": 24,
+        "smem_bytes": 76288,
+        "num_threads": 128,
+        "num_warps": 4,
+        "queries_per_block": 32,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 3,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "preload_v": false,
+        "alias_scratch": false,
+        "async_drains": true,
+        "num_regs": 225,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 76288,
+        "kernel_max_threads": 128,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 24,
+        "module": "alias"
+      },
+      {
+        "id": 25,
+        "smem_bytes": 76288,
+        "num_threads": 128,
+        "num_warps": 4,
+        "queries_per_block": 32,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 3,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "preload_v": false,
+        "alias_scratch": false,
+        "async_drains": true,
+        "reversed": true,
+        "num_regs": 225,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 76288,
+        "kernel_max_threads": 128,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 25,
+        "module": "revderiv"
+      },
+      {
+        "id": 26,
+        "smem_bytes": 86016,
+        "num_threads": 256,
+        "num_warps": 8,
+        "queries_per_block": 64,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 1,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "preload_v": false,
+        "alias_scratch": true,
+        "async_drains": true,
+        "reversed": true,
+        "num_regs": 221,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 86016,
+        "kernel_max_threads": 256,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 26,
+        "module": "revderiv"
+      }
+    ],
+    "catalogue_hash": "d8ae79ff9aa0900256fe6ba458eb61bec64e6b2c28ff7200ef2b830026a0ade5",
+    "binding": {
+      "module_paths": [
+        "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate.so",
+        "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_alias.so",
+        "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_rev.so",
+        "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_revderiv.so"
+      ],
+      "module_hashes": {
+        "veritac_attn_candidate.so": "cc51fd6681ed26786053aaeee9acc369230b2628cd33c7c5a88c9bc65008bdb1",
+        "veritac_attn_candidate_alias.so": "2e05e93345ed633fea2346d88fd850829fe96ecb7b5a670f57d4a08d00c3b6f4",
+        "veritac_attn_candidate_rev.so": "67b2c96a0cfa15625a51fd2a971b824f0f5e2052cdf45306b07e2747d7a07b33",
+        "veritac_attn_candidate_revderiv.so": "9cf5460b4c759da6a147023e8aac1cfa6755312dd113fb92f4c6aebeb0849f5b"
+      },
+      "cu_hashes": {
+        "attention_alias.cu": "c9fc2669b4e68194064c59cbe191964a1817eb5ee6eacea4d83c389e3eb01a37",
+        "attention_kernel_forward_standalone.cu": "6b6348cd88e50b92a3f2c8c3adcb6acc3e2f598235a7ec2890e205a937200026",
+        "attention_revderiv.cu": "04e4e41ed3e8b67d97c3db02043355ba34eb0f07f0e60e875f8e3551536dc14c",
+        "attention_reversed.cu": "fb2ff565799d68f59ceeccba6406b482b24514b46114de422ffca6b78220957f"
+      },
+      "vendor_hashes": {
+        "vendor/kernel_forward.orig.h": "fcbfa07f0bc48e239e4d8c45025d5d9e65ff017d00e9dd667918e03172637650",
+        "vendor/kernel_forward_alias.h": "d229a7831b4b4481eea8c0b6a74da1e5b72b85d82771996284d4dd5f18825958",
+        "vendor/kernel_forward_drain.h": "3cab257986a724098f3d06cde80c1d1d6b74a53cb929a582f790b003f257ce73",
+        "vendor/kernel_forward_rev_alias.h": "0a40d9c57b6a1db31a18d90c39f1b9ad101769898998a07e4d8cc5593c031107",
+        "vendor/kernel_forward_rev_drain.h": "4b4be8ce6bf6838b54d974192300297011533e34eecf33f4d8ee500649039162",
+        "vendor/kernel_forward_reversed.h": "c82a913cdecf37a0039f3b92ed35a098f9c079b8c33529acdacd34f178f6945c"
+      },
+      "run_candidate_py": "633e3d5ec7f630291d5a05b20ba25b8009e7851abf08a9d08f5ac3c487dbd320",
+      "installed_kernel_forward_h": "fcbfa07f0bc48e239e4d8c45025d5d9e65ff017d00e9dd667918e03172637650",
+      "installed_kernel_forward_h_path": "/home/cake/.cache/veritac-attention-venv/lib/python3.12/site-packages/torch/include/ATen/native/transformers/cuda/mem_eff_attention/kernel_forward.h",
+      "cutlass_git_head": "e05f953a5b3d38adc240df2ff928e0421c2abba3",
+      "cutlass_dirty_diff_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "torch": "2.14.0+cu130",
+      "torch_cuda": "13.0",
+      "compute_capability": "12.1"
+    },
+    "module_paths": [
+      "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate.so",
+      "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_alias.so",
+      "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_rev.so",
+      "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_revderiv.so"
+    ]
+  },
+  "agent_initial_plan": {
+    "seq_len": 4096,
+    "head_dim": 192,
+    "config_id": 1
+  },
+  "agent_tactic_sequence": [
+    {
+      "kind": "select_config",
+      "value": 26
+    }
+  ],
+  "agent_verification_response": {
+    "accepted": true,
+    "applied": 1,
+    "diagnostic": "accepted",
+    "final_plan": {
+      "config_id": 26,
+      "head_dim": 192,
+      "kernel_max_threads": 256,
+      "keys_per_block": 128,
+      "max_k": 256,
+      "num_threads": 256,
+      "queries_per_block": 64,
+      "seq_len": 4096,
+      "smem_bytes": 86016,
+      "static_shared_bytes": 0,
+      "supported": true
+    },
+    "schema_version": 1,
+    "shared_memory_bytes": 86016,
+    "threads_per_threadgroup": 256
+  },
+  "agent_final_plan": {
+    "config_id": 26,
+    "head_dim": 192,
+    "kernel_max_threads": 256,
+    "keys_per_block": 128,
+    "max_k": 256,
+    "num_threads": 256,
+    "queries_per_block": 64,
+    "seq_len": 4096,
+    "smem_bytes": 86016,
+    "static_shared_bytes": 0,
+    "supported": true
+  },
+  "final_plan": {
+    "config_id": 26,
+    "head_dim": 192,
+    "kernel_max_threads": 256,
+    "keys_per_block": 128,
+    "max_k": 256,
+    "num_threads": 256,
+    "queries_per_block": 64,
+    "seq_len": 4096,
+    "smem_bytes": 86016,
+    "static_shared_bytes": 0,
+    "supported": true
+  },
+  "candidates": [
+    {
+      "config_id": 0,
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 0
+        }
+      ],
+      "verification_response": {
+        "accepted": false,
+        "applied": 0,
+        "diagnostic": "config is unsupported",
+        "final_plan": {
+          "config_id": 1,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 32,
+          "seq_len": 4096,
+          "smem_bytes": 76288,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 76288,
+        "threads_per_threadgroup": 128
+      },
+      "status": "rejected",
+      "diagnostic": "config is unsupported"
+    },
+    {
+      "config_id": 1,
+      "checked_plan": {
+        "config_id": 1,
+        "head_dim": 192,
+        "kernel_max_threads": 128,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "num_threads": 128,
+        "queries_per_block": 32,
+        "seq_len": 4096,
+        "smem_bytes": 76288,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "status": "validation_rejected",
+      "reason": "not executable for FP32 demo: async_drains=None, preload_v=None (undrained/preload variant)",
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 1
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 1,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 32,
+          "seq_len": 4096,
+          "smem_bytes": 76288,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 76288,
+        "threads_per_threadgroup": 128
+      }
+    },
+    {
+      "config_id": 2,
+      "checked_plan": {
+        "config_id": 2,
+        "head_dim": 192,
+        "kernel_max_threads": 64,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "num_threads": 64,
+        "queries_per_block": 32,
+        "seq_len": 4096,
+        "smem_bytes": 37632,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "status": "validation_rejected",
+      "reason": "not executable for FP32 demo: async_drains=None, preload_v=None (undrained/preload variant)",
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 2
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 2,
+          "head_dim": 192,
+          "kernel_max_threads": 64,
+          "keys_per_block": 64,
+          "max_k": 256,
+          "num_threads": 64,
+          "queries_per_block": 32,
+          "seq_len": 4096,
+          "smem_bytes": 37632,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 37632,
+        "threads_per_threadgroup": 64
+      }
+    },
+    {
+      "config_id": 3,
+      "checked_plan": {
+        "config_id": 3,
+        "head_dim": 192,
+        "kernel_max_threads": 128,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "num_threads": 128,
+        "queries_per_block": 64,
+        "seq_len": 4096,
+        "smem_bytes": 50688,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "status": "validation_rejected",
+      "reason": "not executable for FP32 demo: async_drains=None, preload_v=None (undrained/preload variant)",
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 3
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 3,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 64,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 64,
+          "seq_len": 4096,
+          "smem_bytes": 50688,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 50688,
+        "threads_per_threadgroup": 128
+      }
+    },
+    {
+      "config_id": 4,
+      "checked_plan": {
+        "config_id": 4,
+        "head_dim": 192,
+        "kernel_max_threads": 128,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "num_threads": 128,
+        "queries_per_block": 32,
+        "seq_len": 4096,
+        "smem_bytes": 76288,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "status": "validation_rejected",
+      "reason": "not executable for FP32 demo: async_drains=None, preload_v=None (undrained/preload variant)",
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 4
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 4,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 32,
+          "seq_len": 4096,
+          "smem_bytes": 76288,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 76288,
+        "threads_per_threadgroup": 128
+      }
+    },
+    {
+      "config_id": 5,
+      "checked_plan": {
+        "config_id": 5,
+        "head_dim": 192,
+        "kernel_max_threads": 128,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "num_threads": 128,
+        "queries_per_block": 64,
+        "seq_len": 4096,
+        "smem_bytes": 50688,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "status": "validation_rejected",
+      "reason": "not executable for FP32 demo: async_drains=None, preload_v=None (undrained/preload variant)",
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 5
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 5,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 64,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 64,
+          "seq_len": 4096,
+          "smem_bytes": 50688,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 50688,
+        "threads_per_threadgroup": 128
+      }
+    },
+    {
+      "config_id": 6,
+      "checked_plan": {
+        "config_id": 6,
+        "head_dim": 192,
+        "kernel_max_threads": 128,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "num_threads": 128,
+        "queries_per_block": 64,
+        "seq_len": 4096,
+        "smem_bytes": 50688,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "status": "validation_rejected",
+      "reason": "not executable for FP32 demo: async_drains=None, preload_v=None (undrained/preload variant)",
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 6
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 6,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 64,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 64,
+          "seq_len": 4096,
+          "smem_bytes": 50688,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 50688,
+        "threads_per_threadgroup": 128
+      }
+    },
+    {
+      "config_id": 7,
+      "checked_plan": {
+        "config_id": 7,
+        "head_dim": 192,
+        "kernel_max_threads": 64,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "num_threads": 64,
+        "queries_per_block": 32,
+        "seq_len": 4096,
+        "smem_bytes": 37632,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "status": "validation_rejected",
+      "reason": "not executable for FP32 demo: async_drains=None, preload_v=None (undrained/preload variant)",
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 7
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 7,
+          "head_dim": 192,
+          "kernel_max_threads": 64,
+          "keys_per_block": 64,
+          "max_k": 256,
+          "num_threads": 64,
+          "queries_per_block": 32,
+          "seq_len": 4096,
+          "smem_bytes": 37632,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 37632,
+        "threads_per_threadgroup": 64
+      }
+    },
+    {
+      "config_id": 10,
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 10
+        }
+      ],
+      "verification_response": {
+        "accepted": false,
+        "applied": 0,
+        "diagnostic": "config is unsupported",
+        "final_plan": {
+          "config_id": 1,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 32,
+          "seq_len": 4096,
+          "smem_bytes": 76288,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 76288,
+        "threads_per_threadgroup": 128
+      },
+      "status": "rejected",
+      "diagnostic": "config is unsupported"
+    },
+    {
+      "config_id": 11,
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 11
+        }
+      ],
+      "verification_response": {
+        "accepted": false,
+        "applied": 0,
+        "diagnostic": "config is unsupported",
+        "final_plan": {
+          "config_id": 1,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 32,
+          "seq_len": 4096,
+          "smem_bytes": 76288,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 76288,
+        "threads_per_threadgroup": 128
+      },
+      "status": "rejected",
+      "diagnostic": "config is unsupported"
+    },
+    {
+      "config_id": 12,
+      "checked_plan": {
+        "config_id": 12,
+        "head_dim": 192,
+        "kernel_max_threads": 256,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "num_threads": 256,
+        "queries_per_block": 128,
+        "seq_len": 4096,
+        "smem_bytes": 76800,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "status": "validation_rejected",
+      "reason": "not executable for FP32 demo: async_drains=None, preload_v=None (undrained/preload variant)",
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 12
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 12,
+          "head_dim": 192,
+          "kernel_max_threads": 256,
+          "keys_per_block": 64,
+          "max_k": 256,
+          "num_threads": 256,
+          "queries_per_block": 128,
+          "seq_len": 4096,
+          "smem_bytes": 76800,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 76800,
+        "threads_per_threadgroup": 256
+      }
+    },
+    {
+      "config_id": 13,
+      "checked_plan": {
+        "config_id": 13,
+        "head_dim": 192,
+        "kernel_max_threads": 256,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "num_threads": 256,
+        "queries_per_block": 128,
+        "seq_len": 4096,
+        "smem_bytes": 76800,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "status": "validation_rejected",
+      "reason": "not executable for FP32 demo: async_drains=None, preload_v=None (undrained/preload variant)",
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 13
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 13,
+          "head_dim": 192,
+          "kernel_max_threads": 256,
+          "keys_per_block": 64,
+          "max_k": 256,
+          "num_threads": 256,
+          "queries_per_block": 128,
+          "seq_len": 4096,
+          "smem_bytes": 76800,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 76800,
+        "threads_per_threadgroup": 256
+      }
+    },
+    {
+      "config_id": 14,
+      "checked_plan": {
+        "config_id": 14,
+        "head_dim": 192,
+        "kernel_max_threads": 128,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "num_threads": 128,
+        "queries_per_block": 32,
+        "seq_len": 4096,
+        "smem_bytes": 76288,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "status": "validation_rejected",
+      "reason": "not executable for FP32 demo: async_drains=None, preload_v=None (undrained/preload variant)",
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 14
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 14,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 32,
+          "seq_len": 4096,
+          "smem_bytes": 76288,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 76288,
+        "threads_per_threadgroup": 128
+      }
+    },
+    {
+      "config_id": 15,
+      "checked_plan": {
+        "config_id": 15,
+        "head_dim": 192,
+        "kernel_max_threads": 128,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "num_threads": 128,
+        "queries_per_block": 64,
+        "seq_len": 4096,
+        "smem_bytes": 50688,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "status": "validation_rejected",
+      "reason": "not executable for FP32 demo: async_drains=None, preload_v=None (undrained/preload variant)",
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 15
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 15,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 64,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 64,
+          "seq_len": 4096,
+          "smem_bytes": 50688,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 50688,
+        "threads_per_threadgroup": 128
+      }
+    },
+    {
+      "config_id": 16,
+      "checked_plan": {
+        "config_id": 16,
+        "head_dim": 192,
+        "kernel_max_threads": 128,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "num_threads": 128,
+        "queries_per_block": 32,
+        "seq_len": 4096,
+        "smem_bytes": 76288,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "status": "validation_rejected",
+      "reason": "not executable for FP32 demo: async_drains=None, preload_v=None (undrained/preload variant)",
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 16
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 16,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 32,
+          "seq_len": 4096,
+          "smem_bytes": 76288,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 76288,
+        "threads_per_threadgroup": 128
+      }
+    },
+    {
+      "config_id": 17,
+      "checked_plan": {
+        "config_id": 17,
+        "head_dim": 192,
+        "kernel_max_threads": 128,
+        "keys_per_block": 64,
+        "max_k": 256,
+        "num_threads": 128,
+        "queries_per_block": 64,
+        "seq_len": 4096,
+        "smem_bytes": 50688,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "status": "validation_rejected",
+      "reason": "not executable for FP32 demo: async_drains=None, preload_v=None (undrained/preload variant)",
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 17
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 17,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 64,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 64,
+          "seq_len": 4096,
+          "smem_bytes": 50688,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 50688,
+        "threads_per_threadgroup": 128
+      }
+    },
+    {
+      "config_id": 20,
+      "checked_plan": {
+        "config_id": 20,
+        "head_dim": 192,
+        "kernel_max_threads": 256,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "num_threads": 256,
+        "queries_per_block": 64,
+        "seq_len": 4096,
+        "smem_bytes": 86016,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "case": {
+        "config": 20,
+        "config_name": "Q64K128-min1-ALIAS",
+        "seq": 4096,
+        "dim": 192,
+        "scale": 0.07216878364870322,
+        "case_seed": 1969556131,
+        "module": "alias",
+        "base_config_id": 20,
+        "supported": true,
+        "validate": {
+          "ok": true,
+          "detail": "ok"
+        },
+        "input_hashes": {
+          "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+          "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+          "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+        },
+        "comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.888356274321608e-09,
+          "within_tolerance": true
+        },
+        "cuda_event_timing": {
+          "median_ms": 4.751418590545654,
+          "p10_ms": 4.748002115885416,
+          "p90_ms": 4.8650389035542805,
+          "samples_ms": [
+            4.770463943481445,
+            4.691232045491536,
+            4.858005205790202,
+            4.863925298055013,
+            4.852448145548503,
+            4.751029332478841,
+            4.7504533131917315,
+            4.8750613530476885,
+            4.748117446899414,
+            4.7506561279296875,
+            4.775125185648601,
+            4.854528109232585,
+            4.751807848612468,
+            4.858229319254558,
+            4.7482560475667315,
+            4.749535878499349,
+            4.747925440470378,
+            4.878645261128743,
+            4.749610582987468,
+            4.748010635375977
+          ]
+        },
+        "wall_timing": {
+          "median_ms": 4.75622550220578,
+          "p10_ms": 4.751897900860058,
+          "p90_ms": 4.905457399581792,
+          "samples_ms": [
+            4.890602998784743,
+            4.895354999462143,
+            4.757033002533717,
+            4.754186000354821,
+            4.862139001488686,
+            4.996379000658635,
+            4.7554180018778425,
+            4.758809998747893,
+            4.75277800069307,
+            4.752058001031401,
+            4.749002000608016,
+            4.750456999317976,
+            4.7544739973091055,
+            4.758602000947576,
+            4.754714002046967,
+            4.753321998578031,
+            4.753833996801404,
+            5.03741899956367,
+            4.7636579984100536,
+            4.761065996717662
+          ]
+        },
+        "graph_timing": {
+          "median_ms": 4.761386712392171,
+          "p10_ms": 4.750202592213949,
+          "p90_ms": 4.880853303273519,
+          "samples_ms": [
+            4.751498540242513,
+            4.749045372009277,
+            4.751722653706868,
+            4.880682627360026,
+            4.749290784200032,
+            4.761823972066243,
+            4.76584529876709,
+            4.7606401443481445,
+            4.758847872416179,
+            4.759893417358398,
+            4.882389386494954,
+            4.810794512430827,
+            4.81162675221761,
+            4.834176063537598,
+            4.758890787760417,
+            4.90884272257487,
+            4.8510080973307295,
+            4.750303904215495,
+            4.848885218302409,
+            4.760949452718099
+          ]
+        },
+        "graph_comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.888356274321608e-09,
+          "within_tolerance": true
+        },
+        "config_info": {
+          "id": 20,
+          "smem_bytes": 86016,
+          "num_threads": 256,
+          "num_warps": 8,
+          "queries_per_block": 64,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "min_blocks_hint": 1,
+          "installed_min_blocks": 1,
+          "single_value_iteration": false,
+          "keep_output_in_rf": false,
+          "preload_v": false,
+          "alias_scratch": true,
+          "async_drains": true,
+          "num_regs": 221,
+          "local_size_bytes": 0,
+          "static_shared_bytes": 0,
+          "total_shared_bytes": 86016,
+          "kernel_max_threads": 256,
+          "device_max_optin_shared": 101376,
+          "device_max_threads": 1024,
+          "supported": true,
+          "unsupported_reason": "",
+          "base_config_id": 20,
+          "module": "alias"
+        },
+        "run_metadata": {
+          "date": "2026-09-11T03:34:44-0700",
+          "device": {
+            "name": "NVIDIA GB10",
+            "capability": "12.1",
+            "sm_count": 48,
+            "total_memory_bytes": 130663165952
+          },
+          "torch": "2.14.0+cu130",
+          "torch_cuda": "13.0",
+          "torch_git_version": "08187d9e0fba026dc8217405802ab5381dc88d90",
+          "module_files": {
+            "normal": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate.so",
+            "reverse": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_rev.so",
+            "alias": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_alias.so",
+            "revderiv": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_revderiv.so"
+          },
+          "provenance": {
+            "kernel": "PyTorch installed mem_eff AttentionKernel<float,Sm80,true,Q,K,MD,false,false>",
+            "arithmetic": "unmodified vendor OpMultiplyAddFastF32 (CUTLASS 3xTF32 emulation); NOT single TF32, NOT FP16, NOT IEEE scalar FP32",
+            "attribution": "Meta Platforms BSD-3-Clause PyTorch mem_eff_attention; NVIDIA CUTLASS BSD-3-Clause",
+            "cutlass_pin": "e05f953a5b3d38adc240df2ff928e0421c2abba3",
+            "pytorch_pin": "08187d9e0fba026dc8217405802ab5381dc88d90",
+            "derivatives": {
+              "reverse": "ids14-17: query_start reversed (gridDim.x-1-blockIdx.x)*Q in PyTorchMemEffAttentionRev",
+              "alias": "ids20-22: union mm1/epilogue + cp_async drains in PyTorchMemEffAttentionAlias; ids23-24: drain-only control PyTorchMemEffAttentionDrain; ids25-26: +reversal PyTorchMemEffAttentionRevDrain/RevAlias; hashes in docs/cuda_attention_specialization.md"
+            }
+          },
+          "output_layout": "physical (B,N,H,D) with o_strideM=H*D; logical view (B,H,N,D) for comparison",
+          "tolerance": {
+            "atol": 0.0001,
+            "rtol": 0.001
+          },
+          "grid": {
+            "configs": [
+              20
+            ],
+            "config_names": {
+              "20": "Q64K128-min1-ALIAS"
+            },
+            "config_modules": {
+              "20": "alias"
+            },
+            "config_base_ids": {
+              "20": 20
+            },
+            "seqs": [
+              4096
+            ],
+            "dims": [
+              192
+            ],
+            "numeric_seqs": [
+              17,
+              100,
+              257,
+              1536
+            ],
+            "numeric_dims": [
+              192,
+              256
+            ],
+            "seed": 2026,
+            "warmup": 10,
+            "samples": 20,
+            "inner": 3
+          }
+        },
+        "runner_sha256": "633e3d5ec7f630291d5a05b20ba25b8009e7851abf08a9d08f5ac3c487dbd320"
+      },
+      "matched": true,
+      "status": "ok",
+      "graph_median_ms": 4.761386712392171,
+      "event_median_ms": 4.751418590545654,
+      "input_hashes": {
+        "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+        "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+        "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+      },
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 20
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 20,
+          "head_dim": 192,
+          "kernel_max_threads": 256,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 256,
+          "queries_per_block": 64,
+          "seq_len": 4096,
+          "smem_bytes": 86016,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 86016,
+        "threads_per_threadgroup": 256
+      }
+    },
+    {
+      "config_id": 21,
+      "checked_plan": {
+        "config_id": 21,
+        "head_dim": 192,
+        "kernel_max_threads": 256,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "num_threads": 256,
+        "queries_per_block": 64,
+        "seq_len": 4096,
+        "smem_bytes": 86016,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "case": {
+        "config": 21,
+        "config_name": "Q64K128-min2-ALIAS",
+        "seq": 4096,
+        "dim": 192,
+        "scale": 0.07216878364870322,
+        "case_seed": 1969556131,
+        "module": "alias",
+        "base_config_id": 21,
+        "supported": true,
+        "validate": {
+          "ok": true,
+          "detail": "ok"
+        },
+        "input_hashes": {
+          "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+          "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+          "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+        },
+        "comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.888356274321608e-09,
+          "within_tolerance": true
+        },
+        "cuda_event_timing": {
+          "median_ms": 6.222074826558431,
+          "p10_ms": 6.167927678426106,
+          "p90_ms": 6.396220588684082,
+          "samples_ms": [
+            6.351381301879883,
+            6.363221486409505,
+            6.333749135335286,
+            6.208917617797852,
+            6.233557383219401,
+            6.276608149210612,
+            6.161898930867513,
+            6.173824310302734,
+            6.404352188110352,
+            6.228864034016927,
+            6.215285619099935,
+            6.406197230021159,
+            6.158069610595703,
+            6.16859753926595,
+            6.179989496866862,
+            6.367530822753906,
+            6.200213114420573,
+            6.395317077636719,
+            6.1977386474609375,
+            6.205674489339192
+          ]
+        },
+        "wall_timing": {
+          "median_ms": 6.2637065002491,
+          "p10_ms": 6.195308200040017,
+          "p90_ms": 6.854361898149364,
+          "samples_ms": [
+            6.410018999304157,
+            6.450546999985818,
+            6.19747400196502,
+            6.312705998425372,
+            6.683636998786824,
+            6.183745001180796,
+            6.255795000470243,
+            6.884468999487581,
+            6.23229000120773,
+            6.289698001637589,
+            6.863909999083262,
+            6.2203379966376815,
+            6.271618000027956,
+            6.853300998045597,
+            6.15540999933728,
+            6.196592999913264,
+            6.209602001035819,
+            6.2368020007852465,
+            6.212945998413488,
+            6.742052999470616
+          ]
+        },
+        "graph_timing": {
+          "median_ms": 6.239557266235352,
+          "p10_ms": 6.201192665100098,
+          "p90_ms": 6.435072835286459,
+          "samples_ms": [
+            6.399178822835286,
+            6.18994140625,
+            6.631263732910156,
+            6.377279917399089,
+            6.186954498291016,
+            6.220298767089844,
+            6.219104131062825,
+            6.210943857828776,
+            6.208074569702148,
+            6.223199844360352,
+            6.414645512898763,
+            6.424522399902344,
+            6.391904195149739,
+            6.202442804972331,
+            6.4302183787028,
+            6.478762944539388,
+            6.255914688110352,
+            6.386741638183594,
+            6.202655792236328,
+            6.207573572794597
+          ]
+        },
+        "graph_comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.888356274321608e-09,
+          "within_tolerance": true
+        },
+        "config_info": {
+          "id": 21,
+          "smem_bytes": 86016,
+          "num_threads": 256,
+          "num_warps": 8,
+          "queries_per_block": 64,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "min_blocks_hint": 2,
+          "installed_min_blocks": 1,
+          "single_value_iteration": false,
+          "keep_output_in_rf": false,
+          "preload_v": false,
+          "alias_scratch": true,
+          "async_drains": true,
+          "num_regs": 128,
+          "local_size_bytes": 248,
+          "static_shared_bytes": 0,
+          "total_shared_bytes": 86016,
+          "kernel_max_threads": 256,
+          "device_max_optin_shared": 101376,
+          "device_max_threads": 1024,
+          "supported": true,
+          "unsupported_reason": "",
+          "base_config_id": 21,
+          "module": "alias"
+        },
+        "run_metadata": {
+          "date": "2026-09-11T03:34:53-0700",
+          "device": {
+            "name": "NVIDIA GB10",
+            "capability": "12.1",
+            "sm_count": 48,
+            "total_memory_bytes": 130663165952
+          },
+          "torch": "2.14.0+cu130",
+          "torch_cuda": "13.0",
+          "torch_git_version": "08187d9e0fba026dc8217405802ab5381dc88d90",
+          "module_files": {
+            "normal": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate.so",
+            "reverse": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_rev.so",
+            "alias": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_alias.so",
+            "revderiv": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_revderiv.so"
+          },
+          "provenance": {
+            "kernel": "PyTorch installed mem_eff AttentionKernel<float,Sm80,true,Q,K,MD,false,false>",
+            "arithmetic": "unmodified vendor OpMultiplyAddFastF32 (CUTLASS 3xTF32 emulation); NOT single TF32, NOT FP16, NOT IEEE scalar FP32",
+            "attribution": "Meta Platforms BSD-3-Clause PyTorch mem_eff_attention; NVIDIA CUTLASS BSD-3-Clause",
+            "cutlass_pin": "e05f953a5b3d38adc240df2ff928e0421c2abba3",
+            "pytorch_pin": "08187d9e0fba026dc8217405802ab5381dc88d90",
+            "derivatives": {
+              "reverse": "ids14-17: query_start reversed (gridDim.x-1-blockIdx.x)*Q in PyTorchMemEffAttentionRev",
+              "alias": "ids20-22: union mm1/epilogue + cp_async drains in PyTorchMemEffAttentionAlias; ids23-24: drain-only control PyTorchMemEffAttentionDrain; ids25-26: +reversal PyTorchMemEffAttentionRevDrain/RevAlias; hashes in docs/cuda_attention_specialization.md"
+            }
+          },
+          "output_layout": "physical (B,N,H,D) with o_strideM=H*D; logical view (B,H,N,D) for comparison",
+          "tolerance": {
+            "atol": 0.0001,
+            "rtol": 0.001
+          },
+          "grid": {
+            "configs": [
+              21
+            ],
+            "config_names": {
+              "21": "Q64K128-min2-ALIAS"
+            },
+            "config_modules": {
+              "21": "alias"
+            },
+            "config_base_ids": {
+              "21": 21
+            },
+            "seqs": [
+              4096
+            ],
+            "dims": [
+              192
+            ],
+            "numeric_seqs": [
+              17,
+              100,
+              257,
+              1536
+            ],
+            "numeric_dims": [
+              192,
+              256
+            ],
+            "seed": 2026,
+            "warmup": 10,
+            "samples": 20,
+            "inner": 3
+          }
+        },
+        "runner_sha256": "633e3d5ec7f630291d5a05b20ba25b8009e7851abf08a9d08f5ac3c487dbd320"
+      },
+      "matched": true,
+      "status": "ok",
+      "graph_median_ms": 6.239557266235352,
+      "event_median_ms": 6.222074826558431,
+      "input_hashes": {
+        "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+        "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+        "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+      },
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 21
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 21,
+          "head_dim": 192,
+          "kernel_max_threads": 256,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 256,
+          "queries_per_block": 64,
+          "seq_len": 4096,
+          "smem_bytes": 86016,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 86016,
+        "threads_per_threadgroup": 256
+      }
+    },
+    {
+      "config_id": 22,
+      "checked_plan": {
+        "config_id": 22,
+        "head_dim": 192,
+        "kernel_max_threads": 128,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "num_threads": 128,
+        "queries_per_block": 32,
+        "seq_len": 4096,
+        "smem_bytes": 67584,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "case": {
+        "config": 22,
+        "config_name": "Q32K128-min1-ALIAS",
+        "seq": 4096,
+        "dim": 192,
+        "scale": 0.07216878364870322,
+        "case_seed": 1969556131,
+        "module": "alias",
+        "base_config_id": 22,
+        "supported": true,
+        "validate": {
+          "ok": true,
+          "detail": "ok"
+        },
+        "input_hashes": {
+          "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+          "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+          "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+        },
+        "comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.888356274321608e-09,
+          "within_tolerance": true
+        },
+        "cuda_event_timing": {
+          "median_ms": 5.329530715942383,
+          "p10_ms": 5.261739762624105,
+          "p90_ms": 5.384326299031576,
+          "samples_ms": [
+            5.314666748046875,
+            5.363562901814778,
+            5.392159779866536,
+            5.400672276814778,
+            5.264896074930827,
+            5.36677360534668,
+            5.37722651163737,
+            5.261365254720052,
+            5.322751998901367,
+            5.336309432983398,
+            5.370677312215169,
+            5.261781374613444,
+            5.383455912272136,
+            5.261311848958333,
+            5.265450795491536,
+            5.361152013142903,
+            5.3639570871988935,
+            5.26906681060791,
+            5.273280143737793,
+            5.319562594095866
+          ]
+        },
+        "wall_timing": {
+          "median_ms": 5.294589000186534,
+          "p10_ms": 5.276088201571838,
+          "p90_ms": 5.300003399679554,
+          "samples_ms": [
+            5.27057299768785,
+            5.265547999442788,
+            5.276701002003392,
+            5.299996999383438,
+            5.293949001497822,
+            5.286637002427597,
+            5.307900999468984,
+            5.291628000122728,
+            5.3000610023445915,
+            5.2952289988752455,
+            5.297133000567555,
+            5.28895699972054,
+            5.297132996929577,
+            5.2954530001443345,
+            5.2982369998062495,
+            5.286364001221955,
+            5.294492999382783,
+            5.294685000990285,
+            5.294941001920961,
+            5.293709000397939
+          ]
+        },
+        "graph_timing": {
+          "median_ms": 5.291050752003988,
+          "p10_ms": 5.286470254262289,
+          "p90_ms": 5.2947071711222335,
+          "samples_ms": [
+            5.290122667948405,
+            5.281056086222331,
+            5.295263926188151,
+            5.286239941914876,
+            5.290485382080078,
+            5.291743914286296,
+            5.286495844523112,
+            5.29309876759847,
+            5.286922772725423,
+            5.286826769510905,
+            5.293823877970378,
+            5.288341204325358,
+            5.291616121927897,
+            5.287626584370931,
+            5.291808128356934,
+            5.293855985005696,
+            5.287605285644531,
+            5.292405446370442,
+            5.294645309448242,
+            5.409055709838867
+          ]
+        },
+        "graph_comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.888356274321608e-09,
+          "within_tolerance": true
+        },
+        "config_info": {
+          "id": 22,
+          "smem_bytes": 67584,
+          "num_threads": 128,
+          "num_warps": 4,
+          "queries_per_block": 32,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "min_blocks_hint": 1,
+          "installed_min_blocks": 3,
+          "single_value_iteration": false,
+          "keep_output_in_rf": false,
+          "preload_v": false,
+          "alias_scratch": true,
+          "async_drains": true,
+          "num_regs": 225,
+          "local_size_bytes": 0,
+          "static_shared_bytes": 0,
+          "total_shared_bytes": 67584,
+          "kernel_max_threads": 128,
+          "device_max_optin_shared": 101376,
+          "device_max_threads": 1024,
+          "supported": true,
+          "unsupported_reason": "",
+          "base_config_id": 22,
+          "module": "alias"
+        },
+        "run_metadata": {
+          "date": "2026-09-11T03:35:01-0700",
+          "device": {
+            "name": "NVIDIA GB10",
+            "capability": "12.1",
+            "sm_count": 48,
+            "total_memory_bytes": 130663165952
+          },
+          "torch": "2.14.0+cu130",
+          "torch_cuda": "13.0",
+          "torch_git_version": "08187d9e0fba026dc8217405802ab5381dc88d90",
+          "module_files": {
+            "normal": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate.so",
+            "reverse": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_rev.so",
+            "alias": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_alias.so",
+            "revderiv": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_revderiv.so"
+          },
+          "provenance": {
+            "kernel": "PyTorch installed mem_eff AttentionKernel<float,Sm80,true,Q,K,MD,false,false>",
+            "arithmetic": "unmodified vendor OpMultiplyAddFastF32 (CUTLASS 3xTF32 emulation); NOT single TF32, NOT FP16, NOT IEEE scalar FP32",
+            "attribution": "Meta Platforms BSD-3-Clause PyTorch mem_eff_attention; NVIDIA CUTLASS BSD-3-Clause",
+            "cutlass_pin": "e05f953a5b3d38adc240df2ff928e0421c2abba3",
+            "pytorch_pin": "08187d9e0fba026dc8217405802ab5381dc88d90",
+            "derivatives": {
+              "reverse": "ids14-17: query_start reversed (gridDim.x-1-blockIdx.x)*Q in PyTorchMemEffAttentionRev",
+              "alias": "ids20-22: union mm1/epilogue + cp_async drains in PyTorchMemEffAttentionAlias; ids23-24: drain-only control PyTorchMemEffAttentionDrain; ids25-26: +reversal PyTorchMemEffAttentionRevDrain/RevAlias; hashes in docs/cuda_attention_specialization.md"
+            }
+          },
+          "output_layout": "physical (B,N,H,D) with o_strideM=H*D; logical view (B,H,N,D) for comparison",
+          "tolerance": {
+            "atol": 0.0001,
+            "rtol": 0.001
+          },
+          "grid": {
+            "configs": [
+              22
+            ],
+            "config_names": {
+              "22": "Q32K128-min1-ALIAS"
+            },
+            "config_modules": {
+              "22": "alias"
+            },
+            "config_base_ids": {
+              "22": 22
+            },
+            "seqs": [
+              4096
+            ],
+            "dims": [
+              192
+            ],
+            "numeric_seqs": [
+              17,
+              100,
+              257,
+              1536
+            ],
+            "numeric_dims": [
+              192,
+              256
+            ],
+            "seed": 2026,
+            "warmup": 10,
+            "samples": 20,
+            "inner": 3
+          }
+        },
+        "runner_sha256": "633e3d5ec7f630291d5a05b20ba25b8009e7851abf08a9d08f5ac3c487dbd320"
+      },
+      "matched": true,
+      "status": "ok",
+      "graph_median_ms": 5.291050752003988,
+      "event_median_ms": 5.329530715942383,
+      "input_hashes": {
+        "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+        "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+        "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+      },
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 22
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 22,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 32,
+          "seq_len": 4096,
+          "smem_bytes": 67584,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 67584,
+        "threads_per_threadgroup": 128
+      }
+    },
+    {
+      "config_id": 23,
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 23
+        }
+      ],
+      "verification_response": {
+        "accepted": false,
+        "applied": 0,
+        "diagnostic": "config is unsupported",
+        "final_plan": {
+          "config_id": 1,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 32,
+          "seq_len": 4096,
+          "smem_bytes": 76288,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 76288,
+        "threads_per_threadgroup": 128
+      },
+      "status": "rejected",
+      "diagnostic": "config is unsupported"
+    },
+    {
+      "config_id": 24,
+      "checked_plan": {
+        "config_id": 24,
+        "head_dim": 192,
+        "kernel_max_threads": 128,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "num_threads": 128,
+        "queries_per_block": 32,
+        "seq_len": 4096,
+        "smem_bytes": 76288,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "case": {
+        "config": 24,
+        "config_name": "Q32K128-min1-DRAIN",
+        "seq": 4096,
+        "dim": 192,
+        "scale": 0.07216878364870322,
+        "case_seed": 1969556131,
+        "module": "alias",
+        "base_config_id": 24,
+        "supported": true,
+        "validate": {
+          "ok": true,
+          "detail": "ok"
+        },
+        "input_hashes": {
+          "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+          "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+          "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+        },
+        "comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.888356274321608e-09,
+          "within_tolerance": true
+        },
+        "cuda_event_timing": {
+          "median_ms": 5.312485218048096,
+          "p10_ms": 5.259882799784343,
+          "p90_ms": 5.376361656188965,
+          "samples_ms": [
+            5.335466384887695,
+            5.323018709818522,
+            5.32093874613444,
+            5.2662506103515625,
+            5.260042508443196,
+            5.377887725830078,
+            5.262314796447754,
+            5.509973526000977,
+            5.318431854248047,
+            5.3065385818481445,
+            5.264138539632161,
+            5.373258590698242,
+            5.2585493723551435,
+            5.259946823120117,
+            5.25930658976237,
+            5.376192092895508,
+            5.26692263285319,
+            5.278463999430339,
+            5.324106534322103,
+            5.374549229939778
+          ]
+        },
+        "wall_timing": {
+          "median_ms": 5.298485000821529,
+          "p10_ms": 5.29148979949241,
+          "p90_ms": 5.303985802675015,
+          "samples_ms": [
+            5.287805000989465,
+            5.3003650027676485,
+            5.3016290003142785,
+            5.308781001076568,
+            5.610271000477951,
+            5.297115996654611,
+            5.291724999551661,
+            5.295308998029213,
+            5.289372998959152,
+            5.298733001836808,
+            5.2957570005673915,
+            5.296045001159655,
+            5.2932770013285335,
+            5.2999159997852985,
+            5.295980998198502,
+            5.299132997606648,
+            5.303453002852621,
+            5.3001089981989935,
+            5.2982369998062495,
+            5.301756998960627
+          ]
+        },
+        "graph_timing": {
+          "median_ms": 5.295034567515055,
+          "p10_ms": 5.288061904907227,
+          "p90_ms": 5.321902910868327,
+          "samples_ms": [
+            5.297045389811198,
+            5.29476261138916,
+            5.2939198811848955,
+            5.284447987874349,
+            5.296789487202962,
+            5.290901184082031,
+            5.293855985005696,
+            5.40330696105957,
+            5.304064114888509,
+            5.372437159220378,
+            5.285642623901367,
+            5.296778678894043,
+            5.294442812601726,
+            5.316287994384766,
+            5.30130132039388,
+            5.288330713907878,
+            5.290506680806478,
+            5.29530652364095,
+            5.2911787033081055,
+            5.295872052510579
+          ]
+        },
+        "graph_comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.888356274321608e-09,
+          "within_tolerance": true
+        },
+        "config_info": {
+          "id": 24,
+          "smem_bytes": 76288,
+          "num_threads": 128,
+          "num_warps": 4,
+          "queries_per_block": 32,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "min_blocks_hint": 1,
+          "installed_min_blocks": 3,
+          "single_value_iteration": false,
+          "keep_output_in_rf": false,
+          "preload_v": false,
+          "alias_scratch": false,
+          "async_drains": true,
+          "num_regs": 225,
+          "local_size_bytes": 0,
+          "static_shared_bytes": 0,
+          "total_shared_bytes": 76288,
+          "kernel_max_threads": 128,
+          "device_max_optin_shared": 101376,
+          "device_max_threads": 1024,
+          "supported": true,
+          "unsupported_reason": "",
+          "base_config_id": 24,
+          "module": "alias"
+        },
+        "run_metadata": {
+          "date": "2026-09-11T03:35:10-0700",
+          "device": {
+            "name": "NVIDIA GB10",
+            "capability": "12.1",
+            "sm_count": 48,
+            "total_memory_bytes": 130663165952
+          },
+          "torch": "2.14.0+cu130",
+          "torch_cuda": "13.0",
+          "torch_git_version": "08187d9e0fba026dc8217405802ab5381dc88d90",
+          "module_files": {
+            "normal": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate.so",
+            "reverse": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_rev.so",
+            "alias": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_alias.so",
+            "revderiv": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_revderiv.so"
+          },
+          "provenance": {
+            "kernel": "PyTorch installed mem_eff AttentionKernel<float,Sm80,true,Q,K,MD,false,false>",
+            "arithmetic": "unmodified vendor OpMultiplyAddFastF32 (CUTLASS 3xTF32 emulation); NOT single TF32, NOT FP16, NOT IEEE scalar FP32",
+            "attribution": "Meta Platforms BSD-3-Clause PyTorch mem_eff_attention; NVIDIA CUTLASS BSD-3-Clause",
+            "cutlass_pin": "e05f953a5b3d38adc240df2ff928e0421c2abba3",
+            "pytorch_pin": "08187d9e0fba026dc8217405802ab5381dc88d90",
+            "derivatives": {
+              "reverse": "ids14-17: query_start reversed (gridDim.x-1-blockIdx.x)*Q in PyTorchMemEffAttentionRev",
+              "alias": "ids20-22: union mm1/epilogue + cp_async drains in PyTorchMemEffAttentionAlias; ids23-24: drain-only control PyTorchMemEffAttentionDrain; ids25-26: +reversal PyTorchMemEffAttentionRevDrain/RevAlias; hashes in docs/cuda_attention_specialization.md"
+            }
+          },
+          "output_layout": "physical (B,N,H,D) with o_strideM=H*D; logical view (B,H,N,D) for comparison",
+          "tolerance": {
+            "atol": 0.0001,
+            "rtol": 0.001
+          },
+          "grid": {
+            "configs": [
+              24
+            ],
+            "config_names": {
+              "24": "Q32K128-min1-DRAIN"
+            },
+            "config_modules": {
+              "24": "alias"
+            },
+            "config_base_ids": {
+              "24": 24
+            },
+            "seqs": [
+              4096
+            ],
+            "dims": [
+              192
+            ],
+            "numeric_seqs": [
+              17,
+              100,
+              257,
+              1536
+            ],
+            "numeric_dims": [
+              192,
+              256
+            ],
+            "seed": 2026,
+            "warmup": 10,
+            "samples": 20,
+            "inner": 3
+          }
+        },
+        "runner_sha256": "633e3d5ec7f630291d5a05b20ba25b8009e7851abf08a9d08f5ac3c487dbd320"
+      },
+      "matched": true,
+      "status": "ok",
+      "graph_median_ms": 5.295034567515055,
+      "event_median_ms": 5.312485218048096,
+      "input_hashes": {
+        "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+        "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+        "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+      },
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 24
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 24,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 32,
+          "seq_len": 4096,
+          "smem_bytes": 76288,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 76288,
+        "threads_per_threadgroup": 128
+      }
+    },
+    {
+      "config_id": 25,
+      "checked_plan": {
+        "config_id": 25,
+        "head_dim": 192,
+        "kernel_max_threads": 128,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "num_threads": 128,
+        "queries_per_block": 32,
+        "seq_len": 4096,
+        "smem_bytes": 76288,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "case": {
+        "config": 25,
+        "config_name": "Q32K128-min1-REVDRAIN",
+        "seq": 4096,
+        "dim": 192,
+        "scale": 0.07216878364870322,
+        "case_seed": 1969556131,
+        "module": "revderiv",
+        "base_config_id": 25,
+        "supported": true,
+        "validate": {
+          "ok": true,
+          "detail": "ok"
+        },
+        "input_hashes": {
+          "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+          "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+          "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+        },
+        "comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.888356274321608e-09,
+          "within_tolerance": true
+        },
+        "cuda_event_timing": {
+          "median_ms": 5.173562685648601,
+          "p10_ms": 5.120652802785238,
+          "p90_ms": 5.297543462117513,
+          "samples_ms": [
+            5.263519922892253,
+            5.250154813130696,
+            5.250442822774251,
+            5.089536031087239,
+            5.281888008117676,
+            5.296778678894043,
+            5.314250628153483,
+            5.242186546325684,
+            5.225781440734863,
+            5.120800018310547,
+            5.304426511128743,
+            5.122613271077474,
+            5.119327863057454,
+            5.123509407043457,
+            5.1562347412109375,
+            5.173642794291179,
+            5.173482577006022,
+            5.170485178629558,
+            5.166677474975586,
+            5.171210606892903
+          ]
+        },
+        "wall_timing": {
+          "median_ms": 5.17482050054241,
+          "p10_ms": 5.168612899069558,
+          "p90_ms": 5.178192801758996,
+          "samples_ms": [
+            5.171164000785211,
+            5.1750370002991986,
+            5.180539999855682,
+            5.173164001462283,
+            5.168539999431232,
+            5.175260997930309,
+            5.175644000701141,
+            5.172396002308233,
+            5.1767160002782475,
+            5.170396001631161,
+            5.706350999389542,
+            5.135917002917267,
+            5.177579998417059,
+            5.1779320019704755,
+            5.174604000785621,
+            5.176123999262927,
+            5.168620999029372,
+            5.174411999178119,
+            5.172268000023905,
+            5.175708000024315
+          ]
+        },
+        "graph_timing": {
+          "median_ms": 5.169066588083902,
+          "p10_ms": 5.167258771260579,
+          "p90_ms": 5.1746944745381676,
+          "samples_ms": [
+            5.169343948364258,
+            5.1717227300008135,
+            5.167274792989095,
+            5.168789227803548,
+            5.168405214945476,
+            5.171104113260905,
+            5.168458620707194,
+            5.170570691426595,
+            5.163509368896484,
+            5.17079480489095,
+            5.1696427663167315,
+            5.1685225168863935,
+            5.168266614278157,
+            5.168138821919759,
+            5.1743574142456055,
+            5.167893409729004,
+            5.1671145757039385,
+            5.177728017171224,
+            5.330911954243978,
+            5.170314788818359
+          ]
+        },
+        "graph_comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.888356274321608e-09,
+          "within_tolerance": true
+        },
+        "config_info": {
+          "id": 25,
+          "smem_bytes": 76288,
+          "num_threads": 128,
+          "num_warps": 4,
+          "queries_per_block": 32,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "min_blocks_hint": 1,
+          "installed_min_blocks": 3,
+          "single_value_iteration": false,
+          "keep_output_in_rf": false,
+          "preload_v": false,
+          "alias_scratch": false,
+          "async_drains": true,
+          "reversed": true,
+          "num_regs": 225,
+          "local_size_bytes": 0,
+          "static_shared_bytes": 0,
+          "total_shared_bytes": 76288,
+          "kernel_max_threads": 128,
+          "device_max_optin_shared": 101376,
+          "device_max_threads": 1024,
+          "supported": true,
+          "unsupported_reason": "",
+          "base_config_id": 25,
+          "module": "revderiv"
+        },
+        "run_metadata": {
+          "date": "2026-09-11T03:35:19-0700",
+          "device": {
+            "name": "NVIDIA GB10",
+            "capability": "12.1",
+            "sm_count": 48,
+            "total_memory_bytes": 130663165952
+          },
+          "torch": "2.14.0+cu130",
+          "torch_cuda": "13.0",
+          "torch_git_version": "08187d9e0fba026dc8217405802ab5381dc88d90",
+          "module_files": {
+            "normal": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate.so",
+            "reverse": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_rev.so",
+            "alias": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_alias.so",
+            "revderiv": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_revderiv.so"
+          },
+          "provenance": {
+            "kernel": "PyTorch installed mem_eff AttentionKernel<float,Sm80,true,Q,K,MD,false,false>",
+            "arithmetic": "unmodified vendor OpMultiplyAddFastF32 (CUTLASS 3xTF32 emulation); NOT single TF32, NOT FP16, NOT IEEE scalar FP32",
+            "attribution": "Meta Platforms BSD-3-Clause PyTorch mem_eff_attention; NVIDIA CUTLASS BSD-3-Clause",
+            "cutlass_pin": "e05f953a5b3d38adc240df2ff928e0421c2abba3",
+            "pytorch_pin": "08187d9e0fba026dc8217405802ab5381dc88d90",
+            "derivatives": {
+              "reverse": "ids14-17: query_start reversed (gridDim.x-1-blockIdx.x)*Q in PyTorchMemEffAttentionRev",
+              "alias": "ids20-22: union mm1/epilogue + cp_async drains in PyTorchMemEffAttentionAlias; ids23-24: drain-only control PyTorchMemEffAttentionDrain; ids25-26: +reversal PyTorchMemEffAttentionRevDrain/RevAlias; hashes in docs/cuda_attention_specialization.md"
+            }
+          },
+          "output_layout": "physical (B,N,H,D) with o_strideM=H*D; logical view (B,H,N,D) for comparison",
+          "tolerance": {
+            "atol": 0.0001,
+            "rtol": 0.001
+          },
+          "grid": {
+            "configs": [
+              25
+            ],
+            "config_names": {
+              "25": "Q32K128-min1-REVDRAIN"
+            },
+            "config_modules": {
+              "25": "revderiv"
+            },
+            "config_base_ids": {
+              "25": 25
+            },
+            "seqs": [
+              4096
+            ],
+            "dims": [
+              192
+            ],
+            "numeric_seqs": [
+              17,
+              100,
+              257,
+              1536
+            ],
+            "numeric_dims": [
+              192,
+              256
+            ],
+            "seed": 2026,
+            "warmup": 10,
+            "samples": 20,
+            "inner": 3
+          }
+        },
+        "runner_sha256": "633e3d5ec7f630291d5a05b20ba25b8009e7851abf08a9d08f5ac3c487dbd320"
+      },
+      "matched": true,
+      "status": "ok",
+      "graph_median_ms": 5.169066588083902,
+      "event_median_ms": 5.173562685648601,
+      "input_hashes": {
+        "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+        "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+        "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+      },
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 25
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 25,
+          "head_dim": 192,
+          "kernel_max_threads": 128,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 128,
+          "queries_per_block": 32,
+          "seq_len": 4096,
+          "smem_bytes": 76288,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 76288,
+        "threads_per_threadgroup": 128
+      }
+    },
+    {
+      "config_id": 26,
+      "checked_plan": {
+        "config_id": 26,
+        "head_dim": 192,
+        "kernel_max_threads": 256,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "num_threads": 256,
+        "queries_per_block": 64,
+        "seq_len": 4096,
+        "smem_bytes": 86016,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "case": {
+        "config": 26,
+        "config_name": "Q64K128-min1-REVALIAS",
+        "seq": 4096,
+        "dim": 192,
+        "scale": 0.07216878364870322,
+        "case_seed": 1969556131,
+        "module": "revderiv",
+        "base_config_id": 26,
+        "supported": true,
+        "validate": {
+          "ok": true,
+          "detail": "ok"
+        },
+        "input_hashes": {
+          "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+          "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+          "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+        },
+        "comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.888356274321608e-09,
+          "within_tolerance": true
+        },
+        "cuda_event_timing": {
+          "median_ms": 4.580154577891032,
+          "p10_ms": 4.491449705759685,
+          "p90_ms": 4.662440649668376,
+          "samples_ms": [
+            4.658528010050456,
+            4.594655990600586,
+            4.548821449279785,
+            4.639135996500651,
+            4.486528078715007,
+            4.490048090616862,
+            4.834517478942871,
+            4.6355946858723955,
+            4.491605440775554,
+            4.6587521235148115,
+            4.695637385050456,
+            4.533738772074382,
+            4.536959966023763,
+            4.534261385599772,
+            4.5338134765625,
+            4.544522603352864,
+            4.580959955851237,
+            4.579349199930827,
+            4.583413441975911,
+            4.587637265523274
+          ]
+        },
+        "wall_timing": {
+          "median_ms": 4.582376999678672,
+          "p10_ms": 4.5470665994798765,
+          "p90_ms": 4.593815398038714,
+          "samples_ms": [
+            4.544327999610687,
+            4.563545000564773,
+            4.5551289986178745,
+            4.546361000393517,
+            4.567080999549944,
+            4.547144999378361,
+            4.562025002087466,
+            4.631816998880822,
+            5.068475002190098,
+            4.559993001748808,
+            4.589592997945147,
+            4.582552999636391,
+            4.587144998367876,
+            4.582056997605832,
+            4.585800998029299,
+            4.582200999720953,
+            4.587784998875577,
+            4.587336999975378,
+            4.584665002766997,
+            4.585688999213744
+          ]
+        },
+        "graph_timing": {
+          "median_ms": 4.5825174649556475,
+          "p10_ms": 4.573786640167237,
+          "p90_ms": 4.7203745206197105,
+          "samples_ms": [
+            4.705504099527995,
+            4.586943944295247,
+            4.712490717569987,
+            4.580618540445964,
+            4.5794986089070635,
+            4.583584149678548,
+            4.5719146728515625,
+            4.5786027908325195,
+            4.5739946365356445,
+            4.579413414001465,
+            4.724704106648763,
+            4.574655850728353,
+            4.581621487935384,
+            4.583413441975911,
+            4.571850776672363,
+            4.577408154805501,
+            4.585472106933594,
+            4.599957466125488,
+            4.719893455505371,
+            4.731637318929036
+          ]
+        },
+        "graph_comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.888356274321608e-09,
+          "within_tolerance": true
+        },
+        "config_info": {
+          "id": 26,
+          "smem_bytes": 86016,
+          "num_threads": 256,
+          "num_warps": 8,
+          "queries_per_block": 64,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "min_blocks_hint": 1,
+          "installed_min_blocks": 1,
+          "single_value_iteration": false,
+          "keep_output_in_rf": false,
+          "preload_v": false,
+          "alias_scratch": true,
+          "async_drains": true,
+          "reversed": true,
+          "num_regs": 221,
+          "local_size_bytes": 0,
+          "static_shared_bytes": 0,
+          "total_shared_bytes": 86016,
+          "kernel_max_threads": 256,
+          "device_max_optin_shared": 101376,
+          "device_max_threads": 1024,
+          "supported": true,
+          "unsupported_reason": "",
+          "base_config_id": 26,
+          "module": "revderiv"
+        },
+        "run_metadata": {
+          "date": "2026-09-11T03:35:27-0700",
+          "device": {
+            "name": "NVIDIA GB10",
+            "capability": "12.1",
+            "sm_count": 48,
+            "total_memory_bytes": 130663165952
+          },
+          "torch": "2.14.0+cu130",
+          "torch_cuda": "13.0",
+          "torch_git_version": "08187d9e0fba026dc8217405802ab5381dc88d90",
+          "module_files": {
+            "normal": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate.so",
+            "reverse": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_rev.so",
+            "alias": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_alias.so",
+            "revderiv": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_revderiv.so"
+          },
+          "provenance": {
+            "kernel": "PyTorch installed mem_eff AttentionKernel<float,Sm80,true,Q,K,MD,false,false>",
+            "arithmetic": "unmodified vendor OpMultiplyAddFastF32 (CUTLASS 3xTF32 emulation); NOT single TF32, NOT FP16, NOT IEEE scalar FP32",
+            "attribution": "Meta Platforms BSD-3-Clause PyTorch mem_eff_attention; NVIDIA CUTLASS BSD-3-Clause",
+            "cutlass_pin": "e05f953a5b3d38adc240df2ff928e0421c2abba3",
+            "pytorch_pin": "08187d9e0fba026dc8217405802ab5381dc88d90",
+            "derivatives": {
+              "reverse": "ids14-17: query_start reversed (gridDim.x-1-blockIdx.x)*Q in PyTorchMemEffAttentionRev",
+              "alias": "ids20-22: union mm1/epilogue + cp_async drains in PyTorchMemEffAttentionAlias; ids23-24: drain-only control PyTorchMemEffAttentionDrain; ids25-26: +reversal PyTorchMemEffAttentionRevDrain/RevAlias; hashes in docs/cuda_attention_specialization.md"
+            }
+          },
+          "output_layout": "physical (B,N,H,D) with o_strideM=H*D; logical view (B,H,N,D) for comparison",
+          "tolerance": {
+            "atol": 0.0001,
+            "rtol": 0.001
+          },
+          "grid": {
+            "configs": [
+              26
+            ],
+            "config_names": {
+              "26": "Q64K128-min1-REVALIAS"
+            },
+            "config_modules": {
+              "26": "revderiv"
+            },
+            "config_base_ids": {
+              "26": 26
+            },
+            "seqs": [
+              4096
+            ],
+            "dims": [
+              192
+            ],
+            "numeric_seqs": [
+              17,
+              100,
+              257,
+              1536
+            ],
+            "numeric_dims": [
+              192,
+              256
+            ],
+            "seed": 2026,
+            "warmup": 10,
+            "samples": 20,
+            "inner": 3
+          }
+        },
+        "runner_sha256": "633e3d5ec7f630291d5a05b20ba25b8009e7851abf08a9d08f5ac3c487dbd320"
+      },
+      "matched": true,
+      "status": "ok",
+      "graph_median_ms": 4.5825174649556475,
+      "event_median_ms": 4.580154577891032,
+      "input_hashes": {
+        "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+        "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+        "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+      },
+      "initial_plan": {
+        "seq_len": 4096,
+        "head_dim": 192,
+        "config_id": 1
+      },
+      "tactic_sequence": [
+        {
+          "kind": "select_config",
+          "value": 26
+        }
+      ],
+      "verification_response": {
+        "accepted": true,
+        "applied": 1,
+        "diagnostic": "accepted",
+        "final_plan": {
+          "config_id": 26,
+          "head_dim": 192,
+          "kernel_max_threads": 256,
+          "keys_per_block": 128,
+          "max_k": 256,
+          "num_threads": 256,
+          "queries_per_block": 64,
+          "seq_len": 4096,
+          "smem_bytes": 86016,
+          "static_shared_bytes": 0,
+          "supported": true
+        },
+        "schema_version": 1,
+        "shared_memory_bytes": 86016,
+        "threads_per_threadgroup": 256
+      }
+    }
+  ],
+  "benchmark": {
+    "candidate_config_id": 26,
+    "candidate_event_median_ms": 4.58622932434082,
+    "candidate_graph_median_ms": 4.593413352966309,
+    "per_backend": {
+      "auto": {
+        "raw_status": "ok",
+        "event_eligible": true,
+        "graph_eligible": true,
+        "event_median_ms": 5.268064022064209,
+        "graph_median_ms": 5.2714026769002285,
+        "comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.878839830045217e-09,
+          "within_tolerance": true
+        },
+        "graph_comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.878839830045217e-09,
+          "within_tolerance": true
+        },
+        "raw": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.64907111968693e-07,
+            "normalized_max_error": 0.0013603659600406165,
+            "rms_error": 6.878839830045217e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_efficient_attention_forward",
+              "aten::_scaled_dot_product_efficient_attention",
+              "aten::as_strided",
+              "aten::empty",
+              "aten::fill_",
+              "aten::scaled_dot_product_attention",
+              "aten::transpose",
+              "aten::zero_",
+              "aten::zeros"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 5.268064022064209,
+            "p10_ms": 5.191311963399252,
+            "p90_ms": 5.436602465311687,
+            "samples_ms": [
+              5.175157229105632,
+              5.2122453053792315,
+              5.322154680887858,
+              5.286272048950195,
+              5.430751800537109,
+              5.443178812662761,
+              5.890506744384766,
+              5.185407956441243,
+              5.297333399454753,
+              5.191967964172363,
+              5.266698519388835,
+              5.435871760050456,
+              5.240000089009603,
+              5.236298561096191,
+              5.237770716349284,
+              5.253450711568196,
+              5.269824028015137,
+              5.26910940806071,
+              5.272885322570801,
+              5.267018636067708
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 5.281668500174419,
+            "p10_ms": 5.2709713996591745,
+            "p90_ms": 5.325385898686363,
+            "samples_ms": [
+              5.281212001136737,
+              5.271068999718409,
+              5.28262100124266,
+              5.284205002681119,
+              5.2781410013267305,
+              5.282124999212101,
+              5.2803480029979255,
+              5.273580998618854,
+              5.285469000227749,
+              5.278748998534866,
+              5.525086002307944,
+              5.3031969982839655,
+              5.282396999973571,
+              5.277723998005968,
+              5.282508998789126,
+              5.273933002172271,
+              5.282748999889009,
+              5.270092999126064,
+              5.608269999356708,
+              5.253725001239218
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.64907111968693e-07,
+            "normalized_max_error": 0.0013603659600406165,
+            "rms_error": 6.878839830045217e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 5.2714026769002285,
+            "p10_ms": 5.266130161285401,
+            "p90_ms": 5.371066411336263,
+            "samples_ms": [
+              5.270250638326009,
+              5.484746932983398,
+              5.373034795125325,
+              5.263701438903809,
+              5.27294921875,
+              5.370847702026367,
+              5.262378692626953,
+              5.268437385559082,
+              5.267850557963054,
+              5.272661209106445,
+              5.274058659871419,
+              5.2698666254679365,
+              5.2664000193278,
+              5.273962656656901,
+              5.271903991699219,
+              5.270901362101237,
+              5.269301414489746,
+              5.273215929667155,
+              5.267135938008626,
+              5.273248036702474
+            ]
+          }
+        }
+      },
+      "efficient": {
+        "raw_status": "ok",
+        "event_eligible": true,
+        "graph_eligible": true,
+        "event_median_ms": 5.273125330607096,
+        "graph_median_ms": 5.271765232086182,
+        "comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.878839830045217e-09,
+          "within_tolerance": true
+        },
+        "graph_comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 2.64907111968693e-07,
+          "normalized_max_error": 0.0013603659600406165,
+          "rms_error": 6.878839830045217e-09,
+          "within_tolerance": true
+        },
+        "raw": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.64907111968693e-07,
+            "normalized_max_error": 0.0013603659600406165,
+            "rms_error": 6.878839830045217e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_efficient_attention_forward",
+              "aten::_scaled_dot_product_efficient_attention",
+              "aten::as_strided",
+              "aten::empty",
+              "aten::fill_",
+              "aten::scaled_dot_product_attention",
+              "aten::transpose",
+              "aten::zero_",
+              "aten::zeros"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 5.273125330607096,
+            "p10_ms": 5.19308360417684,
+            "p90_ms": 5.344697697957357,
+            "samples_ms": [
+              5.320576032002767,
+              5.309717178344727,
+              5.193109194437663,
+              5.192853291829427,
+              5.3315839767456055,
+              5.289674758911133,
+              5.18781852722168,
+              5.309376080830892,
+              5.25820795694987,
+              5.240063985188802,
+              5.236565272013347,
+              5.237749417622884,
+              5.240501403808594,
+              5.2392425537109375,
+              5.3420054117838545,
+              5.36892827351888,
+              5.276874542236328,
+              5.277610778808594,
+              5.269376118977864,
+              5.414581298828125
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 5.281660500259022,
+            "p10_ms": 5.276916999355308,
+            "p90_ms": 5.287104899616679,
+            "samples_ms": [
+              5.260428999463329,
+              5.279197001073044,
+              5.286157000227831,
+              5.322204997355584,
+              5.276972999126883,
+              5.281212001136737,
+              5.276413001411129,
+              5.2821089993813075,
+              5.285644998366479,
+              5.278381002426613,
+              5.295500999636715,
+              5.278316002659267,
+              5.277885000396054,
+              5.2855809990433045,
+              5.284557002596557,
+              5.282764999719802,
+              5.286171999614453,
+              5.2784129984502215,
+              5.279901000903919,
+              5.282285001158016
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.64907111968693e-07,
+            "normalized_max_error": 0.0013603659600406165,
+            "rms_error": 6.878839830045217e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 5.271765232086182,
+            "p10_ms": 5.267609723409017,
+            "p90_ms": 5.325900840759277,
+            "samples_ms": [
+              5.268138567606608,
+              5.271370569864909,
+              5.270016034444173,
+              5.2718931833903,
+              5.272608121236165,
+              5.2705386479695635,
+              5.275242805480957,
+              5.277322769165039,
+              5.265920003255208,
+              5.263882637023926,
+              5.399040222167969,
+              5.354623794555664,
+              5.322709401448567,
+              5.305343945821126,
+              5.267797470092773,
+              5.2716372807820635,
+              5.273237228393555,
+              5.27126407623291,
+              5.275285402933757,
+              5.269184112548828
+            ]
+          }
+        }
+      },
+      "cudnn": {
+        "raw_status": "unsupported",
+        "event_eligible": false,
+        "graph_eligible": false,
+        "event_median_ms": null,
+        "graph_median_ms": null,
+        "comparison": {},
+        "graph_comparison": {},
+        "raw": {
+          "warnings": [
+            "Memory efficient kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1240.)",
+            "Memory Efficient attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:600.)",
+            "Flash attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1242.)",
+            "Flash attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:588.)",
+            "cuDNN attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1244.)",
+            "Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:110.)"
+          ],
+          "status": "unsupported",
+          "error": {
+            "type": "RuntimeError",
+            "message": "No available kernel. Aborting execution."
+          }
+        }
+      },
+      "flash": {
+        "raw_status": "unsupported",
+        "event_eligible": false,
+        "graph_eligible": false,
+        "event_median_ms": null,
+        "graph_median_ms": null,
+        "comparison": {},
+        "graph_comparison": {},
+        "raw": {
+          "warnings": [
+            "Memory efficient kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1240.)",
+            "Memory Efficient attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:600.)",
+            "Flash attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1242.)",
+            "Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:110.)",
+            "cuDNN attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1244.)",
+            "cuDNN attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:922.)"
+          ],
+          "status": "unsupported",
+          "error": {
+            "type": "RuntimeError",
+            "message": "No available kernel. Aborting execution."
+          }
+        }
+      },
+      "math": {
+        "raw_status": "ok",
+        "event_eligible": true,
+        "graph_eligible": true,
+        "event_median_ms": 35.960107167561844,
+        "graph_median_ms": 35.838938395182296,
+        "comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 1.3757690590227023e-07,
+          "normalized_max_error": 0.0009992241278558224,
+          "rms_error": 9.466281329137742e-09,
+          "within_tolerance": true
+        },
+        "graph_comparison": {
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 1.3757690590227023e-07,
+          "normalized_max_error": 0.0009992241278558224,
+          "rms_error": 9.466281329137742e-09,
+          "within_tolerance": true
+        },
+        "raw": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.3757690590227023e-07,
+            "normalized_max_error": 0.0009992241278558224,
+            "rms_error": 9.466281329137742e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_reshape_alias",
+              "aten::_safe_softmax",
+              "aten::_scaled_dot_product_attention_math",
+              "aten::_softmax",
+              "aten::_unsafe_view",
+              "aten::add_",
+              "aten::all",
+              "aten::as_strided",
+              "aten::bmm",
+              "aten::empty",
+              "aten::expand",
+              "aten::fill_",
+              "aten::isneginf",
+              "aten::matmul",
+              "aten::mul",
+              "aten::ones",
+              "aten::reshape",
+              "aten::resize_",
+              "aten::scalar_tensor",
+              "aten::scaled_dot_product_attention",
+              "aten::softmax",
+              "aten::to",
+              "aten::transpose",
+              "aten::tril",
+              "aten::view",
+              "aten::where"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 35.960107167561844,
+            "p10_ms": 35.851227315266925,
+            "p90_ms": 36.20214945475261,
+            "samples_ms": [
+              35.940650939941406,
+              35.86506652832031,
+              35.88045756022135,
+              36.193397521972656,
+              35.58618672688802,
+              35.94029744466146,
+              35.87152099609375,
+              35.86139678955078,
+              36.28091684977213,
+              35.97178649902344,
+              36.13299306233724,
+              35.75970204671224,
+              36.18091837565104,
+              36.12804158528646,
+              35.97828165690104,
+              36.169962565104164,
+              36.141675313313804,
+              37.80634562174479,
+              35.94842783610026,
+              35.86298624674479
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 36.09508449881105,
+            "p10_ms": 35.83926530191093,
+            "p90_ms": 36.25470039914944,
+            "samples_ms": [
+              35.881474999769125,
+              36.114628997893305,
+              36.25115799877676,
+              36.286582002503565,
+              35.99853299965616,
+              35.70316999685019,
+              37.051529998279875,
+              36.16834200147423,
+              36.21422899959725,
+              35.979252999823075,
+              35.85438700247323,
+              36.13211699848762,
+              36.004293000587495,
+              36.18886899857898,
+              35.90781200182391,
+              35.6775389991526,
+              36.07553999972879,
+              36.17971800122177,
+              36.16930100179161,
+              35.91437200157088
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.3757690590227023e-07,
+            "normalized_max_error": 0.0009992241278558224,
+            "rms_error": 9.466281329137742e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 35.838938395182296,
+            "p10_ms": 35.66579132080078,
+            "p90_ms": 35.98397318522136,
+            "samples_ms": [
+              35.77880605061849,
+              35.95709991455078,
+              35.67689514160156,
+              35.76553599039713,
+              36.13478342692057,
+              35.72497049967448,
+              35.98150380452474,
+              35.69377136230469,
+              36.00619761149088,
+              35.93945566813151,
+              35.68120574951172,
+              35.56585693359375,
+              35.908180236816406,
+              35.95563761393229,
+              35.967445373535156,
+              35.37536112467448,
+              35.77028147379557,
+              35.97220357259115,
+              35.899070739746094,
+              35.747413635253906
+            ]
+          }
+        }
+      }
+    },
+    "input_hashes_verified": true,
+    "event_vs_event": {
+      "auto": [
+        4.58622932434082,
+        5.268064022064209
+      ],
+      "efficient": [
+        4.58622932434082,
+        5.273125330607096
+      ],
+      "cudnn": [
+        4.58622932434082,
+        null
+      ],
+      "flash": [
+        4.58622932434082,
+        null
+      ],
+      "math": [
+        4.58622932434082,
+        35.960107167561844
+      ]
+    },
+    "graph_vs_graph": {
+      "auto": [
+        4.593413352966309,
+        5.2714026769002285
+      ],
+      "efficient": [
+        4.593413352966309,
+        5.271765232086182
+      ],
+      "cudnn": [
+        4.593413352966309,
+        null
+      ],
+      "flash": [
+        4.593413352966309,
+        null
+      ],
+      "math": [
+        4.593413352966309,
+        35.838938395182296
+      ]
+    },
+    "raw_candidate": {
+      "config": 26,
+      "config_name": "Q64K128-min1-REVALIAS",
+      "seq": 4096,
+      "dim": 192,
+      "scale": 0.07216878364870322,
+      "case_seed": 1969556131,
+      "module": "revderiv",
+      "base_config_id": 26,
+      "supported": true,
+      "validate": {
+        "ok": true,
+        "detail": "ok"
+      },
+      "input_hashes": {
+        "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+        "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+        "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+      },
+      "comparison": {
+        "finite_out": true,
+        "finite_ref": true,
+        "max_abs_error": 2.64907111968693e-07,
+        "normalized_max_error": 0.0013603659600406165,
+        "rms_error": 6.888356274321608e-09,
+        "within_tolerance": true
+      },
+      "cuda_event_timing": {
+        "median_ms": 4.58622932434082,
+        "p10_ms": 4.494303989410401,
+        "p90_ms": 4.698820273081462,
+        "samples_ms": [
+          4.555189450581868,
+          4.652864138285319,
+          4.62830924987793,
+          4.494112014770508,
+          4.662272135416667,
+          4.490101178487142,
+          4.494325319925944,
+          4.700778643290202,
+          4.571029345194499,
+          4.534655888875325,
+          4.533482551574707,
+          4.698602676391602,
+          4.598400115966797,
+          4.638186772664388,
+          4.541653315226237,
+          4.705258687337239,
+          4.6003414789835615,
+          4.586677233378093,
+          4.585781415303548,
+          4.584021250406901
+        ]
+      },
+      "wall_timing": {
+        "median_ms": 4.5994329993845895,
+        "p10_ms": 4.5883682989369845,
+        "p90_ms": 4.653087599217543,
+        "samples_ms": [
+          4.613896999217104,
+          4.586841001582798,
+          4.600824999215547,
+          4.590729000483407,
+          4.60722500065458,
+          4.602329001500038,
+          4.60668099913164,
+          4.606889000569936,
+          4.596136997861322,
+          4.5956900030432735,
+          5.005802999221487,
+          5.088492001959821,
+          4.552023998257937,
+          4.593257002852624,
+          4.588537998643005,
+          4.598040999553632,
+          4.607384998962516,
+          4.604169000231195,
+          4.590792999806581,
+          4.592713001329685
+        ]
+      },
+      "graph_timing": {
+        "median_ms": 4.593413352966309,
+        "p10_ms": 4.589878304799398,
+        "p90_ms": 4.599322605133057,
+        "samples_ms": [
+          4.596501350402832,
+          4.591882705688477,
+          4.595808029174805,
+          4.591936111450195,
+          4.5899092356363935,
+          4.621866544087728,
+          4.593920071919759,
+          4.592981338500977,
+          4.597269376118978,
+          4.5979413986206055,
+          4.595797220865886,
+          4.592800140380859,
+          4.593056042989095,
+          4.590346654256185,
+          4.584842681884766,
+          4.590346654256185,
+          4.5895999272664385,
+          4.593770662943522,
+          4.60042667388916,
+          4.599199930826823
+        ]
+      },
+      "graph_comparison": {
+        "finite_out": true,
+        "finite_ref": true,
+        "max_abs_error": 2.64907111968693e-07,
+        "normalized_max_error": 0.0013603659600406165,
+        "rms_error": 6.888356274321608e-09,
+        "within_tolerance": true
+      },
+      "config_info": {
+        "id": 26,
+        "smem_bytes": 86016,
+        "num_threads": 256,
+        "num_warps": 8,
+        "queries_per_block": 64,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 1,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "preload_v": false,
+        "alias_scratch": true,
+        "async_drains": true,
+        "reversed": true,
+        "num_regs": 221,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 86016,
+        "kernel_max_threads": 256,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 26,
+        "module": "revderiv"
+      },
+      "run_metadata": {
+        "date": "2026-09-11T03:35:35-0700",
+        "device": {
+          "name": "NVIDIA GB10",
+          "capability": "12.1",
+          "sm_count": 48,
+          "total_memory_bytes": 130663165952
+        },
+        "torch": "2.14.0+cu130",
+        "torch_cuda": "13.0",
+        "torch_git_version": "08187d9e0fba026dc8217405802ab5381dc88d90",
+        "module_files": {
+          "normal": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate.so",
+          "reverse": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_rev.so",
+          "alias": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_alias.so",
+          "revderiv": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_revderiv.so"
+        },
+        "provenance": {
+          "kernel": "PyTorch installed mem_eff AttentionKernel<float,Sm80,true,Q,K,MD,false,false>",
+          "arithmetic": "unmodified vendor OpMultiplyAddFastF32 (CUTLASS 3xTF32 emulation); NOT single TF32, NOT FP16, NOT IEEE scalar FP32",
+          "attribution": "Meta Platforms BSD-3-Clause PyTorch mem_eff_attention; NVIDIA CUTLASS BSD-3-Clause",
+          "cutlass_pin": "e05f953a5b3d38adc240df2ff928e0421c2abba3",
+          "pytorch_pin": "08187d9e0fba026dc8217405802ab5381dc88d90",
+          "derivatives": {
+            "reverse": "ids14-17: query_start reversed (gridDim.x-1-blockIdx.x)*Q in PyTorchMemEffAttentionRev",
+            "alias": "ids20-22: union mm1/epilogue + cp_async drains in PyTorchMemEffAttentionAlias; ids23-24: drain-only control PyTorchMemEffAttentionDrain; ids25-26: +reversal PyTorchMemEffAttentionRevDrain/RevAlias; hashes in docs/cuda_attention_specialization.md"
+          }
+        },
+        "output_layout": "physical (B,N,H,D) with o_strideM=H*D; logical view (B,H,N,D) for comparison",
+        "tolerance": {
+          "atol": 0.0001,
+          "rtol": 0.001
+        },
+        "grid": {
+          "configs": [
+            26
+          ],
+          "config_names": {
+            "26": "Q64K128-min1-REVALIAS"
+          },
+          "config_modules": {
+            "26": "revderiv"
+          },
+          "config_base_ids": {
+            "26": 26
+          },
+          "seqs": [
+            4096
+          ],
+          "dims": [
+            192
+          ],
+          "numeric_seqs": [
+            17,
+            100,
+            257,
+            1536
+          ],
+          "numeric_dims": [
+            192,
+            256
+          ],
+          "seed": 2026,
+          "warmup": 10,
+          "samples": 20,
+          "inner": 3
+        }
+      },
+      "runner_sha256": "633e3d5ec7f630291d5a05b20ba25b8009e7851abf08a9d08f5ac3c487dbd320"
+    },
+    "raw_survey": {
+      "seq": 4096,
+      "dim": 192,
+      "dtype": "float32",
+      "heads": 8,
+      "batch": 1,
+      "scale": 0.07216878364870322,
+      "case_seed": 1969556131,
+      "backend_order": [
+        "auto",
+        "flash",
+        "cudnn",
+        "efficient",
+        "math"
+      ],
+      "results": {
+        "auto": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.64907111968693e-07,
+            "normalized_max_error": 0.0013603659600406165,
+            "rms_error": 6.878839830045217e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_efficient_attention_forward",
+              "aten::_scaled_dot_product_efficient_attention",
+              "aten::as_strided",
+              "aten::empty",
+              "aten::fill_",
+              "aten::scaled_dot_product_attention",
+              "aten::transpose",
+              "aten::zero_",
+              "aten::zeros"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 5.268064022064209,
+            "p10_ms": 5.191311963399252,
+            "p90_ms": 5.436602465311687,
+            "samples_ms": [
+              5.175157229105632,
+              5.2122453053792315,
+              5.322154680887858,
+              5.286272048950195,
+              5.430751800537109,
+              5.443178812662761,
+              5.890506744384766,
+              5.185407956441243,
+              5.297333399454753,
+              5.191967964172363,
+              5.266698519388835,
+              5.435871760050456,
+              5.240000089009603,
+              5.236298561096191,
+              5.237770716349284,
+              5.253450711568196,
+              5.269824028015137,
+              5.26910940806071,
+              5.272885322570801,
+              5.267018636067708
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 5.281668500174419,
+            "p10_ms": 5.2709713996591745,
+            "p90_ms": 5.325385898686363,
+            "samples_ms": [
+              5.281212001136737,
+              5.271068999718409,
+              5.28262100124266,
+              5.284205002681119,
+              5.2781410013267305,
+              5.282124999212101,
+              5.2803480029979255,
+              5.273580998618854,
+              5.285469000227749,
+              5.278748998534866,
+              5.525086002307944,
+              5.3031969982839655,
+              5.282396999973571,
+              5.277723998005968,
+              5.282508998789126,
+              5.273933002172271,
+              5.282748999889009,
+              5.270092999126064,
+              5.608269999356708,
+              5.253725001239218
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.64907111968693e-07,
+            "normalized_max_error": 0.0013603659600406165,
+            "rms_error": 6.878839830045217e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 5.2714026769002285,
+            "p10_ms": 5.266130161285401,
+            "p90_ms": 5.371066411336263,
+            "samples_ms": [
+              5.270250638326009,
+              5.484746932983398,
+              5.373034795125325,
+              5.263701438903809,
+              5.27294921875,
+              5.370847702026367,
+              5.262378692626953,
+              5.268437385559082,
+              5.267850557963054,
+              5.272661209106445,
+              5.274058659871419,
+              5.2698666254679365,
+              5.2664000193278,
+              5.273962656656901,
+              5.271903991699219,
+              5.270901362101237,
+              5.269301414489746,
+              5.273215929667155,
+              5.267135938008626,
+              5.273248036702474
+            ]
+          }
+        },
+        "flash": {
+          "warnings": [
+            "Memory efficient kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1240.)",
+            "Memory Efficient attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:600.)",
+            "Flash attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1242.)",
+            "Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:110.)",
+            "cuDNN attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1244.)",
+            "cuDNN attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:922.)"
+          ],
+          "status": "unsupported",
+          "error": {
+            "type": "RuntimeError",
+            "message": "No available kernel. Aborting execution."
+          }
+        },
+        "cudnn": {
+          "warnings": [
+            "Memory efficient kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1240.)",
+            "Memory Efficient attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:600.)",
+            "Flash attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1242.)",
+            "Flash attention has been runtime disabled. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:588.)",
+            "cuDNN attention kernel not used because: (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:1244.)",
+            "Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:110.)"
+          ],
+          "status": "unsupported",
+          "error": {
+            "type": "RuntimeError",
+            "message": "No available kernel. Aborting execution."
+          }
+        },
+        "efficient": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.64907111968693e-07,
+            "normalized_max_error": 0.0013603659600406165,
+            "rms_error": 6.878839830045217e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_efficient_attention_forward",
+              "aten::_scaled_dot_product_efficient_attention",
+              "aten::as_strided",
+              "aten::empty",
+              "aten::fill_",
+              "aten::scaled_dot_product_attention",
+              "aten::transpose",
+              "aten::zero_",
+              "aten::zeros"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 5.273125330607096,
+            "p10_ms": 5.19308360417684,
+            "p90_ms": 5.344697697957357,
+            "samples_ms": [
+              5.320576032002767,
+              5.309717178344727,
+              5.193109194437663,
+              5.192853291829427,
+              5.3315839767456055,
+              5.289674758911133,
+              5.18781852722168,
+              5.309376080830892,
+              5.25820795694987,
+              5.240063985188802,
+              5.236565272013347,
+              5.237749417622884,
+              5.240501403808594,
+              5.2392425537109375,
+              5.3420054117838545,
+              5.36892827351888,
+              5.276874542236328,
+              5.277610778808594,
+              5.269376118977864,
+              5.414581298828125
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 5.281660500259022,
+            "p10_ms": 5.276916999355308,
+            "p90_ms": 5.287104899616679,
+            "samples_ms": [
+              5.260428999463329,
+              5.279197001073044,
+              5.286157000227831,
+              5.322204997355584,
+              5.276972999126883,
+              5.281212001136737,
+              5.276413001411129,
+              5.2821089993813075,
+              5.285644998366479,
+              5.278381002426613,
+              5.295500999636715,
+              5.278316002659267,
+              5.277885000396054,
+              5.2855809990433045,
+              5.284557002596557,
+              5.282764999719802,
+              5.286171999614453,
+              5.2784129984502215,
+              5.279901000903919,
+              5.282285001158016
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 2.64907111968693e-07,
+            "normalized_max_error": 0.0013603659600406165,
+            "rms_error": 6.878839830045217e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 5.271765232086182,
+            "p10_ms": 5.267609723409017,
+            "p90_ms": 5.325900840759277,
+            "samples_ms": [
+              5.268138567606608,
+              5.271370569864909,
+              5.270016034444173,
+              5.2718931833903,
+              5.272608121236165,
+              5.2705386479695635,
+              5.275242805480957,
+              5.277322769165039,
+              5.265920003255208,
+              5.263882637023926,
+              5.399040222167969,
+              5.354623794555664,
+              5.322709401448567,
+              5.305343945821126,
+              5.267797470092773,
+              5.2716372807820635,
+              5.273237228393555,
+              5.27126407623291,
+              5.275285402933757,
+              5.269184112548828
+            ]
+          }
+        },
+        "math": {
+          "warnings": [],
+          "comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.3757690590227023e-07,
+            "normalized_max_error": 0.0009992241278558224,
+            "rms_error": 9.466281329137742e-09,
+            "within_tolerance": true
+          },
+          "status": "ok",
+          "dispatch": {
+            "error": null,
+            "names": [
+              "aten::_reshape_alias",
+              "aten::_safe_softmax",
+              "aten::_scaled_dot_product_attention_math",
+              "aten::_softmax",
+              "aten::_unsafe_view",
+              "aten::add_",
+              "aten::all",
+              "aten::as_strided",
+              "aten::bmm",
+              "aten::empty",
+              "aten::expand",
+              "aten::fill_",
+              "aten::isneginf",
+              "aten::matmul",
+              "aten::mul",
+              "aten::ones",
+              "aten::reshape",
+              "aten::resize_",
+              "aten::scalar_tensor",
+              "aten::scaled_dot_product_attention",
+              "aten::softmax",
+              "aten::to",
+              "aten::transpose",
+              "aten::tril",
+              "aten::view",
+              "aten::where"
+            ]
+          },
+          "cuda_event_timing": {
+            "median_ms": 35.960107167561844,
+            "p10_ms": 35.851227315266925,
+            "p90_ms": 36.20214945475261,
+            "samples_ms": [
+              35.940650939941406,
+              35.86506652832031,
+              35.88045756022135,
+              36.193397521972656,
+              35.58618672688802,
+              35.94029744466146,
+              35.87152099609375,
+              35.86139678955078,
+              36.28091684977213,
+              35.97178649902344,
+              36.13299306233724,
+              35.75970204671224,
+              36.18091837565104,
+              36.12804158528646,
+              35.97828165690104,
+              36.169962565104164,
+              36.141675313313804,
+              37.80634562174479,
+              35.94842783610026,
+              35.86298624674479
+            ]
+          },
+          "wall_timing": {
+            "median_ms": 36.09508449881105,
+            "p10_ms": 35.83926530191093,
+            "p90_ms": 36.25470039914944,
+            "samples_ms": [
+              35.881474999769125,
+              36.114628997893305,
+              36.25115799877676,
+              36.286582002503565,
+              35.99853299965616,
+              35.70316999685019,
+              37.051529998279875,
+              36.16834200147423,
+              36.21422899959725,
+              35.979252999823075,
+              35.85438700247323,
+              36.13211699848762,
+              36.004293000587495,
+              36.18886899857898,
+              35.90781200182391,
+              35.6775389991526,
+              36.07553999972879,
+              36.17971800122177,
+              36.16930100179161,
+              35.91437200157088
+            ]
+          },
+          "graph_comparison": {
+            "finite_out": true,
+            "finite_ref": true,
+            "max_abs_error": 1.3757690590227023e-07,
+            "normalized_max_error": 0.0009992241278558224,
+            "rms_error": 9.466281329137742e-09,
+            "within_tolerance": true
+          },
+          "graph_timing": {
+            "median_ms": 35.838938395182296,
+            "p10_ms": 35.66579132080078,
+            "p90_ms": 35.98397318522136,
+            "samples_ms": [
+              35.77880605061849,
+              35.95709991455078,
+              35.67689514160156,
+              35.76553599039713,
+              36.13478342692057,
+              35.72497049967448,
+              35.98150380452474,
+              35.69377136230469,
+              36.00619761149088,
+              35.93945566813151,
+              35.68120574951172,
+              35.56585693359375,
+              35.908180236816406,
+              35.95563761393229,
+              35.967445373535156,
+              35.37536112467448,
+              35.77028147379557,
+              35.97220357259115,
+              35.899070739746094,
+              35.747413635253906
+            ]
+          }
+        }
+      },
+      "input_hashes": {
+        "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+        "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+        "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+      },
+      "run_metadata": {
+        "date": "2026-09-11T10:35:42.091547+00:00",
+        "python": "3.12.3",
+        "platform": "Linux-6.17.0-1032-nvidia-aarch64-with-glibc2.39",
+        "numpy": "2.5.3",
+        "torch": "2.14.0+cu130",
+        "torch_cuda_available": true,
+        "cuda_version": "13.0",
+        "cudnn_version": 92400,
+        "device": {
+          "name": "NVIDIA GB10",
+          "major": 12,
+          "minor": 1,
+          "sm_count": 48,
+          "total_memory_bytes": 130663165952,
+          "capability": "12.1"
+        },
+        "device_name": "NVIDIA GB10",
+        "tf32_settings": {
+          "matmul_allow_tf32": false,
+          "cudnn_allow_tf32": false
+        },
+        "fp16_precision": {
+          "matmul_allow_fp16_reduced_precision_reduction": true,
+          "cudnn_allow_fp16_reduced_precision_reduction": null
+        },
+        "grid": {
+          "seqs": [
+            4096
+          ],
+          "dims": [
+            192
+          ],
+          "dtypes": [
+            "float32"
+          ],
+          "backends": [
+            "auto",
+            "efficient",
+            "cudnn",
+            "flash",
+            "math"
+          ],
+          "heads": 8,
+          "batch": 1,
+          "warmup": 10,
+          "samples": 20,
+          "inner": 3,
+          "seed": 2026
+        }
+      },
+      "runner_sha256": "e3158689a0eefc9488ce70c264423cc527e45702eaa341316f552171c3c14932"
+    },
+    "fastest_vendor_event": "auto",
+    "fastest_vendor_event_median_ms": 5.268064022064209,
+    "candidate_over_fastest_event_ratio": 0.8705720555278631,
+    "fastest_vendor_graph": "auto",
+    "fastest_vendor_graph_median_ms": 5.2714026769002285,
+    "candidate_over_fastest_graph_ratio": 0.8713835072958984
+  },
+  "winner": {
+    "config_id": 26,
+    "status": "ok",
+    "graph_median_ms": 4.5825174649556475,
+    "event_median_ms": 4.580154577891032,
+    "checked_plan": {
+      "config_id": 26,
+      "head_dim": 192,
+      "kernel_max_threads": 256,
+      "keys_per_block": 128,
+      "max_k": 256,
+      "num_threads": 256,
+      "queries_per_block": 64,
+      "seq_len": 4096,
+      "smem_bytes": 86016,
+      "static_shared_bytes": 0,
+      "supported": true
+    },
+    "initial_plan": {
+      "seq_len": 4096,
+      "head_dim": 192,
+      "config_id": 1
+    },
+    "tactic_sequence": [
+      {
+        "kind": "select_config",
+        "value": 26
+      }
+    ],
+    "verification_response": {
+      "accepted": true,
+      "applied": 1,
+      "diagnostic": "accepted",
+      "final_plan": {
+        "config_id": 26,
+        "head_dim": 192,
+        "kernel_max_threads": 256,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "num_threads": 256,
+        "queries_per_block": 64,
+        "seq_len": 4096,
+        "smem_bytes": 86016,
+        "static_shared_bytes": 0,
+        "supported": true
+      },
+      "schema_version": 1,
+      "shared_memory_bytes": 86016,
+      "threads_per_threadgroup": 256
+    }
+  },
+  "selection_timing_ms": 4.5825174649556475,
+  "final_replay": {
+    "config_id": 26,
+    "checked_plan": {
+      "config_id": 26,
+      "head_dim": 192,
+      "kernel_max_threads": 256,
+      "keys_per_block": 128,
+      "max_k": 256,
+      "num_threads": 256,
+      "queries_per_block": 64,
+      "seq_len": 4096,
+      "smem_bytes": 86016,
+      "static_shared_bytes": 0,
+      "supported": true
+    },
+    "case": {
+      "config": 26,
+      "config_name": "Q64K128-min1-REVALIAS",
+      "seq": 4096,
+      "dim": 192,
+      "scale": 0.07216878364870322,
+      "case_seed": 1969556131,
+      "module": "revderiv",
+      "base_config_id": 26,
+      "supported": true,
+      "validate": {
+        "ok": true,
+        "detail": "ok"
+      },
+      "input_hashes": {
+        "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+        "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+        "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+      },
+      "comparison": {
+        "finite_out": true,
+        "finite_ref": true,
+        "max_abs_error": 2.64907111968693e-07,
+        "normalized_max_error": 0.0013603659600406165,
+        "rms_error": 6.888356274321608e-09,
+        "within_tolerance": true
+      },
+      "cuda_event_timing": {
+        "median_ms": 4.58622932434082,
+        "p10_ms": 4.494303989410401,
+        "p90_ms": 4.698820273081462,
+        "samples_ms": [
+          4.555189450581868,
+          4.652864138285319,
+          4.62830924987793,
+          4.494112014770508,
+          4.662272135416667,
+          4.490101178487142,
+          4.494325319925944,
+          4.700778643290202,
+          4.571029345194499,
+          4.534655888875325,
+          4.533482551574707,
+          4.698602676391602,
+          4.598400115966797,
+          4.638186772664388,
+          4.541653315226237,
+          4.705258687337239,
+          4.6003414789835615,
+          4.586677233378093,
+          4.585781415303548,
+          4.584021250406901
+        ]
+      },
+      "wall_timing": {
+        "median_ms": 4.5994329993845895,
+        "p10_ms": 4.5883682989369845,
+        "p90_ms": 4.653087599217543,
+        "samples_ms": [
+          4.613896999217104,
+          4.586841001582798,
+          4.600824999215547,
+          4.590729000483407,
+          4.60722500065458,
+          4.602329001500038,
+          4.60668099913164,
+          4.606889000569936,
+          4.596136997861322,
+          4.5956900030432735,
+          5.005802999221487,
+          5.088492001959821,
+          4.552023998257937,
+          4.593257002852624,
+          4.588537998643005,
+          4.598040999553632,
+          4.607384998962516,
+          4.604169000231195,
+          4.590792999806581,
+          4.592713001329685
+        ]
+      },
+      "graph_timing": {
+        "median_ms": 4.593413352966309,
+        "p10_ms": 4.589878304799398,
+        "p90_ms": 4.599322605133057,
+        "samples_ms": [
+          4.596501350402832,
+          4.591882705688477,
+          4.595808029174805,
+          4.591936111450195,
+          4.5899092356363935,
+          4.621866544087728,
+          4.593920071919759,
+          4.592981338500977,
+          4.597269376118978,
+          4.5979413986206055,
+          4.595797220865886,
+          4.592800140380859,
+          4.593056042989095,
+          4.590346654256185,
+          4.584842681884766,
+          4.590346654256185,
+          4.5895999272664385,
+          4.593770662943522,
+          4.60042667388916,
+          4.599199930826823
+        ]
+      },
+      "graph_comparison": {
+        "finite_out": true,
+        "finite_ref": true,
+        "max_abs_error": 2.64907111968693e-07,
+        "normalized_max_error": 0.0013603659600406165,
+        "rms_error": 6.888356274321608e-09,
+        "within_tolerance": true
+      },
+      "config_info": {
+        "id": 26,
+        "smem_bytes": 86016,
+        "num_threads": 256,
+        "num_warps": 8,
+        "queries_per_block": 64,
+        "keys_per_block": 128,
+        "max_k": 256,
+        "min_blocks_hint": 1,
+        "installed_min_blocks": 1,
+        "single_value_iteration": false,
+        "keep_output_in_rf": false,
+        "preload_v": false,
+        "alias_scratch": true,
+        "async_drains": true,
+        "reversed": true,
+        "num_regs": 221,
+        "local_size_bytes": 0,
+        "static_shared_bytes": 0,
+        "total_shared_bytes": 86016,
+        "kernel_max_threads": 256,
+        "device_max_optin_shared": 101376,
+        "device_max_threads": 1024,
+        "supported": true,
+        "unsupported_reason": "",
+        "base_config_id": 26,
+        "module": "revderiv"
+      },
+      "run_metadata": {
+        "date": "2026-09-11T03:35:35-0700",
+        "device": {
+          "name": "NVIDIA GB10",
+          "capability": "12.1",
+          "sm_count": 48,
+          "total_memory_bytes": 130663165952
+        },
+        "torch": "2.14.0+cu130",
+        "torch_cuda": "13.0",
+        "torch_git_version": "08187d9e0fba026dc8217405802ab5381dc88d90",
+        "module_files": {
+          "normal": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate.so",
+          "reverse": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_rev.so",
+          "alias": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_alias.so",
+          "revderiv": "/home/cake/.cache/veritac-attention-run/cuda_candidate/build/veritac_attn_candidate_revderiv.so"
+        },
+        "provenance": {
+          "kernel": "PyTorch installed mem_eff AttentionKernel<float,Sm80,true,Q,K,MD,false,false>",
+          "arithmetic": "unmodified vendor OpMultiplyAddFastF32 (CUTLASS 3xTF32 emulation); NOT single TF32, NOT FP16, NOT IEEE scalar FP32",
+          "attribution": "Meta Platforms BSD-3-Clause PyTorch mem_eff_attention; NVIDIA CUTLASS BSD-3-Clause",
+          "cutlass_pin": "e05f953a5b3d38adc240df2ff928e0421c2abba3",
+          "pytorch_pin": "08187d9e0fba026dc8217405802ab5381dc88d90",
+          "derivatives": {
+            "reverse": "ids14-17: query_start reversed (gridDim.x-1-blockIdx.x)*Q in PyTorchMemEffAttentionRev",
+            "alias": "ids20-22: union mm1/epilogue + cp_async drains in PyTorchMemEffAttentionAlias; ids23-24: drain-only control PyTorchMemEffAttentionDrain; ids25-26: +reversal PyTorchMemEffAttentionRevDrain/RevAlias; hashes in docs/cuda_attention_specialization.md"
+          }
+        },
+        "output_layout": "physical (B,N,H,D) with o_strideM=H*D; logical view (B,H,N,D) for comparison",
+        "tolerance": {
+          "atol": 0.0001,
+          "rtol": 0.001
+        },
+        "grid": {
+          "configs": [
+            26
+          ],
+          "config_names": {
+            "26": "Q64K128-min1-REVALIAS"
+          },
+          "config_modules": {
+            "26": "revderiv"
+          },
+          "config_base_ids": {
+            "26": 26
+          },
+          "seqs": [
+            4096
+          ],
+          "dims": [
+            192
+          ],
+          "numeric_seqs": [
+            17,
+            100,
+            257,
+            1536
+          ],
+          "numeric_dims": [
+            192,
+            256
+          ],
+          "seed": 2026,
+          "warmup": 10,
+          "samples": 20,
+          "inner": 3
+        }
+      },
+      "runner_sha256": "633e3d5ec7f630291d5a05b20ba25b8009e7851abf08a9d08f5ac3c487dbd320"
+    },
+    "matched": true,
+    "status": "ok",
+    "graph_median_ms": 4.593413352966309,
+    "event_median_ms": 4.58622932434082,
+    "input_hashes": {
+      "q": "94af44748c2f2ff1642f8d39b5edaa4c34640a23e1ceae98b12eaaa7259786a5",
+      "k": "18e9ed0f911970e9918ebd1d58a16d32b25c74ebd1397b79973754fe4951d80b",
+      "v": "f4135155ab285c08253fdc2b2aabdacd09e4a08eec0233ce162bcaed592ca845"
+    }
+  },
+  "controller_validation": {
+    "accepted": true,
+    "all_candidate_traces_replayed": true,
+    "counts": {
+      "rejected": 4,
+      "validation_rejected": 13,
+      "ok": 6
+    },
+    "final_replay_graph_speedup": 1.1476003293925403
+  }
+}

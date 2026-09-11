@@ -1,6 +1,8 @@
 .lake/
 __pycache__/
+**/__pycache__/
 *.pyc
 *.olean
 build/
 .env
+.DS_Store

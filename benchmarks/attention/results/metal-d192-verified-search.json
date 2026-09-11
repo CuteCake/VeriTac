@@ -1,0 +1,1129 @@
+{
+  "mode": "check_attention_plan",
+  "seed": 1234,
+  "seq": 2048,
+  "dim": 192,
+  "search": true,
+  "hardware": {
+    "device_name": "Apple M3 Ultra",
+    "profile_hash": "6aff9f6815cf2c754c9072bbc8ec65c3eff52491161c5bd01f2a4b86f4ebe1d9",
+    "normalized_profile": {
+      "backend": "metal",
+      "device_name": "Apple M3 Ultra",
+      "features": {
+        "async_copy": null,
+        "bfloat16": null,
+        "fp16": null,
+        "matrix_ops": null
+      },
+      "max_threadgroup_memory_bytes": 32768,
+      "max_threads_per_threadgroup": 1024,
+      "max_threads_per_threadgroup_size": {
+        "depth": 1024,
+        "height": 1024,
+        "width": 1024
+      },
+      "provenance": {
+        "host": "Waynes-Mac-Studio.local",
+        "source": "metal_device_query"
+      },
+      "schema_version": 1,
+      "simd_width": 32,
+      "toolchain": {
+        "name": "metal_sdk",
+        "version": "26.5"
+      }
+    }
+  },
+  "agent_final_plan": {
+    "alias_kv": true,
+    "head_dim": 192,
+    "key_tile": 8,
+    "query_tile": 16,
+    "seq_len": 2048,
+    "threads_per_threadgroup": 64
+  },
+  "agent_tactic_trace": [
+    {
+      "tactic": {
+        "kind": "reuse_kv_storage"
+      },
+      "final_plan": {
+        "alias_kv": true,
+        "head_dim": 192,
+        "key_tile": 8,
+        "query_tile": 8,
+        "seq_len": 2048,
+        "threads_per_threadgroup": 32
+      },
+      "executable": true,
+      "shared_memory_bytes": 15488,
+      "threads_per_threadgroup": 32
+    },
+    {
+      "tactic": {
+        "kind": "set_query_tile",
+        "value": 16
+      },
+      "final_plan": {
+        "alias_kv": true,
+        "head_dim": 192,
+        "key_tile": 8,
+        "query_tile": 16,
+        "seq_len": 2048,
+        "threads_per_threadgroup": 64
+      },
+      "executable": true,
+      "shared_memory_bytes": 21760,
+      "threads_per_threadgroup": 64
+    }
+  ],
+  "label": "vendor-derived MLX steel attention small-tile specialization (template-instantiated from installed mlx, not original)",
+  "benchmark": {
+    "qt": 16,
+    "kt": 8,
+    "seq": 2048,
+    "dim": 192,
+    "checked_plan": {
+      "alias_kv": true,
+      "head_dim": 192,
+      "key_tile": 8,
+      "query_tile": 16,
+      "seq_len": 2048,
+      "threads_per_threadgroup": 64
+    },
+    "candidate_wall_median_ms": 1.9185625133104622,
+    "candidate_gpu_median_ms": 1.7249791622161865,
+    "vendor_wall_medians_ms": {
+      "mlx_fast": 2.0893545006401837,
+      "mpsgraph": 2.34679167624563
+    },
+    "input_hashes_verified": true,
+    "numeric_failed": [],
+    "failed_unsupported": [],
+    "fastest_vendor": "mlx_fast",
+    "fastest_vendor_wall_median_ms": 2.0893545006401837,
+    "candidate_over_vendor_ratio": 0.9182560990595946,
+    "candidate": {
+      "qt": 16,
+      "kt": 8,
+      "tgmem_bytes": 21760,
+      "function": "steel_attn_f32_bq16_bk8_bd192_wm2_wn1",
+      "output_shape": [
+        1,
+        8,
+        2048,
+        192
+      ],
+      "comparison": {
+        "shape_ok": true,
+        "output_shape": [
+          1,
+          8,
+          2048,
+          192
+        ],
+        "reference_shape": [
+          1,
+          8,
+          2048,
+          192
+        ],
+        "finite_out": true,
+        "finite_ref": true,
+        "max_abs_error": 1.3641717111489982e-07,
+        "max_abs_error_normalized": 0.0008136393723584409,
+        "rms_error": 1.0247793402828657e-08,
+        "within_tolerance": true
+      },
+      "device": {
+        "max_threadgroup_memory_length": 32768,
+        "max_threads_per_threadgroup": {
+          "depth": 1024,
+          "height": 1024,
+          "width": 1024
+        }
+      },
+      "pipeline": {
+        "kernel_name": "steel_attn_f32_bq16_bk8_bd192_wm2_wn1",
+        "max_total_threads_per_threadgroup": 64,
+        "simd_width": 32,
+        "specialization": {
+          "align_K": true,
+          "align_Q": true,
+          "D": 192,
+          "do_causal": true,
+          "has_mask": false,
+          "has_sinks": false,
+          "kt": 8,
+          "qt": 16,
+          "WM": 2,
+          "WN": 1
+        },
+        "static_threadgroup_memory_length": 21760,
+        "threads_per_threadgroup": 64
+      },
+      "launch": {
+        "D": 192,
+        "grid": {
+          "x": 128,
+          "y": 8,
+          "z": 1
+        },
+        "kernel_name": "steel_attn_f32_bq16_bk8_bd192_wm2_wn1",
+        "kt": 8,
+        "mapping": "vendor_steel_small_tile_specialization",
+        "qt": 16,
+        "threadgroup_memory_bytes": 21760,
+        "threads_per_threadgroup": 64,
+        "total_threads_dispatched": 65536,
+        "valid_query_rows": 16384,
+        "vendor": "mlx-steel-attention",
+        "WM": 2,
+        "WN": 1
+      },
+      "mtl_device_name": "Apple M3 Ultra",
+      "compile_wall_ms": 1.2650417629629374,
+      "warmup_count": 5,
+      "scale": 0.07216878235340118,
+      "time_unit": "milliseconds",
+      "measurement_notes": [
+        "All timings are in milliseconds (time_unit=milliseconds).",
+        "GPU times are MTLCommandBuffer gpuStartTime/gpuEndTime deltas per invocation of the FULL single-kernel pipeline (QK^T + stable online softmax + PV + normalize). They exclude input/output CPU copies and compile/warmup.",
+        "Wall times are synchronized API latency per invocation.",
+        "The kernel is a vendor-derived specialization of the installed mlx steel attention template (Apple Inc., MIT), not an original generated kernel. Attribution/license are preserved in kernel_path.",
+        "A command buffer ending in a Metal error fails the case rather than reporting a bogus timing."
+      ],
+      "runner_stderr": "",
+      "wall_timing": {
+        "median_ms": 1.9185625133104622,
+        "p10_ms": 1.8892250023782253,
+        "p90_ms": 1.9524958450347185,
+        "samples_ms": [
+          1.9169999286532402,
+          1.8889999482780695,
+          1.9839584128931165,
+          1.9174999324604869,
+          1.940208370797336,
+          1.918500056490302,
+          1.9206249853596091,
+          1.9048332469537854,
+          1.9165833946317434,
+          1.9456250593066216,
+          1.9592082826420665,
+          1.8797499360516667,
+          1.8969583325088024,
+          1.9057500176131725,
+          2.011708333157003,
+          1.8905417528003454,
+          1.9088333938270807,
+          1.922708353959024,
+          1.92716671153903,
+          1.9186249701306224,
+          1.9172084284946322,
+          1.951750018633902,
+          1.9295417005196214,
+          1.9448333187028766,
+          1.9217083463445306,
+          1.8892500083893538,
+          1.8754582852125168,
+          1.9159166840836406,
+          1.9267499446868896,
+          1.93295837379992
+        ]
+      },
+      "gpu_time_available": true,
+      "gpu_timing": {
+        "median_ms": 1.7249791622161865,
+        "p10_ms": 1.7008625864982605,
+        "p90_ms": 1.7545833230018615,
+        "samples_ms": [
+          1.7239999771118164,
+          1.7029166221618652,
+          1.7890833616256714,
+          1.725416660308838,
+          1.7350000143051147,
+          1.7152082920074463,
+          1.7245416641235352,
+          1.7196248769760132,
+          1.7172083854675293,
+          1.753499984741211,
+          1.7702916860580444,
+          1.699625015258789,
+          1.715999960899353,
+          1.7219583988189697,
+          1.699625015258789,
+          1.7012916803359985,
+          1.7200417518615723,
+          1.719249963760376,
+          1.7409166097640991,
+          1.729041576385498,
+          1.7293332815170288,
+          1.7643333673477173,
+          1.7462916374206543,
+          1.7507083415985107,
+          1.7373751401901245,
+          1.7010000944137573,
+          1.6704999208450317,
+          1.7303333282470703,
+          1.7286250591278076,
+          1.7412916421890259
+        ]
+      },
+      "status": "ok"
+    },
+    "vendor_results": {
+      "mlx_fast": {
+        "force_fused": false,
+        "kernel": "unknown",
+        "kernel_note": "Default MLX dispatch; the actual fused/unfused kernel is inferred from the pinned source, not guessed here. Source dispatch inspection required.",
+        "output_shape": [
+          1,
+          8,
+          2048,
+          192
+        ],
+        "comparison": {
+          "shape_ok": true,
+          "output_shape": [
+            1,
+            8,
+            2048,
+            192
+          ],
+          "reference_shape": [
+            1,
+            8,
+            2048,
+            192
+          ],
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 1.5970675129595158e-07,
+          "max_abs_error_normalized": 0.0008456774165537099,
+          "rms_error": 9.580472236103913e-09,
+          "within_tolerance": true
+        },
+        "wall_timing": {
+          "median_ms": 2.0893545006401837,
+          "p10_ms": 2.0800750236958265,
+          "p90_ms": 2.1055207471363246,
+          "samples_ms": [
+            2.089084009639919,
+            2.0911659812554717,
+            2.0926250144839287,
+            2.1053749369457364,
+            2.1068330388516188,
+            2.0988750038668513,
+            2.099832985550165,
+            2.101917052641511,
+            2.0964579889550805,
+            2.0896249916404486,
+            2.083166968077421,
+            2.0815000170841813,
+            2.0783330546692014,
+            2.092457958497107,
+            2.0852909656241536,
+            2.0834580063819885,
+            2.0832079462707043,
+            2.0890419837087393,
+            2.086209016852081,
+            2.0807499531656504,
+            2.0801250357180834,
+            2.092250040732324,
+            2.0833330927416682,
+            2.079250058159232,
+            2.184125012718141,
+            2.139416988939047,
+            2.080459031276405,
+            2.079624915495515,
+            2.097250078804791,
+            2.0929999882355332
+          ]
+        },
+        "gpu_time_available": false,
+        "gpu_time_note": "No verified Metal GPU-timestamp API is exposed for MLX here; reported timing is warm synchronized API latency, not GPU time.",
+        "status": "ok"
+      },
+      "mpsgraph": {
+        "output_shape": [
+          1,
+          8,
+          2048,
+          192
+        ],
+        "comparison": {
+          "shape_ok": true,
+          "output_shape": [
+            1,
+            8,
+            2048,
+            192
+          ],
+          "reference_shape": [
+            1,
+            8,
+            2048,
+            192
+          ],
+          "finite_out": true,
+          "finite_ref": true,
+          "max_abs_error": 9.376583531839344e-07,
+          "max_abs_error_normalized": 0.0016646695825405856,
+          "rms_error": 1.1432949877383472e-08,
+          "within_tolerance": true
+        },
+        "device": {
+          "mtl_device_name": "Apple M3 Ultra",
+          "mtl_device_registry_id": 4294968923,
+          "mtl_is_low_power": false,
+          "mtl_has_unified_memory": true,
+          "mtl_max_threadgroup_memory_length": 32768,
+          "mtl_max_threads_per_threadgroup": {
+            "depth": 1024,
+            "height": 1024,
+            "width": 1024
+          }
+        },
+        "compile_wall_ms": 30.319208395667374,
+        "warmup_count": 5,
+        "mask": "causal_additive",
+        "scale": 0.07216878235340118,
+        "api": "scaledDotProductAttention(query:key:value:mask:scale:name:)",
+        "time_unit": "milliseconds",
+        "measurement_notes": [
+          "All timings are in milliseconds (time_unit=milliseconds).",
+          "GPU times are MPSCommandBuffer GPUStartTime/GPUEndTime deltas per invocation; they exclude input/output CPU copies (preallocated shared MTLBuffers are reused) and exclude compile/warmup.",
+          "Wall times are synchronized API latency, timed from before command-buffer allocation through waitUntilCompleted, per invocation.",
+          "Each invocation encodes a fresh command buffer and re-executes the graph; outputs are never cached across samples.",
+          "An invocation that ends with a Metal command-buffer error fails the case rather than reporting a bogus timing."
+        ],
+        "wall_timing": {
+          "median_ms": 2.34679167624563,
+          "p10_ms": 2.3281707777641714,
+          "p90_ms": 2.3619375191628933,
+          "samples_ms": [
+            2.3567917523905635,
+            2.3608750198036432,
+            2.3484999546781182,
+            2.3747916566208005,
+            2.346833352930844,
+            2.3601666325703263,
+            2.3576667299494147,
+            2.333791577257216,
+            2.3387917317450047,
+            2.3379166377708316,
+            2.3740833858028054,
+            2.3503333795815706,
+            2.3524584248661995,
+            2.3356250021606684,
+            2.3241667076945305,
+            2.3285832721740007,
+            2.351333387196064,
+            2.3437083000317216,
+            2.3316667648032308,
+            2.371500013396144,
+            2.3393749725073576,
+            2.357666613534093,
+            2.3219167487695813,
+            2.333041629754007,
+            2.337625017389655,
+            2.3467499995604157,
+            2.324458328075707,
+            2.333208336494863,
+            2.357749966904521,
+            2.3604166926816106
+          ]
+        },
+        "gpu_time_available": true,
+        "gpu_timing": {
+          "median_ms": 2.10037499666214,
+          "p10_ms": 2.096500027179718,
+          "p90_ms": 2.1071624994277953,
+          "samples_ms": [
+            2.097583293914795,
+            2.1029165983200073,
+            2.0980833768844604,
+            2.098875045776367,
+            2.100958228111267,
+            2.1005834341049194,
+            2.1013749837875366,
+            2.096500039100647,
+            2.0952917337417603,
+            2.0993332862854004,
+            2.1055415868759155,
+            2.1045000553131104,
+            2.1114583015441895,
+            2.0964999198913574,
+            2.1002498865127563,
+            2.0977083444595337,
+            2.110874891281128,
+            2.104249954223633,
+            2.106750011444092,
+            2.104541778564453,
+            2.0989999771118164,
+            2.106666684150696,
+            2.0934582948684692,
+            2.098875045776367,
+            2.0971250534057617,
+            2.1046249866485596,
+            2.0971250534057617,
+            2.1005001068115234,
+            2.115458369255066,
+            2.1001250743865967
+          ]
+        },
+        "status": "ok"
+      }
+    },
+    "source_provenance": {
+      "note": "Kernel is a template-instantiated specialization of the installed mlx steel attention template (Apple Inc., MIT), NOT an original generated kernel.",
+      "mlx_version": "0.32.2",
+      "steel_attention_header": "/private/tmp/veritac-survey-venv/lib/python3.14/site-packages/mlx/include/mlx/backend/metal/kernels/steel/attn/kernels/steel_attention.h",
+      "generated_kernel_path": "/Users/cake/.codex/worktrees/bfe0/VeriTac/.lake/tiled_attention_demo/run_20260911-020418-f/generated_kernel/steel_attention_ecfe500108b4219f65ea8974fdf608ca2da8ee2f16bffedb97f40c3885d6f83a.metal",
+      "generated_kernel_sha256": "ecfe500108b4219f65ea8974fdf608ca2da8ee2f16bffedb97f40c3885d6f83a",
+      "inlined_header_sha256": {
+        "mlx/backend/metal/kernels/steel/attn/attn.h": "67722214ff487ec95df675e2f135ccd7fbe639b6eb6ab98b14bcefa58d66ba95",
+        "mlx/backend/metal/kernels/steel/attn/kernels/steel_attention.h": "3e9334c9ec3298fc7fb21a9468816d1b7c6e3c11da8494df7ae4fc7a4c04f570",
+        "mlx/backend/metal/kernels/steel/attn/loader.h": "e435f413d71d44ca4ad72a59d192046be77388f63936179c58882286f4cc5dab",
+        "mlx/backend/metal/kernels/steel/attn/mma.h": "6f22866c76a1f15cf27681d3a8700f3419412a954d00e0810c87f7dac82ddeab",
+        "mlx/backend/metal/kernels/steel/attn/params.h": "f03c6ed73d7298fa69b75a49e7eec54954b6fafd59530a1f175934215412ed80",
+        "mlx/backend/metal/kernels/steel/attn/transforms.h": "6479114663c5923a7ee2f9fc1cf9d5e99e680d47d793251749989056a8a63141",
+        "mlx/backend/metal/kernels/steel/defines.h": "b03cea6a7d5cfe814e6838d8536e2aacdcafd2744cb408e954fda336ce21759a",
+        "mlx/backend/metal/kernels/steel/gemm/params.h": "6711e72e32310eafb088895d5a6d20fcfca814158f5b38eb72b6e69d9d773e43",
+        "mlx/backend/metal/kernels/steel/utils.h": "d4c36298145d1c5617a94f07dbfabf6ac932afe2fd7ea0c9291f1fb385c5404a",
+        "mlx/backend/metal/kernels/steel/utils/integral_constant.h": "886eccaac4f8f00eab5a10551fdb5315df7ab7462aba13d69bb95765c1a4735e",
+        "mlx/backend/metal/kernels/steel/utils/type_traits.h": "4766c5a3809d3cf7740e63acc5703ef76b6b4e85d8baf16602c9d517a2fd426c"
+      }
+    }
+  },
+  "candidates": [
+    {
+      "qt": 8,
+      "kt": 8,
+      "tactic_sequence": [
+        {
+          "kind": "reuse_kv_storage"
+        },
+        {
+          "kind": "set_query_tile",
+          "value": 8
+        },
+        {
+          "kind": "set_key_tile",
+          "value": 8
+        }
+      ],
+      "checked_plan": {
+        "alias_kv": true,
+        "head_dim": 192,
+        "key_tile": 8,
+        "query_tile": 8,
+        "seq_len": 2048,
+        "threads_per_threadgroup": 32
+      },
+      "verification_trace": [
+        {
+          "tactic": {
+            "kind": "reuse_kv_storage"
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 8,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 32
+          },
+          "executable": true,
+          "shared_memory_bytes": 15488
+        },
+        {
+          "tactic": {
+            "kind": "set_query_tile",
+            "value": 8
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 8,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 32
+          },
+          "executable": true,
+          "shared_memory_bytes": 15488
+        },
+        {
+          "tactic": {
+            "kind": "set_key_tile",
+            "value": 8
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 8,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 32
+          },
+          "executable": true,
+          "shared_memory_bytes": 15488
+        }
+      ],
+      "executable": true,
+      "shared_memory_bytes": 15488,
+      "threads_per_threadgroup": 32,
+      "status": "ok",
+      "wall_median_ms": 2.4234791635535657,
+      "gpu_time_available": true,
+      "gpu_median_ms": 2.226166605949402,
+      "bench_inputs_sha256": {
+        "q": "cb46b908dae31e43cd0df9a5b0085b770e36563dc7d21e1818a4939db28cffbd",
+        "k": "9765a7aa4573885a6e35b54dbf07310dac3770e53f2526e64a7535ef73eb0e07",
+        "v": "f2c5f1f236ae49409ca4532f1ca820303326c82888bc87b07302cddd924d7d99"
+      }
+    },
+    {
+      "qt": 8,
+      "kt": 16,
+      "tactic_sequence": [
+        {
+          "kind": "reuse_kv_storage"
+        },
+        {
+          "kind": "set_query_tile",
+          "value": 8
+        },
+        {
+          "kind": "set_key_tile",
+          "value": 16
+        }
+      ],
+      "checked_plan": {
+        "alias_kv": true,
+        "head_dim": 192,
+        "key_tile": 16,
+        "query_tile": 8,
+        "seq_len": 2048,
+        "threads_per_threadgroup": 32
+      },
+      "verification_trace": [
+        {
+          "tactic": {
+            "kind": "reuse_kv_storage"
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 8,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 32
+          },
+          "executable": true,
+          "shared_memory_bytes": 15488
+        },
+        {
+          "tactic": {
+            "kind": "set_query_tile",
+            "value": 8
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 8,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 32
+          },
+          "executable": true,
+          "shared_memory_bytes": 15488
+        },
+        {
+          "tactic": {
+            "kind": "set_key_tile",
+            "value": 16
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 16,
+            "query_tile": 8,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 32
+          },
+          "executable": true,
+          "shared_memory_bytes": 21632
+        }
+      ],
+      "executable": true,
+      "shared_memory_bytes": 21632,
+      "threads_per_threadgroup": 32,
+      "status": "ok",
+      "wall_median_ms": 2.870229189284146,
+      "gpu_time_available": true,
+      "gpu_median_ms": 2.652791678905487,
+      "bench_inputs_sha256": {
+        "q": "cb46b908dae31e43cd0df9a5b0085b770e36563dc7d21e1818a4939db28cffbd",
+        "k": "9765a7aa4573885a6e35b54dbf07310dac3770e53f2526e64a7535ef73eb0e07",
+        "v": "f2c5f1f236ae49409ca4532f1ca820303326c82888bc87b07302cddd924d7d99"
+      }
+    },
+    {
+      "qt": 16,
+      "kt": 8,
+      "tactic_sequence": [
+        {
+          "kind": "reuse_kv_storage"
+        },
+        {
+          "kind": "set_query_tile",
+          "value": 16
+        },
+        {
+          "kind": "set_key_tile",
+          "value": 8
+        }
+      ],
+      "checked_plan": {
+        "alias_kv": true,
+        "head_dim": 192,
+        "key_tile": 8,
+        "query_tile": 16,
+        "seq_len": 2048,
+        "threads_per_threadgroup": 64
+      },
+      "verification_trace": [
+        {
+          "tactic": {
+            "kind": "reuse_kv_storage"
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 8,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 32
+          },
+          "executable": true,
+          "shared_memory_bytes": 15488
+        },
+        {
+          "tactic": {
+            "kind": "set_query_tile",
+            "value": 16
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 16,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 64
+          },
+          "executable": true,
+          "shared_memory_bytes": 21760
+        },
+        {
+          "tactic": {
+            "kind": "set_key_tile",
+            "value": 8
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 16,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 64
+          },
+          "executable": true,
+          "shared_memory_bytes": 21760
+        }
+      ],
+      "executable": true,
+      "shared_memory_bytes": 21760,
+      "threads_per_threadgroup": 64,
+      "status": "ok",
+      "wall_median_ms": 1.9245833391323686,
+      "gpu_time_available": true,
+      "gpu_median_ms": 1.718250036239624,
+      "bench_inputs_sha256": {
+        "q": "cb46b908dae31e43cd0df9a5b0085b770e36563dc7d21e1818a4939db28cffbd",
+        "k": "9765a7aa4573885a6e35b54dbf07310dac3770e53f2526e64a7535ef73eb0e07",
+        "v": "f2c5f1f236ae49409ca4532f1ca820303326c82888bc87b07302cddd924d7d99"
+      }
+    },
+    {
+      "qt": 16,
+      "kt": 16,
+      "tactic_sequence": [
+        {
+          "kind": "reuse_kv_storage"
+        },
+        {
+          "kind": "set_query_tile",
+          "value": 16
+        },
+        {
+          "kind": "set_key_tile",
+          "value": 16
+        }
+      ],
+      "checked_plan": {
+        "alias_kv": true,
+        "head_dim": 192,
+        "key_tile": 16,
+        "query_tile": 16,
+        "seq_len": 2048,
+        "threads_per_threadgroup": 64
+      },
+      "verification_trace": [
+        {
+          "tactic": {
+            "kind": "reuse_kv_storage"
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 8,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 32
+          },
+          "executable": true,
+          "shared_memory_bytes": 15488
+        },
+        {
+          "tactic": {
+            "kind": "set_query_tile",
+            "value": 16
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 16,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 64
+          },
+          "executable": true,
+          "shared_memory_bytes": 21760
+        },
+        {
+          "tactic": {
+            "kind": "set_key_tile",
+            "value": 16
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 16,
+            "query_tile": 16,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 64
+          },
+          "executable": true,
+          "shared_memory_bytes": 27904
+        }
+      ],
+      "executable": true,
+      "shared_memory_bytes": 27904,
+      "threads_per_threadgroup": 64,
+      "status": "ok",
+      "wall_median_ms": 2.074041636660695,
+      "gpu_time_available": true,
+      "gpu_median_ms": 1.8821250796318054,
+      "bench_inputs_sha256": {
+        "q": "cb46b908dae31e43cd0df9a5b0085b770e36563dc7d21e1818a4939db28cffbd",
+        "k": "9765a7aa4573885a6e35b54dbf07310dac3770e53f2526e64a7535ef73eb0e07",
+        "v": "f2c5f1f236ae49409ca4532f1ca820303326c82888bc87b07302cddd924d7d99"
+      }
+    },
+    {
+      "qt": 24,
+      "kt": 8,
+      "tactic_sequence": [
+        {
+          "kind": "reuse_kv_storage"
+        },
+        {
+          "kind": "set_query_tile",
+          "value": 24
+        },
+        {
+          "kind": "set_key_tile",
+          "value": 8
+        }
+      ],
+      "checked_plan": {
+        "alias_kv": true,
+        "head_dim": 192,
+        "key_tile": 8,
+        "query_tile": 24,
+        "seq_len": 2048,
+        "threads_per_threadgroup": 96
+      },
+      "verification_trace": [
+        {
+          "tactic": {
+            "kind": "reuse_kv_storage"
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 8,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 32
+          },
+          "executable": true,
+          "shared_memory_bytes": 15488
+        },
+        {
+          "tactic": {
+            "kind": "set_query_tile",
+            "value": 24
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 24,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 96
+          },
+          "executable": true,
+          "shared_memory_bytes": 28032
+        },
+        {
+          "tactic": {
+            "kind": "set_key_tile",
+            "value": 8
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 24,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 96
+          },
+          "executable": true,
+          "shared_memory_bytes": 28032
+        }
+      ],
+      "executable": true,
+      "shared_memory_bytes": 28032,
+      "threads_per_threadgroup": 96,
+      "status": "ok",
+      "wall_median_ms": 2.02985416399315,
+      "gpu_time_available": true,
+      "gpu_median_ms": 1.831583321094513,
+      "bench_inputs_sha256": {
+        "q": "cb46b908dae31e43cd0df9a5b0085b770e36563dc7d21e1818a4939db28cffbd",
+        "k": "9765a7aa4573885a6e35b54dbf07310dac3770e53f2526e64a7535ef73eb0e07",
+        "v": "f2c5f1f236ae49409ca4532f1ca820303326c82888bc87b07302cddd924d7d99"
+      }
+    },
+    {
+      "qt": 24,
+      "kt": 16,
+      "tactic_sequence": [
+        {
+          "kind": "reuse_kv_storage"
+        },
+        {
+          "kind": "set_query_tile",
+          "value": 24
+        },
+        {
+          "kind": "set_key_tile",
+          "value": 16
+        }
+      ],
+      "verification_trace": [
+        {
+          "tactic": {
+            "kind": "reuse_kv_storage"
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 8,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 32
+          },
+          "executable": true,
+          "shared_memory_bytes": 15488
+        },
+        {
+          "tactic": {
+            "kind": "set_query_tile",
+            "value": 24
+          },
+          "final_plan": {
+            "alias_kv": true,
+            "head_dim": 192,
+            "key_tile": 8,
+            "query_tile": 24,
+            "seq_len": 2048,
+            "threads_per_threadgroup": 96
+          },
+          "executable": true,
+          "shared_memory_bytes": 28032
+        }
+      ],
+      "status": "rejected",
+      "diagnostic": "shared memory exceeds target limit"
+    }
+  ],
+  "final_plan": {
+    "alias_kv": true,
+    "head_dim": 192,
+    "key_tile": 8,
+    "query_tile": 16,
+    "seq_len": 2048,
+    "threads_per_threadgroup": 64
+  },
+  "final_executable": true,
+  "tactic_trace": [
+    {
+      "tactic": {
+        "kind": "reuse_kv_storage"
+      },
+      "final_plan": {
+        "alias_kv": true,
+        "head_dim": 192,
+        "key_tile": 8,
+        "query_tile": 8,
+        "seq_len": 2048,
+        "threads_per_threadgroup": 32
+      },
+      "executable": true,
+      "shared_memory_bytes": 15488
+    },
+    {
+      "tactic": {
+        "kind": "set_query_tile",
+        "value": 16
+      },
+      "final_plan": {
+        "alias_kv": true,
+        "head_dim": 192,
+        "key_tile": 8,
+        "query_tile": 16,
+        "seq_len": 2048,
+        "threads_per_threadgroup": 64
+      },
+      "executable": true,
+      "shared_memory_bytes": 21760
+    },
+    {
+      "tactic": {
+        "kind": "set_key_tile",
+        "value": 8
+      },
+      "final_plan": {
+        "alias_kv": true,
+        "head_dim": 192,
+        "key_tile": 8,
+        "query_tile": 16,
+        "seq_len": 2048,
+        "threads_per_threadgroup": 64
+      },
+      "executable": true,
+      "shared_memory_bytes": 21760
+    }
+  ],
+  "winner": {
+    "qt": 16,
+    "kt": 8,
+    "tactic_sequence": [
+      {
+        "kind": "reuse_kv_storage"
+      },
+      {
+        "kind": "set_query_tile",
+        "value": 16
+      },
+      {
+        "kind": "set_key_tile",
+        "value": 8
+      }
+    ],
+    "checked_plan": {
+      "alias_kv": true,
+      "head_dim": 192,
+      "key_tile": 8,
+      "query_tile": 16,
+      "seq_len": 2048,
+      "threads_per_threadgroup": 64
+    },
+    "verification_trace": [
+      {
+        "tactic": {
+          "kind": "reuse_kv_storage"
+        },
+        "final_plan": {
+          "alias_kv": true,
+          "head_dim": 192,
+          "key_tile": 8,
+          "query_tile": 8,
+          "seq_len": 2048,
+          "threads_per_threadgroup": 32
+        },
+        "executable": true,
+        "shared_memory_bytes": 15488
+      },
+      {
+        "tactic": {
+          "kind": "set_query_tile",
+          "value": 16
+        },
+        "final_plan": {
+          "alias_kv": true,
+          "head_dim": 192,
+          "key_tile": 8,
+          "query_tile": 16,
+          "seq_len": 2048,
+          "threads_per_threadgroup": 64
+        },
+        "executable": true,
+        "shared_memory_bytes": 21760
+      },
+      {
+        "tactic": {
+          "kind": "set_key_tile",
+          "value": 8
+        },
+        "final_plan": {
+          "alias_kv": true,
+          "head_dim": 192,
+          "key_tile": 8,
+          "query_tile": 16,
+          "seq_len": 2048,
+          "threads_per_threadgroup": 64
+        },
+        "executable": true,
+        "shared_memory_bytes": 21760
+      }
+    ],
+    "executable": true,
+    "shared_memory_bytes": 21760,
+    "threads_per_threadgroup": 64,
+    "status": "ok",
+    "wall_median_ms": 1.9245833391323686,
+    "gpu_time_available": true,
+    "gpu_median_ms": 1.718250036239624,
+    "bench_inputs_sha256": {
+      "q": "cb46b908dae31e43cd0df9a5b0085b770e36563dc7d21e1818a4939db28cffbd",
+      "k": "9765a7aa4573885a6e35b54dbf07310dac3770e53f2526e64a7535ef73eb0e07",
+      "v": "f2c5f1f236ae49409ca4532f1ca820303326c82888bc87b07302cddd924d7d99"
+    }
+  },
+  "selection_timing_ms": 1.9245833391323686
+}

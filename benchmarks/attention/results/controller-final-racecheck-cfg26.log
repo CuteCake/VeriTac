@@ -1,0 +1,6 @@
+========= COMPUTE-SANITIZER
+config_info {'id': 26, 'smem_bytes': 86016, 'num_threads': 256, 'num_warps': 8, 'queries_per_block': 64, 'keys_per_block': 128, 'max_k': 256, 'min_blocks_hint': 1, 'installed_min_blocks': 1, 'single_value_iteration': False, 'keep_output_in_rf': False, 'preload_v': False, 'alias_scratch': True, 'async_drains': True, 'reversed': True, 'num_regs': 221, 'local_size_bytes': 0, 'static_shared_bytes': 0, 'total_shared_bytes': 86016, 'kernel_max_threads': 256, 'device_max_optin_shared': 101376, 'device_max_threads': 1024, 'supported': True, 'unsupported_reason': '', 'base_config_id': 26, 'module': 'revderiv'}
+validate {'ok': True, 'detail': 'ok'}
+comparison {'finite_out': True, 'finite_ref': True, 'max_abs_error': 2.661820843741225e-07, 'normalized_max_error': 0.001530274160746085, 'rms_error': 9.11035121349482e-09, 'within_tolerance': True}
+OK
+========= RACECHECK SUMMARY: 0 hazards displayed (0 errors, 0 warnings)

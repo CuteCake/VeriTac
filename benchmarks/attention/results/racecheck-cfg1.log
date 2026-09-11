@@ -1,0 +1,38 @@
+========= COMPUTE-SANITIZER
+config_info {'id': 1, 'smem_bytes': 76288, 'num_threads': 128, 'num_warps': 4, 'queries_per_block': 32, 'keys_per_block': 128, 'max_k': 256, 'min_blocks_hint': 3, 'installed_min_blocks': 3, 'single_value_iteration': False, 'keep_output_in_rf': False, 'num_regs': 168, 'local_size_bytes': 96, 'static_shared_bytes': 0, 'total_shared_bytes': 76288, 'kernel_max_threads': 128, 'device_max_optin_shared': 101376, 'device_max_threads': 1024, 'supported': True, 'unsupported_reason': ''}
+validate {'ok': True, 'detail': 'ok'}
+========= Warning: Race reported between Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xb050 in memory_sm80.h:378
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa010 in memory_sm80.h:378 [16384 hazards]
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa1d0 in memory_sm80.h:378 [16384 hazards]
+========= 
+========= Warning: Race reported between Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xb080 in memory_sm80.h:378
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa050 in memory_sm80.h:378 [16384 hazards]
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa1f0 in memory_sm80.h:378 [16384 hazards]
+========= 
+========= Warning: Race reported between Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xbd60 in memory_sm80.h:378
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa0b0 in memory_sm80.h:378 [16384 hazards]
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa210 in memory_sm80.h:378 [16384 hazards]
+========= 
+========= Warning: Race reported between Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xbdb0 in memory_sm80.h:378
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa0f0 in memory_sm80.h:378 [16384 hazards]
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa240 in memory_sm80.h:378 [16384 hazards]
+========= 
+========= Warning: Race reported between Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xc470 in memory_sm80.h:378
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa110 in memory_sm80.h:378 [16384 hazards]
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa270 in memory_sm80.h:378 [16384 hazards]
+========= 
+========= Warning: Race reported between Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xc4a0 in memory_sm80.h:378
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa140 in memory_sm80.h:378 [16384 hazards]
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa280 in memory_sm80.h:378 [16384 hazards]
+========= 
+========= Warning: Race reported between Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xc4e0 in memory_sm80.h:378
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa180 in memory_sm80.h:378 [16384 hazards]
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa290 in memory_sm80.h:378 [16384 hazards]
+========= 
+========= Warning: Race reported between Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xc520 in memory_sm80.h:378
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa1b0 in memory_sm80.h:378 [16384 hazards]
+=========     and Write access at cutlass::arch::cp_async_zfill<(int)16, (cutlass::arch::CacheOperation::Kind)1>::cp_async_zfill(void *, const void *, bool)+0xa2a0 in memory_sm80.h:378 [16384 hazards]
+========= 
+comparison {'finite_out': True, 'finite_ref': True, 'max_abs_error': 3.225185939426112e-07, 'normalized_max_error': 0.0013257248613598423, 'rms_error': 2.516644673004445e-08, 'within_tolerance': True}
+OK
+========= RACECHECK SUMMARY: 8 hazards displayed (0 errors, 8 warnings)

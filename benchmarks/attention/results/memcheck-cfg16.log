@@ -1,0 +1,6 @@
+========= COMPUTE-SANITIZER
+config_info {'id': 4, 'smem_bytes': 76288, 'num_threads': 128, 'num_warps': 4, 'queries_per_block': 32, 'keys_per_block': 128, 'max_k': 256, 'min_blocks_hint': 1, 'installed_min_blocks': 3, 'single_value_iteration': False, 'keep_output_in_rf': False, 'num_regs': 225, 'local_size_bytes': 0, 'static_shared_bytes': 0, 'total_shared_bytes': 76288, 'kernel_max_threads': 128, 'device_max_optin_shared': 101376, 'device_max_threads': 1024, 'supported': True, 'unsupported_reason': ''}
+validate {'ok': True, 'detail': 'ok'}
+comparison {'finite_out': True, 'finite_ref': True, 'max_abs_error': 3.225185939426112e-07, 'normalized_max_error': 0.0013257248613598423, 'rms_error': 2.516644673004445e-08, 'within_tolerance': True}
+OK
+========= ERROR SUMMARY: 0 errors

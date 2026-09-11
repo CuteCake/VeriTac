@@ -1,0 +1,34 @@
+[driver] building extension (mode=numeric, k192=False) ...
+[driver] config info:
+    14 Q32K128-min3-REV {"id": 1, "smem_bytes": 76288, "num_threads": 128, "num_warps": 4, "queries_per_block": 32, "keys_per_block": 128, "max_k": 256, "min_blocks_hint": 3, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 168, "local_size_bytes": 96, "static_shared_bytes": 0, "total_shared_bytes": 76288, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    15 Q64K64-min3-REV {"id": 3, "smem_bytes": 50688, "num_threads": 128, "num_warps": 4, "queries_per_block": 64, "keys_per_block": 64, "max_k": 256, "min_blocks_hint": 3, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 168, "local_size_bytes": 120, "static_shared_bytes": 0, "total_shared_bytes": 50688, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    16 Q32K128-min1-REV {"id": 4, "smem_bytes": 76288, "num_threads": 128, "num_warps": 4, "queries_per_block": 32, "keys_per_block": 128, "max_k": 256, "min_blocks_hint": 1, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 225, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 76288, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+    17 Q64K64-min1-REV {"id": 5, "smem_bytes": 50688, "num_threads": 128, "num_warps": 4, "queries_per_block": 64, "keys_per_block": 64, "max_k": 256, "min_blocks_hint": 1, "installed_min_blocks": 3, "single_value_iteration": false, "keep_output_in_rf": false, "num_regs": 230, "local_size_bytes": 0, "static_shared_bytes": 0, "total_shared_bytes": 50688, "kernel_max_threads": 128, "device_max_optin_shared": 101376, "device_max_threads": 1024, "supported": true, "unsupported_reason": ""}
+[numeric] small-N correctness tests ...
+  cfg14(Q32K128-min3-REV) N17 D192: pass=True nmax=1.419e-03
+  cfg14(Q32K128-min3-REV) N17 D256: pass=True nmax=1.358e-03
+  cfg14(Q32K128-min3-REV) N100 D192: pass=True nmax=1.326e-03
+  cfg14(Q32K128-min3-REV) N100 D256: pass=True nmax=1.091e-03
+  cfg14(Q32K128-min3-REV) N257 D192: pass=True nmax=1.230e-03
+  cfg14(Q32K128-min3-REV) N257 D256: pass=True nmax=1.872e-03
+  cfg15(Q64K64-min3-REV) N17 D192: pass=True nmax=1.419e-03
+  cfg15(Q64K64-min3-REV) N17 D256: pass=True nmax=1.358e-03
+  cfg15(Q64K64-min3-REV) N100 D192: pass=True nmax=1.326e-03
+  cfg15(Q64K64-min3-REV) N100 D256: pass=True nmax=1.091e-03
+  cfg15(Q64K64-min3-REV) N257 D192: pass=True nmax=1.230e-03
+  cfg15(Q64K64-min3-REV) N257 D256: pass=True nmax=1.872e-03
+  cfg16(Q32K128-min1-REV) N17 D192: pass=True nmax=1.419e-03
+  cfg16(Q32K128-min1-REV) N17 D256: pass=True nmax=1.358e-03
+  cfg16(Q32K128-min1-REV) N100 D192: pass=True nmax=1.326e-03
+  cfg16(Q32K128-min1-REV) N100 D256: pass=True nmax=1.091e-03
+  cfg16(Q32K128-min1-REV) N257 D192: pass=True nmax=1.230e-03
+  cfg16(Q32K128-min1-REV) N257 D256: pass=True nmax=1.872e-03
+  cfg17(Q64K64-min1-REV) N17 D192: pass=True nmax=1.419e-03
+  cfg17(Q64K64-min1-REV) N17 D256: pass=True nmax=1.358e-03
+  cfg17(Q64K64-min1-REV) N100 D192: pass=True nmax=1.326e-03
+  cfg17(Q64K64-min1-REV) N100 D256: pass=True nmax=1.091e-03
+  cfg17(Q64K64-min1-REV) N257 D192: pass=True nmax=1.230e-03
+  cfg17(Q64K64-min1-REV) N257 D256: pass=True nmax=1.872e-03
+[numeric] done.
+[driver] final JSON: results/rev-numeric.json
+[driver] tested_valid=24 failures=0
