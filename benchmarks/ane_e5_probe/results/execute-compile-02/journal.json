@@ -1,0 +1,276 @@
+{
+  "error": null,
+  "meta": {
+    "mode": "compile",
+    "subcommand": "execute_control"
+  },
+  "stages": [
+    {
+      "after_ms": 1789175851059,
+      "before_ms": 1789175851058,
+      "obj": true,
+      "rc": 0,
+      "stage": "e5rt_e5_compiler_config_options_create"
+    },
+    {
+      "after_ms": 1789175851059,
+      "before_ms": 1789175851059,
+      "rc": 0,
+      "stage": "e5rt_e5_compiler_config_options_set_cache_bundle_location"
+    },
+    {
+      "after_ms": 1789175851063,
+      "before_ms": 1789175851059,
+      "obj": true,
+      "rc": 0,
+      "stage": "e5rt_e5_compiler_create_with_config"
+    },
+    {
+      "after_ms": 1789175851063,
+      "before_ms": 1789175851063,
+      "obj": true,
+      "rc": 0,
+      "stage": "e5rt_e5_compiler_options_create"
+    },
+    {
+      "after_ms": 1789175851064,
+      "before_ms": 1789175851064,
+      "rc": 0,
+      "stage": "e5rt_e5_compiler_options_set_compute_device_types_mask"
+    },
+    {
+      "after_ms": 1789175851064,
+      "before_ms": 1789175851064,
+      "rc": 0,
+      "stage": "e5rt_e5_compiler_options_set_force_recompilation"
+    },
+    {
+      "after_ms": 1789175851064,
+      "before_ms": 1789175851064,
+      "rc": 0,
+      "stage": "e5rt_e5_compiler_options_set_segmenter"
+    },
+    {
+      "after_ms": 1789175851090,
+      "before_ms": 1789175851064,
+      "obj": true,
+      "rc": 0,
+      "stage": "e5rt_e5_compiler_compile"
+    },
+    {
+      "after_ms": 1789175851091,
+      "before_ms": 1789175851090,
+      "obj": true,
+      "rc": 0,
+      "stage": "retain_program_function"
+    },
+    {
+      "after_ms": 1789175851091,
+      "before_ms": 1789175851091,
+      "obj": true,
+      "rc": 0,
+      "stage": "op_options_create"
+    },
+    {
+      "after_ms": 1789175851091,
+      "before_ms": 1789175851091,
+      "rc": 0,
+      "stage": "set_operation_name"
+    },
+    {
+      "after_ms": 1789175851092,
+      "before_ms": 1789175851092,
+      "rc": 0,
+      "stage": "set_allocate_intermediate_buffers"
+    },
+    {
+      "after_ms": 1789175851144,
+      "before_ms": 1789175851092,
+      "obj": true,
+      "rc": 0,
+      "stage": "op_create"
+    },
+    {
+      "after_ms": 1789175851145,
+      "before_ms": 1789175851145,
+      "rc": 0,
+      "stage": "get_num_functions"
+    },
+    {
+      "after_ms": 1789175851146,
+      "before_ms": 1789175851145,
+      "rc": 0,
+      "stage": "get_function_names"
+    },
+    {
+      "after_ms": 1789175851146,
+      "before_ms": 1789175851146,
+      "obj": true,
+      "rc": 0,
+      "stage": "e5rt_buffer_object_alloc"
+    },
+    {
+      "after_ms": 1789175851147,
+      "before_ms": 1789175851146,
+      "obj": true,
+      "rc": 0,
+      "stage": "e5rt_buffer_object_get_data_ptr"
+    },
+    {
+      "after_ms": 1789175851147,
+      "before_ms": 1789175851147,
+      "rc": 0,
+      "stage": "e5rt_buffer_object_get_size"
+    },
+    {
+      "after_ms": 1789175851147,
+      "before_ms": 1789175851147,
+      "obj": true,
+      "rc": 0,
+      "stage": "e5rt_execution_stream_operation_retain_input_port"
+    },
+    {
+      "after_ms": 1789175851148,
+      "before_ms": 1789175851148,
+      "rc": 0,
+      "stage": "e5rt_io_port_bind_buffer_object"
+    },
+    {
+      "after_ms": 1789175851148,
+      "before_ms": 1789175851148,
+      "obj": true,
+      "rc": 0,
+      "stage": "e5rt_buffer_object_alloc"
+    },
+    {
+      "after_ms": 1789175851149,
+      "before_ms": 1789175851149,
+      "obj": true,
+      "rc": 0,
+      "stage": "e5rt_buffer_object_get_data_ptr"
+    },
+    {
+      "after_ms": 1789175851149,
+      "before_ms": 1789175851149,
+      "rc": 0,
+      "stage": "e5rt_buffer_object_get_size"
+    },
+    {
+      "after_ms": 1789175851150,
+      "before_ms": 1789175851150,
+      "obj": true,
+      "rc": 0,
+      "stage": "e5rt_execution_stream_operation_retain_output_port"
+    },
+    {
+      "after_ms": 1789175851150,
+      "before_ms": 1789175851150,
+      "rc": 0,
+      "stage": "e5rt_io_port_bind_buffer_object"
+    },
+    {
+      "after_ms": 1789175851151,
+      "before_ms": 1789175851151,
+      "obj": true,
+      "rc": 0,
+      "stage": "e5rt_execution_stream_create"
+    },
+    {
+      "after_ms": 1789175851151,
+      "before_ms": 1789175851151,
+      "rc": 0,
+      "stage": "e5rt_execution_stream_encode_operation"
+    },
+    {
+      "after_ms": 1789175851152,
+      "before_ms": 1789175851152,
+      "rc": 0,
+      "stage": "e5rt_execution_stream_execute_sync"
+    },
+    {
+      "after_ms": 1789175851155,
+      "before_ms": 1789175851155,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_execution_stream_release"
+    },
+    {
+      "after_ms": 1789175851156,
+      "before_ms": 1789175851156,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_io_port_release"
+    },
+    {
+      "after_ms": 1789175851156,
+      "before_ms": 1789175851156,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_buffer_object_release"
+    },
+    {
+      "after_ms": 1789175851157,
+      "before_ms": 1789175851156,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_io_port_release"
+    },
+    {
+      "after_ms": 1789175851157,
+      "before_ms": 1789175851157,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_buffer_object_release"
+    },
+    {
+      "after_ms": 1789175851159,
+      "before_ms": 1789175851157,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_execution_stream_operation_release"
+    },
+    {
+      "after_ms": 1789175851160,
+      "before_ms": 1789175851160,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_precompiled_compute_op_create_options_release"
+    },
+    {
+      "after_ms": 1789175851160,
+      "before_ms": 1789175851160,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_program_function_release"
+    },
+    {
+      "after_ms": 1789175851161,
+      "before_ms": 1789175851161,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_program_library_release"
+    },
+    {
+      "after_ms": 1789175851161,
+      "before_ms": 1789175851161,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_e5_compiler_options_release"
+    },
+    {
+      "after_ms": 1789175851162,
+      "before_ms": 1789175851162,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_e5_compiler_release"
+    },
+    {
+      "after_ms": 1789175851163,
+      "before_ms": 1789175851162,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_e5_compiler_config_options_release"
+    }
+  ],
+  "status": "completed"
+}

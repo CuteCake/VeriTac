@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/ane_e5_probe.py",
+    "compile",
+    "--mil",
+    "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/fixtures/linear_relu/model.mil",
+    "--output",
+    "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/results/compile-01",
+    "--prepare",
+    "--deadline",
+    "55"
+  ],
+  "returncode": 0,
+  "elapsed_s": 0.15008700000180397,
+  "timeout_s": 60
+}

@@ -1,0 +1,44 @@
+{
+  "error": "load_for_execution returned rc=2",
+  "meta": {
+    "bundle": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/results/compile-01/bundle_snapshot/com.apple.e5rt.e5bundlecache/25G83/794C0FB17B26B18288B16DB3AAF946BC9956DFFBD1B3B605C75B3189B2DA4EB2/61343E91553F397D42687B4F1F7850F212A7CB15C91BAB7F9F98175200A7A92D.bundle",
+    "experiment": "explicit load_for_execution; no compilation or evaluation"
+  },
+  "stages": [
+    {
+      "after_ms": 1789175308159,
+      "before_ms": 1789175308158,
+      "obj": true,
+      "rc": 0,
+      "stage": "library_create"
+    },
+    {
+      "after_ms": 1789175308159,
+      "before_ms": 1789175308159,
+      "obj": true,
+      "rc": 0,
+      "stage": "retain_main"
+    },
+    {
+      "after_ms": 1789175308160,
+      "before_ms": 1789175308159,
+      "rc": 2,
+      "stage": "load_for_execution"
+    },
+    {
+      "after_ms": 1789175308160,
+      "before_ms": 1789175308160,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_program_function_release"
+    },
+    {
+      "after_ms": 1789175308160,
+      "before_ms": 1789175308160,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_program_library_release"
+    }
+  ],
+  "status": "failed"
+}

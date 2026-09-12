@@ -1,0 +1,16 @@
+{
+  "native_build": "passed with -Wall -Wextra; no warnings",
+  "inspector_tests": {
+    "passed": 29,
+    "command": "PYTHONPATH=benchmarks/ane_artifacts python3 -m unittest discover -s benchmarks/ane_artifacts/tests -p test_inspector.py"
+  },
+  "harness_checks": [
+    "reject empty/duplicate/invalid cases",
+    "reject cases exceeding compile budget",
+    "reject nonfinite timeout and negative seed",
+    "reject existing run directory without changing index",
+    "reject all-zero and NaN outputs against nonzero reference"
+  ],
+  "hardware_result_record": "controller_verification.json",
+  "post_run_changes": "Harness now rejects an existing entire run directory and nonfinite timeout; native comments clarified runtime cleanup. Execution-time sources are retained in source_snapshot. No additional hardware run was needed for these changes."
+}

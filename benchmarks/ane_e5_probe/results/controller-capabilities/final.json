@@ -1,0 +1,30 @@
+{
+  "dlopen": "ok",
+  "dlopen_error": null,
+  "framework": "/System/Library/PrivateFrameworks/Espresso.framework/Espresso",
+  "symbols": {
+    "e5rt_e5_compiler_compile": true,
+    "e5rt_e5_compiler_config_options_create": true,
+    "e5rt_e5_compiler_config_options_release": true,
+    "e5rt_e5_compiler_config_options_set_cache_bundle_location": true,
+    "e5rt_e5_compiler_create_with_config": true,
+    "e5rt_e5_compiler_options_create": true,
+    "e5rt_e5_compiler_options_release": true,
+    "e5rt_e5_compiler_options_set_compute_device_types_mask": true,
+    "e5rt_e5_compiler_options_set_force_recompilation": true,
+    "e5rt_e5_compiler_options_set_segmenter": true,
+    "e5rt_e5_compiler_release": true,
+    "e5rt_execution_stream_operation_create_precompiled_compute_operation_with_options": true,
+    "e5rt_execution_stream_operation_release": true,
+    "e5rt_precompiled_compute_op_create_options_create_with_program_function": true,
+    "e5rt_precompiled_compute_op_create_options_release": true,
+    "e5rt_precompiled_compute_op_create_options_set_allocate_intermediate_buffers": true,
+    "e5rt_precompiled_compute_op_create_options_set_operation_name": true,
+    "e5rt_program_function_release": true,
+    "e5rt_program_library_create": true,
+    "e5rt_program_library_get_function_names": true,
+    "e5rt_program_library_get_num_functions": true,
+    "e5rt_program_library_release": true,
+    "e5rt_program_library_retain_program_function": true
+  }
+}

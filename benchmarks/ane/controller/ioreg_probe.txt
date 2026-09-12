@@ -1,0 +1,44 @@
++-o H11ANE  <class H11ANEIn, id 0x1000009f8, registered, matched, active, busy 0 (10 ms), retain 9>
+  | {
+  |   "IOClass" = "H11ANEIn"
+  |   "CFBundleIdentifier" = "com.apple.driver.AppleH11ANEInterface"
+  |   "IOProviderClass" = "RTBuddyService"
+  |   "IOPropertyMatch" = {"role"="ANE"}
+  |   "IOPowerManagement" = {"DevicePowerState"=0,"CurrentPowerState"=0,"CapabilityFlags"=0,"MaxPowerState"=1}
+  |   "IOProbeScore" = 0
+  |   "IOMatchedAtBoot" = Yes
+  |   "IOGeneralInterest" = "IOCommand is not serializable"
+  |   "IOMatchCategory" = "IODefaultMatchCategory"
+  |   "DeviceProperties" = {"ANEDevicePropertyANECPUSubType"=6,"ANEDevicePropertyIsInternalBuild"=No,"ANEDevicePropertyANEVersion"=176,"ANEDevicePropertyANEMinorVersion"=16,"ANEDevicePropertyANEHWBoardType"=224,"ANEDevicePropertyANEHWBoardSubType"=0,"ANEDevicePropertyNumANECores"=16,"ANEDevicePropertyTypeANEArchitectureTypeStr"="h15g"}
+  |   "IOPersonalityPublisher" = "com.apple.driver.AppleH11ANEInterface"
+  |   "CFBundleIdentifierKernel" = "com.apple.driver.AppleH11ANEInterface"
+  |   "IOFunctionParent00000243" = <>
+  | }
+  | 
+  +-o ANEClientHints  <class ANEClientHints, id 0x100000fdc, registered, matched, active, busy 0 (9 ms), retain 6>
+      {
+      }
+      
+
++-o H11ANE1  <class H11ANEIn, id 0x100000a35, registered, matched, active, busy 0 (30 ms), retain 9>
+  | {
+  |   "IOClass" = "H11ANEIn"
+  |   "CFBundleIdentifier" = "com.apple.driver.AppleH11ANEInterface"
+  |   "IOProviderClass" = "RTBuddyService"
+  |   "IOPropertyMatch" = {"role"="ANE1"}
+  |   "IOPowerManagement" = {"DevicePowerState"=0,"CurrentPowerState"=0,"CapabilityFlags"=0,"MaxPowerState"=1}
+  |   "IOProbeScore" = 0
+  |   "IOMatchedAtBoot" = Yes
+  |   "IOGeneralInterest" = "IOCommand is not serializable"
+  |   "IOMatchCategory" = "IODefaultMatchCategory"
+  |   "DeviceProperties" = {"ANEDevicePropertyANECPUSubType"=6,"ANEDevicePropertyIsInternalBuild"=No,"ANEDevicePropertyANEVersion"=176,"ANEDevicePropertyANEMinorVersion"=16,"ANEDevicePropertyANEHWBoardType"=224,"ANEDevicePropertyANEHWBoardSubType"=1,"ANEDevicePropertyNumANECores"=16,"ANEDevicePropertyTypeANEArchitectureTypeStr"="h15g"}
+  |   "IOPersonalityPublisher" = "com.apple.driver.AppleH11ANEInterface"
+  |   "IOFunctionParent00000247" = <>
+  |   "CFBundleIdentifierKernel" = "com.apple.driver.AppleH11ANEInterface"
+  | }
+  | 
+  +-o ANEClientHints  <class ANEClientHints, id 0x100000eea, registered, matched, active, busy 0 (19 ms), retain 6>
+      {
+      }
+      
+

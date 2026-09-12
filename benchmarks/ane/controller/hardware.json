@@ -1,0 +1,22 @@
+{
+  "macos": "ProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\n",
+  "chip": "Apple M3 Ultra",
+  "model": "Mac15,14",
+  "memory_bytes": 274877906944,
+  "power_sampling": {
+    "status": "unavailable",
+    "reason": "sudo -n powermetrics requires administrator authentication"
+  },
+  "frameworks": {
+    "AppleNeuralEngine": {
+      "CFBundleIdentifier": "com.apple.CoreML.AppleNeuralEngine",
+      "CFBundleShortVersionString": "1.0",
+      "CFBundleVersion": "1"
+    },
+    "ANECompiler": {
+      "CFBundleIdentifier": "com.apple.ANECompiler",
+      "CFBundleShortVersionString": "9.509.0",
+      "CFBundleVersion": "9.509.0"
+    }
+  }
+}

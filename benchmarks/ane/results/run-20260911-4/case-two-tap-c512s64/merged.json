@@ -1,0 +1,231 @@
+{
+  "controller": {
+    "python": "3.14.6",
+    "numpy": "2.5.2",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "date_utc": "2026-09-11T18:52:47.529477+00:00",
+    "case": "two-tap",
+    "channels": 512,
+    "spatial": 64,
+    "seed": 1234,
+    "samples": 10,
+    "warmup": 2,
+    "compile_budget": 2,
+    "temp_policy": "system-model",
+    "probe_rc": 0,
+    "timed_out": false,
+    "wall_ms": 87.91804313659668,
+    "timeout_s": 60.0,
+    "probe_cmd": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/ane_probe --mode compile-and-run --channels 512 --spatial 64 --weight two-tap --seed 1234 --temp-policy system-model --samples 10 --warmup 2 --compile-budget 2 --run-dir /Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64 --input /Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/input.fp16.bin --out /Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/results.json",
+    "isolated_tmpdir": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/framework_tmp",
+    "stdout_log": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/probe.stdout.log",
+    "stderr_log": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/probe.stderr.log",
+    "inputs_sha256": {
+      "input_fp16_bin": "4d90d3749fd515da2edb3884f217ed456358b35db2154d1797bb051f491ba48b"
+    },
+    "controller_mil_sha256": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+    "controller_weight_blob_sha256": "4d5c9c2a218f2b82d373985c4d5d1b62f64f046039246c6e55ddabb00caa456c",
+    "reference_sha256": "99bca91c52c13c8f7de60070f36486add245432004604f83176bf64722eab051",
+    "reference_f64_path": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/reference.f64.bin",
+    "source_hashes": {
+      "ane_probe.m": "436e04af9f8b06b9d08734d343b1f202994741c095467ff855dafc8834ef063e",
+      "ane_bridge.m": "cb9e6068c7a356fd2d47a04fcc04a8093e8854e27ab87c0c2b508fb9a4148570",
+      "ane_bridge.h": "b235e88a0fef1fa6858e71a835de11a870c6acd1e7555109f6490adecce20214",
+      "Makefile": "30dc10776337420f028a90c54e814e0f2097194922c804b515b03a79a0b24440",
+      "controller.py": "3bb4b6305c7d054ee17133f57e5da994e199575e33e4b4dd54cfdbd8dcc41347",
+      "ane_probe_binary": "e04c397d026f173ec6af97043bbeed7654f4d298ae2fb701164defb19ba56c71"
+    },
+    "mil_matches_probe": true,
+    "weight_blob_matches_probe": true,
+    "output_sha256": "2a52f2dd37feef2333f69d41b8ddcd80cdb570fb5afe1d01a7d7f52e6c1b624f"
+  },
+  "verification": {
+    "shape_ok": true,
+    "output_shape": [
+      512,
+      64
+    ],
+    "reference_shape": [
+      512,
+      64
+    ],
+    "finite_out": true,
+    "finite_ref": true,
+    "max_abs_error": 0.0,
+    "rms_error": 0.0,
+    "fraction_within_tolerance": 1.0,
+    "within_tolerance": true,
+    "tolerance": {
+      "atol": 0.0,
+      "rtol": 0.0
+    }
+  },
+  "probe": {
+    "output": {
+      "path": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/output.fp16.bin",
+      "bytes": 65536,
+      "sha256": "2a52f2dd37feef2333f69d41b8ddcd80cdb570fb5afe1d01a7d7f52e6c1b624f"
+    },
+    "compiler_artifacts_copied": true,
+    "exit_code": 0,
+    "transfer": {
+      "read_output_status": "ok",
+      "read_output_ms": 0.008,
+      "write_input_ms": 0.010958333333333334,
+      "write_input_status": "ok"
+    },
+    "workload": {
+      "layout": {
+        "pad_align_bytes": 16,
+        "input_bytes": 65536,
+        "output_bytes": 65536,
+        "io_stride_pad_bytes": 65536,
+        "iosurface": {
+          "width_bytes": 65536,
+          "alloc_size": 65536,
+          "bytes_per_element": 1,
+          "height": 1,
+          "pixel_format": 0,
+          "bytes_per_row": 65536
+        }
+      },
+      "input_shape": [
+        1,
+        512,
+        1,
+        64
+      ],
+      "seed": 1234,
+      "weight": {
+        "kind": "two-tap",
+        "diag": 0.5,
+        "offdiag": -0.25
+      },
+      "dtype": "fp16",
+      "channels": 512,
+      "spatial": 64,
+      "qos": 21,
+      "mil_text": "program(1.3)\n[buildInfo = dict<string, string>({{\"coremlc-component-MIL\", \"3510.2.1\"}, {\"coremlc-version\", \"3505.4.1\"}, {\"coremltools-component-milinternal\", \"\"}, {\"coremltools-version\", \"9.0\"}})]\n{\n    func main<ios18>(tensor<fp16, [1, 512, 1, 64]> x) {\n        string pt = const()[name = string(\"pt\"), val = string(\"valid\")];\n        tensor<int32, [2]> st = const()[name = string(\"st\"), val = tensor<int32, [2]>([1, 1])];\n        tensor<int32, [4]> pd = const()[name = string(\"pd\"), val = tensor<int32, [4]>([0, 0, 0, 0])];\n        tensor<int32, [2]> dl = const()[name = string(\"dl\"), val = tensor<int32, [2]>([1, 1])];\n        int32 gr = const()[name = string(\"gr\"), val = int32(1)];\n        tensor<fp16, [512, 512, 1, 1]> W = const()[name = string(\"W\"), val = tensor<fp16, [512, 512, 1, 1]>(BLOBFILE(path = string(\"@model_path/weights/weight.bin\"), offset = uint64(64)))];\n        tensor<fp16, [1, 512, 1, 64]> c = conv(dilations = dl, groups = gr, pad = pd, pad_type = pt, strides = st, weight = W, x = x)[name = string(\"conv\")];\n        tensor<fp16, [1, 512, 1, 64]> out = relu(x = c)[name = string(\"relu\")];\n    } -> (out);\n}\n",
+      "weight_shape": [
+        512,
+        512,
+        1,
+        1
+      ],
+      "output_shape": [
+        1,
+        512,
+        1,
+        64
+      ],
+      "kind": "conv1x1_relu"
+    },
+    "owned_model_tmpdir": "/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/ADC4D51652FA48928099165BCA8059FC2E8B3EC49E7C677B2C4830181D5188B7_E5E1E8DB5D0E1EB8D7239A7BC92297700DA846D31D4D76643222611AA2073081_E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "probe_version": "0.1.0",
+    "private_api": {
+      "classes": {
+        "_ANEInMemoryModelDescriptor": true,
+        "_ANEIOSurfaceObject": true,
+        "_ANERequest": true,
+        "_ANEInMemoryModel": true,
+        "_ANEClient": true
+      },
+      "methods": {
+        "unloadWithQoS:error:": true,
+        "loadWithQoS:options:error:": true,
+        "hexStringIdentifier": true,
+        "compileWithQoS:options:error:": true,
+        "modelWithMILText:weights:optionsPlist:": true,
+        "evaluateWithQoS:options:request:error:": true,
+        "state": true,
+        "inMemoryModelWithDescriptor:": true
+      },
+      "framework_loaded": true,
+      "framework_path": "/System/Library/PrivateFrameworks/AppleNeuralEngine.framework/AppleNeuralEngine"
+    },
+    "compiler_artifacts_overwrite_rejected": false,
+    "temp_policy": "system-model",
+    "hashes": {
+      "output_sha256": "2a52f2dd37feef2333f69d41b8ddcd80cdb570fb5afe1d01a7d7f52e6c1b624f",
+      "weight_blob_sha256": "4d5c9c2a218f2b82d373985c4d5d1b62f64f046039246c6e55ddabb00caa456c",
+      "input_sha256": "4d90d3749fd515da2edb3884f217ed456358b35db2154d1797bb051f491ba48b",
+      "mil_sha256": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7"
+    },
+    "hw": {
+      "nodename": "Waynes-Mac-Studio.local",
+      "cpu_brand": "Apple M3 Ultra",
+      "logical_cpus": 32,
+      "memsize_bytes": 274877906944,
+      "machine": "arm64",
+      "hw_model": "Mac15,14"
+    },
+    "artifacts_compiler": {
+      "data": {
+        "sha256": "4d5c9c2a218f2b82d373985c4d5d1b62f64f046039246c6e55ddabb00caa456c",
+        "size_bytes": 524416
+      },
+      "net.plist": {
+        "sha256": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+        "size_bytes": 1133
+      },
+      "weights/weight.bin": {
+        "sha256": "4d5c9c2a218f2b82d373985c4d5d1b62f64f046039246c6e55ddabb00caa456c",
+        "size_bytes": 524416
+      },
+      "model.mil": {
+        "sha256": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+        "size_bytes": 1133
+      }
+    },
+    "preflight": {
+      "tmp_isolated_ok": 0,
+      "actual_is_dir": true,
+      "policy": "system-model",
+      "temp_policy_ok": true,
+      "env_TMPDIR": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/framework_tmp",
+      "actual_is_absolute": true,
+      "actual_tmp": "/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T"
+    },
+    "compile": {
+      "status": "ok",
+      "model_identifier": "ADC4D51652FA48928099165BCA8059FC2E8B3EC49E7C677B2C4830181D5188B7_E5E1E8DB5D0E1EB8D7239A7BC92297700DA846D31D4D76643222611AA2073081_E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "elapsed_ms": 22.81341666666667,
+      "owned_model_tmpdir": "/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/ADC4D51652FA48928099165BCA8059FC2E8B3EC49E7C677B2C4830181D5188B7_E5E1E8DB5D0E1EB8D7239A7BC92297700DA846D31D4D76643222611AA2073081_E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "compile_attempts_after": 1,
+      "surface_alloc_bytes": 65536
+    },
+    "dispatch": {
+      "warmup": 2,
+      "status": "ok",
+      "samples": 10,
+      "mean_elapsed_ms": 0.13773333333333332,
+      "per_eval_elapsed_ms": [
+        0.11966666666666667,
+        0.11375,
+        0.17041666666666666,
+        0.1155,
+        0.14804166666666665,
+        0.13008333333333333,
+        0.12933333333333333,
+        0.15675,
+        0.13383333333333333,
+        0.15995833333333334
+      ]
+    },
+    "toolchain": {
+      "CoreML_CFBundleVersion": "3520.5.1",
+      "ANECompiler_CFBundleVersion": "9.509.0",
+      "os": "Version 26.6.2 (Build 25G83)"
+    },
+    "workload_input_bytes": 65536,
+    "mode": "compile-and-run",
+    "load": {
+      "status": "ok",
+      "elapsed_ms": 45.89158333333334,
+      "state_after": 3
+    },
+    "compiler_artifacts_dir": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/compiler_artifacts",
+    "temp_dir_root": "/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T"
+  },
+  "exact_mil_text": "program(1.3)\n[buildInfo = dict<string, string>({{\"coremlc-component-MIL\", \"3510.2.1\"}, {\"coremlc-version\", \"3505.4.1\"}, {\"coremltools-component-milinternal\", \"\"}, {\"coremltools-version\", \"9.0\"}})]\n{\n    func main<ios18>(tensor<fp16, [1, 512, 1, 64]> x) {\n        string pt = const()[name = string(\"pt\"), val = string(\"valid\")];\n        tensor<int32, [2]> st = const()[name = string(\"st\"), val = tensor<int32, [2]>([1, 1])];\n        tensor<int32, [4]> pd = const()[name = string(\"pd\"), val = tensor<int32, [4]>([0, 0, 0, 0])];\n        tensor<int32, [2]> dl = const()[name = string(\"dl\"), val = tensor<int32, [2]>([1, 1])];\n        int32 gr = const()[name = string(\"gr\"), val = int32(1)];\n        tensor<fp16, [512, 512, 1, 1]> W = const()[name = string(\"W\"), val = tensor<fp16, [512, 512, 1, 1]>(BLOBFILE(path = string(\"@model_path/weights/weight.bin\"), offset = uint64(64)))];\n        tensor<fp16, [1, 512, 1, 64]> c = conv(dilations = dl, groups = gr, pad = pd, pad_type = pt, strides = st, weight = W, x = x)[name = string(\"conv\")];\n        tensor<fp16, [1, 512, 1, 64]> out = relu(x = c)[name = string(\"relu\")];\n    } -> (out);\n}\n"
+}

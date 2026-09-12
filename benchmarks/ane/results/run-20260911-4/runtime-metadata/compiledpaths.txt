@@ -1,0 +1,102 @@
+compile_ok=1 error= owned=/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/608DDC96CFF827AA1693FFAB91F1D2013B3C73B9A24A4148454C157666A2C3F4_C25BF87EE99B4FE2AA13D02F0C61A014D14C1D01D3929832F665FDF660207D5A_E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855
+modelURL=file:///var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/608DDC96CFF827AA1693FFAB91F1D2013B3C73B9A24A4148454C157666A2C3F4_C25BF87EE99B4FE2AA13D02F0C61A014D14C1D01D3929832F665FDF660207D5A_E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855/
+localModelPath=/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/608DDC96CFF827AA1693FFAB91F1D2013B3C73B9A24A4148454C157666A2C3F4_C25BF87EE99B4FE2AA13D02F0C61A014D14C1D01D3929832F665FDF660207D5A_E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855
+modelAttributes={
+}
+model=_ANEModel: { modelURL=file:///var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/608DDC96CFF827AA1693FFAB91F1D2013B3C73B9A24A4148454C157666A2C3F4_C25BF87EE99B4FE2AA13D02F0C61A014D14C1D01D3929832F665FDF660207D5A_E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855/ : sourceURL=(null) : UUID=549C10A9-0F48-4AC6-B7B5-791E7A20CE08 : key= : identifierSource=1 : cacheURLIdentifier=(null) : string_id=0x00000000 : program=(null) : state=2 : programHandle=0 : intermediateBufferHandle=0 : queueDepth=0 : attr={
+    CompiledInputSourceFileName = "/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/608DDC96CFF827AA1693FFAB91F1D2013B3C73B9A24A4148454C157666A2C3F4_C25BF87EE99B4FE2AA13D02F0C61A014D14C1D01D3929832F665FDF660207D5A_E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855/model.mil";
+    ErrorList =     (
+    );
+    ModelMaxDramUsage = 672196;
+    NetworkStatusList =     (
+                {
+            LiveInputList =             (
+                                {
+                    BatchStride = 65536;
+                    Batches = 1;
+                    Channels = 512;
+                    Depth = 1;
+                    DepthStride = 65536;
+                    Height = 1;
+                    Interleave = 1;
+                    Name = x;
+                    PlaneCount = 512;
+                    PlaneStride = 128;
+                    RowStride = 128;
+                    Symbol = x;
+                    Type = Float16;
+                    Width = 64;
+                }
+            );
+            LiveOutputList =             (
+                                {
+                    BatchStride = 65536;
+                    Batches = 1;
+                    Channels = 512;
+                    Depth = 1;
+                    DepthStride = 65536;
+                    Height = 1;
+                    Interleave = 1;
+                    Name = "out@output";
+                    PlaneCount = 512;
+                    PlaneStride = 128;
+                    RowStride = 128;
+                    Symbol = "out@output";
+                    Type = Float16;
+                    Width = 64;
+                }
+            );
+            Name = main;
+        }
+    );
+} : perfStatsMask=0 }
+inner.modelURL=file:///var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/608DDC96CFF827AA1693FFAB91F1D2013B3C73B9A24A4148454C157666A2C3F4_C25BF87EE99B4FE2AA13D02F0C61A014D14C1D01D3929832F665FDF660207D5A_E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855/
+inner.sourceURL=nil
+inner.cacheURLIdentifier=nil
+inner.modelAttributes={
+    CompiledInputSourceFileName = "/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/608DDC96CFF827AA1693FFAB91F1D2013B3C73B9A24A4148454C157666A2C3F4_C25BF87EE99B4FE2AA13D02F0C61A014D14C1D01D3929832F665FDF660207D5A_E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855/model.mil";
+    ErrorList =     (
+    );
+    ModelMaxDramUsage = 672196;
+    NetworkStatusList =     (
+                {
+            LiveInputList =             (
+                                {
+                    BatchStride = 65536;
+                    Batches = 1;
+                    Channels = 512;
+                    Depth = 1;
+                    DepthStride = 65536;
+                    Height = 1;
+                    Interleave = 1;
+                    Name = x;
+                    PlaneCount = 512;
+                    PlaneStride = 128;
+                    RowStride = 128;
+                    Symbol = x;
+                    Type = Float16;
+                    Width = 64;
+                }
+            );
+            LiveOutputList =             (
+                                {
+                    BatchStride = 65536;
+                    Batches = 1;
+                    Channels = 512;
+                    Depth = 1;
+                    DepthStride = 65536;
+                    Height = 1;
+                    Interleave = 1;
+                    Name = "out@output";
+                    PlaneCount = 512;
+                    PlaneStride = 128;
+                    RowStride = 128;
+                    Symbol = "out@output";
+                    Type = Float16;
+                    Width = 64;
+                }
+            );
+            Name = main;
+        }
+    );
+}

@@ -1,0 +1,6 @@
+{
+  "source_sha256": "4eccf60c259f9886e541c88eaff83e691bccbd98cd73ec385ff9ef650af8ecb1",
+  "binary_sha256": "28dd8f4a6c4a7dd252a1c9f403485f8963d9802ceedd392af1f15621bc888708",
+  "inventory_sha256": "9232de3da71992c61d695de7e20990765a023f7c89deee7a3fbb818dcfa9971a",
+  "hardware_reference": "../../ane/controller/hardware.json"
+}

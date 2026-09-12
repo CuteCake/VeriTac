@@ -1,0 +1,4008 @@
+{
+  "classDetail" : {
+    "_ANEBuffer" : {
+      "classMethods" : [
+        {
+          "name" : "bufferWithIOSurfaceObject:symbolIndex:source:",
+          "typeEncoding" : "@40@0:8@16@24q32"
+        },
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "supportsSecureCoding",
+          "typeEncoding" : "B16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "encodeWithCoder:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithCoder:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "initWithIOSurfaceObject:symbolIndex:source:",
+          "typeEncoding" : "@40@0:8@16@24q32"
+        },
+        {
+          "name" : "ioSurfaceObject",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "source",
+          "typeEncoding" : "q16@0:8"
+        },
+        {
+          "name" : "symbolIndex",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@\"_ANEIOSurfaceObject\",R,N,V_ioSurfaceObject",
+          "name" : "ioSurfaceObject"
+        },
+        {
+          "attributes" : "Tq,R,N,V_source",
+          "name" : "source"
+        },
+        {
+          "attributes" : "T@\"NSNumber\",R,N,V_symbolIndex",
+          "name" : "symbolIndex"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEChainingRequest" : {
+      "classMethods" : [
+        {
+          "name" : "chainingRequestWithInputs:outputSets:lbInputSymbolId:lbOutputSymbolId:procedureIndex:signalEvents:transactionHandle:fwEnqueueDelay:memoryPoolId:",
+          "typeEncoding" : "@88@0:8@16@24@32@40@48@56@64@72@80"
+        },
+        {
+          "name" : "supportsSecureCoding",
+          "typeEncoding" : "B16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "encodeWithCoder:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "fwEnqueueDelay",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithCoder:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "initWithInputs:outputs:lbInputSymbolId:lbOutputSymbolId:procedureIndex:signalEvents:transactionHandle:fwEnqueueDelay:memoryPoolId:",
+          "typeEncoding" : "@88@0:8@16@24@32@40@48@56@64@72@80"
+        },
+        {
+          "name" : "inputBuffer",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "loopbackInputSymbolIndex",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "loopbackOutputSymbolIndex",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "memoryPoolId",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "outputSets",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "procedureIndex",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "signalEvents",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "transactionHandle",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "validate",
+          "typeEncoding" : "B16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@\"NSNumber\",R,N,V_fwEnqueueDelay",
+          "name" : "fwEnqueueDelay"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_inputBuffer",
+          "name" : "inputBuffer"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_loopbackInputSymbolIndex",
+          "name" : "loopbackInputSymbolIndex"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_loopbackOutputSymbolIndex",
+          "name" : "loopbackOutputSymbolIndex"
+        },
+        {
+          "attributes" : "T@\"NSNumber\",R,N,V_memoryPoolId",
+          "name" : "memoryPoolId"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_outputSets",
+          "name" : "outputSets"
+        },
+        {
+          "attributes" : "T@\"NSNumber\",R,N,V_procedureIndex",
+          "name" : "procedureIndex"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_signalEvents",
+          "name" : "signalEvents"
+        },
+        {
+          "attributes" : "T@\"NSNumber\",R,N,V_transactionHandle",
+          "name" : "transactionHandle"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEClient" : {
+      "classMethods" : [
+        {
+          "name" : "initialize",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "sharedConnection",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "sharedPrivateConnection",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "allowRestrictedAccess",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "beginRealTimeTask",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "buffersReadyWithModel:inputBuffers:options:qos:error:",
+          "typeEncoding" : "B52@0:8@16@24@32I40^@44"
+        },
+        {
+          "name" : "compileModel:options:qos:error:",
+          "typeEncoding" : "B44@0:8@16@24I32^@36"
+        },
+        {
+          "name" : "compiledModelExistsFor:",
+          "typeEncoding" : "B24@0:8@16"
+        },
+        {
+          "name" : "compiledModelExistsMatchingHash:",
+          "typeEncoding" : "B24@0:8@16"
+        },
+        {
+          "name" : "conn",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "connectionForLoadingModel:options:",
+          "typeEncoding" : "@32@0:8@16@24"
+        },
+        {
+          "name" : "connectionUsedForLoadingModel:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "connections",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "connectionsUsedForLoadingModels",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "dealloc",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "doBuffersReadyWithModel:inputBuffers:options:qos:error:",
+          "typeEncoding" : "B52@0:8@16@24@32I40^@44"
+        },
+        {
+          "name" : "doEnqueueSetsWithModel:outputSet:options:qos:error:",
+          "typeEncoding" : "B52@0:8@16@24@32I40^@44"
+        },
+        {
+          "name" : "doEvaluateDirectWithModel:options:request:qos:error:",
+          "typeEncoding" : "B52@0:8@16@24@32I40^@44"
+        },
+        {
+          "name" : "doLoadModel:options:qos:error:",
+          "typeEncoding" : "B44@0:8@16@24I32^@36"
+        },
+        {
+          "name" : "doLoadModelNewInstance:options:modelInstParams:qos:error:",
+          "typeEncoding" : "B52@0:8@16@24@32I40^@44"
+        },
+        {
+          "name" : "doPrepareChainingWithModel:options:chainingReq:qos:error:",
+          "typeEncoding" : "B52@0:8@16@24@32I40^@44"
+        },
+        {
+          "name" : "doUnloadModel:options:qos:error:",
+          "typeEncoding" : "B44@0:8@16@24I32^@36"
+        },
+        {
+          "name" : "echo:",
+          "typeEncoding" : "B24@0:8@16"
+        },
+        {
+          "name" : "endRealTimeTask",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "enqueueSetsWithModel:outputSet:options:qos:error:",
+          "typeEncoding" : "B52@0:8@16@24@32I40^@44"
+        },
+        {
+          "name" : "evaluateRealTimeWithModel:options:request:error:",
+          "typeEncoding" : "B48@0:8@16@24@32^@40"
+        },
+        {
+          "name" : "evaluateWithModel:options:request:qos:error:",
+          "typeEncoding" : "B52@0:8@16@24@32I40^@44"
+        },
+        {
+          "name" : "fastConn",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "fastConnWithoutLock",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithRestrictedAccessAllowed:",
+          "typeEncoding" : "@20@0:8B16"
+        },
+        {
+          "name" : "isAnetoolRootDaemonConnection",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "isRootDaemon",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "isVirtualClient",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "loadModel:options:qos:error:",
+          "typeEncoding" : "B44@0:8@16@24I32^@36"
+        },
+        {
+          "name" : "loadModelNewInstance:options:modelInstParams:qos:error:",
+          "typeEncoding" : "B52@0:8@16@24@32I40^@44"
+        },
+        {
+          "name" : "loadRealTimeModel:options:qos:error:",
+          "typeEncoding" : "B44@0:8@16@24I32^@36"
+        },
+        {
+          "name" : "mapIOSurfacesWithModel:request:cacheInference:error:",
+          "typeEncoding" : "B44@0:8@16@24B32^@36"
+        },
+        {
+          "name" : "prepareChainingWithModel:options:chainingReq:qos:error:",
+          "typeEncoding" : "B52@0:8@16@24@32I40^@44"
+        },
+        {
+          "name" : "priorityQ",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "purgeCompiledModel:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "purgeCompiledModelMatchingHash:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "reportEvaluateFailure:failureReason:qIdx:",
+          "typeEncoding" : "v36@0:8@16I24Q28"
+        },
+        {
+          "name" : "sessionHintWithModel:hint:options:report:error:",
+          "typeEncoding" : "B56@0:8@16@24@32@40^@48"
+        },
+        {
+          "name" : "unloadModel:options:qos:error:",
+          "typeEncoding" : "B44@0:8@16@24I32^@36"
+        },
+        {
+          "name" : "unloadRealTimeModel:options:qos:error:",
+          "typeEncoding" : "B44@0:8@16@24I32^@36"
+        },
+        {
+          "name" : "unmapIOSurfacesWithModel:request:",
+          "typeEncoding" : "v32@0:8@16@24"
+        },
+        {
+          "name" : "virtualClient",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "TB,R,N,V_allowRestrictedAccess",
+          "name" : "allowRestrictedAccess"
+        },
+        {
+          "attributes" : "T@\"_ANEDaemonConnection\",R,N,V_conn",
+          "name" : "conn"
+        },
+        {
+          "attributes" : "T@\"NSMutableDictionary\",R,N,V_connections",
+          "name" : "connections"
+        },
+        {
+          "attributes" : "T@\"NSMutableDictionary\",R,N,V_connectionsUsedForLoadingModels",
+          "name" : "connectionsUsedForLoadingModels"
+        },
+        {
+          "attributes" : "T@\"_ANEDaemonConnection\",R,N",
+          "name" : "fastConn"
+        },
+        {
+          "attributes" : "TB,R,N,V_isRootDaemon",
+          "name" : "isRootDaemon"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_priorityQ",
+          "name" : "priorityQ"
+        },
+        {
+          "attributes" : "T@\"_ANEVirtualClient\",R,N,V_virtualClient",
+          "name" : "virtualClient"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANECloneHelper" : {
+      "classMethods" : [
+        {
+          "name" : "cloneIfWritable:isEncryptedModel:cloneDirectory:",
+          "typeEncoding" : "@36@0:8@16B24@28"
+        },
+        {
+          "name" : "shouldSkipCloneFor:isEncryptedModel:",
+          "typeEncoding" : "B28@0:8@16B24"
+        }
+      ],
+      "methods" : [
+
+      ],
+      "properties" : [
+
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEDaemonConnection" : {
+      "classMethods" : [
+        {
+          "name" : "daemonConnection",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "daemonConnectionRestricted",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "userDaemonConnection",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "beginRealTimeTaskWithReply:",
+          "typeEncoding" : "v24@0:8@?16"
+        },
+        {
+          "name" : "compileModel:sandboxExtension:options:qos:withReply:",
+          "typeEncoding" : "v52@0:8@16@24@32I40@?44"
+        },
+        {
+          "name" : "compiledModelExistsFor:withReply:",
+          "typeEncoding" : "v32@0:8@16@?24"
+        },
+        {
+          "name" : "compiledModelExistsMatchingHash:withReply:",
+          "typeEncoding" : "v32@0:8@16@?24"
+        },
+        {
+          "name" : "daemonConnection",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "dealloc",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "echo:withReply:",
+          "typeEncoding" : "v32@0:8@16@?24"
+        },
+        {
+          "name" : "endRealTimeTaskWithReply:",
+          "typeEncoding" : "v24@0:8@?16"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithMachServiceName:restricted:",
+          "typeEncoding" : "@28@0:8@16B24"
+        },
+        {
+          "name" : "loadModel:sandboxExtension:options:qos:withReply:",
+          "typeEncoding" : "v52@0:8@16@24@32I40@?44"
+        },
+        {
+          "name" : "loadModelNewInstance:options:modelInstParams:qos:withReply:",
+          "typeEncoding" : "v52@0:8@16@24@32I40@?44"
+        },
+        {
+          "name" : "prepareChainingWithModel:options:chainingReq:qos:withReply:",
+          "typeEncoding" : "v52@0:8@16@24@32I40@?44"
+        },
+        {
+          "name" : "purgeCompiledModel:withReply:",
+          "typeEncoding" : "v32@0:8@16@?24"
+        },
+        {
+          "name" : "purgeCompiledModelMatchingHash:withReply:",
+          "typeEncoding" : "v32@0:8@16@?24"
+        },
+        {
+          "name" : "reportTelemetryToPPS:playload:",
+          "typeEncoding" : "v32@0:8@16@24"
+        },
+        {
+          "name" : "restricted",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "unloadModel:options:qos:withReply:",
+          "typeEncoding" : "v44@0:8@16@24I32@?36"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@\"NSXPCConnection\",R,N,V_daemonConnection",
+          "name" : "daemonConnection"
+        },
+        {
+          "attributes" : "TB,R,N,V_restricted",
+          "name" : "restricted"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEDataReporter" : {
+      "classMethods" : [
+        {
+          "name" : "addValue:forScalarKey:",
+          "typeEncoding" : "v32@0:8q16@24"
+        },
+        {
+          "name" : "analyticsKey:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "reportClient:modelName:",
+          "typeEncoding" : "@32@0:8@16@24"
+        },
+        {
+          "name" : "reportErrorMsg:status:",
+          "typeEncoding" : "v24@0:8I16I20"
+        },
+        {
+          "name" : "reportTelemetryToCoreAnalytics:payload:",
+          "typeEncoding" : "v32@0:8@16@24"
+        },
+        {
+          "name" : "reportTelemetryToPPS:playload:",
+          "typeEncoding" : "v32@0:8@16@24"
+        }
+      ],
+      "methods" : [
+
+      ],
+      "properties" : [
+
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEDeviceController" : {
+      "classMethods" : [
+        {
+          "name" : "controllerWithPrivilegedVM:",
+          "typeEncoding" : "@20@0:8B16"
+        },
+        {
+          "name" : "controllerWithProgramHandle:",
+          "typeEncoding" : "@24@0:8Q16"
+        },
+        {
+          "name" : "initialize",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "sharedPrivilegedConnection",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : "device",
+          "typeEncoding" : "^{ANEDeviceStruct=^v^v^vCiQ}16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithANEPrivilegedVM:",
+          "typeEncoding" : "@20@0:8B16"
+        },
+        {
+          "name" : "initWithProgramHandle:priviledged:",
+          "typeEncoding" : "@28@0:8Q16B24"
+        },
+        {
+          "name" : "isPrivileged",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "programHandle",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "setDevice:",
+          "typeEncoding" : "v24@0:8^{ANEDeviceStruct=^v^v^vCiQ}16"
+        },
+        {
+          "name" : "setUsecount:",
+          "typeEncoding" : "v24@0:8q16"
+        },
+        {
+          "name" : "start",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "stop",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "usecount",
+          "typeEncoding" : "q16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T^{ANEDeviceStruct=^v^v^vCiQ},N,V_device",
+          "name" : "device"
+        },
+        {
+          "attributes" : "TB,R,N,V_isPrivileged",
+          "name" : "isPrivileged"
+        },
+        {
+          "attributes" : "TQ,R,N,V_programHandle",
+          "name" : "programHandle"
+        },
+        {
+          "attributes" : "Tq,N,V_usecount",
+          "name" : "usecount"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEDeviceInfo" : {
+      "classMethods" : [
+        {
+          "name" : "aneArchitectureType",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "aneBoardType",
+          "typeEncoding" : "q16@0:8"
+        },
+        {
+          "name" : "aneSubType",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "aneSubTypeAndVariant",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "aneSubTypeProductVariant",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "aneSubTypeVariant",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "bootArgs",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "buildVersion",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "hasANE",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "isBoolBootArgSetTrue:",
+          "typeEncoding" : "B24@0:8@16"
+        },
+        {
+          "name" : "isBootArgPresent:",
+          "typeEncoding" : "B24@0:8@16"
+        },
+        {
+          "name" : "isExcessivePowerDrainWhenIdle",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "isInternalBuild",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "isVirtualMachine",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "numANECores",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "numANEs",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "precompiledModelChecksDisabled",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "productName",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "methods" : [
+
+      ],
+      "properties" : [
+
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEErrors" : {
+      "classMethods" : [
+        {
+          "name" : "badArgumentForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "baseModelIdentifierNotFoundForNewInstanceMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "createErrorWithCode:description:",
+          "typeEncoding" : "@32@0:8q16@24"
+        },
+        {
+          "name" : "dataNotFoundForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "entitlementErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "fileAccessErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "fileNotFoundErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "guestToHostInterfaceTooOld:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "hostTooOld:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "invalidModelErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "invalidModelInstanceErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "invalidModelKeyErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "missingCodeSigningErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "modelIdentifierNotFoundForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "modelNewInstanceCacheIdentifierNotNilMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "notSupportedErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "priorityErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "programChainingPrepareErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "programCreationErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "programIOSurfacesMapErrorForMethod:code:",
+          "typeEncoding" : "@32@0:8@16q24"
+        },
+        {
+          "name" : "programIOSurfacesUnmapErrorForMethod:code:",
+          "typeEncoding" : "@32@0:8@16q24"
+        },
+        {
+          "name" : "programInferenceOtherErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "programInferenceOverflowErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "programInferenceProgramNotFoundForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "programLoadErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "programLoadErrorForMethod:code:",
+          "typeEncoding" : "@32@0:8@16q24"
+        },
+        {
+          "name" : "programLoadNewInstanceErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "programLoadNewInstanceErrorForMethod:code:",
+          "typeEncoding" : "@32@0:8@16q24"
+        },
+        {
+          "name" : "systemModelPurgeNotAllowedForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "timeoutErrorForMethod:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "virtualizationDataError:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "virtualizationHostError:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "virtualizationHostError:error:",
+          "typeEncoding" : "@32@0:8@16@24"
+        },
+        {
+          "name" : "virtualizationKernelError:kernelErrorCode:",
+          "typeEncoding" : "@28@0:8@16i24"
+        }
+      ],
+      "methods" : [
+
+      ],
+      "properties" : [
+
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEHashEncoding" : {
+      "classMethods" : [
+        {
+          "name" : "convertToHexString:length:",
+          "typeEncoding" : "@32@0:8*16Q24"
+        },
+        {
+          "name" : "copySHA256For:toBuffer:",
+          "typeEncoding" : "v32@0:8@16*24"
+        },
+        {
+          "name" : "hashForString:seed:",
+          "typeEncoding" : "I28@0:8@16I24"
+        },
+        {
+          "name" : "hexStringForBytes:length:",
+          "typeEncoding" : "@32@0:8*16Q24"
+        },
+        {
+          "name" : "hexStringForData:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "hexStringForDataArray:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "hexStringForString:",
+          "typeEncoding" : "@24@0:8@16"
+        }
+      ],
+      "methods" : [
+
+      ],
+      "properties" : [
+
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEInMemoryModel" : {
+      "classMethods" : [
+        {
+          "name" : "inMemoryModelWithDescriptor:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "initialize",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "compileWithQoS:options:error:",
+          "typeEncoding" : "B36@0:8I16@20^@28"
+        },
+        {
+          "name" : "compiledModelExists",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "compilerOptionsFileName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "compilerOptionsWithOptions:isCompiledModelCached:",
+          "typeEncoding" : "@28@0:8@16B24"
+        },
+        {
+          "name" : "dealloc",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "descriptor",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "evaluateWithQoS:options:request:error:",
+          "typeEncoding" : "B44@0:8I16@20@28^@36"
+        },
+        {
+          "name" : "hexStringIdentifier",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithDesctiptor:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "intermediateBufferHandle",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "isMILModel",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "loadWithQoS:options:error:",
+          "typeEncoding" : "B36@0:8I16@20^@28"
+        },
+        {
+          "name" : "localModelPath",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "mapIOSurfacesWithRequest:cacheInference:error:",
+          "typeEncoding" : "B36@0:8@16B24^@28"
+        },
+        {
+          "name" : "model",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "modelAttributes",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "modelURL",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "perfStatsMask",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "program",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "programHandle",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "purgeCompiledModel",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "queueDepth",
+          "typeEncoding" : "c16@0:8"
+        },
+        {
+          "name" : "saveModelFiles",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "setCompilerOptionsFileName:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setDescriptor:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setIntermediateBufferHandle:",
+          "typeEncoding" : "v24@0:8Q16"
+        },
+        {
+          "name" : "setModel:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setModelAttributes:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setModelURL:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setPerfStatsMask:",
+          "typeEncoding" : "v20@0:8I16"
+        },
+        {
+          "name" : "setProgram:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setProgramHandle:",
+          "typeEncoding" : "v24@0:8Q16"
+        },
+        {
+          "name" : "setQueueDepth:",
+          "typeEncoding" : "v20@0:8c16"
+        },
+        {
+          "name" : "setState:",
+          "typeEncoding" : "v24@0:8Q16"
+        },
+        {
+          "name" : "sharedConnection",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "state",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "string_id",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "unloadWithQoS:error:",
+          "typeEncoding" : "B28@0:8I16^@20"
+        },
+        {
+          "name" : "unmapIOSurfacesWithRequest:",
+          "typeEncoding" : "v24@0:8@16"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@\"NSString\",C,N,V_compilerOptionsFileName",
+          "name" : "compilerOptionsFileName"
+        },
+        {
+          "attributes" : "T@\"_ANEInMemoryModelDescriptor\",&,N,V_descriptor",
+          "name" : "descriptor"
+        },
+        {
+          "attributes" : "T@\"NSString\",R,C,N,V_hexStringIdentifier",
+          "name" : "hexStringIdentifier"
+        },
+        {
+          "attributes" : "TQ,N,V_intermediateBufferHandle",
+          "name" : "intermediateBufferHandle"
+        },
+        {
+          "attributes" : "TB,R,N,V_isMILModel",
+          "name" : "isMILModel"
+        },
+        {
+          "attributes" : "T@\"_ANEModel\",&,N,V_model",
+          "name" : "model"
+        },
+        {
+          "attributes" : "T@\"NSDictionary\",&,N,V_modelAttributes",
+          "name" : "modelAttributes"
+        },
+        {
+          "attributes" : "T@\"NSURL\",&,N,V_modelURL",
+          "name" : "modelURL"
+        },
+        {
+          "attributes" : "TI,N,V_perfStatsMask",
+          "name" : "perfStatsMask"
+        },
+        {
+          "attributes" : "T@\"_ANEProgramForEvaluation\",&,N,V_program",
+          "name" : "program"
+        },
+        {
+          "attributes" : "TQ,N,V_programHandle",
+          "name" : "programHandle"
+        },
+        {
+          "attributes" : "Tc,N,V_queueDepth",
+          "name" : "queueDepth"
+        },
+        {
+          "attributes" : "T@\"_ANEClient\",R,N,V_sharedConnection",
+          "name" : "sharedConnection"
+        },
+        {
+          "attributes" : "TQ,N,V_state",
+          "name" : "state"
+        },
+        {
+          "attributes" : "TQ,R,N,V_string_id",
+          "name" : "string_id"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEInMemoryModelDescriptor" : {
+      "classMethods" : [
+        {
+          "name" : "modelWithMILText:weights:optionsPlist:",
+          "typeEncoding" : "@40@0:8@16@24@32"
+        },
+        {
+          "name" : "modelWithNetworkDescription:weights:optionsPlist:",
+          "typeEncoding" : "@40@0:8@16@24@32"
+        },
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "hash",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "hexStringIdentifier",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithNetworkText:weights:optionsPlist:isMILModel:",
+          "typeEncoding" : "@44@0:8@16@24@32B40"
+        },
+        {
+          "name" : "isEqual:",
+          "typeEncoding" : "B24@0:8@16"
+        },
+        {
+          "name" : "isEqualToInMemoryModelDescriptor:",
+          "typeEncoding" : "B24@0:8@16"
+        },
+        {
+          "name" : "isMILModel",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "networkText",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "networkTextHash",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "optionsPlist",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "optionsPlistHash",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "weights",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "weightsHash",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "TB,R,N,V_isMILModel",
+          "name" : "isMILModel"
+        },
+        {
+          "attributes" : "T@\"NSData\",R,C,N,V_networkText",
+          "name" : "networkText"
+        },
+        {
+          "attributes" : "T@\"NSString\",R,C,N,V_networkTextHash",
+          "name" : "networkTextHash"
+        },
+        {
+          "attributes" : "T@\"NSData\",R,N,V_optionsPlist",
+          "name" : "optionsPlist"
+        },
+        {
+          "attributes" : "T@\"NSString\",R,N,V_optionsPlistHash",
+          "name" : "optionsPlistHash"
+        },
+        {
+          "attributes" : "T@\"NSDictionary\",R,N,V_weights",
+          "name" : "weights"
+        },
+        {
+          "attributes" : "T@\"NSString\",R,C,N,V_weightsHash",
+          "name" : "weightsHash"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEInputBuffersReady" : {
+      "classMethods" : [
+        {
+          "name" : "inputBuffersWithProcedureIndex:inputBufferInfoIndex:inputFreeValue:executionDelay:",
+          "typeEncoding" : "@44@0:8I16@20@28Q36"
+        },
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "executionDelay",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initInputsProcedureIndex:inputBufferInfoIndex:inputFreeValue:executionDelay:",
+          "typeEncoding" : "@44@0:8I16@20@28Q36"
+        },
+        {
+          "name" : "inputBufferInfoIndex",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "inputFreeValue",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "procedureIndex",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "validate",
+          "typeEncoding" : "B16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "TQ,R,N,V_executionDelay",
+          "name" : "executionDelay"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_inputBufferInfoIndex",
+          "name" : "inputBufferInfoIndex"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_inputFreeValue",
+          "name" : "inputFreeValue"
+        },
+        {
+          "attributes" : "TI,R,N,V_procedureIndex",
+          "name" : "procedureIndex"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEIOSurfaceObject" : {
+      "classMethods" : [
+        {
+          "name" : "createIOSurfaceWithWidth:pixel_size:height:",
+          "typeEncoding" : "^{__IOSurface=}28@0:8i16i20i24"
+        },
+        {
+          "name" : "createIOSurfaceWithWidth:pixel_size:height:bytesPerElement:",
+          "typeEncoding" : "^{__IOSurface=}32@0:8i16i20i24i28"
+        },
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "objectWithIOSurface:",
+          "typeEncoding" : "@24@0:8^{__IOSurface=}16"
+        },
+        {
+          "name" : "objectWithIOSurface:startOffset:",
+          "typeEncoding" : "@32@0:8^{__IOSurface=}16@24"
+        },
+        {
+          "name" : "objectWithIOSurfaceNoRetain:startOffset:",
+          "typeEncoding" : "@32@0:8^{__IOSurface=}16@24"
+        },
+        {
+          "name" : "supportsSecureCoding",
+          "typeEncoding" : "B16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "dealloc",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "encodeWithCoder:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithCoder:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "initWithIOSurface:startOffset:shouldRetain:",
+          "typeEncoding" : "@36@0:8^{__IOSurface=}16@24B32"
+        },
+        {
+          "name" : "ioSurface",
+          "typeEncoding" : "^{__IOSurface=}16@0:8"
+        },
+        {
+          "name" : "startOffset",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T^{__IOSurface=},R,N,V_ioSurface",
+          "name" : "ioSurface"
+        },
+        {
+          "attributes" : "T@\"NSNumber\",R,N,V_startOffset",
+          "name" : "startOffset"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEIOSurfaceOutputSets" : {
+      "classMethods" : [
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "objectWithstatsSurRef:outputBuffer:",
+          "typeEncoding" : "@32@0:8^{__IOSurface=}16@24"
+        },
+        {
+          "name" : "supportsSecureCoding",
+          "typeEncoding" : "B16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "dealloc",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "encodeWithCoder:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithCoder:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "initWithstatsSurRef:outputBuffer:",
+          "typeEncoding" : "@32@0:8^{__IOSurface=}16@24"
+        },
+        {
+          "name" : "outputBuffer",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "statsSurRef",
+          "typeEncoding" : "^{__IOSurface=}16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_outputBuffer",
+          "name" : "outputBuffer"
+        },
+        {
+          "attributes" : "T^{__IOSurface=},R,N,V_statsSurRef",
+          "name" : "statsSurRef"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANELog" : {
+      "classMethods" : [
+        {
+          "name" : "common",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "compiler",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "daemon",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "framework",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "maintenance",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "tests",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "tool",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "methods" : [
+
+      ],
+      "properties" : [
+
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEModel" : {
+      "classMethods" : [
+        {
+          "name" : "correctFileURLFormat:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "modelAtURL:key:",
+          "typeEncoding" : "@32@0:8@16@24"
+        },
+        {
+          "name" : "modelAtURL:key:modelAttributes:",
+          "typeEncoding" : "@40@0:8@16@24@32"
+        },
+        {
+          "name" : "modelAtURL:key:mpsConstants:",
+          "typeEncoding" : "@40@0:8@16@24@32"
+        },
+        {
+          "name" : "modelAtURLWithCacheURLIdentifier:key:cacheURLIdentifier:",
+          "typeEncoding" : "@40@0:8@16@24@32"
+        },
+        {
+          "name" : "modelAtURLWithSourceURL:sourceURL:key:cacheURLIdentifier:",
+          "typeEncoding" : "@48@0:8@16@24@32@40"
+        },
+        {
+          "name" : "modelAtURLWithSourceURL:sourceURL:key:identifierSource:cacheURLIdentifier:",
+          "typeEncoding" : "@56@0:8@16@24@32q40@48"
+        },
+        {
+          "name" : "modelAtURLWithSourceURL:sourceURL:key:identifierSource:cacheURLIdentifier:UUID:",
+          "typeEncoding" : "@64@0:8@16@24@32q40@48@56"
+        },
+        {
+          "name" : "modelWithCacheURLIdentifier:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "modelWithCacheURLIdentifier:UUID:",
+          "typeEncoding" : "@32@0:8@16@24"
+        },
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "supportsSecureCoding",
+          "typeEncoding" : "B16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "UUID",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "cacheURLIdentifier",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "copyWithZone:",
+          "typeEncoding" : "@24@0:8^{_NSZone=}16"
+        },
+        {
+          "name" : "dealloc",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "encodeWithCoder:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "getCacheURLIdentifier",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "getUUID",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "hash",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "identifierSource",
+          "typeEncoding" : "q16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithCoder:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "initWithModelAtURL:key:identifierSource:cacheURLIdentifier:modelAttributes:standardizeURL:",
+          "typeEncoding" : "@60@0:8@16@24q32@40@48B56"
+        },
+        {
+          "name" : "initWithModelAtURL:sourceURL:UUID:key:identifierSource:cacheURLIdentifier:modelAttributes:standardizeURL:string_id:generateNewStringId:",
+          "typeEncoding" : "@88@0:8@16@24@32@40q48@56@64B72Q76B84"
+        },
+        {
+          "name" : "initWithModelAtURL:sourceURL:UUID:key:identifierSource:cacheURLIdentifier:modelAttributes:standardizeURL:string_id:generateNewStringId:mpsConstants:",
+          "typeEncoding" : "@96@0:8@16@24@32@40q48@56@64B72Q76B84@88"
+        },
+        {
+          "name" : "initWithModelIdentifier:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "inputSymbolIndicesForProcedureIndex:",
+          "typeEncoding" : "@20@0:8I16"
+        },
+        {
+          "name" : "intermediateBufferHandle",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "isEqual:",
+          "typeEncoding" : "B24@0:8@16"
+        },
+        {
+          "name" : "isEqualToModel:",
+          "typeEncoding" : "B24@0:8@16"
+        },
+        {
+          "name" : "key",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "l",
+          "typeEncoding" : "{os_unfair_lock_s=I}16@0:8"
+        },
+        {
+          "name" : "mapper",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "modelAttributes",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "modelURL",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "mpsConstants",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "outputSymbolIndicesForProcedureIndex:",
+          "typeEncoding" : "@20@0:8I16"
+        },
+        {
+          "name" : "perfStatsMask",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "procedureInfoForProcedureIndex:",
+          "typeEncoding" : "@20@0:8I16"
+        },
+        {
+          "name" : "program",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "programHandle",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "queueDepth",
+          "typeEncoding" : "c16@0:8"
+        },
+        {
+          "name" : "resetOnUnload",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "setCacheURLIdentifier:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setIntermediateBufferHandle:",
+          "typeEncoding" : "v24@0:8Q16"
+        },
+        {
+          "name" : "setL:",
+          "typeEncoding" : "v20@0:8{os_unfair_lock_s=I}16"
+        },
+        {
+          "name" : "setMapper:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setModelAttributes:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setPerfStatsMask:",
+          "typeEncoding" : "v20@0:8I16"
+        },
+        {
+          "name" : "setProgram:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setProgramHandle:",
+          "typeEncoding" : "v24@0:8Q16"
+        },
+        {
+          "name" : "setQueueDepth:",
+          "typeEncoding" : "v20@0:8c16"
+        },
+        {
+          "name" : "setState:",
+          "typeEncoding" : "v24@0:8Q16"
+        },
+        {
+          "name" : "setString_id:",
+          "typeEncoding" : "v24@0:8Q16"
+        },
+        {
+          "name" : "shallowCopy",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "sourceURL",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "state",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "string_id",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "symbolIndicesForProcedureIndex:indexArrayKey:",
+          "typeEncoding" : "@28@0:8I16@20"
+        },
+        {
+          "name" : "updateModelAttributes:state:",
+          "typeEncoding" : "v32@0:8@16Q24"
+        },
+        {
+          "name" : "updateModelAttributes:state:programHandle:intermediateBufferHandle:queueDepth:",
+          "typeEncoding" : "v52@0:8@16Q24Q32Q40c48"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@\"NSUUID\",R,N,V_UUID",
+          "name" : "UUID"
+        },
+        {
+          "attributes" : "T@\"NSString\",C,N,V_cacheURLIdentifier",
+          "name" : "cacheURLIdentifier"
+        },
+        {
+          "attributes" : "Tq,R,N,V_identifierSource",
+          "name" : "identifierSource"
+        },
+        {
+          "attributes" : "TQ,N,V_intermediateBufferHandle",
+          "name" : "intermediateBufferHandle"
+        },
+        {
+          "attributes" : "T@\"NSString\",R,C,N,V_key",
+          "name" : "key"
+        },
+        {
+          "attributes" : "T{os_unfair_lock_s=I},N,V_l",
+          "name" : "l"
+        },
+        {
+          "attributes" : "T@\"_ANEProgramIOSurfacesMapper\",&,N,V_mapper",
+          "name" : "mapper"
+        },
+        {
+          "attributes" : "T@\"NSDictionary\",&,N,V_modelAttributes",
+          "name" : "modelAttributes"
+        },
+        {
+          "attributes" : "T@\"NSURL\",R,N,V_modelURL",
+          "name" : "modelURL"
+        },
+        {
+          "attributes" : "T@\"NSDictionary\",R,N,V_mpsConstants",
+          "name" : "mpsConstants"
+        },
+        {
+          "attributes" : "TI,N,V_perfStatsMask",
+          "name" : "perfStatsMask"
+        },
+        {
+          "attributes" : "T@\"_ANEProgramForEvaluation\",&,N,V_program",
+          "name" : "program"
+        },
+        {
+          "attributes" : "TQ,N,V_programHandle",
+          "name" : "programHandle"
+        },
+        {
+          "attributes" : "Tc,N,V_queueDepth",
+          "name" : "queueDepth"
+        },
+        {
+          "attributes" : "T@\"NSURL\",R,N,V_sourceURL",
+          "name" : "sourceURL"
+        },
+        {
+          "attributes" : "TQ,N,V_state",
+          "name" : "state"
+        },
+        {
+          "attributes" : "TQ,N,V_string_id",
+          "name" : "string_id"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEModelInstanceParameters" : {
+      "classMethods" : [
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "supportsSecureCoding",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "withProcedureData:procedureArray:",
+          "typeEncoding" : "@32@0:8@16@24"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "copyWithZone:",
+          "typeEncoding" : "@24@0:8^{_NSZone=}16"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "encodeWithCoder:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithCoder:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "initWithProcedureData:procedureArray:",
+          "typeEncoding" : "@32@0:8@16@24"
+        },
+        {
+          "name" : "instanceName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "procedureArray",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@\"NSString\",R,C,N,V_instanceName",
+          "name" : "instanceName"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_procedureArray",
+          "name" : "procedureArray"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEModelToken" : {
+      "classMethods" : [
+        {
+          "name" : "codeSigningIDFor:processIdentifier:",
+          "typeEncoding" : "@52@0:8{?=[8I]}16i48"
+        },
+        {
+          "name" : "processNameFor:identifier:",
+          "typeEncoding" : "@52@0:8{?=[8I]}16i48"
+        },
+        {
+          "name" : "teamIDFor:processIdentifier:",
+          "typeEncoding" : "@52@0:8{?=[8I]}16i48"
+        },
+        {
+          "name" : "tokenWithAuditToken:modelIdentifier:processIdentifier:",
+          "typeEncoding" : "@60@0:8{?=[8I]}16@48i56"
+        },
+        {
+          "name" : "tokenWithCsIdentity:teamIdentity:modelIdentifier:processIdentifier:",
+          "typeEncoding" : "@44@0:8@16@24@32i40"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "csIdentity",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithAuditToken:modelIdentifier:processIdentifier:",
+          "typeEncoding" : "@60@0:8{?=[8I]}16@48i56"
+        },
+        {
+          "name" : "initWithCsIdentity:teamIdentity:modelIdentifier:processIdentifier:",
+          "typeEncoding" : "@44@0:8@16@24@32i40"
+        },
+        {
+          "name" : "modelIdentifier",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "processIdentifier",
+          "typeEncoding" : "i16@0:8"
+        },
+        {
+          "name" : "teamIdentity",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@\"NSString\",R,N,V_csIdentity",
+          "name" : "csIdentity"
+        },
+        {
+          "attributes" : "T@\"NSString\",R,N,V_modelIdentifier",
+          "name" : "modelIdentifier"
+        },
+        {
+          "attributes" : "Ti,R,N,V_processIdentifier",
+          "name" : "processIdentifier"
+        },
+        {
+          "attributes" : "T@\"NSString\",R,N,V_teamIdentity",
+          "name" : "teamIdentity"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEOutputSetEnqueue" : {
+      "classMethods" : [
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "outputSetWithProcedureIndex:setIndex:signalValue:signalNotRequired:isOpenLoop:",
+          "typeEncoding" : "@40@0:8I16I20Q24B32B36"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initOutputSetWithProcedureIndex:setIndex:signalValue:signalNotRequired:isOpenLoop:",
+          "typeEncoding" : "@40@0:8I16I20Q24B32B36"
+        },
+        {
+          "name" : "isOpenLoop",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "procedureIndex",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "setIndex",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "signalNotRequired",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "signalValue",
+          "typeEncoding" : "Q16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "TB,R,N,V_isOpenLoop",
+          "name" : "isOpenLoop"
+        },
+        {
+          "attributes" : "TI,R,N,V_procedureIndex",
+          "name" : "procedureIndex"
+        },
+        {
+          "attributes" : "TI,R,N,V_setIndex",
+          "name" : "setIndex"
+        },
+        {
+          "attributes" : "TB,R,N,V_signalNotRequired",
+          "name" : "signalNotRequired"
+        },
+        {
+          "attributes" : "TQ,R,N,V_signalValue",
+          "name" : "signalValue"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEPerformanceStats" : {
+      "classMethods" : [
+        {
+          "name" : "driverMaskForANEFMask:",
+          "typeEncoding" : "I20@0:8I16"
+        },
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "statsWithHardwareExecutionNS:",
+          "typeEncoding" : "@24@0:8Q16"
+        },
+        {
+          "name" : "statsWithReconstructed:hardwareExecutionNS:aneStatsRawData:",
+          "typeEncoding" : "@40@0:8@16Q24@32"
+        },
+        {
+          "name" : "statsWithRequestPerformanceBuffer:statsBufferSize:",
+          "typeEncoding" : "@32@0:8^^v16^I24"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "emitPerfcounterSignpostsWithModelStringID:",
+          "typeEncoding" : "v24@0:8Q16"
+        },
+        {
+          "name" : "hwExecutionTime",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithHardwareExecution:perfCounterData:ANEStatsRawData:",
+          "typeEncoding" : "@40@0:8Q16@24@32"
+        },
+        {
+          "name" : "initWithReconstructedData:hardwareExecutionNS:",
+          "typeEncoding" : "@32@0:8@16Q24"
+        },
+        {
+          "name" : "initWithRequestPerformanceBuffer:statsBufferSize:",
+          "typeEncoding" : "@32@0:8^^v16^I24"
+        },
+        {
+          "name" : "pStatsRawData",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "perfCounterData",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "performanceCounters",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "stringForPerfCounter:",
+          "typeEncoding" : "@20@0:8i16"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "TQ,R,N,V_hwExecutionTime",
+          "name" : "hwExecutionTime"
+        },
+        {
+          "attributes" : "T@\"NSData\",R,N,V_pStatsRawData",
+          "name" : "pStatsRawData"
+        },
+        {
+          "attributes" : "T@\"NSData\",R,N,V_perfCounterData",
+          "name" : "perfCounterData"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEPerformanceStatsIOSurface" : {
+      "classMethods" : [
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "objectWithIOSurface:statType:",
+          "typeEncoding" : "@32@0:8@16q24"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithIOSurface:statType:",
+          "typeEncoding" : "@32@0:8@16q24"
+        },
+        {
+          "name" : "statType",
+          "typeEncoding" : "q16@0:8"
+        },
+        {
+          "name" : "stats",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "Tq,R,N,V_statType",
+          "name" : "statType"
+        },
+        {
+          "attributes" : "T@\"_ANEIOSurfaceObject\",R,N,V_stats",
+          "name" : "stats"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEProcedureData" : {
+      "classMethods" : [
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "procedureDataWithSymbol:weightArray:",
+          "typeEncoding" : "@32@0:8@16@24"
+        },
+        {
+          "name" : "supportsSecureCoding",
+          "typeEncoding" : "B16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "copyWithZone:",
+          "typeEncoding" : "@24@0:8^{_NSZone=}16"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "encodeWithCoder:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithCoder:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "initWithProcedure:weightArray:",
+          "typeEncoding" : "@32@0:8@16@24"
+        },
+        {
+          "name" : "procedureSymbol",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "weightArray",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@\"NSString\",R,C,N,V_procedureSymbol",
+          "name" : "procedureSymbol"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_weightArray",
+          "name" : "weightArray"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEProgramForEvaluation" : {
+      "classMethods" : [
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "programWithController:intermediateBufferHandle:queueDepth:",
+          "typeEncoding" : "@36@0:8@16Q24c32"
+        },
+        {
+          "name" : "programWithHandle:intermediateBufferHandle:queueDepth:",
+          "typeEncoding" : "@36@0:8Q16Q24c32"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "controller",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "currentAsyncRequestsInFlight",
+          "typeEncoding" : "q16@0:8"
+        },
+        {
+          "name" : "dealloc",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithController:intermediateBufferHandle:queueDepth:",
+          "typeEncoding" : "@36@0:8@16Q24c32"
+        },
+        {
+          "name" : "intermediateBufferHandle",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "processInputBuffers:model:options:error:",
+          "typeEncoding" : "B48@0:8@16@24@32^@40"
+        },
+        {
+          "name" : "processOutputSet:model:options:error:",
+          "typeEncoding" : "B48@0:8@16@24@32^@40"
+        },
+        {
+          "name" : "processRequest:model:qos:qIndex:modelStringID:options:returnValue:error:",
+          "typeEncoding" : "B76@0:8@16@24I32Q36Q44@52^I60^@68"
+        },
+        {
+          "name" : "processSessionHint:options:report:error:",
+          "typeEncoding" : "B48@0:8@16@24@32^@40"
+        },
+        {
+          "name" : "programHandle",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "programInferenceOtherErrorForMessage:model:methodName:",
+          "typeEncoding" : "@40@0:8^{ANENotificationMessageStruct=ii^v[4^v][4I]}16@24@32"
+        },
+        {
+          "name" : "queueDepth",
+          "typeEncoding" : "c16@0:8"
+        },
+        {
+          "name" : "requestsInFlight",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "setCurrentAsyncRequestsInFlight:",
+          "typeEncoding" : "v24@0:8q16"
+        },
+        {
+          "name" : "setIntermediateBufferHandle:",
+          "typeEncoding" : "v24@0:8Q16"
+        },
+        {
+          "name" : "setProgramHandle:",
+          "typeEncoding" : "v24@0:8Q16"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@\"_ANEDeviceController\",R,N,V_controller",
+          "name" : "controller"
+        },
+        {
+          "attributes" : "Tq,V_currentAsyncRequestsInFlight",
+          "name" : "currentAsyncRequestsInFlight"
+        },
+        {
+          "attributes" : "TQ,N,V_intermediateBufferHandle",
+          "name" : "intermediateBufferHandle"
+        },
+        {
+          "attributes" : "TQ,N,V_programHandle",
+          "name" : "programHandle"
+        },
+        {
+          "attributes" : "Tc,R,N,V_queueDepth",
+          "name" : "queueDepth"
+        },
+        {
+          "attributes" : "T@\"NSObject<OS_dispatch_semaphore>\",R,N,V_requestsInFlight",
+          "name" : "requestsInFlight"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEProgramIOSurfacesMapper" : {
+      "classMethods" : [
+        {
+          "name" : "initialize",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "mapperWithController:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "mapperWithProgramHandle:",
+          "typeEncoding" : "@24@0:8Q16"
+        },
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "controller",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "dealloc",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "deviceController",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithController:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "mapIOSurfacesWithModel:request:cacheInference:error:",
+          "typeEncoding" : "B44@0:8@16@24B32^@36"
+        },
+        {
+          "name" : "prepareANEMemoryMappingParams:request:",
+          "typeEncoding" : "v32@0:8^{ANEMemoryMappingParamsStruct=[128{ANEBufferStruct=^{__IOSurface}IiiI}]QIIQ}16@24"
+        },
+        {
+          "name" : "programHandle",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "unmapIOSurfacesWithModel:request:error:",
+          "typeEncoding" : "B40@0:8@16@24^@32"
+        },
+        {
+          "name" : "validateRequest:model:",
+          "typeEncoding" : "B32@0:8@16@24"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@\"_ANEDeviceController\",R,N,V_controller",
+          "name" : "controller"
+        },
+        {
+          "attributes" : "T@\"_ANEDeviceController\",R,N,V_deviceController",
+          "name" : "deviceController"
+        },
+        {
+          "attributes" : "TQ,R,N,V_programHandle",
+          "name" : "programHandle"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEQoSMapper" : {
+      "classMethods" : [
+        {
+          "name" : "aneBackgroundTaskQoS",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "aneDefaultTaskQoS",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "aneRealTimeTaskQoS",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "aneUserInitiatedTaskQoS",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "aneUserInteractiveTaskQoS",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "aneUtilityTaskQoS",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "dispatchQueueArrayByMappingPrioritiesWithTag:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "programPriorityForQoS:",
+          "typeEncoding" : "i20@0:8I16"
+        },
+        {
+          "name" : "qosForProgramPriority:",
+          "typeEncoding" : "I20@0:8i16"
+        },
+        {
+          "name" : "queueIndexForQoS:",
+          "typeEncoding" : "Q20@0:8I16"
+        },
+        {
+          "name" : "realTimeProgramPriority",
+          "typeEncoding" : "i16@0:8"
+        },
+        {
+          "name" : "realTimeQueueIndex",
+          "typeEncoding" : "Q16@0:8"
+        }
+      ],
+      "methods" : [
+
+      ],
+      "properties" : [
+
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANERequest" : {
+      "classMethods" : [
+        {
+          "name" : "requestWithInputs:inputIndices:outputs:outputIndices:perfStats:procedureIndex:",
+          "typeEncoding" : "@64@0:8@16@24@32@40@48@56"
+        },
+        {
+          "name" : "requestWithInputs:inputIndices:outputs:outputIndices:procedureIndex:",
+          "typeEncoding" : "@56@0:8@16@24@32@40@48"
+        },
+        {
+          "name" : "requestWithInputs:inputIndices:outputs:outputIndices:weightsBuffer:perfStats:procedureIndex:",
+          "typeEncoding" : "@72@0:8@16@24@32@40@48@56@64"
+        },
+        {
+          "name" : "requestWithInputs:inputIndices:outputs:outputIndices:weightsBuffer:perfStats:procedureIndex:sharedEvents:",
+          "typeEncoding" : "@80@0:8@16@24@32@40@48@56@64@72"
+        },
+        {
+          "name" : "requestWithInputs:inputIndices:outputs:outputIndices:weightsBuffer:perfStats:procedureIndex:sharedEvents:transactionHandle:",
+          "typeEncoding" : "@88@0:8@16@24@32@40@48@56@64@72@80"
+        },
+        {
+          "name" : "requestWithInputs:inputIndices:outputs:outputIndices:weightsBuffer:procedureIndex:",
+          "typeEncoding" : "@64@0:8@16@24@32@40@48@56"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "completionHandler",
+          "typeEncoding" : "@?16@0:8"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithInputs:inputIndices:outputs:outputIndices:weightsBuffer:perfStats:procedureIndex:sharedEvents:transactionHandle:",
+          "typeEncoding" : "@88@0:8@16@24@32@40@48@56@64@72@80"
+        },
+        {
+          "name" : "initWithVirtualModel:",
+          "typeEncoding" : "@24@0:8^v16"
+        },
+        {
+          "name" : "inputArray",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "inputIndexArray",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "ioSurfacesCount",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "outputArray",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "outputIndexArray",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "perfStats",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "perfStatsArray",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "procedureIndex",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "setCompletionHandler:",
+          "typeEncoding" : "v24@0:8@?16"
+        },
+        {
+          "name" : "setPerfStats:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setSharedEvents:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setTransactionHandle:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "sharedEvents",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "transactionHandle",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "validate",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "weightsBuffer",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@?,C,V_completionHandler",
+          "name" : "completionHandler"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_inputArray",
+          "name" : "inputArray"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_inputIndexArray",
+          "name" : "inputIndexArray"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_outputArray",
+          "name" : "outputArray"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_outputIndexArray",
+          "name" : "outputIndexArray"
+        },
+        {
+          "attributes" : "T@\"_ANEPerformanceStats\",&,N,V_perfStats",
+          "name" : "perfStats"
+        },
+        {
+          "attributes" : "T@\"NSArray\",R,N,V_perfStatsArray",
+          "name" : "perfStatsArray"
+        },
+        {
+          "attributes" : "T@\"NSNumber\",R,C,N,V_procedureIndex",
+          "name" : "procedureIndex"
+        },
+        {
+          "attributes" : "T@\"_ANESharedEvents\",&,N,V_sharedEvents",
+          "name" : "sharedEvents"
+        },
+        {
+          "attributes" : "T@\"NSNumber\",C,N,V_transactionHandle",
+          "name" : "transactionHandle"
+        },
+        {
+          "attributes" : "T@\"_ANEIOSurfaceObject\",R,N,V_weightsBuffer",
+          "name" : "weightsBuffer"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANESandboxingHelper" : {
+      "classMethods" : [
+        {
+          "name" : "canAccessPathAt:methodName:error:",
+          "typeEncoding" : "B40@0:8@16@24^@32"
+        },
+        {
+          "name" : "consumeSandboxExtension:forModel:error:",
+          "typeEncoding" : "q40@0:8@16@24^@32"
+        },
+        {
+          "name" : "consumeSandboxExtension:forPath:error:",
+          "typeEncoding" : "q40@0:8@16@24^@32"
+        },
+        {
+          "name" : "initialize",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "issueSandboxExtensionForModel:error:",
+          "typeEncoding" : "@32@0:8@16^@24"
+        },
+        {
+          "name" : "issueSandboxExtensionForPath:error:",
+          "typeEncoding" : "@32@0:8@16^@24"
+        },
+        {
+          "name" : "releaseSandboxExtension:handle:",
+          "typeEncoding" : "B32@0:8@16q24"
+        },
+        {
+          "name" : "sandboxExtensionPathForModelURL:",
+          "typeEncoding" : "@24@0:8@16"
+        }
+      ],
+      "methods" : [
+
+      ],
+      "properties" : [
+
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANESharedEvents" : {
+      "classMethods" : [
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "sharedEventsWithSignalEvents:waitEvents:",
+          "typeEncoding" : "@32@0:8@16@24"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithSignalEvents:waitEvents:",
+          "typeEncoding" : "@32@0:8@16@24"
+        },
+        {
+          "name" : "setSignalEvents:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setWaitEvents:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "signalEvents",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "waitEvents",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@\"NSArray\",&,N,V_signalEvents",
+          "name" : "signalEvents"
+        },
+        {
+          "attributes" : "T@\"NSArray\",&,N,V_waitEvents",
+          "name" : "waitEvents"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANESharedSignalEvent" : {
+      "classMethods" : [
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "signalEventWithValue:symbolIndex:eventType:sharedEvent:",
+          "typeEncoding" : "@44@0:8Q16I24q28@36"
+        },
+        {
+          "name" : "supportsSecureCoding",
+          "typeEncoding" : "B16@0:8"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "agentMask",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "encodeWithCoder:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "eventType",
+          "typeEncoding" : "q16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithCoder:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "initWithValue:symbolIndex:eventType:sharedEvent:agentMask:",
+          "typeEncoding" : "@52@0:8Q16I24q28@36Q44"
+        },
+        {
+          "name" : "setAgentMask:",
+          "typeEncoding" : "v24@0:8Q16"
+        },
+        {
+          "name" : "setValue:",
+          "typeEncoding" : "v24@0:8Q16"
+        },
+        {
+          "name" : "sharedEvent",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "symbolIndex",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "value",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "waitEvent",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "TQ,N,V_agentMask",
+          "name" : "agentMask"
+        },
+        {
+          "attributes" : "Tq,R,N,V_eventType",
+          "name" : "eventType"
+        },
+        {
+          "attributes" : "T@\"IOSurfaceSharedEvent\",R,N,V_sharedEvent",
+          "name" : "sharedEvent"
+        },
+        {
+          "attributes" : "TI,R,N,V_symbolIndex",
+          "name" : "symbolIndex"
+        },
+        {
+          "attributes" : "TQ,N,V_value",
+          "name" : "value"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANESharedWaitEvent" : {
+      "classMethods" : [
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "waitEventWithValue:sharedEvent:",
+          "typeEncoding" : "@32@0:8Q16@24"
+        },
+        {
+          "name" : "waitEventWithValue:sharedEvent:eventType:",
+          "typeEncoding" : "@40@0:8Q16@24Q32"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "eventType",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithValue:sharedEvent:eventType:",
+          "typeEncoding" : "@40@0:8Q16@24Q32"
+        },
+        {
+          "name" : "setValue:",
+          "typeEncoding" : "v24@0:8Q16"
+        },
+        {
+          "name" : "sharedEvent",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "value",
+          "typeEncoding" : "Q16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "TQ,R,N,V_eventType",
+          "name" : "eventType"
+        },
+        {
+          "attributes" : "T@\"IOSurfaceSharedEvent\",R,N,V_sharedEvent",
+          "name" : "sharedEvent"
+        },
+        {
+          "attributes" : "TQ,N,V_value",
+          "name" : "value"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEStrings" : {
+      "classMethods" : [
+        {
+          "name" : "adapterWeightsAccessEntitlement",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "adapterWeightsAccessEntitlementBypassBootArg",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "aggressivePowerSavingEntitlement",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "binExtension",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "buildSpecificModelDataVaultDirectory",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "buildSpecificUserModelDataVaultDirectory",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "cloneDirectory",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "compilerServiceAccessEntitlement",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "coreAnalyticsANEUsageDefaultReportedClient",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "coreAnalyticsANEUsageKeyGroup",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "dataVaultStorageClass",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "defaultANECIRFileName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "defaultANECIROptionsFileName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "defaultCompilerOptionsFilename",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "defaultLLIRBundleName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "defaultMILFileName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "defaultMLIRFileName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "defaultWeightFileName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "errorDomainCompiler",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "errorDomainEspresso",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "errorDomainGeneric",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "errorDomainVirtIO",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "hwxExtension",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "inMemoryModelCacheName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "internalLibraryPath",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "launchIOKitEvent",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "launchUserIOKitEvent",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "llirBundleExtension",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "machServiceName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "machServiceNamePrivate",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "memoryUnwireAccessEntitlement",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "mlirExtension",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "modelAssetsCacheName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "modelBinaryName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "modelCacheRetainName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "modelDataVaultDirectory",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "modelPurgeInAllPartitionsEntitlement",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "modelSourceStoreName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "noSandboxExtension",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "ppsCategoryForANE",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "ppsSubsystemForANE",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "pps_applicationDir",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "pps_catalogDir",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "pps_defaultSystemPathDir",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "pps_defaultUserPathPrefix",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "pps_frameworkDir",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "pps_internalDir",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "pps_privateFrameworkDir",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "pps_tmpDir",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "pps_varDir",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "processModelShareAccessEntitlement",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "restrictedAccessEntitlement",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "secondaryANECompilerServiceAccessEntitlement",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "storageMaintainerAccessEntitlement",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "systemLibraryPath",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "systemModelsCacheDirectory",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "tempDirectory",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "testing_ThreeSixtyModelName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "testing_cacheDirectory",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "testing_cacheDirectoryWithSuffix:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "testing_cacheDirectoryWithSuffix:buildVersion:",
+          "typeEncoding" : "@32@0:8@16@24"
+        },
+        {
+          "name" : "testing_cloneDirectory:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "testing_dataVaultStorageClass",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "testing_defaultMLIRModelName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "testing_encryptedModelNames",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "testing_external_modelPath",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "testing_external_precompiledModelPath",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "testing_inputDirectory",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "testing_modelDirectory",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "testing_modelDirectory:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "testing_modelNames",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "testing_tempDirectory:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "testing_userCacheDirectory",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "testing_userCacheDirectoryWithSuffix:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "testing_userCacheDirectoryWithSuffix:buildVersion:",
+          "typeEncoding" : "@32@0:8@16@24"
+        },
+        {
+          "name" : "testing_userCloneDirectory:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "testing_userTempDirectory:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "testing_zeroModelName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "trimmedModelPath:trimmedPath:",
+          "typeEncoding" : "B32@0:8@16^@24"
+        },
+        {
+          "name" : "userCloneDirectory",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "userMachServiceName",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "userModelDataVaultDirectory",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "userTempDirectory",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "vm_allowPrecompiledBinaryBootArg",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "vm_debugDumpBootArg",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "vm_forceValidationOnGuestBootArg",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "vm_tmpBaseDirectory",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "methods" : [
+
+      ],
+      "properties" : [
+
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEVirtualClient" : {
+      "classMethods" : [
+        {
+          "name" : "copyData:toExistingIOSurfaceRef:",
+          "typeEncoding" : "B32@0:8@16^{__IOSurface=}24"
+        },
+        {
+          "name" : "copyDictionaryDataToStruct:dictionary:",
+          "typeEncoding" : "v32@0:8^{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}16^{__CFDictionary=}24"
+        },
+        {
+          "name" : "copyLLIRBundleToIOSurface:writtenDataSize:",
+          "typeEncoding" : "^{__IOSurface=}32@0:8@16^Q24"
+        },
+        {
+          "name" : "createIOSurface:ioSID:",
+          "typeEncoding" : "^{__IOSurface=}32@0:8Q16^I24"
+        },
+        {
+          "name" : "dictionaryGetInt64ForKey:key:",
+          "typeEncoding" : "q32@0:8^{__CFDictionary=}16^{__CFString=}24"
+        },
+        {
+          "name" : "dictionaryGetInt8ForKey:key:",
+          "typeEncoding" : "c32@0:8^{__CFDictionary=}16^{__CFString=}24"
+        },
+        {
+          "name" : "dictionaryGetNSStringForKey:key:",
+          "typeEncoding" : "@32@0:8^{__CFDictionary=}16^{__CFString=}24"
+        },
+        {
+          "name" : "dictionaryGetUInt32ForKey:key:",
+          "typeEncoding" : "I32@0:8^{__CFDictionary=}16^{__CFString=}24"
+        },
+        {
+          "name" : "dictionaryGetUInt64ForKey:key:",
+          "typeEncoding" : "Q32@0:8^{__CFDictionary=}16^{__CFString=}24"
+        },
+        {
+          "name" : "freeModelFileIOSurfaces:",
+          "typeEncoding" : "v24@0:8^{__CFArray=}16"
+        },
+        {
+          "name" : "getCFDictionaryFromIOSurface:dataLength:",
+          "typeEncoding" : "^{__CFDictionary=}32@0:8^{__IOSurface=}16Q24"
+        },
+        {
+          "name" : "getCodeSigningIdentity",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "getDictionaryWithJSONEncodingFromIOSurface:withArchivedDataSize:",
+          "typeEncoding" : "@32@0:8^{__IOSurface=}16Q24"
+        },
+        {
+          "name" : "getObjectFromIOSurface:classType:length:",
+          "typeEncoding" : "@40@0:8^{__IOSurface=}16#24Q32"
+        },
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "printIOSurfaceDataInBytes:",
+          "typeEncoding" : "v24@0:8^{__IOSurface=}16"
+        },
+        {
+          "name" : "printStruct:",
+          "typeEncoding" : "v24@0:8^{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}16"
+        },
+        {
+          "name" : "setCodeSigningIdentity:",
+          "typeEncoding" : "B24@0:8^{__CFDictionary=}16"
+        },
+        {
+          "name" : "sharedConnection",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "shouldUsePrecompiledPath:options:shouldUseChunking:chunkingThreshold:",
+          "typeEncoding" : "B48@0:8@16@24^B32Q40"
+        },
+        {
+          "name" : "updateError:errorLength:error:",
+          "typeEncoding" : "B40@0:8^{__IOSurface=}16Q24^@32"
+        },
+        {
+          "name" : "updateError:errorLength:errorCode:error:",
+          "typeEncoding" : "B48@0:8^{__IOSurface=}16Q24q32^@40"
+        },
+        {
+          "name" : "updatePerformanceStats:performanceStatsLength:perfStatsRawIOSurfaceRef:performanceStatsRawLength:hwExecutionTime:",
+          "typeEncoding" : "@56@0:8^{__IOSurface=}16Q24^{__IOSurface=}32Q40Q48"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "aneArchitectureTypeStr",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "aneBoardtype",
+          "typeEncoding" : "q16@0:8"
+        },
+        {
+          "name" : "aneSubTypeAndVariant",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "beginRealTimeTask",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "callIOUserClient:inParams:outParams:",
+          "typeEncoding" : "B36@0:8I16^{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}20^{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}28"
+        },
+        {
+          "name" : "callIOUserClientWithDictionary:inDictionary:error:",
+          "typeEncoding" : "^{__CFDictionary=}36@0:8I16^{__CFDictionary=}20^@28"
+        },
+        {
+          "name" : "checkKernReturnValue:selector:outParams:",
+          "typeEncoding" : "v32@0:8i16I20^{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}24"
+        },
+        {
+          "name" : "compileModel:options:qos:error:",
+          "typeEncoding" : "B44@0:8@16@24I32^@36"
+        },
+        {
+          "name" : "compiledModelExistsFor:",
+          "typeEncoding" : "B24@0:8@16"
+        },
+        {
+          "name" : "compiledModelExistsMatchingHash:",
+          "typeEncoding" : "B24@0:8@16"
+        },
+        {
+          "name" : "connect",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "copyAllModelFiles:dictionary:ioSurfaceRefs:",
+          "typeEncoding" : "B40@0:8@16^{__CFDictionary=}24^{__CFArray=}32"
+        },
+        {
+          "name" : "copyDictionaryToIOSurface:copiedDataSize:createdIOSID:",
+          "typeEncoding" : "^{__IOSurface=}40@0:8@16^Q24^I32"
+        },
+        {
+          "name" : "copyErrorValue:",
+          "typeEncoding" : "v24@0:8^{VMData=^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}[32^{__IOSurface}][32^{__IOSurface}]{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}^{__IOSurface}^{__IOSurface}}16"
+        },
+        {
+          "name" : "copyErrorValue:vmData:",
+          "typeEncoding" : "v32@0:8^{__CFDictionary=}16^{VMData=^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}[32^{__IOSurface}][32^{__IOSurface}]{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}^{__IOSurface}^{__IOSurface}}24"
+        },
+        {
+          "name" : "copyFilesInDirectoryToIOSurfaces:ioSurfaceRefs:ioSurfaceSizes:fileNames:",
+          "typeEncoding" : "B48@0:8@16^{__CFArray=}24@32@40"
+        },
+        {
+          "name" : "copyModel:options:vmData:",
+          "typeEncoding" : "v40@0:8@16@24^{VMData=^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}[32^{__IOSurface}][32^{__IOSurface}]{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}^{__IOSurface}^{__IOSurface}}32"
+        },
+        {
+          "name" : "copyModelMetaData:options:dictionary:vmData:",
+          "typeEncoding" : "v48@0:8@16@24^{__CFDictionary=}32^{VMData=^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}[32^{__IOSurface}][32^{__IOSurface}]{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}^{__IOSurface}^{__IOSurface}}40"
+        },
+        {
+          "name" : "copyModelOptionFiles:options:dictionary:vmData:",
+          "typeEncoding" : "v48@0:8@16@24^{__CFDictionary=}32^{VMData=^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}[32^{__IOSurface}][32^{__IOSurface}]{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}^{__IOSurface}^{__IOSurface}}40"
+        },
+        {
+          "name" : "copyModelOptionFiles:options:vmData:",
+          "typeEncoding" : "v40@0:8@16@24^{VMData=^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}[32^{__IOSurface}][32^{__IOSurface}]{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}^{__IOSurface}^{__IOSurface}}32"
+        },
+        {
+          "name" : "copyOptions:dictionary:vmData:",
+          "typeEncoding" : "v40@0:8@16^{__CFDictionary=}24^{VMData=^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}[32^{__IOSurface}][32^{__IOSurface}]{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}^{__IOSurface}^{__IOSurface}}32"
+        },
+        {
+          "name" : "copyOptions:vmData:",
+          "typeEncoding" : "v32@0:8@16^{VMData=^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}[32^{__IOSurface}][32^{__IOSurface}]{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}^{__IOSurface}^{__IOSurface}}24"
+        },
+        {
+          "name" : "copyToIOSurface:length:ioSID:",
+          "typeEncoding" : "^{__IOSurface=}40@0:8@16Q24^I32"
+        },
+        {
+          "name" : "copyToIOSurface:size:ioSID:",
+          "typeEncoding" : "^{__IOSurface=}40@0:8*16Q24^I32"
+        },
+        {
+          "name" : "dealloc",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "doEvaluateWithModel:options:request:qos:completionEvent:error:",
+          "typeEncoding" : "B60@0:8@16@24@32I40@44^@52"
+        },
+        {
+          "name" : "doEvaluateWithModelLegacy:options:request:qos:completionEvent:error:",
+          "typeEncoding" : "B60@0:8@16@24@32I40@44^@52"
+        },
+        {
+          "name" : "doJsonParsingMatchWeightName:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "doMapIOSurfacesWithModel:request:cacheInference:error:",
+          "typeEncoding" : "B44@0:8@16@24B32^@36"
+        },
+        {
+          "name" : "echo:",
+          "typeEncoding" : "B24@0:8@16"
+        },
+        {
+          "name" : "endRealTimeTask",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "evaluateWithModel:options:request:qos:error:",
+          "typeEncoding" : "B52@0:8@16@24@32I40^@44"
+        },
+        {
+          "name" : "exchangeBuildVersionInfo",
+          "typeEncoding" : "{BuildVersionInfo=IIQ[32C]CQQ[15Q]}16@0:8"
+        },
+        {
+          "name" : "getDeviceInfo",
+          "typeEncoding" : "{DeviceExtendedInfo={DeviceInfo=IqqB}BII[32c][8c]}16@0:8"
+        },
+        {
+          "name" : "getModelAttribute:",
+          "typeEncoding" : "@24@0:8^{VMData=^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}[32^{__IOSurface}][32^{__IOSurface}]{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}^{__IOSurface}^{__IOSurface}}16"
+        },
+        {
+          "name" : "getValidateNetworkVersion",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "hasANE",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "hostBuildVersionStr",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithSingletonAccess",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "isInternalBuild",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "loadModel:options:qos:error:",
+          "typeEncoding" : "B44@0:8@16@24I32^@36"
+        },
+        {
+          "name" : "loadModelNewInstance:options:modelInstParams:qos:error:",
+          "typeEncoding" : "B52@0:8@16@24@32I40^@44"
+        },
+        {
+          "name" : "loadModelNewInstanceLegacy:options:modelInstParams:qos:error:",
+          "typeEncoding" : "B52@0:8@16@24@32I40^@44"
+        },
+        {
+          "name" : "mapIOSurfacesWithModel:request:cacheInference:error:",
+          "typeEncoding" : "B44@0:8@16@24B32^@36"
+        },
+        {
+          "name" : "negotiatedCapabilityMask",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "negotiatedDataInterfaceVersion",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "numANECores",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "numANEs",
+          "typeEncoding" : "I16@0:8"
+        },
+        {
+          "name" : "outputDictIOSurfaceSize",
+          "typeEncoding" : "Q16@0:8"
+        },
+        {
+          "name" : "parallelDecompressedData:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "printDictionary:",
+          "typeEncoding" : "v24@0:8^{__CFDictionary=}16"
+        },
+        {
+          "name" : "purgeCompiledModel:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "purgeCompiledModelMatchingHash:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "queue",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "readWeightFilename:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "releaseIOSurfaces:",
+          "typeEncoding" : "v24@0:8^{VMData=^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}[32^{__IOSurface}][32^{__IOSurface}]{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}^{__IOSurface}^{__IOSurface}}16"
+        },
+        {
+          "name" : "sendGuestBuildVersion",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "sessionHintWithModel:hint:options:report:error:",
+          "typeEncoding" : "B56@0:8@16@24@32@40^@48"
+        },
+        {
+          "name" : "transferFileToHostWithPath:withChunkSize:withUUID:withModelInputPath:overWriteFileNameWith:",
+          "typeEncoding" : "B52@0:8@16I24@28@36@44"
+        },
+        {
+          "name" : "unloadModel:options:qos:error:",
+          "typeEncoding" : "B44@0:8@16@24I32^@36"
+        },
+        {
+          "name" : "updateError:error:",
+          "typeEncoding" : "B32@0:8^{VMData=^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}[32^{__IOSurface}][32^{__IOSurface}]{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}^{__IOSurface}^{__IOSurface}}16^@24"
+        },
+        {
+          "name" : "updatePerformanceStats:",
+          "typeEncoding" : "@24@0:8^{VMData=^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}^{__IOSurface}[32^{__IOSurface}][32^{__IOSurface}]{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}{VirtANEModel=IqIIIIQQQQ[32I][32Q][32I][32Q]QQQcCIQIIIQIIQIQ[64I][64I][64I][64I]IQQ[64I][64I]IIIIIIQqIIQIQIQIQIQIQIQ}^{__IOSurface}^{__IOSurface}}16"
+        },
+        {
+          "name" : "validateEnvironmentForPrecompiledBinarySupport",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "validateNetworkCreate:uuid:function:directoryPath:scratchPadPath:milTextData:",
+          "typeEncoding" : "^{__CFDictionary=}64@0:8Q16@24@32@40@48@56"
+        },
+        {
+          "name" : "validateNetworkCreateMLIR:validation_params:",
+          "typeEncoding" : "^{__CFDictionary=}32@0:8Q16^{__CFDictionary=}24"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "TI,R,N,V_connect",
+          "name" : "connect"
+        },
+        {
+          "attributes" : "T@\"NSObject<OS_dispatch_queue>\",R,N,V_queue",
+          "name" : "queue"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "_ANEWeight" : {
+      "classMethods" : [
+        {
+          "name" : "new",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "supportsSecureCoding",
+          "typeEncoding" : "B16@0:8"
+        },
+        {
+          "name" : "weightWithSymbolAndURL:weightURL:",
+          "typeEncoding" : "@32@0:8@16@24"
+        },
+        {
+          "name" : "weightWithSymbolAndURLSHA:weightURL:SHACode:",
+          "typeEncoding" : "@40@0:8@16@24@32"
+        }
+      ],
+      "methods" : [
+        {
+          "name" : ".cxx_destruct",
+          "typeEncoding" : "v16@0:8"
+        },
+        {
+          "name" : "SHACode",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "copyWithZone:",
+          "typeEncoding" : "@24@0:8^{_NSZone=}16"
+        },
+        {
+          "name" : "description",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "encodeWithCoder:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "init",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "initWithCoder:",
+          "typeEncoding" : "@24@0:8@16"
+        },
+        {
+          "name" : "initWithWeightSymbolAndURL:weightURL:",
+          "typeEncoding" : "@32@0:8@16@24"
+        },
+        {
+          "name" : "initWithWeightSymbolAndURLSHA:weightURL:SHACode:sandboxExtension:",
+          "typeEncoding" : "@48@0:8@16@24@32@40"
+        },
+        {
+          "name" : "sandboxExtension",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "setSandboxExtension:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "setWeightURL:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "updateWeightURL:",
+          "typeEncoding" : "v24@0:8@16"
+        },
+        {
+          "name" : "weightSymbol",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "weightURL",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "properties" : [
+        {
+          "attributes" : "T@\"NSData\",R,C,N,V_SHACode",
+          "name" : "SHACode"
+        },
+        {
+          "attributes" : "T@\"NSString\",C,N,V_sandboxExtension",
+          "name" : "sandboxExtension"
+        },
+        {
+          "attributes" : "T@\"NSString\",R,C,N,V_weightSymbol",
+          "name" : "weightSymbol"
+        },
+        {
+          "attributes" : "T@\"NSURL\",C,N,V_weightURL",
+          "name" : "weightURL"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    "ANEServicesLog" : {
+      "classMethods" : [
+        {
+          "name" : "handle",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "services",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "test",
+          "typeEncoding" : "@16@0:8"
+        },
+        {
+          "name" : "verbose",
+          "typeEncoding" : "@16@0:8"
+        }
+      ],
+      "methods" : [
+
+      ],
+      "properties" : [
+
+      ],
+      "superclass" : "NSObject"
+    }
+  },
+  "classes" : [
+    "ANEServicesLog",
+    "_ANEBuffer",
+    "_ANEChainingRequest",
+    "_ANEClient",
+    "_ANECloneHelper",
+    "_ANEDaemonConnection",
+    "_ANEDataReporter",
+    "_ANEDeviceController",
+    "_ANEDeviceInfo",
+    "_ANEErrors",
+    "_ANEHashEncoding",
+    "_ANEIOSurfaceObject",
+    "_ANEIOSurfaceOutputSets",
+    "_ANEInMemoryModel",
+    "_ANEInMemoryModelDescriptor",
+    "_ANEInputBuffersReady",
+    "_ANELog",
+    "_ANEModel",
+    "_ANEModelInstanceParameters",
+    "_ANEModelToken",
+    "_ANEOutputSetEnqueue",
+    "_ANEPerformanceStats",
+    "_ANEPerformanceStatsIOSurface",
+    "_ANEProcedureData",
+    "_ANEProgramForEvaluation",
+    "_ANEProgramIOSurfacesMapper",
+    "_ANEQoSMapper",
+    "_ANERequest",
+    "_ANESandboxingHelper",
+    "_ANESharedEvents",
+    "_ANESharedSignalEvent",
+    "_ANESharedWaitEvent",
+    "_ANEStrings",
+    "_ANEVirtualClient",
+    "_ANEWeight"
+  ],
+  "frameworks" : {
+    "ANECompiler" : {
+      "bundlePresent" : true,
+      "CFBundleShortVersionString" : "9.509.0",
+      "CFBundleVersion" : "9.509.0",
+      "dlopen" : "ok",
+      "path" : "\/System\/Library\/PrivateFrameworks\/ANECompiler.framework"
+    },
+    "AppleNeuralEngine" : {
+      "bundlePresent" : true,
+      "CFBundleShortVersionString" : "1.0",
+      "CFBundleVersion" : "1",
+      "dlopen" : "ok",
+      "path" : "\/System\/Library\/PrivateFrameworks\/AppleNeuralEngine.framework"
+    }
+  },
+  "platform" : {
+    "os" : "Version 26.6.2 (Build 25G83)"
+  },
+  "probe" : "ane_loader\/runtime-inventory",
+  "protocolDetail" : {
+    "_ANEDaemonProtocol" : {
+      "optionalClass" : [
+
+      ],
+      "optionalInstance" : [
+
+      ],
+      "requiredClass" : [
+
+      ],
+      "requiredInstance" : [
+        {
+          "name" : "compileModel:sandboxExtension:options:qos:withReply:",
+          "typeEncoding" : "v52@0:8@16@24@32I40@?44"
+        },
+        {
+          "name" : "compiledModelExistsFor:withReply:",
+          "typeEncoding" : "v32@0:8@16@?24"
+        },
+        {
+          "name" : "compiledModelExistsMatchingHash:withReply:",
+          "typeEncoding" : "v32@0:8@16@?24"
+        },
+        {
+          "name" : "loadModel:sandboxExtension:options:qos:withReply:",
+          "typeEncoding" : "v52@0:8@16@24@32I40@?44"
+        },
+        {
+          "name" : "loadModelNewInstance:options:modelInstParams:qos:withReply:",
+          "typeEncoding" : "v52@0:8@16@24@32I40@?44"
+        },
+        {
+          "name" : "prepareChainingWithModel:options:chainingReq:qos:withReply:",
+          "typeEncoding" : "v52@0:8@16@24@32I40@?44"
+        },
+        {
+          "name" : "purgeCompiledModel:withReply:",
+          "typeEncoding" : "v32@0:8@16@?24"
+        },
+        {
+          "name" : "purgeCompiledModelMatchingHash:withReply:",
+          "typeEncoding" : "v32@0:8@16@?24"
+        },
+        {
+          "name" : "reportTelemetryToPPS:playload:",
+          "typeEncoding" : "v32@0:8@16@24"
+        },
+        {
+          "name" : "unloadModel:options:qos:withReply:",
+          "typeEncoding" : "v44@0:8@16@24I32@?36"
+        }
+      ]
+    },
+    "_ANEDaemonProtocol_Private" : {
+      "optionalClass" : [
+
+      ],
+      "optionalInstance" : [
+
+      ],
+      "requiredClass" : [
+
+      ],
+      "requiredInstance" : [
+        {
+          "name" : "beginRealTimeTaskWithReply:",
+          "typeEncoding" : "v24@0:8@?16"
+        },
+        {
+          "name" : "echo:withReply:",
+          "typeEncoding" : "v32@0:8@16@?24"
+        },
+        {
+          "name" : "endRealTimeTaskWithReply:",
+          "typeEncoding" : "v24@0:8@?16"
+        }
+      ]
+    }
+  },
+  "protocols" : [
+    "_ANEDaemonProtocol",
+    "_ANEDaemonProtocol_Private"
+  ],
+  "runtime_observations" : [
+    {
+      "encoding" : "B16@0:8",
+      "selector" : "precompiledModelChecksDisabled",
+      "status" : "ok",
+      "value" : false
+    },
+    {
+      "encoding" : "@16@0:8",
+      "selector" : "vm_allowPrecompiledBinaryBootArg",
+      "status" : "ok",
+      "value" : "ane_vm_allowPrecompiledBinary"
+    },
+    {
+      "encoding" : "@16@0:8",
+      "selector" : "testing_external_precompiledModelPath",
+      "status" : "ok",
+      "value" : "\/System\/Library\/PrivateFrameworks\/FRC.framework\/Versions\/A\/Resources\/Networks\/synthesis_net_GridNet_pyrlite.H13.espresso.hwx"
+    },
+    {
+      "encoding" : "@16@0:8",
+      "selector" : "compilerServiceAccessEntitlement",
+      "status" : "ok",
+      "value" : "com.apple.ANECompilerService.allow"
+    },
+    {
+      "encoding" : "@16@0:8",
+      "selector" : "secondaryANECompilerServiceAccessEntitlement",
+      "status" : "ok",
+      "value" : "com.apple.aned.private.secondaryANECompilerServiceAccess.allow"
+    }
+  ]
+}

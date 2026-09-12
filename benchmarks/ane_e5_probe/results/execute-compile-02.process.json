@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/execute_control.py",
+    "--mode",
+    "compile",
+    "--path",
+    "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/fixtures/linear_relu/model.mil",
+    "--input",
+    "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/results/run-20260911-4/case-identity-c512s64/input.fp16.bin",
+    "--output",
+    "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/results/execute-compile-02",
+    "--deadline",
+    "55"
+  ],
+  "returncode": 0,
+  "elapsed_s": 0.20503562500016415,
+  "timeout_s": 60
+}

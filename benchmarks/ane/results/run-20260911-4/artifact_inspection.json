@@ -1,0 +1,202 @@
+{
+  "artifacts": [
+    {
+      "artifact_count": 4,
+      "artifacts": [
+        {
+          "coverage": {
+            "decoder_provenance": "none; generation-specific offsets not assumed",
+            "instruction_semantics": "instruction_semantics_unmodeled",
+            "notes": [
+              "No instruction or task-descriptor opcode decoding is performed.",
+              "M1 v10 / H13 register offsets are NOT applied to this target.",
+              "Unknown load commands are preserved raw (type/offset/size/hash).",
+              "Generic Mach-O-shaped HWX interpretations are provisional only."
+            ],
+            "semantic_scope": "container_only"
+          },
+          "error": {
+            "detail": "not a Mach-O / HWX / fat container, JSON, or plist",
+            "reason": "unknown_format"
+          },
+          "file_length": 524416,
+          "path": "benchmarks/ane/results/run-20260911-4/case-identity-c512s64/compiler_artifacts/data",
+          "sha256": "86088d9d211520bcf1aa73586c66177737f0f54bdc0dea474bd9e86bbf202c9e",
+          "status": "unknown_format"
+        },
+        {
+          "coverage": {
+            "decoder_provenance": "none; generation-specific offsets not assumed",
+            "instruction_semantics": "instruction_semantics_unmodeled",
+            "notes": [
+              "No instruction or task-descriptor opcode decoding is performed.",
+              "M1 v10 / H13 register offsets are NOT applied to this target.",
+              "Unknown load commands are preserved raw (type/offset/size/hash).",
+              "Generic Mach-O-shaped HWX interpretations are provisional only."
+            ],
+            "semantic_scope": "container_only"
+          },
+          "error": {
+            "detail": "not a Mach-O / HWX / fat container, JSON, or plist",
+            "reason": "unknown_format"
+          },
+          "file_length": 1133,
+          "path": "benchmarks/ane/results/run-20260911-4/case-identity-c512s64/compiler_artifacts/model.mil",
+          "sha256": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+          "status": "unknown_format"
+        },
+        {
+          "coverage": {
+            "decoder_provenance": "none; generation-specific offsets not assumed",
+            "instruction_semantics": "instruction_semantics_unmodeled",
+            "notes": [
+              "No instruction or task-descriptor opcode decoding is performed.",
+              "M1 v10 / H13 register offsets are NOT applied to this target.",
+              "Unknown load commands are preserved raw (type/offset/size/hash).",
+              "Generic Mach-O-shaped HWX interpretations are provisional only."
+            ],
+            "semantic_scope": "container_only"
+          },
+          "error": {
+            "detail": "not a Mach-O / HWX / fat container, JSON, or plist",
+            "reason": "unknown_format"
+          },
+          "file_length": 1133,
+          "path": "benchmarks/ane/results/run-20260911-4/case-identity-c512s64/compiler_artifacts/net.plist",
+          "sha256": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+          "status": "unknown_format"
+        },
+        {
+          "coverage": {
+            "decoder_provenance": "none; generation-specific offsets not assumed",
+            "instruction_semantics": "instruction_semantics_unmodeled",
+            "notes": [
+              "No instruction or task-descriptor opcode decoding is performed.",
+              "M1 v10 / H13 register offsets are NOT applied to this target.",
+              "Unknown load commands are preserved raw (type/offset/size/hash).",
+              "Generic Mach-O-shaped HWX interpretations are provisional only."
+            ],
+            "semantic_scope": "container_only"
+          },
+          "error": {
+            "detail": "not a Mach-O / HWX / fat container, JSON, or plist",
+            "reason": "unknown_format"
+          },
+          "file_length": 524416,
+          "path": "benchmarks/ane/results/run-20260911-4/case-identity-c512s64/compiler_artifacts/weights/weight.bin",
+          "sha256": "86088d9d211520bcf1aa73586c66177737f0f54bdc0dea474bd9e86bbf202c9e",
+          "status": "unknown_format"
+        }
+      ],
+      "kind": "directory",
+      "path": "benchmarks/ane/results/run-20260911-4/case-identity-c512s64/compiler_artifacts"
+    },
+    {
+      "artifact_count": 4,
+      "artifacts": [
+        {
+          "coverage": {
+            "decoder_provenance": "none; generation-specific offsets not assumed",
+            "instruction_semantics": "instruction_semantics_unmodeled",
+            "notes": [
+              "No instruction or task-descriptor opcode decoding is performed.",
+              "M1 v10 / H13 register offsets are NOT applied to this target.",
+              "Unknown load commands are preserved raw (type/offset/size/hash).",
+              "Generic Mach-O-shaped HWX interpretations are provisional only."
+            ],
+            "semantic_scope": "container_only"
+          },
+          "error": {
+            "detail": "not a Mach-O / HWX / fat container, JSON, or plist",
+            "reason": "unknown_format"
+          },
+          "file_length": 524416,
+          "path": "benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/compiler_artifacts/data",
+          "sha256": "4d5c9c2a218f2b82d373985c4d5d1b62f64f046039246c6e55ddabb00caa456c",
+          "status": "unknown_format"
+        },
+        {
+          "coverage": {
+            "decoder_provenance": "none; generation-specific offsets not assumed",
+            "instruction_semantics": "instruction_semantics_unmodeled",
+            "notes": [
+              "No instruction or task-descriptor opcode decoding is performed.",
+              "M1 v10 / H13 register offsets are NOT applied to this target.",
+              "Unknown load commands are preserved raw (type/offset/size/hash).",
+              "Generic Mach-O-shaped HWX interpretations are provisional only."
+            ],
+            "semantic_scope": "container_only"
+          },
+          "error": {
+            "detail": "not a Mach-O / HWX / fat container, JSON, or plist",
+            "reason": "unknown_format"
+          },
+          "file_length": 1133,
+          "path": "benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/compiler_artifacts/model.mil",
+          "sha256": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+          "status": "unknown_format"
+        },
+        {
+          "coverage": {
+            "decoder_provenance": "none; generation-specific offsets not assumed",
+            "instruction_semantics": "instruction_semantics_unmodeled",
+            "notes": [
+              "No instruction or task-descriptor opcode decoding is performed.",
+              "M1 v10 / H13 register offsets are NOT applied to this target.",
+              "Unknown load commands are preserved raw (type/offset/size/hash).",
+              "Generic Mach-O-shaped HWX interpretations are provisional only."
+            ],
+            "semantic_scope": "container_only"
+          },
+          "error": {
+            "detail": "not a Mach-O / HWX / fat container, JSON, or plist",
+            "reason": "unknown_format"
+          },
+          "file_length": 1133,
+          "path": "benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/compiler_artifacts/net.plist",
+          "sha256": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+          "status": "unknown_format"
+        },
+        {
+          "coverage": {
+            "decoder_provenance": "none; generation-specific offsets not assumed",
+            "instruction_semantics": "instruction_semantics_unmodeled",
+            "notes": [
+              "No instruction or task-descriptor opcode decoding is performed.",
+              "M1 v10 / H13 register offsets are NOT applied to this target.",
+              "Unknown load commands are preserved raw (type/offset/size/hash).",
+              "Generic Mach-O-shaped HWX interpretations are provisional only."
+            ],
+            "semantic_scope": "container_only"
+          },
+          "error": {
+            "detail": "not a Mach-O / HWX / fat container, JSON, or plist",
+            "reason": "unknown_format"
+          },
+          "file_length": 524416,
+          "path": "benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/compiler_artifacts/weights/weight.bin",
+          "sha256": "4d5c9c2a218f2b82d373985c4d5d1b62f64f046039246c6e55ddabb00caa456c",
+          "status": "unknown_format"
+        }
+      ],
+      "kind": "directory",
+      "path": "benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/compiler_artifacts"
+    }
+  ],
+  "coverage": {
+    "instruction_semantics": "instruction_semantics_unmodeled",
+    "semantic_scope": "container_only"
+  },
+  "errors": [],
+  "input_hash": "7768420dd5ad16d700ed9d345327a6523492568211c90b49ed5b4cda813f5a01",
+  "inputs": [
+    "benchmarks/ane/results/run-20260911-4/case-identity-c512s64/compiler_artifacts",
+    "benchmarks/ane/results/run-20260911-4/case-two-tap-c512s64/compiler_artifacts"
+  ],
+  "inspector": {
+    "name": "ane_artifact_inspector",
+    "version": "1.0.0"
+  },
+  "security_notes": [],
+  "status": "ok"
+}

@@ -1,0 +1,99 @@
+{
+  "error": null,
+  "meta": {
+    "argv": [
+      "reopen",
+      "--bundle",
+      "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/results/compile-01/bundle_snapshot/com.apple.e5rt.e5bundlecache/25G83/794C0FB17B26B18288B16DB3AAF946BC9956DFFBD1B3B605C75B3189B2DA4EB2/61343E91553F397D42687B4F1F7850F212A7CB15C91BAB7F9F98175200A7A92D.bundle",
+      "--output",
+      "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/results/reopen-01",
+      "--prepare",
+      "--deadline",
+      "55"
+    ],
+    "subcommand": "reopen"
+  },
+  "stages": [
+    {
+      "after_ms": 1789175232019,
+      "before_ms": 1789175232018,
+      "obj": true,
+      "rc": 0,
+      "stage": "program_library_create"
+    },
+    {
+      "after_ms": 1789175232019,
+      "before_ms": 1789175232019,
+      "rc": 0,
+      "stage": "get_num_functions"
+    },
+    {
+      "after_ms": 1789175232020,
+      "before_ms": 1789175232019,
+      "rc": 0,
+      "stage": "get_function_names"
+    },
+    {
+      "after_ms": 1789175232020,
+      "before_ms": 1789175232020,
+      "obj": true,
+      "rc": 0,
+      "stage": "retain_program_function"
+    },
+    {
+      "after_ms": 1789175232020,
+      "before_ms": 1789175232020,
+      "obj": true,
+      "rc": 0,
+      "stage": "op_options_create"
+    },
+    {
+      "after_ms": 1789175232020,
+      "before_ms": 1789175232020,
+      "rc": 0,
+      "stage": "set_operation_name"
+    },
+    {
+      "after_ms": 1789175232021,
+      "before_ms": 1789175232021,
+      "rc": 0,
+      "stage": "set_allocate_intermediate_buffers"
+    },
+    {
+      "after_ms": 1789175232074,
+      "before_ms": 1789175232021,
+      "obj": true,
+      "rc": 0,
+      "stage": "op_create"
+    },
+    {
+      "after_ms": 1789175232076,
+      "before_ms": 1789175232074,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_execution_stream_operation_release"
+    },
+    {
+      "after_ms": 1789175232076,
+      "before_ms": 1789175232076,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_precompiled_compute_op_create_options_release"
+    },
+    {
+      "after_ms": 1789175232077,
+      "before_ms": 1789175232077,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_program_function_release"
+    },
+    {
+      "after_ms": 1789175232077,
+      "before_ms": 1789175232077,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_program_library_release"
+    }
+  ],
+  "status": "completed"
+}

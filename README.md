@@ -95,6 +95,14 @@ raw timing distributions. It selects FP32 Metal attention at head dimensions
 192/256 as the first hardware-aware tactics target, followed by CUDA on GB10.
 The benchmark harnesses and reproduction notes live in `benchmarks/attention/`.
 
+The [Apple Neural Engine feasibility spike](docs/ane_feasibility.md) runs FP16
+linear + ReLU on the M3 Ultra through the private ANE API, with exact full-output
+checks for two bounded cases. Execution works; compiled HWX export and M3
+instruction semantics remain unresolved, so this is not yet a verified ANE backend.
+The [M3 loader investigation](docs/ane_loader_investigation.md) demonstrates
+fresh-process reuse of an E5 bundle, but its exported cache reference does
+not provide an independently generated hardware program.
+
 ### LLM-driven Metal attention demo
 
 `examples/llm_attention_demo.py` runs the attention analogue of the GEMM demo:

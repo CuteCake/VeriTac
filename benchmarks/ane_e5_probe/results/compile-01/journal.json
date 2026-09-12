@@ -1,0 +1,165 @@
+{
+  "error": null,
+  "meta": {
+    "argv": [
+      "compile",
+      "--mil",
+      "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/fixtures/linear_relu/model.mil",
+      "--output",
+      "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/results/compile-01",
+      "--prepare",
+      "--deadline",
+      "55"
+    ],
+    "subcommand": "compile"
+  },
+  "stages": [
+    {
+      "after_ms": 1789175177795,
+      "before_ms": 1789175177795,
+      "obj": true,
+      "rc": 0,
+      "stage": "config_create"
+    },
+    {
+      "after_ms": 1789175177796,
+      "before_ms": 1789175177796,
+      "rc": 0,
+      "stage": "set_cache_bundle_location"
+    },
+    {
+      "after_ms": 1789175177800,
+      "before_ms": 1789175177796,
+      "obj": true,
+      "rc": 0,
+      "stage": "compiler_create_with_config"
+    },
+    {
+      "after_ms": 1789175177801,
+      "before_ms": 1789175177800,
+      "obj": true,
+      "rc": 0,
+      "stage": "options_create"
+    },
+    {
+      "after_ms": 1789175177801,
+      "before_ms": 1789175177801,
+      "rc": 0,
+      "stage": "set_device_mask"
+    },
+    {
+      "after_ms": 1789175177801,
+      "before_ms": 1789175177801,
+      "rc": 0,
+      "stage": "set_force_recompilation"
+    },
+    {
+      "after_ms": 1789175177802,
+      "before_ms": 1789175177801,
+      "rc": 0,
+      "stage": "set_segmenter"
+    },
+    {
+      "after_ms": 1789175177829,
+      "before_ms": 1789175177802,
+      "obj": true,
+      "rc": 0,
+      "stage": "compile"
+    },
+    {
+      "after_ms": 1789175177829,
+      "before_ms": 1789175177829,
+      "rc": 0,
+      "stage": "get_num_functions"
+    },
+    {
+      "after_ms": 1789175177829,
+      "before_ms": 1789175177829,
+      "rc": 0,
+      "stage": "get_function_names"
+    },
+    {
+      "after_ms": 1789175177830,
+      "before_ms": 1789175177830,
+      "obj": true,
+      "rc": 0,
+      "stage": "retain_program_function"
+    },
+    {
+      "after_ms": 1789175177830,
+      "before_ms": 1789175177830,
+      "obj": true,
+      "rc": 0,
+      "stage": "op_options_create"
+    },
+    {
+      "after_ms": 1789175177830,
+      "before_ms": 1789175177830,
+      "rc": 0,
+      "stage": "set_operation_name"
+    },
+    {
+      "after_ms": 1789175177831,
+      "before_ms": 1789175177830,
+      "rc": 0,
+      "stage": "set_allocate_intermediate_buffers"
+    },
+    {
+      "after_ms": 1789175177884,
+      "before_ms": 1789175177831,
+      "obj": true,
+      "rc": 0,
+      "stage": "op_create"
+    },
+    {
+      "after_ms": 1789175177888,
+      "before_ms": 1789175177886,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_execution_stream_operation_release"
+    },
+    {
+      "after_ms": 1789175177888,
+      "before_ms": 1789175177888,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_precompiled_compute_op_create_options_release"
+    },
+    {
+      "after_ms": 1789175177889,
+      "before_ms": 1789175177889,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_program_function_release"
+    },
+    {
+      "after_ms": 1789175177889,
+      "before_ms": 1789175177889,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_program_library_release"
+    },
+    {
+      "after_ms": 1789175177890,
+      "before_ms": 1789175177890,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_e5_compiler_options_release"
+    },
+    {
+      "after_ms": 1789175177890,
+      "before_ms": 1789175177890,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_e5_compiler_release"
+    },
+    {
+      "after_ms": 1789175177891,
+      "before_ms": 1789175177890,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_e5_compiler_config_options_release"
+    }
+  ],
+  "status": "completed"
+}

@@ -1,0 +1,8 @@
+{
+  "e5_host_tests_passed": 18,
+  "execution_control_py_compile": "passed",
+  "native_inventory_build": "passed",
+  "hardware_controls": "controller_verification.json",
+  "negative_control": "only model.anehash differs; op_create=13 before execute_sync",
+  "no_hw_codesign_or_security_changes": true
+}

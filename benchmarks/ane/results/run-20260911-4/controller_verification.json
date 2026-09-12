@@ -1,0 +1,88 @@
+{
+  "scope": "runtime and full-output numerical verification; no instruction proof",
+  "cases": [
+    {
+      "case": "case-identity-c512s64",
+      "elements_checked": 32768,
+      "reference": "dense float64 matrix multiplication from saved FP16 weights and input, then ReLU",
+      "exact_match": true,
+      "max_abs_error": 0.0,
+      "nonzero_outputs": 16278,
+      "compile_ms": 118.06075,
+      "load_ms": 46.8085,
+      "dispatch_us": {
+        "mean": 195.2875,
+        "median": 152.4375,
+        "min": 133.33333333333334,
+        "max": 401.7083333333333,
+        "count": 10
+      },
+      "sha256": {
+        "compiler_artifacts/data": "86088d9d211520bcf1aa73586c66177737f0f54bdc0dea474bd9e86bbf202c9e",
+        "compiler_artifacts/model.mil": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+        "compiler_artifacts/net.plist": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+        "compiler_artifacts/weights/weight.bin": "86088d9d211520bcf1aa73586c66177737f0f54bdc0dea474bd9e86bbf202c9e",
+        "input.fp16.bin": "4d90d3749fd515da2edb3884f217ed456358b35db2154d1797bb051f491ba48b",
+        "merged.json": "c44273ccc9b17a1e626aee7a41f89bd2baf6c74c0e4a44850793717ad4b8ed7d",
+        "model.mil": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+        "model.mil.controller": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+        "output.fp16.bin": "f0422d3f42f648ea4f3c758160434a9e12a8d5ef8eab776408197ed8c981aff0",
+        "probe.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "probe.stdout.log": "20f958ef3378af9a9a2a4ea27ff65be9ee84b17cbc5ad2002316535a673ba01e",
+        "reference.f64.bin": "89bae358807d312aa317ccc171ad11aded97770a8a4d39ab3475a7c45ba02473",
+        "results.json": "218d0dac49f7528791700ce40b1cbad5726f309aa23109dbc6c29f68d0705e20",
+        "weight.bin": "86088d9d211520bcf1aa73586c66177737f0f54bdc0dea474bd9e86bbf202c9e",
+        "weight.bin.controller": "86088d9d211520bcf1aa73586c66177737f0f54bdc0dea474bd9e86bbf202c9e"
+      }
+    },
+    {
+      "case": "case-two-tap-c512s64",
+      "elements_checked": 32768,
+      "reference": "dense float64 matrix multiplication from saved FP16 weights and input, then ReLU",
+      "exact_match": true,
+      "max_abs_error": 0.0,
+      "nonzero_outputs": 16335,
+      "compile_ms": 22.81341666666667,
+      "load_ms": 45.89158333333334,
+      "dispatch_us": {
+        "mean": 137.7333333333333,
+        "median": 131.95833333333331,
+        "min": 113.75,
+        "max": 170.41666666666666,
+        "count": 10
+      },
+      "sha256": {
+        "compiler_artifacts/data": "4d5c9c2a218f2b82d373985c4d5d1b62f64f046039246c6e55ddabb00caa456c",
+        "compiler_artifacts/model.mil": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+        "compiler_artifacts/net.plist": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+        "compiler_artifacts/weights/weight.bin": "4d5c9c2a218f2b82d373985c4d5d1b62f64f046039246c6e55ddabb00caa456c",
+        "input.fp16.bin": "4d90d3749fd515da2edb3884f217ed456358b35db2154d1797bb051f491ba48b",
+        "merged.json": "6c47162b387a5ab3c19c158562cdcaf0723c1b17ec60b914609a35cc88805024",
+        "model.mil": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+        "model.mil.controller": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+        "output.fp16.bin": "2a52f2dd37feef2333f69d41b8ddcd80cdb570fb5afe1d01a7d7f52e6c1b624f",
+        "probe.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "probe.stdout.log": "7f7fda52040746dce748f1a4b086f747a2f92fb1a42e4610b1afabe7acb781f3",
+        "reference.f64.bin": "99bca91c52c13c8f7de60070f36486add245432004604f83176bf64722eab051",
+        "results.json": "0f4454db3a02b2c772ccedd53b057d22269805c1eb61d5090d9f1784a5ae173a",
+        "weight.bin": "4d5c9c2a218f2b82d373985c4d5d1b62f64f046039246c6e55ddabb00caa456c",
+        "weight.bin.controller": "4d5c9c2a218f2b82d373985c4d5d1b62f64f046039246c6e55ddabb00caa456c"
+      }
+    }
+  ],
+  "compiled_hwx_recovered": false,
+  "compile_call_accounting": {
+    "bridge_attempts_in_spike": 7,
+    "actual_compileWithQoS_calls": 4,
+    "successful_compileWithQoS_calls": 3,
+    "evaluated_models": 2
+  },
+  "runtime_metadata": {
+    "compiled_only": true,
+    "loaded": false,
+    "evaluated": false,
+    "staging_directory_not_retained_after_helper_exit": true,
+    "weights": "../case-identity-c512s64/weight.bin",
+    "model_attributes_are": "vendor-supplied observations, not trusted instruction semantics"
+  }
+}

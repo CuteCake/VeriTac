@@ -1,0 +1,9 @@
+{
+  "purpose": "negative control: replace only our copied bundle cache reference, not instruction bytes",
+  "source": "benchmarks/ane_e5_probe/results/compile-01/bundle_snapshot/com.apple.e5rt.e5bundlecache/25G83/794C0FB17B26B18288B16DB3AAF946BC9956DFFBD1B3B605C75B3189B2DA4EB2/61343E91553F397D42687B4F1F7850F212A7CB15C91BAB7F9F98175200A7A92D.bundle",
+  "copy": "benchmarks/ane_e5_probe/results/cache-reference-control.bundle",
+  "changed_file": "H15D.bundle/main/main_ane/model.anehash",
+  "old_sha256": "cdd56fe3a7a5790af9136d0ec22c449b622624a775942dfd924ffbb2c4a09e37",
+  "new_sha256": "aae38a0c6083eb652e39f846aa0fcaa655cd34b693ee0a5d7129428ac424f4e0",
+  "phase": "valid execution passed; reference replaced before fresh negative-control process"
+}

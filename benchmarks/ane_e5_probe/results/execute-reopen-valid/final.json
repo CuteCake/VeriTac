@@ -1,0 +1,14 @@
+{
+  "exact_equal": true,
+  "expected_output_sha256": "f0422d3f42f648ea4f3c758160434a9e12a8d5ef8eab776408197ed8c981aff0",
+  "finite": true,
+  "function_names": [
+    "main"
+  ],
+  "input_sha256": "4d90d3749fd515da2edb3884f217ed456358b35db2154d1797bb051f491ba48b",
+  "journal": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/results/execute-reopen-valid/journal.json",
+  "mode": "reopen",
+  "output_bytes": 65536,
+  "output_sha256": "f0422d3f42f648ea4f3c758160434a9e12a8d5ef8eab776408197ed8c981aff0",
+  "status": "completed"
+}

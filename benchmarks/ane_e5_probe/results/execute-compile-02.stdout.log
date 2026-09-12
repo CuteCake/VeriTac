@@ -1,0 +1,38 @@
+{
+  "bundle_snapshot_inventory": [
+    {
+      "bytes": 2480,
+      "path": "com.apple.e5rt.e5bundlecache/25G83/794C0FB17B26B18288B16DB3AAF946BC9956DFFBD1B3B605C75B3189B2DA4EB2/61343E91553F397D42687B4F1F7850F212A7CB15C91BAB7F9F98175200A7A92D.bundle/H15D.bundle/H15D.e5",
+      "sha256": "48661930a9922f38b515e22e653b763b7a265377e36cd9cb0f740127da280755"
+    },
+    {
+      "bytes": 129,
+      "path": "com.apple.e5rt.e5bundlecache/25G83/794C0FB17B26B18288B16DB3AAF946BC9956DFFBD1B3B605C75B3189B2DA4EB2/61343E91553F397D42687B4F1F7850F212A7CB15C91BAB7F9F98175200A7A92D.bundle/H15D.bundle/main/main_ane/model.anehash",
+      "sha256": "d1ffd0334a9e45d530e96d2b5f1a7c55621f7a4aead03021e2265d669a01865b"
+    }
+  ],
+  "cache_inventory_alive": [
+    {
+      "bytes": 2480,
+      "path": "com.apple.e5rt.e5bundlecache/25G83/794C0FB17B26B18288B16DB3AAF946BC9956DFFBD1B3B605C75B3189B2DA4EB2/61343E91553F397D42687B4F1F7850F212A7CB15C91BAB7F9F98175200A7A92D.bundle/H15D.bundle/H15D.e5",
+      "sha256": "48661930a9922f38b515e22e653b763b7a265377e36cd9cb0f740127da280755"
+    },
+    {
+      "bytes": 129,
+      "path": "com.apple.e5rt.e5bundlecache/25G83/794C0FB17B26B18288B16DB3AAF946BC9956DFFBD1B3B605C75B3189B2DA4EB2/61343E91553F397D42687B4F1F7850F212A7CB15C91BAB7F9F98175200A7A92D.bundle/H15D.bundle/main/main_ane/model.anehash",
+      "sha256": "d1ffd0334a9e45d530e96d2b5f1a7c55621f7a4aead03021e2265d669a01865b"
+    }
+  ],
+  "exact_equal": true,
+  "expected_output_sha256": "f0422d3f42f648ea4f3c758160434a9e12a8d5ef8eab776408197ed8c981aff0",
+  "finite": true,
+  "function_names": [
+    "main"
+  ],
+  "input_sha256": "4d90d3749fd515da2edb3884f217ed456358b35db2154d1797bb051f491ba48b",
+  "journal": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/results/execute-compile-02/journal.json",
+  "mode": "compile",
+  "output_bytes": 65536,
+  "output_sha256": "f0422d3f42f648ea4f3c758160434a9e12a8d5ef8eab776408197ed8c981aff0",
+  "status": "completed"
+}

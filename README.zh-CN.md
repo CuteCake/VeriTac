@@ -43,6 +43,9 @@ CPU 结果衡量相对于未调优生成内核的提升。GPU 结果来自基于
 
 [注意力基线调查](docs/attention_baseline_survey.md)在 NVIDIA GB10／CUDA 和 Apple M3 Ultra／Metal 上测量因果预填充注意力，包含显式选择厂商后端、完整输出的数值检查，以及原始计时分布。调查选定头维度 192／256 的 FP32 Metal 注意力作为首个硬件感知策略目标，随后扩展到 GB10 上的 CUDA。基准工具与复现说明位于 `benchmarks/attention/`。
 
+[Apple Neural Engine 可行性实验](docs/ane_feasibility.md)通过私有 ANE API 在 M3 Ultra 上运行 FP16 线性层 + ReLU，两个受限测试用例的全部输出均通过精确数值检查。执行路径已打通，但编译后 HWX 的导出与 M3 指令语义仍未解决，因此目前还不是经过验证的 ANE 后端。
+[M3 加载路径调查](docs/ane_loader_investigation.md)验证了 E5 包可在新进程中复用，但导出的缓存引用并不提供独立生成硬件程序的能力。
+
 ### LLM 驱动的 Metal 注意力演示
 
 `examples/llm_attention_demo.py` 是 GEMM 演示的注意力版本：LLM（或固定 mock）每轮提出一个注意力启动配置变换，包括映射方式、查询分块和键分块。Lean 通过 `check_attention_tactics`，依据刚刚探测并计算哈希的 Metal 硬件描述检查提案，然后将被接受的配置与 MLX、MPSGraph 厂商基线进行性能对比。

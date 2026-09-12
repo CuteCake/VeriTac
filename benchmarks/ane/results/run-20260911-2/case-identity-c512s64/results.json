@@ -1,0 +1,110 @@
+{
+  "probe_version" : "0.1.0",
+  "private_api" : {
+    "classes" : {
+      "_ANEInMemoryModelDescriptor" : true,
+      "_ANEIOSurfaceObject" : true,
+      "_ANERequest" : true,
+      "_ANEInMemoryModel" : true,
+      "_ANEClient" : true
+    },
+    "methods" : {
+      "unloadWithQoS:error:" : true,
+      "loadWithQoS:options:error:" : true,
+      "hexStringIdentifier" : true,
+      "compileWithQoS:options:error:" : true,
+      "modelWithMILText:weights:optionsPlist:" : true,
+      "evaluateWithQoS:options:request:error:" : true,
+      "state" : true,
+      "inMemoryModelWithDescriptor:" : true
+    },
+    "framework_loaded" : true,
+    "framework_path" : "\/System\/Library\/PrivateFrameworks\/AppleNeuralEngine.framework\/AppleNeuralEngine"
+  },
+  "temp_dir_root" : "\/var\/folders\/nm\/xhv4jn255d50xnjtylf64brr0000gn\/T",
+  "exit_code" : 1,
+  "output" : {
+
+  },
+  "workload" : {
+    "layout" : {
+      "pad_align_bytes" : 16,
+      "input_bytes" : 65536,
+      "output_bytes" : 65536,
+      "io_stride_pad_bytes" : 65536,
+      "iosurface" : {
+        "width_bytes" : 65536,
+        "alloc_size" : 65536,
+        "bytes_per_element" : 1,
+        "height" : 1,
+        "pixel_format" : 0,
+        "bytes_per_row" : 65536
+      }
+    },
+    "input_shape" : [
+      1,
+      512,
+      1,
+      64
+    ],
+    "seed" : 1234,
+    "weight" : {
+      "kind" : "identity",
+      "diag" : 1,
+      "offdiag" : 0
+    },
+    "dtype" : "fp16",
+    "channels" : 512,
+    "spatial" : 64,
+    "qos" : 21,
+    "mil_text" : "program(1.3)\n[buildInfo = dict<string, string>({{\"coremlc-component-MIL\", \"3510.2.1\"}, {\"coremlc-version\", \"3505.4.1\"}, {\"coremltools-component-milinternal\", \"\"}, {\"coremltools-version\", \"9.0\"}})]\n{\n    func main<ios18>(tensor<fp16, [1, 512, 1, 64]> x) {\n        string pt = const()[name = string(\"pt\"), val = string(\"valid\")];\n        tensor<int32, [2]> st = const()[name = string(\"st\"), val = tensor<int32, [2]>([1, 1])];\n        tensor<int32, [4]> pd = const()[name = string(\"pd\"), val = tensor<int32, [4]>([0, 0, 0, 0])];\n        tensor<int32, [2]> dl = const()[name = string(\"dl\"), val = tensor<int32, [2]>([1, 1])];\n        int32 gr = const()[name = string(\"gr\"), val = int32(1)];\n        tensor<fp16, [512, 512, 1, 1]> W = const()[name = string(\"W\"), val = tensor<fp16, [512, 512, 1, 1]>(BLOBFILE(path = string(\"@model_path\/weights\/weight.bin\"), offset = uint64(64)))];\n        tensor<fp16, [1, 512, 1, 64]> c = conv(dilations = dl, groups = gr, pad = pd, pad_type = pt, strides = st, weight = W, x = x)[name = string(\"conv\")];\n        tensor<fp16, [1, 512, 1, 64]> out = relu(x = c)[name = string(\"relu\")];\n    } -> (out);\n}\n",
+    "weight_shape" : [
+      512,
+      512,
+      1,
+      1
+    ],
+    "output_shape" : [
+      1,
+      512,
+      1,
+      64
+    ],
+    "kind" : "conv1x1_relu"
+  },
+  "dispatch" : {
+
+  },
+  "hw" : {
+    "nodename" : "Waynes-Mac-Studio.local",
+    "cpu_brand" : "Apple M3 Ultra",
+    "logical_cpus" : 32,
+    "memsize_bytes" : 274877906944,
+    "machine" : "arm64",
+    "hw_model" : "Mac15,14"
+  },
+  "toolchain" : {
+    "CoreML_CFBundleVersion" : "3520.5.1",
+    "ANECompiler_CFBundleVersion" : "9.509.0",
+    "os" : "Version 26.6.2 (Build 25G83)"
+  },
+  "compile" : {
+    "status" : "failed",
+    "elapsed_ms" : 0.95308333333333339,
+    "compile_attempts_after" : 1,
+    "error" : "hex identifier contains non-hex chars"
+  },
+  "transfer" : {
+
+  },
+  "mode" : "compile-and-run",
+  "workload_input_bytes" : 65536,
+  "load" : {
+
+  },
+  "hashes" : {
+    "mil_sha256" : "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+    "weight_blob_sha256" : "86088d9d211520bcf1aa73586c66177737f0f54bdc0dea474bd9e86bbf202c9e",
+    "input_sha256" : "4d90d3749fd515da2edb3884f217ed456358b35db2154d1797bb051f491ba48b"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "bundle_path": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/results/compile-01/bundle_snapshot/com.apple.e5rt.e5bundlecache/25G83/794C0FB17B26B18288B16DB3AAF946BC9956DFFBD1B3B605C75B3189B2DA4EB2/61343E91553F397D42687B4F1F7850F212A7CB15C91BAB7F9F98175200A7A92D.bundle",
+  "function_names": [
+    "main"
+  ],
+  "inventory_bundle": [
+    {
+      "bytes": 2480,
+      "path": "H15D.bundle/H15D.e5",
+      "sha256": "48661930a9922f38b515e22e653b763b7a265377e36cd9cb0f740127da280755"
+    },
+    {
+      "bytes": 129,
+      "path": "H15D.bundle/main/main_ane/model.anehash",
+      "sha256": "cdd56fe3a7a5790af9136d0ec22c449b622624a775942dfd924ffbb2c4a09e37"
+    }
+  ],
+  "inventory_newdir": [
+    {
+      "bytes": 2451,
+      "path": "journal.json",
+      "sha256": "7a2efa4e3f67ba55a97db546b0aa02a8d4523dbcb6525fd8c42146a226847028"
+    }
+  ],
+  "journal": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/results/reopen-01/journal.json",
+  "prepare": {
+    "operation": "main",
+    "status": "created"
+  },
+  "preserved_failed_artifacts": true,
+  "status": "completed"
+}

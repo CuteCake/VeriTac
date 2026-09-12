@@ -1,0 +1,6 @@
+# Build artifact (host-compiled probe binary)
+ane_probe
+
+# Python caches
+__pycache__/
+*.pyc

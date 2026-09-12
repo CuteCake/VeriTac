@@ -1,0 +1,19 @@
+{
+  "results_dir": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/results/run-20260911-3",
+  "requested_cases": [
+    "identity",
+    "two-tap"
+  ],
+  "attempted_cases": [
+    "identity"
+  ],
+  "completed_cases": [],
+  "failed": {
+    "case": "identity",
+    "probe_rc": 1,
+    "verification": null
+  },
+  "merged_files": [
+    "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane/results/run-20260911-3/case-identity-c512s64/merged.json"
+  ]
+}

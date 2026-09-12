@@ -1,0 +1,13 @@
+{
+  "error": "op_create returned rc=13",
+  "inventory_newdir": [
+    {
+      "bytes": 1569,
+      "path": "journal.json",
+      "sha256": "0153a64432c95caad90c333dc86fcecd20c3419ede3a5091b6d5b72207667fcb"
+    }
+  ],
+  "journal": "/Users/cake/.codex/worktrees/bfe0/VeriTac/benchmarks/ane_e5_probe/results/execute-reopen-invalid/journal.json",
+  "preserved_failed_artifacts": true,
+  "status": "failed"
+}

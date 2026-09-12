@@ -1,0 +1,8 @@
+{
+  "source": "benchmarks/ane/results/run-20260911-4/case-identity-c512s64",
+  "workload": "FP16 identity linear + ReLU [1,512,1,64]",
+  "sha256": {
+    "model.mil": "adc4d51652fa48928099165bca8059fc2e8b3ec49e7c677b2c4830181d5188b7",
+    "weights/weight.bin": "86088d9d211520bcf1aa73586c66177737f0f54bdc0dea474bd9e86bbf202c9e"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "error": "op_create returned rc=13",
+  "meta": {
+    "mode": "reopen",
+    "subcommand": "execute_control"
+  },
+  "stages": [
+    {
+      "after_ms": 1789175889163,
+      "before_ms": 1789175889162,
+      "obj": true,
+      "rc": 0,
+      "stage": "e5rt_program_library_create"
+    },
+    {
+      "after_ms": 1789175889164,
+      "before_ms": 1789175889164,
+      "obj": true,
+      "rc": 0,
+      "stage": "retain_program_function"
+    },
+    {
+      "after_ms": 1789175889164,
+      "before_ms": 1789175889164,
+      "obj": true,
+      "rc": 0,
+      "stage": "op_options_create"
+    },
+    {
+      "after_ms": 1789175889164,
+      "before_ms": 1789175889164,
+      "rc": 0,
+      "stage": "set_operation_name"
+    },
+    {
+      "after_ms": 1789175889165,
+      "before_ms": 1789175889164,
+      "rc": 0,
+      "stage": "set_allocate_intermediate_buffers"
+    },
+    {
+      "after_ms": 1789175889172,
+      "before_ms": 1789175889165,
+      "obj": false,
+      "rc": 13,
+      "stage": "op_create"
+    },
+    {
+      "after_ms": 1789175889172,
+      "before_ms": 1789175889172,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_precompiled_compute_op_create_options_release"
+    },
+    {
+      "after_ms": 1789175889172,
+      "before_ms": 1789175889172,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_program_function_release"
+    },
+    {
+      "after_ms": 1789175889173,
+      "before_ms": 1789175889173,
+      "obj": false,
+      "rc": 0,
+      "stage": "release_e5rt_program_library_release"
+    }
+  ],
+  "status": "failed"
+}

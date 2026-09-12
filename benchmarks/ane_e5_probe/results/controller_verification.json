@@ -1,0 +1,57 @@
+{
+  "cases": [
+    {
+      "case": "execute-compile-02",
+      "exact_match": true,
+      "elements_checked": 32768,
+      "nonzero_outputs": 16278,
+      "max_abs_error": 0.0,
+      "explicit_compiler_calls": 1,
+      "execute_sync_calls": 1,
+      "output_sha256": "f0422d3f42f648ea4f3c758160434a9e12a8d5ef8eab776408197ed8c981aff0"
+    },
+    {
+      "case": "execute-reopen-valid",
+      "exact_match": true,
+      "elements_checked": 32768,
+      "nonzero_outputs": 16278,
+      "max_abs_error": 0.0,
+      "explicit_compiler_calls": 0,
+      "execute_sync_calls": 1,
+      "output_sha256": "f0422d3f42f648ea4f3c758160434a9e12a8d5ef8eab776408197ed8c981aff0"
+    },
+    {
+      "case": "execute-reopen-invalid",
+      "expected_rejection": true,
+      "failure_stage": "op_create",
+      "error_code": 13,
+      "execute_sync_calls": 0,
+      "interpretation": "invalid cache reference rejected; not a modified-HWX signature test"
+    }
+  ],
+  "actual_e5_compiler_calls_this_investigation": 2,
+  "hwx_recovered": false,
+  "scope": "E5 vendor-compiled bundle reuse, not independent hardware code generation",
+  "internal_compilation_ruled_out": false,
+  "source_sha256": {
+    "execute_control.py": "dddd1c53225509451773f96d20a686fcc7833dc62c4323ab3f453c15285716ab",
+    "load_check.py": "3b840f9da81fd84d15b8e115db3bb3d9e9ba86190decb632263b79c287685550",
+    "execute_parent.py": "88ef632f94b35328c1301141d0795f1d7e7594b185814d8dc529d570e76ffbd3",
+    "ane_e5_probe.py": "739eb4d79534cc9fe1f0e76043085f3f753260088bec448d01e71dc98abace8c",
+    "test_abi.py": "32074ada1bfba08551cf195f11b5b1c036302d5dc7902245ab7fbd27fa7a7f91"
+  },
+  "cache_reference_control": {
+    "same_bundle_path_used_before_and_after_mutation": true,
+    "changed_files": [
+      "H15D.bundle/main/main_ane/model.anehash"
+    ],
+    "unmodified_manifest": {
+      "H15D.bundle/H15D.e5": "48661930a9922f38b515e22e653b763b7a265377e36cd9cb0f740127da280755",
+      "H15D.bundle/main/main_ane/model.anehash": "cdd56fe3a7a5790af9136d0ec22c449b622624a775942dfd924ffbb2c4a09e37"
+    },
+    "modified_manifest": {
+      "H15D.bundle/H15D.e5": "48661930a9922f38b515e22e653b763b7a265377e36cd9cb0f740127da280755",
+      "H15D.bundle/main/main_ane/model.anehash": "aae38a0c6083eb652e39f846aa0fcaa655cd34b693ee0a5d7129428ac424f4e0"
+    }
+  }
+}
