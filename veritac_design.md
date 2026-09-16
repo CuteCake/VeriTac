@@ -37,11 +37,27 @@ executable kernels are **not yet joined by a verified lowering chain**. The
 connection currently relies on controller source review, executable hashes,
 numerical tests, and sanitizers. These are useful evidence, not a replacement for
 that missing proof path. The CPU C emitter is also an unverified boundary.
-See [measured results](docs/attention_vendor_results.md) and the
+The Gemmini prototype now closes a restricted exact-arithmetic path with
+shape-parameterized symbolic validation, baseline/batched-reuse lowering, and
+checked rewrite equivalence. `checkExecutable_sound` connects the submitted
+RV64/Gemmini bytes to all-input GEMM correctness. Kernel certificates include
+multi-K-tile accumulation, rectangular shapes, and 64³. Eight raw bodies have
+independent Spike validation, including an actual OpenCode rejection/repair
+replay. Sequential command completion, caller/loader setup, physical hardware
+conformance, and the C adapter remain explicit boundaries.
+See [Gemmini evidence and boundaries](docs/gemmini_gemm.md),
+[measured attention results](docs/attention_vendor_results.md), and the
 [attention design](docs/cuda_attention_design.md).
 
 This document describes the intended architecture. Proposed interfaces and tactic
 examples below are design sketches, not assertions that every layer is implemented.
+
+The deployment goal extends to a **production executable for a given model**,
+with rapid adaptation to different hardware, especially ASICs. The first
+proof milestone is demonstrated on restricted Gemmini kernels; §6.1 tracks work from
+that foundation to whole-model deployment. MLIR adoption and evaluation are
+deferred: the current direction is explicit custom program representations with
+semantics and acceptance checked in Lean.
 
 ---
 
@@ -171,6 +187,29 @@ Existing CUDA/Metal compilers and vendor kernels remain useful execution adapter
 and performance comparators. Successful compilation, numerical agreement, and
 source/binary hashes do not fill a missing semantic refinement edge.
 
+### 3.3 Meta-frontend and specialized interfaces
+
+The frontend's reusable structure specifies what a specialization must explain:
+observable computation, input/state domain, numerical meaning, target execution
+and resources, allowed changes, proof obligations, and delivery assumptions.
+The concrete language and representations adapt to the model family, numerical
+contract, target execution model, and requested artifact. There is no requirement
+that every platform use one tensor graph, loop IR, instruction schema, or AI
+action vocabulary.
+
+Separate the computation contract, target contract, representation/proof
+adapters, and optimization request. Shared orchestration tracks their identities,
+actual artifacts, claims, assumptions, and evidence; specialized adapters expose
+the views and edits useful for each task. Importing an external model creates a
+semantic obligation of its own. Neither a prompt nor a resource profile defines
+an independently verified connection to the source model or physical hardware.
+
+The [meta-frontend design](docs/frontend_design.md) defines these responsibilities
+and contrasts a Gemmini specialization with a proposed stateful attention
+interface. The [specialization kickoff prompt](docs/frontend_specialization_prompt.md)
+turns those responsibilities into a concrete design dossier. Both are design
+artifacts; the current Lean/Python/JSON interfaces remain the implementation.
+
 ---
 
 ## 4. The Tactic Library
@@ -190,6 +229,13 @@ source/binary hashes do not fill a missing semantic refinement edge.
 ### 4.2 The Semantic IR
 
 The Semantic IR represents tensor computations as typed expressions with denotational semantics. Every node in the IR has a *meaning function* mapping it to a mathematical function over indices.
+
+The function-valued sketches below describe mathematical specifications, not the
+planned executable representation. Executable nodes should expose operations,
+formats, casts, reduction order, layouts, and effects as inspectable data with
+Lean-defined semantics. Defining an IR in Lean does not require representing
+every executable operation as an arbitrary Lean function. See §6.1 for the IR
+and certificate workstream.
 
 ```lean
 -- Core IR types
@@ -245,6 +291,39 @@ def softmax (x : TExpr [n] Float) : TExpr [n] Float :=
 ```
 
 ### 4.3 Tactic Categories and Specifications
+
+The catalogue below describes intended interfaces. The current
+[registry](VeriTac/Tactic/Library.lean) has **eight** tactic kinds; registration
+means a transformation can be requested, not that every application produces a
+complete correctness certificate.
+
+| Registered tactic | Current implementation and proof scope |
+|---|---|
+| `tile`, `split` | Literal zero-based loops with a positive factor dividing the extent; structural tiling theorems under their stated side conditions. Remainder handling is still planned. |
+| `fuse` | Adjacent nested loops; a structural fusion theorem for the supported rectangular case, with bound and variable side conditions. |
+| `reorder` | Swaps adjacent loops with static, cross-axis-independent bounds; the theorem additionally requires semantic commutation of body executions, which the transformation does not establish. |
+| `unroll` | Full unrolling of literal-bound loops; sequential-execution theorem. The proposed factor-based interface is not implemented. |
+| `vectorize` | Marks an innermost loop; the proof preserves sequential semantics that ignore annotations. SIMD instruction refinement remains open. |
+| `parallel` | Marks loops after a syntactic independence check; the equivalence theorem ignores annotations. Concurrent execution and race-freedom proofs remain open. |
+| `cache_read` (`cacheRead`) | Inserts a cache/copy and substitutes reads; the theorem assumes a mirroring store and read-only, distinct buffers. Copy coverage and whole-transformation correctness remain obligations; the registry currently supplies empty copy dimensions. |
+
+The current composition engine applies checks and transformations, but
+`applySchedule_correct` in [Engine.lean](VeriTac/Compose/Engine.lean) concludes
+`True`; it does not yet compose semantic proofs. Closing this gap is part of
+milestone 2.
+
+Target-specific work also supplies useful candidates for reusable tactics:
+
+| Candidate tactic family (proposed names) | Existing basis | Next proof obligation |
+|---|---|---|
+| `reuse_operand` / `retain_accumulators` | Shape-parameterized baseline and batched B reuse, sound translation validation and checked rewrite equivalence; K=32 partial sums and concrete byte certificates | Integrate the checked edge API into broader proof-graph search; improve witness size and checking cost |
+| `permute_blocks` | Attention reverse-block bijection and output-ownership lemmas | Connect the permutation to actual launch indexing and target memory effects |
+| `reuse_scratch` | Attention disjoint-lifetime, capacity, and conditional async-drain lemmas | Establish lifetimes and copy completion from executable instructions |
+| `partition_reduce` / `online_softmax` | Real-number attention partition identities | Preserve the declared reduction semantics or prove target floating-point error bounds |
+
+These families are not additional registered tactics. Gemmini now has a separate
+checked reuse API; integrating it into proof-graph search and composing it with
+other accepted transformations is the next step.
 
 #### Category 1: Loop Transformations
 
@@ -319,24 +398,18 @@ These are unique to ML compilers — they introduce bounded error.
 | `fast_math` | op, approximation | Op supports the approximation | Specified error bound holds |
 | `mixed_precision` | regions, dtypes | Type compatibility | Composed error bound for the graph |
 
-**ε-equivalence framework:**
+**Numerical contract (proposed):** for inputs `x` in a declared domain `D`,
+require `|realize(exec(program, x))ᵢ - spec(x)ᵢ| ≤ atol + rtol * |spec(x)ᵢ|`,
+with nonnegative real-valued bounds. Define exceptional-result behavior or prove
+it excluded before applying this finite-value relation. Specify whether `spec`
+receives original inputs or the exact real interpretation of quantized inputs.
 
-```lean
--- Exact transformations produce equal results
-def ExactEquiv (e1 e2 : TExpr s α) : Prop :=
-  ∀ idx, denote e1 idx = denote e2 idx
-
--- Approximate transformations produce bounded-error results
-def ApproxEquiv (ε : Float) (e1 e2 : TExpr s Float) : Prop :=
-  ∀ idx, |denote e1 idx - denote e2 idx| ≤ ε
-
--- Error composition theorem (proved once)
-theorem approx_compose (h1 : ApproxEquiv ε₁ e1 e2) (h2 : ApproxEquiv ε₂ e2 e3)
-    (hL : ∀ idx, |denote e2 idx| ≤ M) :
-    ApproxEquiv (ε₁ + ε₂ + ε₁ * ε₂ / M) e1 e3 := by
-  -- Triangle inequality + error propagation
-  ...
-```
+Pairwise absolute discrepancies between implementations at the same output
+compose by the triangle inequality. Propagating a local error through a downstream
+operation requires its sensitivity bound and valid input domain; for example,
+a Lipschitz bound `L` gives `L * ε_local + ε_downstream`. Relative, mixed, and
+stateful contracts need their own proved composition rules. There is no universal
+nonlinear error-composition formula for all transformations.
 
 ### 4.4 Tactic Composition Language
 
@@ -361,7 +434,7 @@ The system processes this as follows:
 1. **Parse** the sequence into a list of tactic applications.
 2. **Check preconditions** sequentially. If `tile [i, j] by [128, 128]` is valid, apply it, yielding a new IR state. Then check `reorder [...]` against the new state.
 3. **If any precondition fails**, reject the sequence and report which tactic failed and why.
-4. **If all preconditions pass**, the final IR is provably equivalent to the original (or ε-equivalent, with a computed error bound).
+4. **Check and compose each edge proof**, including obligations not discharged by syntactic precondition checks. Only then accept the final IR as equivalent to the original (or related by a proved, composed error bound). This proof-producing composition is planned; the current engine does not implement it.
 
 ---
 
@@ -481,29 +554,181 @@ that the current demos already implement the full harness.
 
 ## 6. Implementation plan and acceptance milestones
 
-Verified lowering is the next central milestone, rather than a final phase after
-building a large closed tactic library. Performance work and library growth can
-continue alongside it without being confused with completion of the proof chain.
+The Gemmini proof path now uses shape-parameterized translation validation.
+The next central milestone is composing these checked edges in mixed search,
+while reducing certificate cost and making target conformance explicit.
+Performance work and library growth can continue alongside it.
 
-| Milestone | Deliverable and exit condition |
-|---|---|
-| 1. Minimal target semantics | A deliberately small ISA with arithmetic, register, memory, control, and synchronization semantics; a versioned target description and an interpreter for demonstrations |
-| 2. One complete proof path | A small dot product or GEMM lowered from its mathematical specification through schedules/storage to instruction programs, with every edge checked and a composed end-to-end theorem; start with exact bounded arithmetic and explicit overflow conditions |
-| 3. Visible AI feedback loop | An AI proposes an invalid transformation, Lean rejects it with a concrete obligation, the AI repairs it, and the accepted path reaches executable target instructions without a vendor compiler/reference kernel as correctness oracle |
-| 4. Mixed exploration | Enumeration and LLM guidance expand the same graph; replay includes a newly proposed and checked rule, not only fixed catalogue choices; compare quality and search cost under declared budgets |
-| 5. Floating-point attention | Add instruction-level floating-point semantics or a proved approximation contract; connect partition/online-softmax, storage, synchronization, and instruction selection to the end-to-end path |
-| 6. Real targets and efficient orchestration | Connect CUDA/Metal or an ASIC ISA through explicit refinements, account for encoding and hardware-model conformance, evaluate performance, and evaluate LLM–harness–compiler co-design, including prefix caching |
+Status below reflects the current working tree and the recorded Gemmini results
+as of 2026-09-16. Partial evidence does not close a milestone's exit condition.
 
-The first complete example should be small enough that every boundary can be
-reviewed. Its acceptance artifact includes the specification, input domain,
-target semantics, intermediate programs, rejected/repaired proposal, every edge
-proof, composed theorem, and final instruction program. Interpreter runs illustrate
-behavior; Lean establishes the modeled correctness. Unsupported constructs or
-unresolved obligations remain explicit failures or partial nodes.
+| Milestone | Current status | Deliverable and remaining exit condition |
+|---|---|---|
+| 1. Minimal target semantics | Implemented for the restricted Gemmini full-tile subset and its RV64 register setup | Broaden the instruction model and establish conformance beyond the declared sequential completion and loader assumptions |
+| 2. One complete proof path | Complete for accepted full-tile Gemmini programs: symbolic validation has a general soundness theorem; parameterized baseline/batched reuse and rewrite equivalence connect actual bytes to all-input GEMM; certificates include K=32, rectangular shapes, and 64³ | Broader IR tactic composition, cheaper witnesses, and full executable packaging remain open |
+| 3. Visible AI feedback loop | Complete for a guided capacity challenge: actual OpenCode proposal, Lean rejection, same-session repair, endpoint byte proofs, rewrite theorem, and raw-byte Spike execution are archived | Broaden evaluation beyond the single guided challenge; preserve unchanged target contracts and failed proposals |
+| 4. Mixed exploration | Partial: enumeration and an actual LLM repair use the same concrete-program checker; a reusable checked rewrite API exists, but joint graph search is not implemented | Have enumeration and LLM guidance expand the same proof graph, including a newly proposed and checked rule; compare quality and search cost under declared budgets |
+| 5. Floating-point attention | Partial: Real identities, plan checks, and conditional scheduling/storage proofs exist | Add instruction-level floating-point semantics or proved approximation contracts; connect score computation, online softmax, storage, synchronization, and instruction selection to the end-to-end path |
+| 6. Real targets and efficient orchestration | Partial: eight exact certified Gemmini bodies have upstream Spike output, byte, opcode, and command-count checks; CUDA/Metal have performance evidence | Prove explicit target refinements, account for encoding and hardware-model conformance, measure target performance, and evaluate LLM–harness–compiler co-design, including prefix caching |
+
+**Completed acceptance slice (2026-09-16).** Both K=32 baseline and B reuse
+have explicit nonzero partial-sum proofs. A shared instruction engine connects
+symbolic translation validation to numeric execution. Parameterized lowering
+and `reuseOperand` return either a checked program/edge or failure, with general
+soundness theorems. Acceptance checks the submitted instruction program and its
+actual decoded bytes; it does not recognize a fixed template catalogue.
+
+The [recorded evidence](docs/gemmini_gemm.md) includes kernel certificates for
+32×16×32, 16×32×48, 32³, and 64³. Eight raw bodies pass upstream Spike under
+three input patterns, with every output and committed kernel opcode checked.
+The actual OpenCode repair keeps a 48×16×32 target at 32 accumulator rows and
+reduces B loads from six to four by batching output tiles. The first proposal
+was a guided capacity challenge and already noted its likely resource risk;
+this is an authentic feedback/repair replay, not an unguided-search benchmark.
+
+Keep the `DIM=16`, positive multiples-of-16 shape domain, signed int8 inputs,
+int32 output, and `K * 16384 ≤ 2147483647` contract. No bias, activation,
+quantized output, or floating-point arithmetic is covered. The checker preserves
+ordered products and may reject equivalent reorderings; validated lowering is
+sound on acceptance, without a totality claim for all legal inputs. Concrete
+kernel checking costs roughly 10–17 seconds for smaller cases and 135 seconds
+for 64³ on the development host. Compact witnesses are the next scaling task.
+
+Sequential command completion, loader/caller setup, and physical hardware
+conformance remain explicit boundaries. Raw bodies do not prove linked ELF or
+whole-model deployment correctness. Spike supplies independent functional
+evidence; DMA savings do not establish hardware latency improvements.
 
 For the later attention milestone, a real-number identity alone is insufficient.
 The path must explain the arithmetic executed by the target, including reduction
 order, rounding, masking, synchronization, and any approximation budget.
+
+### 6.1 TODOs: numerics, ASIC retargeting, and model deployment
+
+These checkboxes track full exit conditions; partial progress is recorded in §6.
+Gemmini supplies a shape-parameterized command-semantics-to-raw-bytes chain
+for accepted full-tile programs; broader IR, retargeting, and whole-model
+requirements remain open. Prioritize a complete,
+reviewable path over broad operator or target coverage. Preserve the graph of
+implementations and its exact-equivalence, refinement, and error-bound edges;
+these workstreams do not prescribe a fixed pass pipeline.
+
+#### A. Explicit executable IR and proof interfaces
+
+- [ ] Implement a Gemmini frontend specialization using the meta-frontend design,
+  adapting its explicit contracts to the existing command/byte proof path without
+  weakening acceptance. Expose numerical and runtime assumptions to callers.
+- [ ] Design a contrasting attention specialization to test the common structure;
+  share orchestration metadata and proof responsibilities while preserving native
+  representations. Extract shared framework code only after this comparison.
+- [ ] Define explicit operation data for executable programs, separating it from
+  richer mathematical specifications. Replace opaque executable function payloads
+  with inspectable operands, result types, casts, reduction order, layouts, and
+  memory effects; define their meaning in Lean.
+- [ ] Separate semantic definitions/checking, candidate storage/search, and target
+  emission. Keep custom IRs for now; MLIR integration and comparison experiments
+  are deferred rather than prerequisites for this roadmap.
+- [ ] Define versioned serialization and stable program identities. Bind each
+  certificate to the actual source/destination programs, assumptions, numerical
+  contract, and target semantics; hashes identify artifacts but do not prove
+  semantic correspondence.
+- [ ] Build reusable transformation theorems and compact witnesses with sound
+  Lean checkers. Let search and emitters propose candidates without trusting
+  them; measure proof generation/checking time, search throughput, and memory
+  use on the first complete path.
+
+#### B. Precision, accuracy, and numerical stability
+
+- [ ] Model storage/input format, product semantics, accumulator format,
+  intermediate/output casts, rounding mode, FMA behavior, and reduction order.
+  Include target-specific approximation bounds and subnormal/flush-to-zero
+  behavior; specify NaNs, infinities, signed zero, overflow, and underflow where
+  relevant. A dtype label alone is not an arithmetic contract.
+- [ ] Define input/shape domains and componentwise or norm-based output budgets.
+  Distinguish input quantization error from arithmetic error on already quantized
+  inputs, and distinguish transformation preservation, accuracy, and stability.
+- [ ] Prove a mixed-precision dot-product error theorem for one concrete arithmetic
+  contract, including range and overflow conditions. Use it as the first numerical
+  building block after the exact bounded-arithmetic demonstration.
+- [ ] Develop sensitivity-aware error composition with checked domain propagation.
+  Track absolute error where cancellation makes relative error unsuitable; make
+  precision and reduction choices searchable subject to the output budget.
+- [ ] Extend partitioned/online attention proofs to score computation, maximum
+  shifting, approximate exponentials, numerator/denominator accumulation,
+  partition rescaling, and division. Handle masked or empty partitions explicitly,
+  prove required denominator conditions, and bound cancellation and underflow
+  effects. The existing Real identity does not establish these properties.
+- [ ] Bind numerical certificates to actual backend instruction behavior and
+  compiler settings. Extend adversarial regression cases for range extremes,
+  cancellation, long reductions, masking, and mixed precision; retain tests as
+  empirical evidence separate from universal error proofs.
+
+#### C. Executable hardware contract and reusable target packages
+
+- [ ] Finish the first target contract around the selected Gemmini int8/int32
+  subset. Model command streams, matrix engines, and
+  DMA where those are the interface; a conventional scalar ISA is not required,
+  and full-chip formalization is not a prerequisite.
+- [ ] Define architectural state and instruction effects: arithmetic, registers,
+  memory spaces/addressing, tile element mapping, control flow, alignment,
+  ownership, synchronization, DMA completion, and allowed concurrent behavior.
+  Include progress assumptions needed to establish completion.
+- [ ] Package four separate interfaces: semantic contract; resource/capability
+  limits; performance estimates; and encoding/ABI/loader/runtime support.
+  Performance-model errors may change selection quality, never semantic acceptance.
+- [ ] Provide an executable reference model tied to the formal semantics. Use
+  differential tests against RTL/silicon for bring-up and regression; record
+  provenance, hardware revisions, and conformance evidence separately from proofs.
+  Existing executable ISA specifications may be reused with an explicit semantic
+  connection rather than adopting their tooling as an implicit trusted oracle.
+- [ ] Define target onboarding documentation and conformance fixtures. Later add
+  a substantially different target and measure onboarding effort, reused proofs,
+  target-specific code, and achieved performance to test rapid retargetability.
+
+#### D. Connected lowering and final executable bytes
+
+- [ ] Connect tensor/model semantics to executable buffer programs, replacing
+  incomplete lowering sketches with checked edges for supported operations.
+- [ ] Check memory planning, layout/address calculations, bounds, alignment,
+  allocation lifetimes, scratch reuse, and capacity. Establish parallel dependence,
+  race freedom, and synchronization in the execution model used by the backend.
+- [ ] Connect instruction selection and register/scratch allocation to target
+  semantics with reusable refinement proofs or sound per-output validation.
+- [ ] Specify encoding/decoding, executable format, relocation, linking, and
+  loading. Bind the proof to final executable bytes and their loaded interpretation;
+  checking a pre-link instruction program alone leaves later boundaries open.
+- [ ] Emit a manifest connecting model/weight identities, input domain, numerical
+  policy, target/model versions, toolchain settings, executable, proof artifacts,
+  and remaining assumptions. Identify vendor compiler/assembler/runtime stages
+  as trusted dependencies wherever their semantic connection is unverified.
+
+#### E. Whole-model runtime and production qualification
+
+- [ ] Define a supported model import contract: operator semantics, constants,
+  shapes, state such as KV caches, and explicit rejection or declared fallback
+  behavior for unsupported constructs. Start with a small complete fixed-shape
+  model; importing a graph does not by itself prove frontend correctness.
+- [ ] Implement weight loading, buffer allocation, dispatch, transfers,
+  synchronization, and the model ABI. Specify runtime failures and supported shape
+  guards, and account for runtime/state behavior in the end-to-end contract.
+- [ ] Set measurable release criteria for numerical accuracy, latency/throughput,
+  peak memory, reproducible builds, target compatibility, and failure handling.
+  Test loading and execution of the packaged artifact, including repeated/stateful
+  invocations when supported; kernel microbenchmarks alone do not qualify a model.
+- [ ] Deliver one complete model → one target executable after the minimal kernel
+  proof path. Replay its proofs, execute the same artifact in the reference model
+  and on the selected hardware, and report measured release criteria alongside
+  explicit trusted boundaries. Simulator-only bring-up is an intermediate result.
+- [ ] After that path is complete, broaden operators, shapes, and targets while
+  keeping proof replay, numerical regressions, and deployment qualification as
+  acceptance gates. Production readiness and formal proof coverage must be
+  reported separately so neither claim hides the other's remaining gaps.
+
+Suggested order: A and C establish the representation and target contract; D
+completes the first exact kernel path. B starts with mixed-precision dot product
+and progresses to attention. E then establishes a narrow whole-model deployment,
+followed by the second-target retargeting test. This extends the milestones above
+without delaying the first complete proof path until every work item is finished.
 
 ---
 
@@ -542,16 +767,12 @@ floating-point attention kernel.
 
 ### 7.3 Error Budget Tracking
 
-For approximate transformations, errors compose nonlinearly. We need to track error propagation through the graph. Key insight: most ML workloads have a natural "error budget" (training noise, quantization noise). We can express this as:
-
-```lean
-structure ErrorBudget where
-  per_op_bound : Float          -- max error introduced per op
-  total_bound : Float           -- max accumulated error at output
-  composition_rule : ...        -- how errors compose through the graph
-```
-
-The AI agent learns to stay within the error budget while maximizing performance.
+Track error through the graph using the domain and sensitivity-aware contracts
+in §4.3 and the TODOs in §6.1.B. Budgets are explicit workload requirements;
+training or quantization noise does not automatically authorize extra error.
+Represent bounds mathematically (or with certified conservative numerical
+representations), and check every composition rule and its assumptions in Lean.
+Search optimizes performance subject to the checked output budget.
 
 ### 7.4 Expressiveness vs. Decidability
 
@@ -586,6 +807,6 @@ AI guidance pushes an expanding graph of implementations toward efficient hardwa
 programs. Search supplies breadth and local exploration. Lean checks the accepted
 steps and their composition. The intended result is a kernel with a replayable
 correctness argument from mathematics to instructions, even when VeriTac itself
-must supply the target verification layer. The current performance demos are
-useful progress toward that outcome; completing the semantic path is the next
-architectural test.
+must supply the target verification layer. The restricted Gemmini kernel certificates establish the first semantic path
+through directly emitted bytes. Extending that path to multi-tile reductions,
+general transformations, and deployable models is the next architectural test.

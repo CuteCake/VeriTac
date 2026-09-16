@@ -23,8 +23,10 @@ accepted path should carry a composed correctness proof to the target language.
 development with enumeration and achieve repeatable vendor-derived speedups.
 They have abstract semantic/resource proofs and executable validation, but the
 proofs are not yet connected to the generated kernels by a verified lowering
-chain. The next milestone is a small, complete path to a minimal target ISA,
-including an AI proposal → Lean rejection → repair → verified execution trace.
+chain. Gemmini now has a narrow complete path from directly emitted RV64 bytes
+to exact full-tile GEMM, with shape-parameterized validation and kernel-checked
+certificates through 64³.
+Broader shapes and a live AI proposal → rejection → repair replay remain open.
 
 **Planned: LLM–harness–compiler co-design.** We will develop the model-facing IR
 and action interfaces, proof feedback, and search orchestration together. The
@@ -85,6 +87,34 @@ There are two demo entry points:
   prints the proposed tactic, the resulting statement tree, and any rejection
   (which is fed back to the model) — then benchmarks the final schedule.
   `--mock` runs the same trace with a fixed schedule and no API key.
+
+### Gemmini GEMM optimization
+
+The Gemmini backend now checks **actual RV64/Gemmini kernel bytes** against
+exact int8→int32 full-tile GEMM using a shape-parameterized symbolic validator.
+Baseline and batched B-reuse lowering have sound acceptance theorems, including
+nonzero partial-sum accumulation across K tiles.
+Each accepted artifact includes a raw kernel body and a Lean-kernel-checked
+certificate covering all int8 inputs, full output coverage, and completion.
+
+```bash
+lake build gemmini_check gemmini_program_check VeriTac.Gemmini.Executable
+python3 examples/gemmini_gemm_demo.py
+python3 examples/gemmini_gemm_demo.py --accumulator-rows 16
+python3 examples/gemmini_ai_repair_demo.py
+```
+
+The default 32×16×16 example selects B reuse; the restricted run certifies
+baseline. Certificates also cover K=32, rectangular 16×32×48, and 64³ workloads.
+Eight exact raw bodies passed upstream Spike with full-output comparisons and
+checks of every executed kernel opcode.
+
+A recorded OpenCode proposal/rejection/repair loop preserves the 48×16×32
+workload and target capacities, then certifies batched B reuse with four B loads
+instead of six. The target model assumes sequential command completion and an
+explicit loader/caller contract. Physical hardware conformance remains separate;
+traffic reductions are not hardware latency measurements.
+See the [proofs, AI replay, results, and reproduction instructions](docs/gemmini_gemm.md).
 
 ### Attention accelerator survey
 
