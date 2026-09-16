@@ -42,7 +42,7 @@ def _find_omp_base() -> tuple[str, list[str]] | None:
     candidates = []
     if os.environ.get("VERITAC_CC"):
         candidates.append(os.environ["VERITAC_CC"])
-    candidates += ["gcc-15", "gcc-14", "gcc-13", "gcc-12", "gcc", "clang"]
+    candidates += ["gcc-16", "gcc-15", "gcc-14", "gcc-13", "gcc-12", "gcc", "clang"]
 
     for cc in candidates:
         flags = ["-fopenmp", "-O2"]
