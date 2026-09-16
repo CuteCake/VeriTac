@@ -1,0 +1,8 @@
+'VeriTac.Gemmini.checkSupportedProgram_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Gemmini.checkSupportedProgram_observe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Gemmini.run_baseline16_observe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Gemmini.run_reuse16_observe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Gemmini.run_baseline32_observe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Gemmini.run_reuse32_observe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Gemmini.signed32_dot_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Gemmini.signed32_eq_of_bounds' depends on axioms: [propext, Quot.sound]

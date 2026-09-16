@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-16",
+  "generalized_proofs": "benchmarks/gemmini/results/generalized_2026-09-16.json",
+  "ai_repair": "benchmarks/gemmini/ai_repair/2026-09-16/trace.json",
+  "raw_spike_cases": [
+    {
+      "case": "16x16x16_baseline",
+      "report": "benchmarks/gemmini/results/raw_16x16x16_baseline/report.json",
+      "report_sha256": "8ebac52e19dccbf75fd6c09b35f232dd5a0c48cf4b8778ec8d01b8496718e2d9",
+      "binary": "benchmarks/gemmini/checked/16x16x16_baseline/baseline.bin",
+      "binary_sha256": "f7fca1231fd65bd566df05a639e01263eeb0a0f8a5710d398850715bfdc8a4fb",
+      "request": "benchmarks/gemmini/checked/16x16x16_baseline/request.json",
+      "input_modes": [
+        "zeros",
+        "extrema",
+        "lcg"
+      ],
+      "committed_kernel_instructions": 465,
+      "all_checks_pass": true
+    },
+    {
+      "case": "16x16x16_reuse_b",
+      "report": "benchmarks/gemmini/results/raw_16x16x16_reuse_b/report.json",
+      "report_sha256": "0dccbb42a573125751a8d2d26599e651749427924c498d957d75fffe6113e71a",
+      "binary": "benchmarks/gemmini/checked/16x16x16_reuse_b/reuse_b.bin",
+      "binary_sha256": "260b9e870db047c436928a1123ce5163ae9ea8952544c5d27d59a51e43647f41",
+      "request": "benchmarks/gemmini/checked/16x16x16_reuse_b/request.json",
+      "input_modes": [
+        "zeros",
+        "extrema",
+        "lcg"
+      ],
+      "committed_kernel_instructions": 465,
+      "all_checks_pass": true
+    },
+    {
+      "case": "32x16x16_baseline",
+      "report": "benchmarks/gemmini/results/raw_32x16x16_baseline/report.json",
+      "report_sha256": "370ba74e7762e2fc5bbb7ea4af506f6503f4bba40b93acfcbc1162cd7d472811",
+      "binary": "benchmarks/gemmini/checked/32x16x16_baseline/baseline.bin",
+      "binary_sha256": "3a556e0d1ce5c0626d60a000229539d57ab78929a639a96cd6adc90eec3054f8",
+      "request": "benchmarks/gemmini/checked/32x16x16_baseline/request.json",
+      "input_modes": [
+        "zeros",
+        "extrema",
+        "lcg"
+      ],
+      "committed_kernel_instructions": 720,
+      "all_checks_pass": true
+    },
+    {
+      "case": "32x16x16_reuse_b",
+      "report": "benchmarks/gemmini/results/raw_32x16x16_reuse_b/report.json",
+      "report_sha256": "88ccf6bb0ec0268247ef8ee1ab34a03aba11978d3cc4e4e4ccc1466869862630",
+      "binary": "benchmarks/gemmini/checked/32x16x16_reuse_b/reuse_b.bin",
+      "binary_sha256": "445487f5de3f1caa9725934c5d2918f9a4a658c668e2c953c2a519a9b3e3c440",
+      "request": "benchmarks/gemmini/checked/32x16x16_reuse_b/request.json",
+      "input_modes": [
+        "zeros",
+        "extrema",
+        "lcg"
+      ],
+      "committed_kernel_instructions": 669,
+      "all_checks_pass": true
+    },
+    {
+      "case": "ai_repair_batch2",
+      "report": "benchmarks/gemmini/results/raw_ai_repair_batch2/report.json",
+      "report_sha256": "9c40fb37bbaef0f8947952493a5cc0a75e8c5d98734331b03f809838498f3051",
+      "binary": "benchmarks/gemmini/ai_repair/2026-09-16/accepted_edge/destination/baseline.bin",
+      "binary_sha256": "758593fd560804b6be586f35ed4b9f8fb0acb883201a752f25a72abeb8c6a628",
+      "request": "benchmarks/gemmini/ai_repair/2026-09-16/accepted_edge/destination/request.json",
+      "input_modes": [
+        "zeros",
+        "extrema",
+        "lcg"
+      ],
+      "committed_kernel_instructions": 1485,
+      "all_checks_pass": true
+    },
+    {
+      "case": "k32_baseline",
+      "report": "benchmarks/gemmini/results/raw_k32_baseline/report.json",
+      "report_sha256": "35c0e7b9b05f24fa70c8587763762d90742e458196c6299718b6090971774a65",
+      "binary": "benchmarks/gemmini/checked_general/32x16x32_baseline/baseline.bin",
+      "binary_sha256": "7c293bde70dcc0a71a8d0002d387beae171eb5ee4fcc6dd850eb4a9ec4007dc0",
+      "request": "benchmarks/gemmini/checked_general/32x16x32_baseline/request.json",
+      "input_modes": [
+        "zeros",
+        "extrema",
+        "lcg"
+      ],
+      "committed_kernel_instructions": 1128,
+      "all_checks_pass": true
+    },
+    {
+      "case": "k32_reuse_b",
+      "report": "benchmarks/gemmini/results/raw_k32_reuse_b/report.json",
+      "report_sha256": "c738c5d7548f13ef8fb2af594f5cefbda9bd103c1da5bf0c77897fd1b841f56e",
+      "binary": "benchmarks/gemmini/checked_general/32x16x32_reuse_b/reuse_b.bin",
+      "binary_sha256": "6467c49c5cd8011bc5e0e4dbbcb871a2b33ad442dccf49b3f7a8ca61ba27b126",
+      "request": "benchmarks/gemmini/checked_general/32x16x32_reuse_b/request.json",
+      "input_modes": [
+        "zeros",
+        "extrema",
+        "lcg"
+      ],
+      "committed_kernel_instructions": 1026,
+      "all_checks_pass": true
+    },
+    {
+      "case": "rect16_32_48_reuse_b",
+      "report": "benchmarks/gemmini/results/raw_rect16_32_48_reuse_b/report.json",
+      "report_sha256": "91e74a88057c0712822a41116d178b79e91f83d4fe23ef564d65232ee5651e4e",
+      "binary": "benchmarks/gemmini/checked_general/16x32x48_reuse_b/reuse_b.bin",
+      "binary_sha256": "832cf21b348720199ebffe9aaf8d41c22f5b0029c00e35cb71b4c2e79759a05a",
+      "request": "benchmarks/gemmini/checked_general/16x32x48_reuse_b/request.json",
+      "input_modes": [
+        "zeros",
+        "extrema",
+        "lcg"
+      ],
+      "committed_kernel_instructions": 1536,
+      "all_checks_pass": true
+    }
+  ],
+  "claims": {
+    "all_input_correctness": "Lean checkExecutable_sound under declared DIM16 int8/int32 sequential instruction semantics",
+    "spike": "24 executions of eight exact raw bodies; full outputs, committed opcodes, byte identity and command counts checked",
+    "hardware_latency": "not measured",
+    "physical_hardware_conformance": "not proved"
+  },
+  "source_hashes": {
+    "VeriTac/Gemmini/Checked.lean": "e72ed5c523ac54d35d042ad1274f07a235e511a9c1e410a2b46257a9cd61db7f",
+    "VeriTac/Gemmini/Encoding.lean": "f5f59493b27dbab048f94d79707a14dae16de523641c2439fcd21dd083ef3b09",
+    "VeriTac/Gemmini/Engine.lean": "973400d849bd2ec14050c461c501a44daaf13ddfcaa4708d2ac380f0cfe4a0a0",
+    "VeriTac/Gemmini/EngineMap.lean": "27a794101b7972ba6134f38a5a48e2b7c5dcca40ebb56d279aec7b72b5407518",
+    "VeriTac/Gemmini/Executable.lean": "1f742962883e3d968dccdcd0036e9e62819390ae7b7ba6445e5ffe0e0e8be3ba",
+    "VeriTac/Gemmini/Execution16.lean": "17dcca399fbaa117af42374fd667c5e431c1b3dee6e1048101bd7c4453d94c4b",
+    "VeriTac/Gemmini/Execution32.lean": "b44d8b6d9a7ddd8f324f1b15b762f566f891e2349a021a5ec929a76d1afdea46",
+    "VeriTac/Gemmini/K32Baseline.lean": "8766745f382d622bf0e483e8c67a022d3db0fceb325248e7435b9b13e7f922df",
+    "VeriTac/Gemmini/K32Reuse.lean": "2590794c582578140f6fa71f238cc8c92d34fa6e831c8b47351ce669ffb4b1b7",
+    "VeriTac/Gemmini/K32Spec.lean": "277d437cd458638a618f7bcb0c261a42caa0edec00be65cf91df09d8f0bbcf9f",
+    "VeriTac/Gemmini/Lowering.lean": "4294de569d009b5d9db643c90ba80e3bbeb8b93f0d46c8d8eb1f6cb9cfcb40f5",
+    "VeriTac/Gemmini/LoweringSound.lean": "87f51a9393ae877b332278f01eafc903894601c69802694a2000420cc91cc402",
+    "VeriTac/Gemmini/Plan.lean": "7a7e99fb9f79b520aeb7929708bd22fd9b7fa21bc663d4a5fd5e13a7ba51cb2b",
+    "VeriTac/Gemmini/Program.lean": "a77adac6a8f0d6162f75aa582aa8fcd879b3816ff56fc9338af23ebaae4c74a6",
+    "VeriTac/Gemmini/Program32.lean": "ba20dd97f954cb712ce3a184d16985d2ffff6a048ce50e0201c58eb6307344fd",
+    "VeriTac/Gemmini/Semantics.lean": "b45e30a7d7bdce9d2bb03ba65b6843034f69ebaedb2f95f0a460c649b776f75d",
+    "VeriTac/Gemmini/Symbolic.lean": "7b9349b149b0e4f46f36895355bf4ab1031ac48edc4a94d917288d9127c8730b",
+    "VeriTac/Gemmini/SymbolicSound.lean": "b399252d80a4e6bcbfcb98e578766bbdf19019dec41d69669c4f51d0c8a6cf8a",
+    "VeriTac/Gemmini/Verification.lean": "96a9ea6833f162633106f3f61daaeec13c37e3e33546abfe13494c0740ad5e80",
+    "VeriTac/Gemmini/Word.lean": "fb12823af3e29da7d6fdd538254d6264477774f4860e16604847d8d372cf7047"
+  },
+  "validation": {
+    "build": {
+      "command": "lake build veritac gemmini_check gemmini_program_check VeriTac",
+      "success": true
+    },
+    "python": {
+      "command": "PYTHONPATH=. python3 -m unittest discover -s tests",
+      "tests_run": 174,
+      "skipped": 1,
+      "skip_reason": "live Metal probe requires LIVE_METAL",
+      "success": true
+    },
+    "ai_replay": {
+      "command": "python3 examples/gemmini_ai_repair_demo.py",
+      "rejected_original": true,
+      "accepted_repair": true,
+      "fresh_endpoint_and_rewrite_certificates": true
+    },
+    "lean_fixtures": {
+      "commands": [
+        "lake env lean -s 65536 tests/lean/GemminiGeneral.lean",
+        "lake env lean -s 65536 tests/lean/GemminiProgram.lean"
+      ],
+      "success": true,
+      "audited_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "logs": {
+      "benchmarks/gemmini/results/validation_2026-09-16/ai-replay-final.log": "ef1b745feaa6123277fdd7fb484d1ed3fdd59b4afd851bbbe357513c71c2acf2",
+      "benchmarks/gemmini/results/validation_2026-09-16/final-tests.log": "beeccd8622464a7c4d29e2c301c2664ab5b1567b75c6d4360627ad09fc932c52",
+      "benchmarks/gemmini/results/validation_2026-09-16/general-lean-tests.log": "d87e918ebd415c86a6a26d858a95c1cd4f6ebcf6382a50a6af680e40f338fffc",
+      "benchmarks/gemmini/results/validation_2026-09-16/program-lean-tests.log": "c9b0dffe2646473f653534952c878bcc8ff03c4ebab8a44594eddfc3d1af9a31"
+    }
+  }
+}

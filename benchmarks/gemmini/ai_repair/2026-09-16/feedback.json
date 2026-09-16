@@ -1,0 +1,8 @@
+{
+  "accepted": false,
+  "reason": "program rejected: instruction execution rejected: check addresses, strides, initialization, preload and retained weights",
+  "checker": "/Users/cake/Documents/codework/VeriTac/.lake/build/bin/gemmini_program_check",
+  "checker_sha256": "493b897809f46cec60cbb0386d1dae5d3cce3b30489797dad6b929badc5e5a4c",
+  "plan_unchanged": true,
+  "commands": 28
+}

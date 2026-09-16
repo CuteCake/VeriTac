@@ -13,3 +13,9 @@ lean_lib VeriTac where
 
 lean_exe veritac where
   root := `Main
+
+lean_exe gemmini_check where
+  root := `GemminiMain
+
+lean_exe gemmini_program_check where
+  root := `GemminiProgramMain

@@ -1,0 +1,11 @@
+/Users/cake/Documents/codework/VeriTac/.lake/gemmini-next-workers/k32-certificate/reuse_b_certificate.lean:44:35: warning: This simp argument is unused:
+  Bool.true_eq
+
+Hint: Omit it from the simp argument list.
+  simp only [checkExecutable, capacities, symbolicAccepted, Bool.true_and,
+  ̵  ̵ ̵ ̵Encoding.decode,
+  ̲  ̲ ̲ ̲bufferLayout, B̵o̵o̵l̵.̵t̵r̵u̵e̵_̵e̵q̵,̵ ̵if_true, byteExecution, commandDecoding]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'SubmittedKernel.accepted' depends on axioms: [propext]
+'SubmittedKernel.correct' depends on axioms: [propext, Classical.choice, Quot.sound]

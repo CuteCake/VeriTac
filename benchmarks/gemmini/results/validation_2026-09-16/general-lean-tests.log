@@ -1,0 +1,7 @@
+'VeriTac.Gemmini.Symbolic.check_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Gemmini.checkedLowering_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Gemmini.checkedRewrite_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Gemmini.checkExecutable_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Gemmini.k32Result_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Gemmini.run_baselineK32_observe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VeriTac.Gemmini.run_reuseK32_observe' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "scenario": "guided accumulator-capacity challenge with actual OpenCode proposals and Lean feedback",
+  "proposer_noted_capacity_risk": true,
+  "target_unchanged": true,
+  "same_native_verifier": true,
+  "initial_proposal_accepted": false,
+  "repaired_edge_accepted": true,
+  "baseline_B_loads": 6,
+  "repaired_B_loads": 4,
+  "edge": "benchmarks/gemmini/ai_repair/2026-09-16/accepted_edge/edge.json",
+  "transcript": "benchmarks/gemmini/ai_repair/2026-09-16/visible-transcript.json",
+  "files_sha256": {
+    "proposal-notes.md": "ded7919a782516bba15794f64dc50bf4975e209b77f59ab11f64652432ac3fc6",
+    "repair.json": "4336ea26e926d56ee0764b12984385a87a260cb68c8df70a3b7f7f357e5e2bfc",
+    "visible-transcript.json": "4408bd39622f5ec383985cfc38d469562955a7697e0890758ffc2d9876f0f65d",
+    "proposal-prompt.txt": "b36a56d790778a1006a8398f9e7569871610b946ab1eb119a10190d66cf1f5f3",
+    "baseline.json": "ca367116dc6aa76e8ca20968a87d1dc7fc8cba5f22dc1cc91505b79becbadfd6",
+    "repair-notes.md": "0d6d95a136780178f4d18fb53e1cafea9346aed5525022a34e5311aa0ed66b34",
+    "proposal_request.json": "aa585474e38048d40bbb756e511452a83e09117848c74d8a58e08cc0f0904162",
+    "feedback.json": "3f23bebd492b9c7f2362afc945e52df13356e61edd730f1f524b85dffbc422e8",
+    "proposal.json": "1bb952233dc1a5951922d645985779786b0f75831d10ab4269bd834d4723e689"
+  }
+}

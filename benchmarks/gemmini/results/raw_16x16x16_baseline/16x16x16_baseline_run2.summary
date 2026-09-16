@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "backend": "upstream_gemmini_spike_raw_bytes",
+  "performance_claim": "none; functional simulator; dynamic instruction/DMA counts only, not hardware latency",
+  "success": true,
+  "request": "/home/cake/.cache/veritac-gemmini/raw-body-w3/cases/16x16x16_baseline/request.json",
+  "binary_sha256": "f7fca1231fd65bd566df05a639e01263eeb0a0f8a5710d398850715bfdc8a4fb",
+  "binary_bytes": 620,
+  "bases": {
+    "A": "0x10000000",
+    "B": "0x20000000",
+    "C": "0x30000000"
+  },
+  "sizes": {
+    "A": 256,
+    "B": 256,
+    "C": 1024
+  },
+  "plan": {
+    "m": 16,
+    "n": 16,
+    "k": 16,
+    "dim": 16,
+    "schedule": "baseline",
+    "scratchpad_rows": 32,
+    "accumulator_rows": 16
+  },
+  "artifacts": {
+    "harness_c": "9fc8bdfbc3457f61a4f8421ea26684de8b85e3ab534ebe6af4e9e6c3345cbede",
+    "kernel_asm": "9f2a99b9099035ef864e001a01ed385edd7580f96cdc63be1fc8e2fd75f1195a",
+    "kernel_bin": "f7fca1231fd65bd566df05a639e01263eeb0a0f8a5710d398850715bfdc8a4fb"
+  },
+  "compile_command": [
+    "/home/cake/.cache/veritac-gemmini/prefix/usr/bin/riscv64-linux-gnu-gcc-13",
+    "--sysroot=/home/cake/.cache/veritac-gemmini/prefix",
+    "-static",
+    "-O2",
+    "-march=rv64gc",
+    "-mabi=lp64d",
+    "-DBAREMETAL",
+    "-I",
+    "/home/cake/.cache/veritac-gemmini/gemmini-rocc-tests",
+    "/home/cake/.cache/veritac-gemmini/raw-body-w3/results/16x16x16_baseline_run2/raw_harness.c",
+    "/home/cake/.cache/veritac-gemmini/raw-body-w3/results/16x16x16_baseline_run2/kernel_body.S",
+    "-Wl,--section-start=.array_a=0x10000000",
+    "-Wl,--section-start=.array_b=0x20000000",
+    "-Wl,--section-start=.array_c=0x30000000",
+    "-o",
+    "/home/cake/.cache/veritac-gemmini/raw-body-w3/results/16x16x16_baseline_run2/raw_harness"
+  ],
+  "run_command": [
+    "/home/cake/.cache/veritac-gemmini/prefix/bin/spike",
+    "--log=/home/cake/.cache/veritac-gemmini/raw-body-w3/results/16x16x16_baseline_run2/spike.log",
+    "--log-commits",
+    "--extension=gemmini",
+    "/home/cake/.cache/veritac-gemmini/pk-build/pk",
+    "/home/cake/.cache/veritac-gemmini/raw-body-w3/results/16x16x16_baseline_run2/raw_harness"
+  ],
+  "compile_exit_code": 0,
+  "elf_sha256": "0f793f26ffdc8b66b2bec0246aa483cb2e06133db713fdd5164f1c5d396f9dab",
+  "loaded_body_sha256": "f7fca1231fd65bd566df05a639e01263eeb0a0f8a5710d398850715bfdc8a4fb",
+  "section_placements": {
+    "A": {
+      "addr": 268435456,
+      "offset": 479232,
+      "size": 256
+    },
+    "B": {
+      "addr": 536870912,
+      "offset": 483328,
+      "size": 256
+    },
+    "C": {
+      "addr": 805306368,
+      "offset": 487424,
+      "size": 1024
+    }
+  },
+  "exit_code": 0,
+  "executed_commands": {
+    "operations": {
+      "mvin": 6,
+      "scratchpad_input_bytes": 1536,
+      "preload": 3,
+      "compute": 3,
+      "mvout": 3
+    },
+    "mvin_by_local_address": {
+      "0x00000000": 3,
+      "0x00000010": 3
+    }
+  },
+  "stdout_sha256": "4dd654f5f83b1bd8744bc6f188bf8239077dfda9b9c60538ec06426bf728bf33",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "outputs_file_sha256": "0e6f102ba5f4bd1c39c4678c9fe91d95c49614d4ced30137c32e0298d6bf1ff8",
+  "spike_log_sha256": "467d8143645c4ff6e778d666060125aa03d808734f9ac0509b5a1cda086891f8",
+  "dynamic_instructions": 1647545,
+  "output_checks": {
+    "pass": true,
+    "problems": [],
+    "modes": [
+      "zeros",
+      "extrema",
+      "lcg"
+    ]
+  }
+}

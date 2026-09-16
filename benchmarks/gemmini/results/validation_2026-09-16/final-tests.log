@@ -1,0 +1,25 @@
+...................................................................................................................................................s........................usage: python3.14 -m unittest [-h] [--output OUTPUT] [--seqs SEQS]
+                              [--dims DIMS] [--mappings MAPPINGS]
+                              [--query-tiles QUERY_TILES]
+                              [--key-tiles KEY_TILES] [--warmup WARMUP]
+                              [--samples SAMPLES] [--inner INNER]
+                              [--verify-only] [--seed SEED] [--heads HEADS]
+                              [--batch BATCH] [--mem-cap-bytes MEM_CAP_BYTES]
+                              [--swift-src SWIFT_SRC] [--build-dir BUILD_DIR]
+                              [--temp-dir TEMP_DIR] [--keep-temp]
+python3.14 -m unittest: error: --mappings/--query-tiles select no runnable configuration: no (mapping, query_tile) pair is valid for mappings=['scalar'] query-tiles=[4] (valid pairs per mapping: {'scalar': {8, 16}, 'simdgroup': {8, 4}})
+.usage: python3.14 -m unittest [-h] [--output OUTPUT] [--seqs SEQS]
+                              [--dims DIMS] [--mappings MAPPINGS]
+                              [--query-tiles QUERY_TILES]
+                              [--key-tiles KEY_TILES] [--warmup WARMUP]
+                              [--samples SAMPLES] [--inner INNER]
+                              [--verify-only] [--seed SEED] [--heads HEADS]
+                              [--batch BATCH] [--mem-cap-bytes MEM_CAP_BYTES]
+                              [--swift-src SWIFT_SRC] [--build-dir BUILD_DIR]
+                              [--temp-dir TEMP_DIR] [--keep-temp]
+python3.14 -m unittest: error: --mappings/--query-tiles select no runnable configuration: no (mapping, query_tile) pair is valid for mappings=['simdgroup'] query-tiles=[16] (valid pairs per mapping: {'scalar': {8, 16}, 'simdgroup': {8, 4}})
+.
+----------------------------------------------------------------------
+Ran 174 tests in 40.907s
+
+OK (skipped=1)

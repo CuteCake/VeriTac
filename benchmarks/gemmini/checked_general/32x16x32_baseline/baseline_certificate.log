@@ -1,0 +1,2 @@
+'SubmittedKernel.accepted' depends on axioms: [propext]
+'SubmittedKernel.correct' depends on axioms: [propext, Classical.choice, Quot.sound]

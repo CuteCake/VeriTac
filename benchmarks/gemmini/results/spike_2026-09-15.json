@@ -1,0 +1,621 @@
+{
+  "date": "2026-09-15",
+  "execution_host": "Spark3, Linux/aarch64",
+  "metric": "upstream functional-simulator command counts and int8 input-transfer bytes; not hardware latency",
+  "validation": "all scalar output comparisons matched for every case",
+  "default_target": {
+    "dim": 16,
+    "scratchpad_rows": 16384,
+    "accumulator_rows": 1024
+  },
+  "toolchain_hashes": {
+    "gemmini_h": "18801f4eab0cd2e81e25a6c2aa97c7ed644b693e8d2c24cdeb41ab3a7208336d",
+    "gemmini_params": "3758ae967af3a179497660970201093a7fb624be00173990ce33d3f5c38da924",
+    "simulator_params": "3758ae967af3a179497660970201093a7fb624be00173990ce33d3f5c38da924",
+    "xcustom": "9582eb00cee774e4680fde6408a0d607bba85196a0a4fd803f7b7ddd801aad69",
+    "compiler": "b73b0f798edabb586f3066a8b0ef8a664f810b2cc06e48ebf58a8ccb0c284cd4",
+    "spike": "dd85e5a5d93cf4ae138677ecee536e7013b503ca7d4135e2d69eb6ae1246ec5c",
+    "proxy_kernel": "752885a759f60c8819d0e01bc36b20cb151ca9a8fef8485bddd2e235310aebc1",
+    "extension": "8feba12536da562da8d3024e035690d7043c8d0a07f3affd3852749d72ab9628"
+  },
+  "cases": [
+    {
+      "name": "baseline_32_32_32_lcg",
+      "plan": {
+        "m": 32,
+        "n": 32,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 16
+      },
+      "mode": "lcg",
+      "source_sha256": "66195870aa7cacfd9815014574da6763a6d3a6a2bb82c42ea90578c8309b6051",
+      "binary_sha256": "84e3ef559ca62120052ad3939b07b42894c9ab0967e13d870151dee4b3705edb",
+      "stdout_sha256": "9e551312eaa1eec0c4dd3237396f35babd04d5315c8054067f960ed5fac7d080",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 16,
+          "scratchpad_input_bytes": 4096,
+          "preload": 8,
+          "compute": 8,
+          "mvout": 4
+        },
+        "mvin_by_local_address": {
+          "0x00000000": 8,
+          "0x00000010": 8
+        }
+      }
+    },
+    {
+      "name": "reuse_b_32_32_32_lcg",
+      "plan": {
+        "m": 32,
+        "n": 32,
+        "k": 32,
+        "dim": 16,
+        "schedule": "reuse_b",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 32
+      },
+      "mode": "lcg",
+      "source_sha256": "02cdbfb874dda5ce72dd56cf05c85149e806f5221946af694e98f5e2bfa53213",
+      "binary_sha256": "2e562357c3597e3c11aab9231b3ced1802e585e211e6070fe976be1209317a9c",
+      "stdout_sha256": "85bd534075b72d82658527f537adab7e8fbef5bc3eace12eee87db52da6a6c8f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 12,
+          "scratchpad_input_bytes": 3072,
+          "preload": 8,
+          "compute": 8,
+          "mvout": 4
+        },
+        "mvin_by_local_address": {
+          "0x00000010": 4,
+          "0x00000000": 8
+        }
+      }
+    },
+    {
+      "name": "baseline_64_64_64_lcg",
+      "plan": {
+        "m": 64,
+        "n": 64,
+        "k": 64,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 16
+      },
+      "mode": "lcg",
+      "source_sha256": "3c2b2e9c9debf7397d36bd638ac72d7ba8f455a55a7c78128a30397ebc859b37",
+      "binary_sha256": "fb21a0d5276b4a8040199657a8901bda4cb400616de76505da98547d771b9c9c",
+      "stdout_sha256": "db2b9b76398d540698e57f8971b2226689f20a33e2d59bff205c1f6e5f81dccf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 128,
+          "scratchpad_input_bytes": 32768,
+          "preload": 64,
+          "compute": 64,
+          "mvout": 16
+        },
+        "mvin_by_local_address": {
+          "0x00000000": 64,
+          "0x00000010": 64
+        }
+      }
+    },
+    {
+      "name": "reuse_b_64_64_64_lcg",
+      "plan": {
+        "m": 64,
+        "n": 64,
+        "k": 64,
+        "dim": 16,
+        "schedule": "reuse_b",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 64
+      },
+      "mode": "lcg",
+      "source_sha256": "b617d954965771c56480f7710bc16df82c09feddf4aa65ede892f225e216c3e0",
+      "binary_sha256": "2c88c327af05f16a525a27ddc759b767eb1317970522f683c88a9c2575993f8c",
+      "stdout_sha256": "94dd73099290b741f743332ea7c028fea31ddaeb56a6b473505fba0a71f2db99",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 80,
+          "scratchpad_input_bytes": 20480,
+          "preload": 64,
+          "compute": 64,
+          "mvout": 16
+        },
+        "mvin_by_local_address": {
+          "0x00000010": 16,
+          "0x00000000": 64
+        }
+      }
+    },
+    {
+      "name": "baseline_48_32_64_lcg",
+      "plan": {
+        "m": 48,
+        "n": 32,
+        "k": 64,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 16
+      },
+      "mode": "lcg",
+      "source_sha256": "c9db52b74f02b979d99be6ff5046df4f2c92271d29b59256c75b5b1579e1ebac",
+      "binary_sha256": "48a3dc928c5807d8c296259353186ca8bcf32488537090e1638ca4d5badbd5c1",
+      "stdout_sha256": "35a113a6b6feffd1e0fc6df9c472e396c574335643592a609a2cf61290099e2f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 48,
+          "scratchpad_input_bytes": 12288,
+          "preload": 24,
+          "compute": 24,
+          "mvout": 6
+        },
+        "mvin_by_local_address": {
+          "0x00000000": 24,
+          "0x00000010": 24
+        }
+      }
+    },
+    {
+      "name": "reuse_b_48_32_64_lcg",
+      "plan": {
+        "m": 48,
+        "n": 32,
+        "k": 64,
+        "dim": 16,
+        "schedule": "reuse_b",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 48
+      },
+      "mode": "lcg",
+      "source_sha256": "b5fe48b4ce25083dc4f1b85a1f91947e1bbda4bf19a11712817043570bf68356",
+      "binary_sha256": "d692b2121f64bebd66ce1a1eb41742da6272c17f1919dfdfba460a4cabe1626c",
+      "stdout_sha256": "8635d7844845cde104b0a735563f13c6c73783f789a7e62c9b0f5688787c544c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 32,
+          "scratchpad_input_bytes": 8192,
+          "preload": 24,
+          "compute": 24,
+          "mvout": 6
+        },
+        "mvin_by_local_address": {
+          "0x00000010": 8,
+          "0x00000000": 24
+        }
+      }
+    },
+    {
+      "name": "baseline_16_48_32_lcg",
+      "plan": {
+        "m": 16,
+        "n": 48,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 16
+      },
+      "mode": "lcg",
+      "source_sha256": "ff03c778eed29fe75bb2227eefab3e05d4e334ce1c857438667cdad6d1182146",
+      "binary_sha256": "81dfc1d8ab5407ab1523c512aebe099a7617940e0b07b352a95fde6f66fe5860",
+      "stdout_sha256": "91ef05f93901b110f329212f514046112c82578b7537104f476c4f1bdd20e784",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 12,
+          "scratchpad_input_bytes": 3072,
+          "preload": 6,
+          "compute": 6,
+          "mvout": 3
+        },
+        "mvin_by_local_address": {
+          "0x00000000": 6,
+          "0x00000010": 6
+        }
+      }
+    },
+    {
+      "name": "reuse_b_16_48_32_lcg",
+      "plan": {
+        "m": 16,
+        "n": 48,
+        "k": 32,
+        "dim": 16,
+        "schedule": "reuse_b",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 16
+      },
+      "mode": "lcg",
+      "source_sha256": "0ada261d7c95c81387a72e55d0deb8f1aa6bd31736d1da1bf9901c71b4c54331",
+      "binary_sha256": "05964bea8d3288e28593c158a87b528cc3ed4730c6000479b23c8d4c49120fa4",
+      "stdout_sha256": "459461131c4c69477618cfcbadfaf592bb0966a31e04253e36a6bd3f6e9071b8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 12,
+          "scratchpad_input_bytes": 3072,
+          "preload": 6,
+          "compute": 6,
+          "mvout": 3
+        },
+        "mvin_by_local_address": {
+          "0x00000010": 6,
+          "0x00000000": 6
+        }
+      }
+    },
+    {
+      "name": "baseline_32_32_32_min",
+      "plan": {
+        "m": 32,
+        "n": 32,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 16
+      },
+      "mode": "min",
+      "source_sha256": "83ffb2568c6db2bbc0c1cf7d182cfacd522ff66408c54e9ddd91d3d2213ef5d5",
+      "binary_sha256": "82c6a380b98be46e38fd0e70fd5c45433a8adc8d98f9d0bf22854f7c677e1366",
+      "stdout_sha256": "6b4547c8b95759da16c6d6d48d76d4c8038e434d599970899f18172cd645b031",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 16,
+          "scratchpad_input_bytes": 4096,
+          "preload": 8,
+          "compute": 8,
+          "mvout": 4
+        },
+        "mvin_by_local_address": {
+          "0x00000000": 8,
+          "0x00000010": 8
+        }
+      }
+    },
+    {
+      "name": "reuse_b_32_32_32_min",
+      "plan": {
+        "m": 32,
+        "n": 32,
+        "k": 32,
+        "dim": 16,
+        "schedule": "reuse_b",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 32
+      },
+      "mode": "min",
+      "source_sha256": "b6e91824af970cafbfa51083482cdcc045f4f5072b765a07ad33fc8c7fdd5272",
+      "binary_sha256": "fbf1ef9b95125b3c4aa5719e3286158a0b2244b36bc346e5d2d3aef3d5de080b",
+      "stdout_sha256": "7cb8772d1851b5b4e89029193cb2bbd65a9349167e3ab9abc39d97c88be75851",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 12,
+          "scratchpad_input_bytes": 3072,
+          "preload": 8,
+          "compute": 8,
+          "mvout": 4
+        },
+        "mvin_by_local_address": {
+          "0x00000010": 4,
+          "0x00000000": 8
+        }
+      }
+    },
+    {
+      "name": "baseline_32_32_32_max",
+      "plan": {
+        "m": 32,
+        "n": 32,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 16
+      },
+      "mode": "max",
+      "source_sha256": "7ebc1f47e816362fb1a4a278421de57856f3425ea96c8efc9ea84ae4c6f10bbb",
+      "binary_sha256": "28b1ddce4d4ca6fa2e136bef603ba9dee0abf6d03b172232efe05304c2e5dfb9",
+      "stdout_sha256": "6a01019319bdcc5f2c23b8acdae23f504769fdb9287d5ecde12c0f1044b994f3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 16,
+          "scratchpad_input_bytes": 4096,
+          "preload": 8,
+          "compute": 8,
+          "mvout": 4
+        },
+        "mvin_by_local_address": {
+          "0x00000000": 8,
+          "0x00000010": 8
+        }
+      }
+    },
+    {
+      "name": "reuse_b_32_32_32_max",
+      "plan": {
+        "m": 32,
+        "n": 32,
+        "k": 32,
+        "dim": 16,
+        "schedule": "reuse_b",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 32
+      },
+      "mode": "max",
+      "source_sha256": "5e3e82b3a3b7fea8f925a6610d46e1963df1e32f8e1de1cd39d022fa2552a7e6",
+      "binary_sha256": "97740ea91249aa4f80e09a3fbd999b4be03d53cf56fb7d1aefb9e9d0b408e7b2",
+      "stdout_sha256": "358d66fbbdb11ae560b1a0aec2cdbe7caf71643483ea401aa9f387bebe7a5727",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 12,
+          "scratchpad_input_bytes": 3072,
+          "preload": 8,
+          "compute": 8,
+          "mvout": 4
+        },
+        "mvin_by_local_address": {
+          "0x00000010": 4,
+          "0x00000000": 8
+        }
+      }
+    },
+    {
+      "name": "baseline_32_32_32_minmax",
+      "plan": {
+        "m": 32,
+        "n": 32,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 16
+      },
+      "mode": "minmax",
+      "source_sha256": "7ea93e39db882f3350d6f9e5e96fc03329711fe6c9cc8f29aeb1525209c51ab4",
+      "binary_sha256": "f3e8cb7f1a1ce361ace86ce6c46e17c10a2bf65bf2f988e615fbaa75866729cd",
+      "stdout_sha256": "819a36837145b4d81da87b7bbe59d2b2961f9d6bd9e9014da799ebb4a4eb79f6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 16,
+          "scratchpad_input_bytes": 4096,
+          "preload": 8,
+          "compute": 8,
+          "mvout": 4
+        },
+        "mvin_by_local_address": {
+          "0x00000000": 8,
+          "0x00000010": 8
+        }
+      }
+    },
+    {
+      "name": "reuse_b_32_32_32_minmax",
+      "plan": {
+        "m": 32,
+        "n": 32,
+        "k": 32,
+        "dim": 16,
+        "schedule": "reuse_b",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 32
+      },
+      "mode": "minmax",
+      "source_sha256": "5ae78d94779198a4cac8ead0e05d4621da08b67d1d752aafb541c6968b2882ec",
+      "binary_sha256": "e29a3d21b6f1022415e83257398cd4e4250c290669bfd87b9a0a19cb753fda4e",
+      "stdout_sha256": "aa20a30801943d3c3a98374eb2ea39ec85c4265879b4abfb92f14a440bb36df9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 12,
+          "scratchpad_input_bytes": 3072,
+          "preload": 8,
+          "compute": 8,
+          "mvout": 4
+        },
+        "mvin_by_local_address": {
+          "0x00000010": 4,
+          "0x00000000": 8
+        }
+      }
+    },
+    {
+      "name": "baseline_32_32_32_zero",
+      "plan": {
+        "m": 32,
+        "n": 32,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 16
+      },
+      "mode": "zero",
+      "source_sha256": "3ed94c7264e1fce83f2093fb821298882695c39af0f96843e2bb9cbd8239444b",
+      "binary_sha256": "cf1f1917cddc586703fa42f7e6302862e1f2e4421aefea697bdda2d5140ff428",
+      "stdout_sha256": "1d7e94df399f84a3807f14b4acafb1e7a7e85aadad7b51b494ebe49bbccb9999",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 16,
+          "scratchpad_input_bytes": 4096,
+          "preload": 8,
+          "compute": 8,
+          "mvout": 4
+        },
+        "mvin_by_local_address": {
+          "0x00000000": 8,
+          "0x00000010": 8
+        }
+      }
+    },
+    {
+      "name": "reuse_b_32_32_32_zero",
+      "plan": {
+        "m": 32,
+        "n": 32,
+        "k": 32,
+        "dim": 16,
+        "schedule": "reuse_b",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 32
+      },
+      "mode": "zero",
+      "source_sha256": "98208720b1c2a32cc8236ed81dcfb030d887f0495430fa6302e062526060e275",
+      "binary_sha256": "6df19c200b06e18fece298d41e7fdf22c82816a9668221d9385097d9e2f2e5df",
+      "stdout_sha256": "a934c3fcb35169c681c9dff1114f8e6e65e2f502462a91ef5eeca37bac72600a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success": true,
+      "trace_counts_match": true,
+      "executed_commands": {
+        "operations": {
+          "mvin": 12,
+          "scratchpad_input_bytes": 3072,
+          "preload": 8,
+          "compute": 8,
+          "mvout": 4
+        },
+        "mvin_by_local_address": {
+          "0x00000010": 4,
+          "0x00000000": 8
+        }
+      }
+    }
+  ],
+  "constrained_target": {
+    "dim": 16,
+    "scratchpad_rows": 32,
+    "accumulator_rows": 16,
+    "shape": [
+      64,
+      64,
+      64
+    ],
+    "selected_schedule": "baseline",
+    "reuse_b_rejected_by_lean": true,
+    "success": true,
+    "executed_commands": {
+      "operations": {
+        "mvin": 128,
+        "scratchpad_input_bytes": 32768,
+        "preload": 64,
+        "compute": 64,
+        "mvout": 16
+      },
+      "mvin_by_local_address": {
+        "0x00000000": 64,
+        "0x00000010": 64
+      }
+    },
+    "artifact_hashes": {
+      "source": "3c2b2e9c9debf7397d36bd638ac72d7ba8f455a55a7c78128a30397ebc859b37",
+      "gemmini_h": "18801f4eab0cd2e81e25a6c2aa97c7ed644b693e8d2c24cdeb41ab3a7208336d",
+      "gemmini_params": "c5a52ee4a3522c77e1fe8f96305950decd99d42c02181d1f8f6f64fb1e5d4362",
+      "simulator_params": "c5a52ee4a3522c77e1fe8f96305950decd99d42c02181d1f8f6f64fb1e5d4362",
+      "xcustom": "9582eb00cee774e4680fde6408a0d607bba85196a0a4fd803f7b7ddd801aad69",
+      "compiler": "b73b0f798edabb586f3066a8b0ef8a664f810b2cc06e48ebf58a8ccb0c284cd4",
+      "spike": "dd85e5a5d93cf4ae138677ecee536e7013b503ca7d4135e2d69eb6ae1246ec5c",
+      "proxy_kernel": "752885a759f60c8819d0e01bc36b20cb151ca9a8fef8485bddd2e235310aebc1",
+      "extension": "07729e6e2e82b1e718fb9d73af44a33ed48b4140b3a23268e55eb097060e1372"
+    },
+    "binary_sha256": "fb21a0d5276b4a8040199657a8901bda4cb400616de76505da98547d771b9c9c",
+    "stdout_sha256": "9b6050f93732df62f90a0b2bde9802adab018746e53a69c139af547466c1da38",
+    "rejected_plan": {
+      "m": 64,
+      "n": 64,
+      "k": 64,
+      "dim": 16,
+      "schedule": "reuse_b",
+      "scratchpad_rows": 32,
+      "accumulator_rows": 16
+    },
+    "rejection_reason": "accumulator rows below the schedule requirement",
+    "accepted_plan": {
+      "accumulator_rows": 16,
+      "dim": 16,
+      "k": 64,
+      "m": 64,
+      "n": 64,
+      "schedule": "baseline",
+      "scratchpad_rows": 32
+    },
+    "checker_sha256": "6ea43ac2854817fe09d18d641e164e2a48faaef9867f75d805ba129dbf268f15"
+  },
+  "final_demo_winner": {
+    "shape": [
+      64,
+      64,
+      64
+    ],
+    "schedule": "reuse_b",
+    "success": true,
+    "source_sha256": "7457d282fd50ec306a69eceee0deceeca8daf5907df387bdfb8fc84415d4c031",
+    "binary_sha256": "26b953cc3e640a9e19e3ac1ce492872c6ee9c5b54b53cd290828aa92c0c4aaff",
+    "stdout_sha256": "5374d6c98b4224e35f50d45a5ec7eeadc548d761364870e6cb87ae76507fb138",
+    "executed_commands": {
+      "operations": {
+        "mvin": 80,
+        "scratchpad_input_bytes": 20480,
+        "preload": 64,
+        "compute": 64,
+        "mvout": 16
+      },
+      "mvin_by_local_address": {
+        "0x00000010": 16,
+        "0x00000000": 64
+      }
+    },
+    "checker_sha256": "6ea43ac2854817fe09d18d641e164e2a48faaef9867f75d805ba129dbf268f15",
+    "backend_sha256": "2188d72abdaa22ba2a5d5009a24ee5f289bdbd4f633856cfb121fec02003f38a"
+  }
+}
