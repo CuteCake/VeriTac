@@ -442,7 +442,9 @@ until the baseline runs.
 | 4. Measured LLM optimization | Shared proposer utilities, profile-derived prompt and registry, compile/resource/error feedback, best-candidate replay, confirmed Spark3 benchmark report |
 | 5. Optional performance extension | Warp reductions, BF16/FP16 or supported tensor-core operations, each with explicit semantics and validation policy |
 
-Suggested module ownership:
+Proposed future module ownership (these interfaces are not all implemented).
+Current CUDA drivers and kernel sources live in `specializations/cuda_attention/`;
+see [the actual package layout](../specializations/README.md).
 
 ```text
 VeriTac/Hardware/Target.lean           target data and legality predicates
@@ -453,7 +455,7 @@ VeriTac/Tactic/Cuda/*.lean             checked structural/mapping/staging tactic
 VeriTac/Compose/Checked.lean           sound application and composition
 Main.lean                            versioned request routing + tactic registry
 Hardware/{profile.py,probe_cuda.cu}
-CodeGen/{emit_cuda.py,cuda_runner.py}  deterministic emission and worker protocol
+specializations/cuda_attention/{emitter.py,worker.py}  proposed emission/worker adapters
 Search/{llm_client.py,attention_agent.py,interface.py}
 examples/llm_attention_demo.py
 tests/test_attention.py

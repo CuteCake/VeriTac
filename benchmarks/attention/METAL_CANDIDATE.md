@@ -21,8 +21,11 @@ Scope is intentionally narrow and frozen:
 
 ## Layout
 
+The former benchmark source paths remain compatibility symlinks. Recorded
+`test_*.json` results remain under `benchmarks/attention/metal_candidate/`.
+
 ```
-benchmarks/attention/metal_candidate/
+specializations/metal_attention/
     metal_candidate.swift   # Metal kernel (embedded MSL) + host runner
     metal_candidate.py      # Python controller / benchmark harness
 benchmarks/attention/METAL_CANDIDATE.md
@@ -52,7 +55,7 @@ outside tracked files):
 # from the project root
 mkdir -p .lake/metal_candidate_worker
 xcrun swiftc -O -framework Metal -framework MetalPerformanceShaders \
-    benchmarks/attention/metal_candidate/metal_candidate.swift \
+    specializations/metal_attention/metal_candidate.swift \
     -o .lake/metal_candidate_worker/metal_candidate
 ```
 
@@ -64,7 +67,7 @@ Run a correctness smoke test (SIMD-group mapping, query tile 4/8, key tile
 8/16, both dims, plus a non-divisible N):
 
 ```bash
-PYTHONPATH=. python3 benchmarks/attention/metal_candidate/metal_candidate.py \
+PYTHONPATH=. python3 specializations/metal_attention/metal_candidate.py \
     --output .lake/metal_candidate_worker/smoke.json \
     --seqs 128,100 --dims 192,256 \
     --mappings simdgroup --query-tiles 4,8 --key-tiles 8,16 \
@@ -74,7 +77,7 @@ PYTHONPATH=. python3 benchmarks/attention/metal_candidate/metal_candidate.py \
 Scalar smoke (query tile 8/16):
 
 ```bash
-PYTHONPATH=. python3 benchmarks/attention/metal_candidate/metal_candidate.py \
+PYTHONPATH=. python3 specializations/metal_attention/metal_candidate.py \
     --output .lake/metal_candidate_worker/scalar-smoke.json \
     --seqs 128 --dims 192 \
     --mappings scalar --query-tiles 8,16 --key-tiles 8,16 \
@@ -84,7 +87,7 @@ PYTHONPATH=. python3 benchmarks/attention/metal_candidate/metal_candidate.py \
 Run a timing sweep:
 
 ```bash
-PYTHONPATH=. python3 benchmarks/attention/metal_candidate/metal_candidate.py \
+PYTHONPATH=. python3 specializations/metal_attention/metal_candidate.py \
     --output .lake/metal_candidate_worker/sweep.json \
     --seqs 128,512,1536 --dims 192,256 \
     --mappings simdgroup --query-tiles 4,8 --key-tiles 8,16 \

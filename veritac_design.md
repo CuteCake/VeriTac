@@ -209,6 +209,9 @@ and contrasts a Gemmini specialization with a proposed stateful attention
 interface. The [specialization kickoff prompt](docs/frontend_specialization_prompt.md)
 turns those responsibilities into a concrete design dossier. Both are design
 artifacts; the current Lean/Python/JSON interfaces remain the implementation.
+Runtime implementations are now grouped under [specializations/](specializations/README.md),
+with native entry points and explicit proof scopes in package descriptions. This
+code organization does not yet implement the proposed formal contract adapters.
 
 ---
 

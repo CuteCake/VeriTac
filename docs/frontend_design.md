@@ -2,6 +2,9 @@
 
 Design proposal, 2026-09-16. This describes the next architecture; the existing
 Gemmini JSON checker and Lean APIs remain the implemented interfaces.
+The [specialization packages](../specializations/README.md) now organize runtime
+implementations and discovery metadata; formal frontend contract adapters remain
+planned.
 
 The reusable frontend is a method for constructing a precise interface for a
 particular computation and target. Its common structure establishes meaning,

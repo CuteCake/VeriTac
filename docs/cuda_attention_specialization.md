@@ -170,7 +170,7 @@ results saved: `results/cuda-adversarial.json`.
   with exact diffs + hashes above.
 - **CUTLASS**: NVIDIA BSD-3-Clause, pinned `e05f953a…` matching torch
   `2.14.0+cu130` (`git_version 08187d9e…`).
-- **Sources (local, reproducible)**: `benchmarks/attention/cuda_candidate/`
+- **Sources (local, reproducible)**: `specializations/cuda_attention/kernels/`
   (`.cu` sources, `run_candidate.py`, `run_sanitize.py`, `vendor/` with
   LICENSE files). Remote: `/home/cake/.cache/veritac-attention-run/cuda_candidate/`
   (md5-verified sync). Device info in each result JSON (`12.1`, `sm_count 48`,

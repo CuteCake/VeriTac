@@ -8,7 +8,7 @@ VeriTac 探索由 AI 引导的内核生成：从数学定义出发，经由 Lean
 
 可以把它想象成一张从数学延伸到硬件、不断扩展的实现图。LLM 引导探索方向，提出变换与引理，并根据 Lean 的反馈修复失败的尝试；枚举及其他搜索方法则共同探索备选实现。可复用的已验证策略（tactic）是可以持续扩展的基础，而不是限制 AI 提案的固定边界。每条被接受的完整路径，都应携带一份组合而成、直达目标语言的正确性证明。
 
-**当前状态：** 注意力实验已经结合了 AI 指导的内核开发与枚举搜索，并在基于厂商内核的特化实现上取得了可重复的加速。已有抽象语义／资源证明和可执行实现的验证，但抽象证明与生成的内核之间，尚未由一条经过验证的降级链连接起来。下一个里程碑是建立一条通往最小目标 ISA 的完整路径，展示「AI 提案 → Lean 拒绝 → 修复 → 经验证的执行」全过程。
+**当前状态：** Gemmini 已有受限 int8→int32 GEMM 从具体 RV64 指令字节到数学规格的完整证明路径，支持跨 K 分块累加和参数化程序验证，并记录了真实的「AI 提案 → Lean 拒绝 → 修复 → 证书与执行验证」。注意力实验已有抽象语义／资源证明及可重复的厂商内核特化性能结果，但与实际浮点内核之间的完整证明连接仍未完成。各后端实现已按计算与目标归入 `specializations/`，完整的 meta-frontend 契约适配器仍在设计阶段。
 
 **规划方向：LLM–harness–compiler 协同设计。** 我们将联合设计面向模型的 IR 与操作接口、证明反馈，以及搜索编排框架（harness）。框架将结合 LLM 引导与枚举搜索，复用稳定的提示词前缀和证明上下文，并把成功的推理沉淀为可复用策略。评估重点是获得完整已验证内核所需的时间与成本，以及内核性能；Lean 的接受标准保持不变。
 
@@ -39,6 +39,18 @@ CPU 结果衡量相对于未调优生成内核的提升。GPU 结果来自基于
 - `examples/gemm_demo.py [dim]` —— 离线流水线：搜索智能体 → Lean CLI → C → 基准测试。
 - `examples/llm_gemm_demo.py` —— 带完整轨迹输出的 LLM 驱动流水线。从 `OPENAI_API_KEY` / `OPENAI_MODEL` / `OPENAI_BASE_URL`（或根目录 `.env`，或交互式提示）读取 API 密钥与模型；每一轮由一个 LLM 提出一个策略，Lean CLI 验证并应用之，轨迹打印所提出的策略、结果语句树以及任何被拒绝的信息（并作为反馈回传给模型），最后对最终调度做基准测试。`--mock` 用固定调度运行同一轨迹，无需 API 密钥。
 
+### Gemmini GEMM 与证明重放
+
+Gemmini 验证器检查实际命令和机器字节；Lean 内核证书覆盖声明输入域中的所有 int8 输入。已保存的证书包括 K=32、矩形形状和 64³；八个原始二进制通过 Spike 的完整输出、指令字节和命令计数检查。
+
+```bash
+lake build gemmini_check gemmini_program_check VeriTac.Gemmini.Executable
+python3 examples/gemmini_gemm_demo.py
+python3 examples/gemmini_ai_repair_demo.py
+```
+
+AI 修复案例在相同的 48×16×32 计算和资源约束下，将 B 加载次数从六次降至四次。顺序指令完成、调用者／加载器和物理硬件一致性仍是明确的验证边界；流量减少不等于硬件延迟提升。详见[证据与复现说明](docs/gemmini_gemm.md)。
+
 ### 注意力加速器基线调查
 
 [注意力基线调查](docs/attention_baseline_survey.md)在 NVIDIA GB10／CUDA 和 Apple M3 Ultra／Metal 上测量因果预填充注意力，包含显式选择厂商后端、完整输出的数值检查，以及原始计时分布。调查选定头维度 192／256 的 FP32 Metal 注意力作为首个硬件感知策略目标，随后扩展到 GB10 上的 CUDA。基准工具与复现说明位于 `benchmarks/attention/`。
@@ -61,7 +73,7 @@ PYTHONPATH=. python3 examples/llm_attention_demo.py --mock --seq 128 --dim 192 -
 
 计划包含 `alias_kv` 字段。`alias_kv=false` 是资源合法的规划状态，分别暂存 Q、K、V，所需空间为 `Q + K + V`。当前使用的厂商着色器始终让 K、V 复用同一缓冲区，因此**只有 `alias_kv=true` 才能执行**；演示不会派发不可执行的计划。`reuse_kv_storage` 将规划状态变为可执行状态，其存储需求不会增加：`Q + max(K,V) ≤ Q + K + V`。
 
-被接受的计划通过[基于厂商 MLX steel 注意力模板的小分块特化实现](benchmarks/attention/partitioned/steel_attention.py)执行，并与 MLX／MPSGraph 基线进行对比。该实现实例化已安装 `mlx` 包的 steel 注意力模板；候选与基线使用哈希一致的输入。
+被接受的计划通过[基于厂商 MLX steel 注意力模板的小分块特化实现](specializations/metal_attention/partitioned/steel_attention.py)执行，并与 MLX／MPSGraph 基线进行对比。该实现实例化已安装 `mlx` 包的 steel 注意力模板；候选与基线使用哈希一致的输入。
 
 冒烟检查不做性能测量，也不需要 API 密钥，但仍会探测本地 Metal 设备，因此需要支持 Metal 的主机：
 
@@ -132,7 +144,7 @@ VeriTac/
 ├── lean-toolchain                # Lean 4.29.0-rc6
 ├── Main.lean                     # CLI：JSON 进 / JSON 出的策略应用
 ├── VeriTac/
-│   ├── Basic.lean                # 再导出所有模块
+│   ├── Basic.lean                # 核心 IR、调度与策略导出
 │   ├── IR/
 │   │   ├── Shape.lean            # Shape（List Nat）、Index（依赖类型 Fin 向量）
 │   │   ├── TExpr.lean            # 语义 IR：const、tensor、map、zip、reduce
@@ -155,13 +167,19 @@ VeriTac/
 │   ├── Compose/
 │   │   ├── Precondition.lean     # 按策略种类做前置条件检查
 │   │   └── Engine.lean           # applySchedule：顺序策略组合
+│   ├── Gemmini/                  # 指令语义和可执行程序证明
+│   ├── Attention/                # 数学证明与专用计划
+│   ├── Hardware/                 # 目标描述与启动合法性
 │   └── Util/
-│       ├── Finset.lean           # 求和划分引理（用于 tiling 证明）
 │       └── List.lean             # List 交换工具
-├── CodeGen/                      # Python —— 未被验证的 C 代码生成器
-│   ├── lower.py                  # 解析 LoopNest JSON → Python AST
-│   ├── emit_c.py                 # Python AST → 带 OpenMP 编译指示的 C 代码
-│   └── runner.py                 # 编译、运行、与 numpy 基准对比
+├── specializations/              # 按计算与目标组织的实现
+│   ├── catalog.py                # 无需加载硬件依赖的元数据查询
+│   ├── cpu_gemm/                 # 循环 JSON → C/OpenMP 与执行
+│   ├── gemmini_gemm/             # 指令、字节编码、证书和 Spike 工具
+│   ├── metal_attention/          # Metal/Swift 内核与驱动
+│   └── cuda_attention/           # CUDA 内核、驱动和 vendor 源码
+├── CodeGen/                      # 迁移前导入路径的兼容入口
+├── benchmarks/                   # 基线调查、历史证据及旧路径链接
 ├── Search/                       # Python —— 暴力搜索智能体
 │   ├── interface.py              # Lean CLI 子进程封装
 │   ├── cost_model.py             # 解析式成本模型（运算 + 内存流量）
@@ -170,12 +188,21 @@ VeriTac/
     └── test_matmul.py            # 端到端矩阵乘法测试
 ```
 
+目录边界与兼容方式见 [specializations 说明](specializations/README.md)。每个包通过 `specialization.json` 描述入口、关联证明和未覆盖边界；这不是统一的内核接口或证明证书。
+
+```bash
+python3 -m specializations list
+python3 -m specializations show gemmini_gemm
+```
+
+[Meta-frontend 设计](docs/frontend_design.md)与[接口特化启动提示词](docs/frontend_specialization_prompt.md)定义后续契约适配工作的方向。
+
 ## 构建
 
 ### 前置依赖
 
 - [Lean 4](https://leanprover.github.io/lean4/doc/setup.html)（通过 `elan` 安装）
-- Python 3.9+
+- Python 3.11+（GPU 库按后端需要安装）
 - `clang`（用于编译 C 代码）
 - `numpy`（用于基准对比）
 
@@ -183,7 +210,7 @@ VeriTac/
 
 ```bash
 lake update    # 获取 Mathlib（首次会下载预构建缓存，约 5 分钟）
-lake build     # 构建库（534 个模块）
+lake build     # 构建 Lean 库
 lake build veritac  # 构建 CLI 二进制
 ```
 
@@ -293,8 +320,8 @@ PYTHONPATH=. python3 tests/test_soundness.py
 
 ```python
 import json
-from CodeGen.lower import parse_stmt
-from CodeGen.emit_c import emit_function
+from specializations.cpu_gemm.lower import parse_stmt
+from specializations.cpu_gemm.emit_c import emit_function
 
 # 从 Lean CLI 获取优化后的循环嵌套
 result = json.loads(subprocess.check_output([

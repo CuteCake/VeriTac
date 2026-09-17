@@ -90,7 +90,7 @@ K=16 cases, both 32×16×32 schedules, 16×32×48 reuse, and a model-proposed
 48×16×32 batched-reuse repair. Each ran zeros, alternating int8 extrema, and
 deterministic random inputs, with every output compared to scalar GEMM.
 
-The [raw runner](../benchmarks/gemmini/run_raw_spike.py) embeds the `.bin` with
+The [raw runner](../specializations/gemmini_gemm/runtime/run_raw_spike.py) embeds the `.bin` with
 `.incbin`; only host setup is compiled as C. It checks section placement,
 ELF and runtime byte equality, every committed kernel PC/opcode, exact dynamic
 command and DMA counts, and complete output files. Reports record toolchain,
@@ -100,7 +100,7 @@ host. See the [combined evidence index](../benchmarks/gemmini/results/completion
 On the Linux host with the pinned upstream toolchain installed:
 
 ```bash
-python3 benchmarks/gemmini/run_raw_spike.py \
+python3 specializations/gemmini_gemm/runtime/run_raw_spike.py \
   --root /home/cake/.cache/veritac-gemmini \
   --request benchmarks/gemmini/checked_general/32x16x32_baseline/request.json \
   --binary benchmarks/gemmini/checked_general/32x16x32_baseline/baseline.bin \
@@ -191,14 +191,14 @@ and the axiom audit described below.
 
 ## Execution on upstream Gemmini
 
-`benchmarks/gemmini/setup_spike.sh` prepares a private toolchain directory on
+`specializations/gemmini_gemm/runtime/setup_spike.sh` prepares a private toolchain directory on
 Ubuntu 24.04. It downloads and extracts packages without changing system
 packages, pins upstream source revisions, builds Spike and libgemmini, builds
 the RISC-V proxy kernel, and runs an upstream transfer smoke test. It needs
 existing native build tools, git, apt-get, dpkg-dev, and network access.
 
 ```bash
-bash benchmarks/gemmini/setup_spike.sh "$HOME/.cache/veritac-gemmini"
+bash specializations/gemmini_gemm/runtime/setup_spike.sh "$HOME/.cache/veritac-gemmini"
 ```
 
 The tested configuration is Linux/aarch64 on Spark3. The same package layout
@@ -206,14 +206,14 @@ may work on Ubuntu/amd64 but has not been validated here. The source commits
 are pinned; downloaded Ubuntu package versions depend on the apt repository,
 and their exact hashes are saved in `deps/packages.sha256`.
 
-`benchmarks/gemmini/run_spike.py` compiles a generated C program using the
+`specializations/gemmini_gemm/runtime/run_spike.py` compiles a generated C program using the
 upstream Gemmini headers, runs it with the upstream Gemmini Spike extension,
 and saves a report, artifact hashes, and logs. It requires a fresh output
 directory for each run. The default success marker is a standalone
 `VERITAC_GEMMINI_PASS` line after full-output reference checks.
 
 ```bash
-python3 benchmarks/gemmini/run_spike.py \
+python3 specializations/gemmini_gemm/runtime/run_spike.py \
   --root "$HOME/.cache/veritac-gemmini" \
   --source /absolute/path/to/generated.c \
   --output /absolute/path/to/new-run-directory
@@ -227,7 +227,7 @@ from the recorded source. Hardware conformance remains a separate boundary.
 To reproduce the constrained model after the normal setup, use a new directory:
 
 ```bash
-python3 benchmarks/gemmini/make_constrained_simulator.py \
+python3 specializations/gemmini_gemm/runtime/make_constrained_simulator.py \
   --source-root "$HOME/.cache/veritac-gemmini" \
   --output "$HOME/.cache/veritac-gemmini-small"
 ```

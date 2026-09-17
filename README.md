@@ -161,7 +161,7 @@ one (and can only reduce the measured shared-memory bytes:
 
 The accepted plan is benchmarked against the **vendor-derived MLX steel
 attention small-tile specialization**
-([benchmarks/attention/partitioned/steel_attention.py](benchmarks/attention/partitioned/steel_attention.py),
+([specializations/metal_attention/partitioned/steel_attention.py](specializations/metal_attention/partitioned/steel_attention.py),
 a template-instantiated specialization of the installed `mlx` steel attention
 header) and the MLX / MPSGraph vendor baselines, with matching input hashes.
 
@@ -286,7 +286,7 @@ VeriTac/
 ├── lean-toolchain                # Lean 4.29.0-rc6
 ├── Main.lean                     # CLI: JSON-in/JSON-out tactic application
 ├── VeriTac/
-│   ├── Basic.lean                # Re-exports all modules
+│   ├── Basic.lean                # Core IR, scheduling, and tactic exports
 │   ├── IR/
 │   │   ├── Shape.lean            # Shape (List Nat), Index (dependent Fin vector)
 │   │   ├── TExpr.lean            # Semantic IR: const, tensor, map, zip, reduce
@@ -309,13 +309,19 @@ VeriTac/
 │   ├── Compose/
 │   │   ├── Precondition.lean     # Precondition checking per tactic kind
 │   │   └── Engine.lean           # applySchedule: sequential tactic composition
+│   ├── Gemmini/                  # Instruction semantics and executable proofs
+│   ├── Attention/                # Mathematical proofs and specialized plans
+│   ├── Hardware/                 # Target profiles and launch legality
 │   └── Util/
-│       ├── Finset.lean           # Sum partition lemma (for tiling proofs)
 │       └── List.lean             # List swap utility
-├── CodeGen/                      # Python — unverified C code generator
-│   ├── lower.py                  # Parse LoopNest JSON → Python AST
-│   ├── emit_c.py                 # Python AST → C code with OpenMP pragmas
-│   └── runner.py                 # Compile, run, benchmark against numpy
+├── specializations/              # Native implementations, grouped by workload/target
+│   ├── catalog.py                # Metadata discovery without hardware imports
+│   ├── cpu_gemm/                 # Loop JSON → C/OpenMP and host execution
+│   ├── gemmini_gemm/             # Commands, byte encoding, certificates, Spike tools
+│   ├── metal_attention/          # Metal/Swift kernels and drivers
+│   └── cuda_attention/           # CUDA kernels, drivers, and vendor sources
+├── CodeGen/                      # Compatibility imports for relocated modules
+├── benchmarks/                   # Surveys, recorded evidence, legacy path links
 ├── Search/                       # Python — brute-force search agent
 │   ├── interface.py              # Lean CLI subprocess wrapper
 │   ├── cost_model.py             # Analytical cost model (ops + memory traffic)
@@ -324,12 +330,21 @@ VeriTac/
     └── test_matmul.py            # End-to-end matmul tests
 ```
 
+Backend implementation ownership and compatibility are documented in
+[the specialization layout](specializations/README.md). Inspect available scopes
+without loading GPU dependencies:
+
+```bash
+python3 -m specializations list
+python3 -m specializations show gemmini_gemm
+```
+
 ## Building
 
 ### Prerequisites
 
 - [Lean 4](https://leanprover.github.io/lean4/doc/setup.html) (installed via `elan`)
-- Python 3.9+
+- Python 3.11+ (backend-specific GPU libraries are optional)
 - `clang` (for C code compilation)
 - `numpy` (for benchmark comparisons)
 
@@ -337,7 +352,7 @@ VeriTac/
 
 ```bash
 lake update    # Fetch Mathlib (downloads prebuilt cache, ~5 min first time)
-lake build     # Build the library (534 modules)
+lake build     # Build the Lean library
 lake build veritac  # Build the CLI binary
 ```
 
@@ -447,8 +462,8 @@ The `veritac` binary accepts JSON on stdin or via `--json` and applies a sequenc
 
 ```python
 import json
-from CodeGen.lower import parse_stmt
-from CodeGen.emit_c import emit_function
+from specializations.cpu_gemm.lower import parse_stmt
+from specializations.cpu_gemm.emit_c import emit_function
 
 # Get optimized loop nest from Lean CLI
 result = json.loads(subprocess.check_output([
