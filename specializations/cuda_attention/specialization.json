@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "existing implementation organized as a specialization; full meta-frontend contract adapters are not implemented",
+  "id": "cuda_attention",
+  "computation": "Specialized FP32 causal prefill attention and configuration selection",
+  "target": "CUDA kernels derived from vendor attention implementations",
+  "implementation": [
+    "specializations/cuda_attention/kernels"
+  ],
+  "formal_sources": [
+    "VeriTac/Attention/CudaPlan.lean",
+    "VeriTac/Attention/Partition.lean",
+    "VeriTac/Attention/Scheduling.lean"
+  ],
+  "entrypoints": {
+    "demo": "examples/llm_cuda_attention_demo.py",
+    "remote_helper": "examples/cuda_attention_remote.py",
+    "checker": "Main.lean",
+    "runtime": "specializations/cuda_attention/kernels/run_candidate.py"
+  },
+  "proof_scope": "Configuration/resource legality and selected abstract identities or conditional transformations; not floating-point executable correctness",
+  "boundaries": [
+    "Target/catalogue provenance is an explicit dependency",
+    "CUDA compiler, concurrent instruction semantics and lowering connection remain unproved"
+  ],
+  "evidence": [
+    "benchmarks/attention/results",
+    "benchmarks/attention/cuda_survey.py"
+  ]
+}

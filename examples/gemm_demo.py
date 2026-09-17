@@ -26,7 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from Search.interface import make_matmul_stmt, call_lean
 from Search.agent import enumerate_schedules
-from CodeGen.runner import benchmark_matmul
+from specializations.cpu_gemm.runner import benchmark_matmul
 
 
 def top_schedule(max_len: int = 3, top_k: int = 3):

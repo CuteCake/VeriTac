@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "status": "existing implementation organized as a specialization; full meta-frontend contract adapters are not implemented",
+  "id": "metal_attention",
+  "computation": "Specialized FP32 attention kernels and plans",
+  "target": "Apple Metal attention implementations",
+  "implementation": [
+    "specializations/metal_attention/metal_candidate.py",
+    "specializations/metal_attention/metal_candidate.swift",
+    "specializations/metal_attention/partitioned"
+  ],
+  "formal_sources": [
+    "VeriTac/Attention/Partition.lean",
+    "VeriTac/Attention/Plan.lean",
+    "VeriTac/Attention/Scheduling.lean",
+    "VeriTac/Hardware/Target.lean"
+  ],
+  "entrypoints": {
+    "demo": "examples/llm_attention_demo.py",
+    "tiled_demo": "examples/llm_tiled_attention_demo.py",
+    "checker": "Main.lean"
+  },
+  "proof_scope": "Real-number identities, target/plan legality and conditional scheduling/storage proofs; not floating-point executable correctness",
+  "boundaries": [
+    "Hardware profiles are supplied/probed assumptions",
+    "Connection to actual Metal instructions and compiler is unproved"
+  ],
+  "evidence": [
+    "benchmarks/attention/results",
+    "benchmarks/attention/metal_survey.py",
+    "benchmarks/attention/metal_candidate/test_simd.json"
+  ]
+}

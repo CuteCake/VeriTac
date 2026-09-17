@@ -8,8 +8,8 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from CodeGen import gemmini as g
-from CodeGen.gemmini_lowering import validate_rewrite
+from specializations.gemmini_gemm import backend as g
+from specializations.gemmini_gemm.lowering import validate_rewrite
 
 ARCHIVE = ROOT / "benchmarks/gemmini/ai_repair/2026-09-16"
 CLASSES = {c.kind: c for c in (

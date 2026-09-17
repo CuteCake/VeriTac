@@ -12,7 +12,7 @@ import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from CodeGen import gemmini as g
+from specializations.gemmini_gemm import backend as g
 
 
 def digest(value):
@@ -87,7 +87,7 @@ def run_demo(m=32, n=16, k=16, scratchpad_rows=32, accumulator_rows=1024, seed=0
         report["winner"] = checked
         report["winner_source"] = winner["program"]["source"]
         report["winner_program_accepted"] = True
-        from CodeGen.gemmini_certificate import write_and_check
+        from specializations.gemmini_gemm.certificate import write_and_check
         replay = write_and_check(checked, commands, winner["program"]["encoding"], out / "winner_replay")
         if not replay["accepted"]:
             raise RuntimeError("winner kernel certificate replay failed: " + replay["reason"])

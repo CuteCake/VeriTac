@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "status": "existing implementation organized as a specialization; full meta-frontend contract adapters are not implemented",
+  "id": "cpu_gemm",
+  "computation": "GEMM loop programs: integer-valued formal loop semantics and a double-buffer C/OpenMP execution adapter",
+  "target": "Host C compiler and CPU",
+  "implementation": [
+    "specializations/cpu_gemm/lower.py",
+    "specializations/cpu_gemm/emit_c.py",
+    "specializations/cpu_gemm/runner.py"
+  ],
+  "formal_sources": [
+    "VeriTac/IR",
+    "VeriTac/Schedule",
+    "VeriTac/Tactic",
+    "VeriTac/Compose"
+  ],
+  "entrypoints": {
+    "demo": "examples/gemm_demo.py",
+    "ai_demo": "examples/llm_gemm_demo.py",
+    "checker": "Main.lean"
+  },
+  "proof_scope": "Individual loop transformation theorems; no complete composed proof through generated C and machine code",
+  "boundaries": [
+    "Generic tactic composition is not an end-to-end semantic proof",
+    "Integer formal semantics are not connected to emitted C double arithmetic by a numerical refinement proof",
+    "C emission, compiler and runtime remain outside the proved connection"
+  ],
+  "evidence": [
+    "tests/test_matmul.py",
+    "tests/test_soundness.py"
+  ]
+}

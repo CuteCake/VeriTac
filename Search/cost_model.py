@@ -3,7 +3,7 @@ VeriTac Search: cost_model.py
 Analytical cost model for estimating schedule performance.
 """
 
-from CodeGen.lower import (
+from specializations.cpu_gemm.lower import (
     CStmt, CSkip, CBufWrite, CLoop, CSeq, CAlloc,
     CExpr, CLit, CVar, CBinOp, CBufRead,
     parse_stmt,

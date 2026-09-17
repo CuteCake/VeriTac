@@ -43,7 +43,7 @@ from Hardware import profile as hw  # noqa: E402
 
 OUT = ROOT / ".lake" / "attention_demo"
 VERITAC_BIN = ROOT / ".lake" / "build" / "bin" / "veritac"
-CANDIDATE_PY = ROOT / "benchmarks" / "attention" / "metal_candidate" / "metal_candidate.py"
+CANDIDATE_PY = ROOT / "specializations" / "metal_attention" / "metal_candidate.py"
 SURVEY_PY = ROOT / "benchmarks" / "attention" / "metal_survey.py"
 
 DEFAULT_MODEL = "gpt-4o-mini"

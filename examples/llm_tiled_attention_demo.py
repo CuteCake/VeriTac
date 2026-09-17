@@ -58,7 +58,7 @@ import llm_attention_demo as lad  # noqa: E402  (reuse LLM client + hardware hel
 
 OUT = ROOT / ".lake" / "tiled_attention_demo"
 VERITAC_BIN = ROOT / ".lake" / "build" / "bin" / "veritac"
-STEEL_PY = ROOT / "benchmarks" / "attention" / "partitioned" / "steel_attention.py"
+STEEL_PY = ROOT / "specializations" / "metal_attention" / "partitioned" / "steel_attention.py"
 SURVEY_PY = ROOT / "benchmarks" / "attention" / "metal_survey.py"
 
 DEFAULT_MODEL = lad.DEFAULT_MODEL

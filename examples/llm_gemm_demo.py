@@ -30,7 +30,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from Search.interface import make_matmul_stmt, call_lean  # noqa: E402
-from CodeGen.runner import benchmark_matmul  # noqa: E402
+from specializations.cpu_gemm.runner import benchmark_matmul  # noqa: E402
 
 DEFAULT_MODEL = "gpt-4o-mini"
 DEFAULT_BASE = "https://api.openai.com/v1/chat/completions"
