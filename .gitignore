@@ -6,3 +6,10 @@ __pycache__/
 build/
 .env
 .DS_Store
+
+# Disposable Metalium runtime telemetry and duplicate launcher output.
+# Keep proof logs, raw model replies, execution logs, outputs and device ELFs:
+# these are experiment evidence checked by the artifact audits.
+/benchmarks/tenstorrent/protocol/*/runtime/**/generated/
+/benchmarks/tenstorrent/protocol/*/runtime/**/driver.log
+/benchmarks/tenstorrent/protocol/*/runtime/**/extra-driver.log

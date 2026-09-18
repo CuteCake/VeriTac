@@ -51,6 +51,24 @@ python3 examples/gemmini_ai_repair_demo.py
 
 AI 修复案例在相同的 48×16×32 计算和资源约束下，将 B 加载次数从六次降至四次。顺序指令完成、调用者／加载器和物理硬件一致性仍是明确的验证边界；流量减少不等于硬件延迟提升。详见[证据与复现说明](docs/gemmini_gemm.md)。
 
+[实时盲测控制器](docs/gemmini_blind_search.md)通过禁止工具执行的独立 OpenCode 会话，向模型提供固定任务、指令语义及其自身先前提案和检查反馈，不提供优化参考内核或生成器模板。最终胜出候选必须获得实际字节证书；失败提案、超时和模型用量也全部保留。[已登记实验](benchmarks/gemmini/blind_search/2026-09-17/PROTOCOL.md)在提案结束后，与资源约束下最好的现有生成器比较。
+
+[本轮实验报告](benchmarks/gemmini/blind_search/2026-09-17/REPORT.md)：平铺指令阶段 6 项任务中 5 项获得字节证书，其中 4 项比原有生成器减少 20%–41.7% 的模型内输入搬运量。紧凑表示阶段、失败记录及发现后的可复用生成器单独报告。
+
+```bash
+python3 examples/gemmini_blind_search.py run \
+  --task benchmarks/gemmini/blind_search/2026-09-17/tasks/rows_tight.json \
+  --rounds 4 --model dgxspark-glm/glm-5.3-flash
+```
+
+模型标识须存在于本机 OpenCode 配置中，可用 `--model` 指定自己的提供方。控制器、辅助诊断和独立的紧凑调度适配器沿用现有受限形式化范围，不扩大 ISA 或算术证明的覆盖范围。
+
+### Tenstorrent 协议验证
+
+[Blackhole 协议后端](docs/tenstorrent_protocol.md)先覆盖单发起线程的异步数据复制、环形缓冲区所有权与任意 DMA 完成顺序。Lean 检查可达状态集合、事件路径的进展，以及任意输入内容下的最终数据来源。证书目前止于协议 IR；生成的 Metalium C++／ELF 尚未获得端到端证明。
+
+[2026-09-18 实验](benchmarks/tenstorrent/protocol/2026-09-18/REPORT.md)的四个 AI 方案均获证书，显式等待次数比串行控制减少 50%–75%，与预先登记的批量／复用控制持平。四个胜出方案和四个串行控制在本机 ARM64 Docker 中的官方 Blackhole `ttsim` 上通过了 48 组完整输出检查；这不是硬件加速比。
+
 ### 注意力加速器基线调查
 
 [注意力基线调查](docs/attention_baseline_survey.md)在 NVIDIA GB10／CUDA 和 Apple M3 Ultra／Metal 上测量因果预填充注意力，包含显式选择厂商后端、完整输出的数值检查，以及原始计时分布。调查选定头维度 192／256 的 FP32 Metal 注意力作为首个硬件感知策略目标，随后扩展到 GB10 上的 CUDA。基准工具与复现说明位于 `benchmarks/attention/`。

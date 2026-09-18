@@ -116,6 +116,50 @@ explicit loader/caller contract. Physical hardware conformance remains separate;
 traffic reductions are not hardware latency measurements.
 See the [proofs, AI replay, results, and reproduction instructions](docs/gemmini_gemm.md).
 
+The [live blind-search controller](docs/gemmini_blind_search.md) makes fresh,
+tool-denied OpenCode calls with a fixed task, instruction semantics, and the
+model's own prior proposals and checker feedback. It supplies no optimized
+reference kernel or generator template. Final winners require actual byte
+certificates; rejected proposals, timeouts, and model usage remain in the record.
+The [registered experiment](benchmarks/gemmini/blind_search/2026-09-17/PROTOCOL.md)
+compares results with the best feasible existing generators after proposal work.
+The [2026-09-17 results](benchmarks/gemmini/blind_search/2026-09-17/REPORT.md)
+include five byte-certified flat-interface tasks out of six, with four reducing
+modeled input traffic by 20–41.7% against those generators. The compact-interface
+phase, failures, and post-discovery reusable recipes are reported separately.
+
+```bash
+python3 examples/gemmini_blind_search.py run \
+  --task benchmarks/gemmini/blind_search/2026-09-17/tasks/rows_tight.json \
+  --rounds 4 --model dgxspark-glm/glm-5.3-flash
+```
+
+The model identifier must be available in your OpenCode configuration; use
+`--model` to select your own provider. The controller, advisory diagnostics, and
+separate compact schedule adapter retain the existing restricted formal scope.
+
+### Tenstorrent protocol verification
+
+The [Blackhole protocol backend](docs/tenstorrent_protocol.md) checks a restricted
+single-issuer asynchronous copy protocol, including circular-buffer ownership
+and arbitrary DMA completion order. Lean verifies a proposed reachable-state
+graph, event-path progress and terminal page origins for arbitrary input data.
+These are protocol-IR certificates; generated Metalium C++/ELF correctness is a
+separate obligation.
+
+The [2026-09-18 pilot](benchmarks/tenstorrent/protocol/2026-09-18/REPORT.md) certified
+four AI-generated protocols. They reduce explicit barriers by 50–75% against a
+serial control and match the preregistered batched/reuse control. Four winners
+and four serial controls pass 48 full-output cases on the official Blackhole
+`ttsim`, installed locally through ARM64 Docker. No hardware speedup is claimed.
+
+```bash
+lake build VeriTac.Tenstorrent.Protocol
+python3 -m specializations.tenstorrent_protocol check \
+  --task benchmarks/tenstorrent/protocol/2026-09-18/tasks/pair.json \
+  --proposal benchmarks/tenstorrent/protocol/2026-09-18/runs/pair/winner.proposal.json
+```
+
 ### Attention accelerator survey
 
 The [attention baseline survey](docs/attention_baseline_survey.md) measures

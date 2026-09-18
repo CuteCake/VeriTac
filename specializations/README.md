@@ -10,6 +10,12 @@ specializations/
   cpu_gemm/                  Loop JSON → C/OpenMP and host execution
   gemmini_gemm/              Commands, raw encoding, certificates, checked rewrites
     runtime/                 Spike setup and execution tools
+    blind_search.py          Live tool-denied proposals and byte certification
+    diagnostics.py           Advisory, bounded rejection explanations
+    evaluation.py            Post-proposal comparison with existing generators
+    schedule_ir.py           Untrusted bounded loop/expression expansion
+  tenstorrent_protocol/      Exact-copy async protocol IR, graph certificates, live search
+    runtime/                 Metalium emission and local ARM64 ttsim setup/replay
   metal_attention/           Metal driver and Swift sources
     partitioned/             Partitioned and vendor-derived attention variants
   cuda_attention/
@@ -66,3 +72,15 @@ currently supported macOS/Linux development hosts.
 The next step is the actual computation/target contract adapter described in
 [the meta-frontend design](../docs/frontend_design.md). Package discovery alone
 does not implement that contract or increase any backend's proof coverage.
+
+Gemmini also has a [live blind-search controller](../docs/gemmini_blind_search.md).
+It fixes each task contract, uses the existing byte checker for proposals, and
+requires a kernel certificate for the final winner. Its compact schedule adapter
+is a separate untrusted expansion layer; neither feature changes the formal ISA
+or arithmetic coverage.
+
+Tenstorrent begins at a separate [restricted asynchronous protocol layer](../docs/tenstorrent_protocol.md).
+The checker certifies a finite state graph and its all-input origin semantics;
+the official Blackhole simulator executes generated Metalium programs on the
+local Mac Studio via Linux ARM64 Docker. This evidence does not extend the
+Gemmini byte theorem to Tenstorrent or prove the emitted C++/ELF.
