@@ -1,0 +1,91 @@
+{
+  "scope": "native-validated modeled traffic; separate kernel certificate required",
+  "counts": {
+    "config_ex": 1,
+    "config_ld": 2,
+    "config_st": 1,
+    "mvin": 16,
+    "preload": 12,
+    "compute": 12,
+    "mvout": 6,
+    "fence": 1,
+    "mvin_A": 12,
+    "mvin_B": 4,
+    "compute_preloaded": 12,
+    "compute_accumulated": 0,
+    "dma_in_elems_int8": 4096,
+    "dma_out_elems_int32": 1536,
+    "dma_bytes": 10240,
+    "instructions": 51
+  },
+  "objective": [
+    4096,
+    51
+  ],
+  "controls": [
+    {
+      "name": "baseline",
+      "native_accepted": true,
+      "reason": "accepted",
+      "counts": {
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "mvin": 24,
+        "preload": 12,
+        "compute": 12,
+        "mvout": 6,
+        "fence": 1,
+        "mvin_A": 12,
+        "mvin_B": 12,
+        "compute_preloaded": 12,
+        "compute_accumulated": 0,
+        "dma_in_elems_int8": 6144,
+        "dma_out_elems_int32": 1536,
+        "dma_bytes": 12288,
+        "instructions": 59
+      },
+      "objective": [
+        6144,
+        59
+      ],
+      "command_sha256": "a4c597b3701268057f95a1f81505e61076b591c9a4aa1411c7a47aa161f31544"
+    },
+    {
+      "name": "existing_batched_b_1",
+      "native_accepted": true,
+      "reason": "accepted",
+      "counts": {
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "mvin": 24,
+        "preload": 12,
+        "compute": 12,
+        "mvout": 6,
+        "fence": 1,
+        "mvin_A": 12,
+        "mvin_B": 12,
+        "compute_preloaded": 12,
+        "compute_accumulated": 0,
+        "dma_in_elems_int8": 6144,
+        "dma_out_elems_int32": 1536,
+        "dma_bytes": 12288,
+        "instructions": 59
+      },
+      "objective": [
+        6144,
+        59
+      ],
+      "command_sha256": "f99d5ad0c177d91df5b63af780133af1d8feec73415af401ef2d757b198159aa"
+    }
+  ],
+  "best_existing_control": "baseline",
+  "input_reduction_vs_baseline": 0.33333333333333337,
+  "input_reduction_vs_best_existing": 0.33333333333333337,
+  "beats_best_existing_objective": true,
+  "exact_matches": [],
+  "fewer_a_loads_than_existing_controls": false,
+  "novelty": "requires manual mechanism review; a distinct hash is insufficient",
+  "hardware_latency": null
+}

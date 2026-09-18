@@ -1,0 +1,477 @@
+{
+  "schema": "veritac_blind_search_proposal_v1",
+  "round": 2,
+  "commands": [
+    {
+      "kind": "config_ex",
+      "dataflow": 1
+    },
+    {
+      "kind": "config_ld",
+      "slot": 0,
+      "stride_bytes": 48,
+      "scale": 1.0
+    },
+    {
+      "kind": "config_ld",
+      "slot": 1,
+      "stride_bytes": 48,
+      "scale": 1.0
+    },
+    {
+      "kind": "config_st",
+      "stride_bytes": 192
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 0,
+      "spad_addr": 0,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 768,
+      "spad_addr": 16,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "mvin",
+      "slot": 1,
+      "buf": "B",
+      "offset": 0,
+      "spad_addr": 32,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 2684354560
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 0,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 2684354576
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 16,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvin",
+      "slot": 1,
+      "buf": "B",
+      "offset": 768,
+      "spad_addr": 32,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 16,
+      "spad_addr": 48,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 3758096384
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 48,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 784,
+      "spad_addr": 48,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 3758096400
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 48,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvin",
+      "slot": 1,
+      "buf": "B",
+      "offset": 1536,
+      "spad_addr": 32,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 32,
+      "spad_addr": 48,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 3758096384
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 48,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 800,
+      "spad_addr": 48,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 3758096400
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 48,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvout",
+      "buf_offset": 0,
+      "acc_addr": 2684354560,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "mvout",
+      "buf_offset": 768,
+      "acc_addr": 2684354576,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "mvin",
+      "slot": 1,
+      "buf": "B",
+      "offset": 16,
+      "spad_addr": 32,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 2684354560
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 0,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 2684354576
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 16,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvin",
+      "slot": 1,
+      "buf": "B",
+      "offset": 784,
+      "spad_addr": 32,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 16,
+      "spad_addr": 48,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 3758096384
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 48,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 784,
+      "spad_addr": 48,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 3758096400
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 48,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvin",
+      "slot": 1,
+      "buf": "B",
+      "offset": 1552,
+      "spad_addr": 32,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 32,
+      "spad_addr": 48,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 3758096384
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 48,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 800,
+      "spad_addr": 48,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 3758096400
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 48,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvout",
+      "buf_offset": 16,
+      "acc_addr": 2684354560,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "mvout",
+      "buf_offset": 784,
+      "acc_addr": 2684354576,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "mvin",
+      "slot": 1,
+      "buf": "B",
+      "offset": 32,
+      "spad_addr": 32,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 2684354560
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 0,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 2684354576
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 16,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvin",
+      "slot": 1,
+      "buf": "B",
+      "offset": 800,
+      "spad_addr": 32,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 16,
+      "spad_addr": 48,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 3758096384
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 48,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 784,
+      "spad_addr": 48,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 3758096400
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 48,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvin",
+      "slot": 1,
+      "buf": "B",
+      "offset": 1568,
+      "spad_addr": 32,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 32,
+      "spad_addr": 48,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 3758096384
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 48,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvin",
+      "slot": 0,
+      "buf": "A",
+      "offset": 800,
+      "spad_addr": 48,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "preload",
+      "bd_spad_addr": 32,
+      "out_addr": 3758096400
+    },
+    {
+      "kind": "compute",
+      "accumulated": false,
+      "a_spad_addr": 48,
+      "bd_spad_addr": 4294967295
+    },
+    {
+      "kind": "mvout",
+      "buf_offset": 32,
+      "acc_addr": 2684354560,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "mvout",
+      "buf_offset": 800,
+      "acc_addr": 2684354576,
+      "cols": 16,
+      "rows": 16
+    },
+    {
+      "kind": "fence"
+    }
+  ],
+  "rationale": "Weight-stationary dataflow. For each n-block (outer), k-blocks accumulate in order into two 16-row accumulator blocks (m0 at acc rows 0-15, m1 at rows 16-31), then both blocks are stored with one mvout each; kb=0 uses overwrite mode to initialize, kb=1,2 accumulate, giving the exact K=48 ordered reduction. The A tiles for kb=0 (both m-blocks) persist in scratchpad rows 0-31 across all three n-block passes; B tiles stream into rows 32-47; the kb=1,2 A tiles stream into rows 48-63, where the A(m1) tile reuses the same 16 rows after the A(m0) tile was consumed by its compute. Each B tile is loaded once and reused for both m-blocks via a second preload of the same intact scratchpad rows, so B is loaded exactly 9 times and A 14 times: 23 mvins x 256 bytes = 5888 total DMA input bytes, the minimum for this schedule shape given the 64-row scratchpad, with 70 commands and a final fence."
+}

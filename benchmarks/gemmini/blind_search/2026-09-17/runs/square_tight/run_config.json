@@ -1,0 +1,54 @@
+{
+  "interpret_macs_limit": 4000000,
+  "isolation": {
+    "config": {
+      "$schema": "https://opencode.ai/config.json",
+      "autoupdate": false,
+      "mcp": {},
+      "permission": {
+        "*": "deny"
+      },
+      "plugin": [],
+      "share": "disabled",
+      "snapshot": false,
+      "tools": {
+        "*": false,
+        "apply_patch": false,
+        "bash": false,
+        "edit": false,
+        "glob": false,
+        "grep": false,
+        "lsp": false,
+        "question": false,
+        "read": false,
+        "skill": false,
+        "task": false,
+        "todowrite": false,
+        "webfetch": false,
+        "websearch": false,
+        "write": false
+      }
+    },
+    "enforced": true,
+    "note": "Verified against OpenCode 1.18.31 (verified live during development): OPENCODE_CONFIG_CONTENT is honored as an inline config override; tools.{\"*\": false} disables every tool, permission.{\"*\": \"deny\"} denies execution, plugin [] and --pure drop plugins, mcp {} drops MCP servers, and a live probe confirmed the model can emit no executing tool calls. Residual limitation: OpenCode merges user-global config (~/.config/opencode) and managed settings that this harness cannot un-merge, so globally declared plugins/MCP servers may still be loaded (their execution remains denied). Claim: denied tool EXECUTION in a fresh session and fresh temp cwd; NOT a hermetic sandbox.",
+    "probe_reason": null
+  },
+  "max_commands": 4096,
+  "max_rounds": 4,
+  "model": "dgxspark-glm/glm-5.3-flash",
+  "model_timeout_seconds": 900.0,
+  "objective": "minimize total DMA input bytes, then command count",
+  "plan": {
+    "accumulator_rows": 32,
+    "dim": 16,
+    "k": 32,
+    "m": 48,
+    "n": 48,
+    "schedule": "baseline",
+    "scratchpad_rows": 32
+  },
+  "proof_timeout_seconds": 600.0,
+  "schema": "veritac_blind_search_run_v1",
+  "started_utc": "2026-09-17T09:55:34Z",
+  "task_id": "square_tight"
+}

@@ -1,0 +1,123 @@
+{
+  "program": [
+    {
+      "dataflow": 1,
+      "kind": "config_ex"
+    },
+    {
+      "kind": "config_ld",
+      "scale": 1.0,
+      "slot": 0,
+      "stride_bytes": 32
+    },
+    {
+      "kind": "config_ld",
+      "scale": 1.0,
+      "slot": 1,
+      "stride_bytes": 32
+    },
+    {
+      "kind": "config_st",
+      "stride_bytes": 128
+    },
+    {
+      "body": [
+        {
+          "buf": "B",
+          "cols": 16,
+          "kind": "mvin",
+          "offset": {
+            "expr": "j*16"
+          },
+          "rows": 16,
+          "slot": 1,
+          "spad_addr": 16
+        },
+        {
+          "buf": "B",
+          "cols": 16,
+          "kind": "mvin",
+          "offset": {
+            "expr": "512 + j*16"
+          },
+          "rows": 16,
+          "slot": 1,
+          "spad_addr": 32
+        },
+        {
+          "body": [
+            {
+              "buf": "A",
+              "cols": 16,
+              "kind": "mvin",
+              "offset": {
+                "expr": "i*512"
+              },
+              "rows": 16,
+              "slot": 0,
+              "spad_addr": 0
+            },
+            {
+              "bd_spad_addr": 16,
+              "kind": "preload",
+              "out_addr": 2684354560
+            },
+            {
+              "a_spad_addr": 0,
+              "accumulated": false,
+              "bd_spad_addr": 4294967295,
+              "kind": "compute"
+            },
+            {
+              "buf": "A",
+              "cols": 16,
+              "kind": "mvin",
+              "offset": {
+                "expr": "i*512 + 16"
+              },
+              "rows": 16,
+              "slot": 0,
+              "spad_addr": 0
+            },
+            {
+              "bd_spad_addr": 32,
+              "kind": "preload",
+              "out_addr": 3758096384
+            },
+            {
+              "a_spad_addr": 0,
+              "accumulated": false,
+              "bd_spad_addr": 4294967295,
+              "kind": "compute"
+            },
+            {
+              "acc_addr": 2684354560,
+              "buf_offset": {
+                "expr": "i*512 + j*16"
+              },
+              "cols": 16,
+              "kind": "mvout",
+              "rows": 16
+            }
+          ],
+          "for": "i",
+          "start": 0,
+          "step": 1,
+          "stop": {
+            "expr": "M // 16"
+          }
+        }
+      ],
+      "for": "j",
+      "start": 0,
+      "step": 1,
+      "stop": {
+        "expr": "N // 16"
+      }
+    },
+    {
+      "kind": "fence"
+    }
+  ],
+  "rationale": "Resubmission of the twice-accepted optimal stream. Loop j (N/16=2) outer, i (M/16=3) inner: both B tiles for column block j stay resident in scratchpad rows 16-47 across all three m-tiles, so each of the 4 B tiles loads exactly once (4 mvins). The single remaining scratchpad tile slot (row 0) forces 2 A-tile loads per output tile (12 A mvins). 16 tiles x 256 = 4096 DMA input bytes is provably minimal: 2A+2B residency needs 64 rows > 48; 2A+1B gives 18 loads (6 A + 12 B = 4608 bytes) since each B tile serves 3 m-tiles while each A tile serves only 2 n-tiles; and carrying an A tile across the j phases while keeping both B tiles resident would require 4 simultaneous slots (2 persistent B + carried A + one rotating A per k-step), which exceeds the 48-row scratchpad. Since the 16-row accumulator holds exactly one tile, each output tile's two k-steps must be adjacent: overwrite compute for k=0, accumulate compute for k=1 (out_addr bit 30), then immediate mvout. Every compute gets its own preload (accumulated=false, bd_spad_addr=GARBAGE_ADDR) as each compute consumes its pending preload. K=32 satisfies 32*16384 <= 2147483647; all reductions proceed in increasing k order per output tile. Expanded commands: 4 config + 16 mvin + 12 preload + 12 compute + 6 mvout + 1 fence = 51, minimal per class given the 16 mandatory tile loads."
+}

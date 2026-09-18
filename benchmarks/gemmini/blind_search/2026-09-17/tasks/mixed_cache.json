@@ -1,0 +1,12 @@
+{
+  "id": "mixed_cache",
+  "plan": {
+    "m": 32,
+    "n": 48,
+    "k": 48,
+    "dim": 16,
+    "schedule": "baseline",
+    "scratchpad_rows": 64,
+    "accumulator_rows": 32
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "square_tight",
+  "plan": {
+    "m": 48,
+    "n": 48,
+    "k": 32,
+    "dim": 16,
+    "schedule": "baseline",
+    "scratchpad_rows": 32,
+    "accumulator_rows": 32
+  }
+}

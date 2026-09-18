@@ -1,0 +1,50 @@
+{
+  "created_utc": "2026-09-17T10:13:39.258899+00:00",
+  "phase": "compact interface preregistration before compact model proposals",
+  "tasks_sha256": {
+    "rows_tight.json": "16dad6e2653403677c5ca7ba5cac76bf559211523ecbf2474d4036db8e4b84a5",
+    "columns_tight.json": "58bd50e3349845de610cd5267574b7e2c33553262095bf5c603ad64f29aec568",
+    "square_tight.json": "b41f5b5e4b66746aaeacf054063ee88d2db494464224a776c461a617e4c2d69a",
+    "columns_cache.json": "f5631107745410ee382e3622a145f60445bf2f1f60952622329eae8b8b7751ab",
+    "mixed_cache.json": "9e8103e18081a7631ae75741e485cecf3c7fa60ae20df3c88ac8b26e1408958f",
+    "single_acc.json": "59c6e045cba2c972bc91cc3a0d1c808404793792897a2415a7ed8c7ef7ae3469"
+  },
+  "primary_objective": [
+    "modeled input DMA bytes",
+    "command count"
+  ],
+  "max_rounds_per_task": 4,
+  "model": "dgxspark-glm/glm-5.3-flash",
+  "input_exposure": "mathematical task, target capacities, full instruction semantics, command schema, previous own proposals and validator feedback only",
+  "held_out_definition": "Task configurations selected before experiment; no claim of exclusion from model training data. No optimized reference or repository access supplied to proposer.",
+  "final_acceptance": "kernel-checked byte certificate against unchanged formal sources and task",
+  "performance_scope": "modeled traffic and command counts only; no hardware speedup claim",
+  "comparison": "post-proposal baseline/batched-B controls plus descriptive per-task flat vs compact generation cost and outcomes; failures retained",
+  "failure_policy": "retain every attempt; distinguish malformed/rejected/timeout/tool failure; no controller-written repair",
+  "novelty_policy": "a different hash alone is not structural novelty; inspect scheduling and reuse mechanism against existing generators",
+  "budgets": "4 model calls per task; explicit per-call timeouts; unknown token usage stays null",
+  "proposal_format": "compact",
+  "source_language": "bounded_schedule_v1",
+  "purpose": "paired exploratory interface comparison on all six primary tasks, same model/budgets/formal acceptance; no significance or generalized speedup claim",
+  "feedback": "own prior compact source plus factual verifier feedback; expanded commands archived separately",
+  "adapter_sha256": {
+    "specializations/gemmini_gemm/compact_protocol.py": "bab09d0eda9e23475d2a885950502e51d03641aaa75e7107c51382f93d86dde4",
+    "specializations/gemmini_gemm/schedule_ir.py": "1a059efd76c3beb00bb0d8156d7beb5858e7613a4d5dc33ed4254f5d512b29e1"
+  },
+  "pre_execution_amendment": {
+    "utc": "2026-09-17T10:19:12.388323+00:00",
+    "reason": "enforce advertised AST whitelist in unused conditional branches too; no compact proposals have run"
+  },
+  "controller_ready_utc": "2026-09-17T11:25:43.436844+00:00",
+  "controller_sha256": {
+    "specializations/gemmini_gemm/blind_search.py": "166c0e4afc1f006d2943fa3c21cb5ddec42cba08d559f7cd18f7a29c95b99f7b",
+    "examples/gemmini_blind_search.py": "bd78de50b94ca2d5671ed5bfbc133718ee2279e6c7f901a51dba4dbfeaeccb2c",
+    "specializations/gemmini_gemm/diagnostics.py": "7eb0e16ae34bef9e30d2f512291be2f45e3cad1de9d2647e3e5024893df8015e"
+  },
+  "interface_changes": [
+    "compact program syntax and original-source feedback",
+    "pre-call integrity and run-configuration binding",
+    "truthful syntax status on checker infrastructure failures",
+    "bounded JSON parsing; no changes to Lean acceptance or arithmetic/ISA semantics"
+  ]
+}

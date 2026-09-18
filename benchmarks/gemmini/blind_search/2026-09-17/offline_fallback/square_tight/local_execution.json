@@ -1,0 +1,37 @@
+{
+  "kind": "offline known-recipe fallback, not a blind-model success",
+  "independent_RV64_operand_check": true,
+  "binary_sha256": "76891acb940ce05a45086a92ef184fe2d80f413a9258a874598d476c672300b9",
+  "cases": [
+    {
+      "mode": "zero",
+      "seed": 0,
+      "all_outputs_match": true
+    },
+    {
+      "mode": "max",
+      "seed": 0,
+      "all_outputs_match": true
+    },
+    {
+      "mode": "min",
+      "seed": 0,
+      "all_outputs_match": true
+    },
+    {
+      "mode": "minmax",
+      "seed": 0,
+      "all_outputs_match": true
+    },
+    {
+      "mode": "lcg",
+      "seed": 0,
+      "all_outputs_match": true
+    },
+    {
+      "mode": "lcg",
+      "seed": 917,
+      "all_outputs_match": true
+    }
+  ]
+}

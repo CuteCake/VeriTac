@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "existing implementation organized as a specialization; full meta-frontend contract adapters are not implemented",
+  "status": "restricted proof-backed backend with live search; full meta-frontend contract adapters are not implemented",
   "id": "gemmini_gemm",
   "computation": "Full-tile DIM16 signed-int8 GEMM with int32 output",
   "target": "Declared weight-stationary Gemmini subset and restricted RV64 encoding",
@@ -9,7 +9,14 @@
     "specializations/gemmini_gemm/encoding.py",
     "specializations/gemmini_gemm/certificate.py",
     "specializations/gemmini_gemm/lowering.py",
-    "specializations/gemmini_gemm/runtime"
+    "specializations/gemmini_gemm/runtime",
+    "specializations/gemmini_gemm/blind_search.py",
+    "specializations/gemmini_gemm/diagnostics.py",
+    "specializations/gemmini_gemm/evaluation.py",
+    "specializations/gemmini_gemm/schedule_ir.py",
+    "specializations/gemmini_gemm/compact_protocol.py",
+    "specializations/gemmini_gemm/learned_strategies.py",
+    "specializations/gemmini_gemm/rejection_witness.py"
   ],
   "formal_sources": [
     "VeriTac/Gemmini",
@@ -21,7 +28,9 @@
     "ai_replay": "examples/gemmini_ai_repair_demo.py",
     "plan_checker": "GemminiMain.lean",
     "program_checker": "GemminiProgramMain.lean",
-    "raw_spike": "specializations/gemmini_gemm/runtime/run_raw_spike.py"
+    "raw_spike": "specializations/gemmini_gemm/runtime/run_raw_spike.py",
+    "live_blind_search": "examples/gemmini_blind_search.py",
+    "offline_learned_recipes": "specializations/gemmini_gemm/learned_strategies.py"
   },
   "proof_scope": "Accepted concrete programs and decoded bytes compute GEMM for all inputs in the declared domain; final artifacts require Lean kernel replay",
   "boundaries": [
@@ -32,6 +41,7 @@
   "evidence": [
     "benchmarks/gemmini/checked_general",
     "benchmarks/gemmini/ai_repair",
-    "benchmarks/gemmini/results"
+    "benchmarks/gemmini/results",
+    "benchmarks/gemmini/blind_search"
   ]
 }

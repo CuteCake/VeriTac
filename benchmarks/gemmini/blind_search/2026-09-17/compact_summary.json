@@ -1,0 +1,308 @@
+{
+  "runs": "benchmarks/gemmini/blind_search/2026-09-17/compact_runs",
+  "totals": {
+    "registered_tasks": 6,
+    "certified_tasks": 3,
+    "pending_tasks": 0,
+    "completed_rounds": 24,
+    "rounds_without_usage": 10,
+    "model_call_wall_seconds_sum": 13844.032,
+    "round_status_counts": {
+      "native_rejected": 4,
+      "native_accepted": 10,
+      "model_timeout": 10
+    },
+    "reported_tokens": {
+      "input": 80022,
+      "output": 120274,
+      "reasoning": 0,
+      "total": 200296
+    }
+  },
+  "cases": [
+    {
+      "task_id": "columns_cache",
+      "plan": {
+        "m": 16,
+        "n": 80,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 80,
+        "accumulator_rows": 16
+      },
+      "status": "certified",
+      "completed_rounds": 4,
+      "round_status_counts": {
+        "native_rejected": 2,
+        "native_accepted": 2
+      },
+      "model_call_wall_seconds_sum": 736.113,
+      "rounds_with_unknown_usage": [],
+      "reported_tokens": {
+        "input": 23797,
+        "output": 16946,
+        "reasoning": 0,
+        "total": 40743
+      },
+      "first_native_accepted_round": 3,
+      "byte_certified": true,
+      "input_bytes": 3072,
+      "old_best_input_bytes": 5120,
+      "input_reduction_vs_old_best": 0.4,
+      "proof_check_seconds": 19.333,
+      "local_execution": true,
+      "spike_execution": null,
+      "winner_round": 3,
+      "command_count": 42,
+      "counts": {
+        "compute": 10,
+        "compute_accumulated": 0,
+        "compute_preloaded": 10,
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "dma_bytes": 8192,
+        "dma_in_elems_int8": 3072,
+        "dma_out_elems_int32": 1280,
+        "fence": 1,
+        "instructions": 42,
+        "mvin": 12,
+        "mvin_A": 2,
+        "mvin_B": 10,
+        "mvout": 5,
+        "preload": 10
+      },
+      "input_reduction_vs_baseline": 0.4
+    },
+    {
+      "task_id": "columns_tight",
+      "plan": {
+        "m": 16,
+        "n": 80,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 32
+      },
+      "status": "certified",
+      "completed_rounds": 4,
+      "round_status_counts": {
+        "native_accepted": 4
+      },
+      "model_call_wall_seconds_sum": 1287.888,
+      "rounds_with_unknown_usage": [],
+      "reported_tokens": {
+        "input": 25095,
+        "output": 31085,
+        "reasoning": 0,
+        "total": 56180
+      },
+      "first_native_accepted_round": 1,
+      "byte_certified": true,
+      "input_bytes": 4096,
+      "old_best_input_bytes": 5120,
+      "input_reduction_vs_old_best": 0.19999999999999996,
+      "proof_check_seconds": 19.484,
+      "local_execution": true,
+      "spike_execution": null,
+      "winner_round": 2,
+      "command_count": 46,
+      "counts": {
+        "compute": 10,
+        "compute_accumulated": 0,
+        "compute_preloaded": 10,
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "dma_bytes": 9216,
+        "dma_in_elems_int8": 4096,
+        "dma_out_elems_int32": 1280,
+        "fence": 1,
+        "instructions": 46,
+        "mvin": 16,
+        "mvin_A": 6,
+        "mvin_B": 10,
+        "mvout": 5,
+        "preload": 10
+      },
+      "input_reduction_vs_baseline": 0.19999999999999996
+    },
+    {
+      "task_id": "mixed_cache",
+      "plan": {
+        "m": 32,
+        "n": 48,
+        "k": 48,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 64,
+        "accumulator_rows": 32
+      },
+      "status": "no_certified_winner",
+      "completed_rounds": 4,
+      "round_status_counts": {
+        "model_timeout": 3,
+        "native_rejected": 1
+      },
+      "model_call_wall_seconds_sum": 3305.73,
+      "rounds_with_unknown_usage": [
+        1,
+        3,
+        4
+      ],
+      "reported_tokens": {
+        "input": 4178,
+        "output": 13624,
+        "reasoning": 0,
+        "total": 17802
+      },
+      "first_native_accepted_round": null,
+      "byte_certified": false,
+      "input_bytes": null,
+      "old_best_input_bytes": null,
+      "input_reduction_vs_old_best": null,
+      "proof_check_seconds": null,
+      "local_execution": null,
+      "spike_execution": null
+    },
+    {
+      "task_id": "rows_tight",
+      "plan": {
+        "m": 80,
+        "n": 16,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 32
+      },
+      "status": "no_certified_winner",
+      "completed_rounds": 4,
+      "round_status_counts": {
+        "model_timeout": 3,
+        "native_rejected": 1
+      },
+      "model_call_wall_seconds_sum": 3081.227,
+      "rounds_with_unknown_usage": [
+        1,
+        3,
+        4
+      ],
+      "reported_tokens": {
+        "input": 4179,
+        "output": 8164,
+        "reasoning": 0,
+        "total": 12343
+      },
+      "first_native_accepted_round": null,
+      "byte_certified": false,
+      "input_bytes": null,
+      "old_best_input_bytes": null,
+      "input_reduction_vs_old_best": null,
+      "proof_check_seconds": null,
+      "local_execution": null,
+      "spike_execution": null
+    },
+    {
+      "task_id": "single_acc",
+      "plan": {
+        "m": 48,
+        "n": 32,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 48,
+        "accumulator_rows": 16
+      },
+      "status": "certified",
+      "completed_rounds": 4,
+      "round_status_counts": {
+        "native_accepted": 4
+      },
+      "model_call_wall_seconds_sum": 1832.968,
+      "rounds_with_unknown_usage": [],
+      "reported_tokens": {
+        "input": 22773,
+        "output": 50455,
+        "reasoning": 0,
+        "total": 73228
+      },
+      "first_native_accepted_round": 1,
+      "byte_certified": true,
+      "input_bytes": 4096,
+      "old_best_input_bytes": 6144,
+      "input_reduction_vs_old_best": 0.33333333333333337,
+      "proof_check_seconds": 21.951,
+      "local_execution": true,
+      "spike_execution": null,
+      "winner_round": 1,
+      "command_count": 51,
+      "counts": {
+        "compute": 12,
+        "compute_accumulated": 0,
+        "compute_preloaded": 12,
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "dma_bytes": 10240,
+        "dma_in_elems_int8": 4096,
+        "dma_out_elems_int32": 1536,
+        "fence": 1,
+        "instructions": 51,
+        "mvin": 16,
+        "mvin_A": 12,
+        "mvin_B": 4,
+        "mvout": 6,
+        "preload": 12
+      },
+      "input_reduction_vs_baseline": 0.33333333333333337
+    },
+    {
+      "task_id": "square_tight",
+      "plan": {
+        "m": 48,
+        "n": 48,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 32
+      },
+      "status": "no_certified_winner",
+      "completed_rounds": 4,
+      "round_status_counts": {
+        "model_timeout": 4
+      },
+      "model_call_wall_seconds_sum": 3600.106,
+      "rounds_with_unknown_usage": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reported_tokens": {
+        "input": null,
+        "output": null,
+        "reasoning": null,
+        "total": null
+      },
+      "first_native_accepted_round": null,
+      "byte_certified": false,
+      "input_bytes": null,
+      "old_best_input_bytes": null,
+      "input_reduction_vs_old_best": null,
+      "proof_check_seconds": null,
+      "local_execution": null,
+      "spike_execution": null
+    }
+  ],
+  "measurement_notes": [
+    "Token sums cover only reported usage; timed-out responses may have consumed unreported tokens.",
+    "Summed model-call wall time is not elapsed experiment time or GPU execution time; tasks run concurrently.",
+    "Input bytes are modeled full-tile DMA traffic, not measured DRAM transactions or hardware latency.",
+    "Old-best controls are the baseline and feasible batched-B generators fixed at registration.",
+    "Provider cost zero is not evidence of zero compute cost."
+  ]
+}

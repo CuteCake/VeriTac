@@ -1,0 +1,132 @@
+{
+  "program": [
+    {
+      "dataflow": 1,
+      "kind": "config_ex"
+    },
+    {
+      "kind": "config_ld",
+      "scale": 1.0,
+      "slot": 0,
+      "stride_bytes": 48
+    },
+    {
+      "kind": "config_ld",
+      "scale": 1.0,
+      "slot": 1,
+      "stride_bytes": 48
+    },
+    {
+      "kind": "config_st",
+      "stride_bytes": 192
+    },
+    {
+      "body": [
+        {
+          "body": [
+            {
+              "buf": "A",
+              "cols": 16,
+              "kind": "mvin",
+              "offset": {
+                "expr": "m * 768 + k * 16"
+              },
+              "rows": 16,
+              "slot": 0,
+              "spad_addr": {
+                "expr": "m * 16"
+              }
+            }
+          ],
+          "for": "m",
+          "start": 0,
+          "step": 1,
+          "stop": {
+            "expr": "M // 16"
+          }
+        },
+        {
+          "body": [
+            {
+              "buf": "B",
+              "cols": 16,
+              "kind": "mvin",
+              "offset": {
+                "expr": "k * 768 + n * 16"
+              },
+              "rows": 16,
+              "slot": 1,
+              "spad_addr": 32
+            },
+            {
+              "body": [
+                {
+                  "bd_spad_addr": {
+                    "expr": "32 if m == 0 else 4294967295"
+                  },
+                  "kind": "preload",
+                  "out_addr": {
+                    "expr": "2684354560 + m * 16 + (1073741824 if k > 0 else 0)"
+                  }
+                },
+                {
+                  "a_spad_addr": {
+                    "expr": "m * 16"
+                  },
+                  "accumulated": {
+                    "expr": "m == 1"
+                  },
+                  "bd_spad_addr": 4294967295,
+                  "kind": "compute"
+                },
+                {
+                  "body": [
+                    {
+                      "acc_addr": {
+                        "expr": "2684354560 + m * 16"
+                      },
+                      "buf_offset": {
+                        "expr": "m * 768 + n * 16"
+                      },
+                      "cols": 16,
+                      "kind": "mvout",
+                      "rows": 16
+                    }
+                  ],
+                  "for": "t",
+                  "start": 0,
+                  "step": 1,
+                  "stop": {
+                    "expr": "1 if k == K // 16 - 1 else 0"
+                  }
+                }
+              ],
+              "for": "m",
+              "start": 0,
+              "step": 1,
+              "stop": {
+                "expr": "M // 16"
+              }
+            }
+          ],
+          "for": "n",
+          "start": 0,
+          "step": 1,
+          "stop": {
+            "expr": "N // 16"
+          }
+        }
+      ],
+      "for": "k",
+      "start": 0,
+      "step": 1,
+      "stop": {
+        "expr": "K // 16"
+      }
+    },
+    {
+      "kind": "fence"
+    }
+  ],
+  "rationale": "K-outer ordering: each k-iteration first loads both A row-tiles into scratchpad rows 0-15/16-31 (persists across all n), then for each n loads B(k,n) to spad row 32 and computes both m-tiles. The m=0 compute stages B(k,n) via preload (accumulated=false), overwriting the accumulator at k=0 (out_addr bit30=0) or accumulating at k>0 (bit30=1); the m=1 compute reuses the latched B tile via a GARBAGE preload with accumulated=true. Every output tile therefore receives its three 16-deep partial products in strictly increasing K order (k=0 overwrite, k=1, k=2 accumulate), and the guarded mvout fires only on the last k. DMA traffic is minimal: each of the 6 A tiles and 9 B tiles is loaded exactly once (15 mvins, 3840 bytes), which is the lower bound since spad capacity (64 rows) cannot hold all A tiles across k. Command count is also minimal: 18 computes (one per output tile per k-tile), each requiring exactly one preload, plus 15 mvin, 6 mvout, 4 config, 1 fence = 62 commands."
+}

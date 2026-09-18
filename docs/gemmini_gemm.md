@@ -278,5 +278,6 @@ lake env lean benchmarks/gemmini/checked/32x16x16_reuse_b/reuse_b_certificate.le
 ```
 
 The direct-byte artifacts have kernel proofs and independent RV64 execution
-regressions. They have not yet been run under upstream Spike; the recorded Spike
-suite above exercised the C adapter's generated programs.
+regressions. Eight certified raw bodies were also executed under upstream Spike
+in the 2026-09-16 suite described above. The older 2026-09-15 suite exercised the
+C adapter's generated programs; those C-produced binaries are not byte-certified.

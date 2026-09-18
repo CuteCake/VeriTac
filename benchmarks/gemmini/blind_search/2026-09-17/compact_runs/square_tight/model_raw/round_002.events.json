@@ -1,0 +1,13 @@
+[
+  {
+    "type": "step_start",
+    "timestamp": 1789645601058,
+    "sessionID": "ses_f50d008f7ffe6On89weLaQ6dWA",
+    "part": {
+      "id": "prt_0af30b91b001S8wfxN1KQJfr8Z",
+      "messageID": "msg_0af2ff7f4001pNLwZFF6j4g4ei",
+      "sessionID": "ses_f50d008f7ffe6On89weLaQ6dWA",
+      "type": "step-start"
+    }
+  }
+]

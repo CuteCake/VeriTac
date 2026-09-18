@@ -1,0 +1,50 @@
+{
+  "evidence_kind": "post-discovery controller generalization, not a blind model proposal",
+  "source": "specializations/gemmini_gemm/learned_strategies.py",
+  "discovery": "runs/mixed_cache/proposals/round_003.proposal.json",
+  "plan": {
+    "m": 48,
+    "n": 64,
+    "k": 32,
+    "dim": 16,
+    "schedule": "baseline",
+    "scratchpad_rows": 48,
+    "accumulator_rows": 32
+  },
+  "byte_certificate_accepted": true,
+  "independent_RV64_operand_check": true,
+  "local_command_execution": [
+    {
+      "mode": "zero",
+      "seed": 0,
+      "all_outputs_match": true
+    },
+    {
+      "mode": "max",
+      "seed": 0,
+      "all_outputs_match": true
+    },
+    {
+      "mode": "min",
+      "seed": 0,
+      "all_outputs_match": true
+    },
+    {
+      "mode": "minmax",
+      "seed": 0,
+      "all_outputs_match": true
+    },
+    {
+      "mode": "lcg",
+      "seed": 0,
+      "all_outputs_match": true
+    },
+    {
+      "mode": "lcg",
+      "seed": 917,
+      "all_outputs_match": true
+    }
+  ],
+  "hardware_conformance": "not established",
+  "binary_sha256": "021ce8282a86253b719342b86a0ae6fcfcf18671e9c899d2cbe949680a2b0786"
+}

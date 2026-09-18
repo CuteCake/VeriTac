@@ -1,0 +1,85 @@
+{
+  "scope": "local independent RV64 operand interpreter plus Python command model; NOT Spike or silicon",
+  "binary_sha256": "1e86c35962f088ba28a98056d8b06ecb59bd5d21fdf1f7ddacddffeac0250136",
+  "operand_packets_match": true,
+  "packets_observed": 42,
+  "cases": [
+    {
+      "mode": "zero",
+      "seed": 0,
+      "all_outputs_match": true,
+      "output_sha256": "e941226befe2d1ba182e14776364583a098ed8badd8a4ad6a0e15efac6d8986f",
+      "stats": {
+        "instructions": 42,
+        "macs": 40960,
+        "overwrites": 80,
+        "accumulates": 80
+      }
+    },
+    {
+      "mode": "max",
+      "seed": 0,
+      "all_outputs_match": true,
+      "output_sha256": "c6c0f1ce9cd694084d6b37c51a3544a650193d509b68188880732116c75725f8",
+      "stats": {
+        "instructions": 42,
+        "macs": 40960,
+        "overwrites": 80,
+        "accumulates": 80
+      }
+    },
+    {
+      "mode": "min",
+      "seed": 0,
+      "all_outputs_match": true,
+      "output_sha256": "566b72799cfffe76bcb2baa9bc33b5ba4762176bd9b58662d08ff5f84b8a22ea",
+      "stats": {
+        "instructions": 42,
+        "macs": 40960,
+        "overwrites": 80,
+        "accumulates": 80
+      }
+    },
+    {
+      "mode": "minmax",
+      "seed": 0,
+      "all_outputs_match": true,
+      "output_sha256": "7d258dd0475a8847facc0752cbed9995dcc3b0036bd208428a3682aa4c2eef9f",
+      "stats": {
+        "instructions": 42,
+        "macs": 40960,
+        "overwrites": 80,
+        "accumulates": 80
+      }
+    },
+    {
+      "mode": "lcg",
+      "seed": 0,
+      "all_outputs_match": true,
+      "output_sha256": "466ebab638f9b8a7f3ca012010483ad0da8baab32b704d830ca8f428016985b6",
+      "stats": {
+        "instructions": 42,
+        "macs": 40960,
+        "overwrites": 80,
+        "accumulates": 80
+      }
+    },
+    {
+      "mode": "lcg",
+      "seed": 917,
+      "all_outputs_match": true,
+      "output_sha256": "1e4a65ae6a4ff5ed30d293f2c1535375f8b0ae3cc3f0237eaa9dc8f58e6eaddf",
+      "stats": {
+        "instructions": 42,
+        "macs": 40960,
+        "overwrites": 80,
+        "accumulates": 80
+      }
+    }
+  ],
+  "success": true,
+  "source_sha256": {
+    "tests/test_gemmini_machine_bytes.py": "f9f85375ed33b75d2ebaf9444237e62698d5ae302b6270dce467b6bc565147fa",
+    "specializations/gemmini_gemm/backend.py": "2fd733514385be9cb276686f1d74b0c810f9dad087780d7d7121b9b18bc2af07"
+  }
+}

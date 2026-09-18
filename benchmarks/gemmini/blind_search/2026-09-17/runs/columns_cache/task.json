@@ -1,0 +1,12 @@
+{
+  "id": "columns_cache",
+  "plan": {
+    "accumulator_rows": 16,
+    "dim": 16,
+    "k": 32,
+    "m": 16,
+    "n": 80,
+    "schedule": "baseline",
+    "scratchpad_rows": 80
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "reason": null,
+  "resolved": {
+    "mcp": {},
+    "permission": {
+      "*": "deny",
+      "apply_patch": "deny",
+      "bash": "deny",
+      "edit": "deny",
+      "glob": "deny",
+      "grep": "deny",
+      "lsp": "deny",
+      "question": "deny",
+      "read": "deny",
+      "skill": "deny",
+      "task": "deny",
+      "todowrite": "deny",
+      "webfetch": "deny",
+      "websearch": "deny"
+    },
+    "plugin": [],
+    "tools": {
+      "*": false,
+      "apply_patch": false,
+      "bash": false,
+      "edit": false,
+      "glob": false,
+      "grep": false,
+      "lsp": false,
+      "question": false,
+      "read": false,
+      "skill": false,
+      "task": false,
+      "todowrite": false,
+      "webfetch": false,
+      "websearch": false,
+      "write": false
+    }
+  },
+  "supported": true
+}

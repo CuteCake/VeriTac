@@ -1,0 +1,123 @@
+{
+  "kind": "offline learned-recipe selection; no model call",
+  "objective": "modeled input DMA bytes, then command count",
+  "global_optimality": "not claimed",
+  "winner": "batched-b-2",
+  "candidates": [
+    {
+      "name": "batched-b-2",
+      "aliases": [],
+      "command_sha256": "4244fffacc6fe38ec7127d5de8663fe361f4482772b71ce21fa1be5c0a6a9383",
+      "counts": {
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "mvin": 30,
+        "preload": 18,
+        "compute": 18,
+        "mvout": 9,
+        "fence": 1,
+        "mvin_A": 18,
+        "mvin_B": 12,
+        "compute_preloaded": 12,
+        "compute_accumulated": 6,
+        "dma_in_elems_int8": 7680,
+        "dma_out_elems_int32": 2304,
+        "dma_bytes": 16896,
+        "instructions": 80
+      },
+      "objective": [
+        7680,
+        80
+      ],
+      "native_accepted": true,
+      "reason": "accepted"
+    },
+    {
+      "name": "batched-a-2",
+      "aliases": [],
+      "command_sha256": "8ecd5eb07f6bf9b613d1798b189351bb860be02fa6b6e025965c658106055044",
+      "counts": {
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "mvin": 30,
+        "preload": 18,
+        "compute": 18,
+        "mvout": 9,
+        "fence": 1,
+        "mvin_A": 12,
+        "mvin_B": 18,
+        "compute_preloaded": 18,
+        "compute_accumulated": 0,
+        "dma_in_elems_int8": 7680,
+        "dma_out_elems_int32": 2304,
+        "dma_bytes": 16896,
+        "instructions": 80
+      },
+      "objective": [
+        7680,
+        80
+      ],
+      "native_accepted": null
+    },
+    {
+      "name": "baseline",
+      "aliases": [
+        "batched-a-1"
+      ],
+      "command_sha256": "8d7395855f49757899b81ec62cdd3e1111d574c39e4dc97a141c38ff989dadca",
+      "counts": {
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "mvin": 36,
+        "preload": 18,
+        "compute": 18,
+        "mvout": 9,
+        "fence": 1,
+        "mvin_A": 18,
+        "mvin_B": 18,
+        "compute_preloaded": 18,
+        "compute_accumulated": 0,
+        "dma_in_elems_int8": 9216,
+        "dma_out_elems_int32": 2304,
+        "dma_bytes": 18432,
+        "instructions": 86
+      },
+      "objective": [
+        9216,
+        86
+      ],
+      "native_accepted": null
+    },
+    {
+      "name": "batched-b-1",
+      "aliases": [],
+      "command_sha256": "a78739d48ef1fe3408bc2cb86a75e7040895265bcdf8970b9d9379788afdf2c5",
+      "counts": {
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "mvin": 36,
+        "preload": 18,
+        "compute": 18,
+        "mvout": 9,
+        "fence": 1,
+        "mvin_A": 18,
+        "mvin_B": 18,
+        "compute_preloaded": 18,
+        "compute_accumulated": 0,
+        "dma_in_elems_int8": 9216,
+        "dma_out_elems_int32": 2304,
+        "dma_bytes": 18432,
+        "instructions": 86
+      },
+      "objective": [
+        9216,
+        86
+      ],
+      "native_accepted": null
+    }
+  ]
+}

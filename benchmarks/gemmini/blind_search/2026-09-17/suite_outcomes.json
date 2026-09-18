@@ -1,0 +1,198 @@
+[
+  {
+    "task_id": "columns_tight",
+    "exit_code": 0,
+    "output": "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/runs/columns_tight",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/cake/Documents/codework/VeriTac/examples/gemmini_blind_search.py",
+      "run",
+      "--task",
+      "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/tasks/columns_tight.json",
+      "--out",
+      "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/runs/columns_tight",
+      "--rounds",
+      "4",
+      "--model",
+      "dgxspark-glm/glm-5.3-flash",
+      "--model-timeout",
+      "900",
+      "--proof-timeout",
+      "600",
+      "--max-commands",
+      "4096"
+    ],
+    "status": "certified",
+    "rounds": [
+      "native_rejected",
+      "native_accepted",
+      "native_accepted",
+      "native_accepted"
+    ],
+    "input_reduction_vs_baseline": 0.19999999999999996,
+    "input_reduction_vs_best_existing": 0.19999999999999996
+  },
+  {
+    "task_id": "rows_tight",
+    "exit_code": 0,
+    "output": "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/runs/rows_tight",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/cake/Documents/codework/VeriTac/examples/gemmini_blind_search.py",
+      "run",
+      "--task",
+      "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/tasks/rows_tight.json",
+      "--out",
+      "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/runs/rows_tight",
+      "--rounds",
+      "4",
+      "--model",
+      "dgxspark-glm/glm-5.3-flash",
+      "--model-timeout",
+      "900",
+      "--proof-timeout",
+      "600",
+      "--max-commands",
+      "4096"
+    ],
+    "status": "certified",
+    "rounds": [
+      "native_accepted",
+      "native_accepted",
+      "native_accepted",
+      "native_accepted"
+    ],
+    "input_reduction_vs_baseline": 0.19999999999999996,
+    "input_reduction_vs_best_existing": 0.0
+  },
+  {
+    "task_id": "columns_cache",
+    "exit_code": 0,
+    "output": "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/runs/columns_cache",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/cake/Documents/codework/VeriTac/examples/gemmini_blind_search.py",
+      "run",
+      "--task",
+      "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/tasks/columns_cache.json",
+      "--out",
+      "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/runs/columns_cache",
+      "--rounds",
+      "4",
+      "--model",
+      "dgxspark-glm/glm-5.3-flash",
+      "--model-timeout",
+      "900",
+      "--proof-timeout",
+      "600",
+      "--max-commands",
+      "4096"
+    ],
+    "status": "certified",
+    "rounds": [
+      "native_accepted",
+      "native_accepted",
+      "native_accepted",
+      "native_accepted"
+    ],
+    "input_reduction_vs_baseline": 0.4,
+    "input_reduction_vs_best_existing": 0.4
+  },
+  {
+    "task_id": "square_tight",
+    "exit_code": 3,
+    "output": "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/runs/square_tight",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/cake/Documents/codework/VeriTac/examples/gemmini_blind_search.py",
+      "run",
+      "--task",
+      "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/tasks/square_tight.json",
+      "--out",
+      "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/runs/square_tight",
+      "--rounds",
+      "4",
+      "--model",
+      "dgxspark-glm/glm-5.3-flash",
+      "--model-timeout",
+      "900",
+      "--proof-timeout",
+      "600",
+      "--max-commands",
+      "4096"
+    ],
+    "status": "no_certified_winner",
+    "rounds": [
+      "model_timeout",
+      "model_timeout",
+      "model_timeout",
+      "model_timeout"
+    ]
+  },
+  {
+    "task_id": "mixed_cache",
+    "exit_code": 0,
+    "output": "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/runs/mixed_cache",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/cake/Documents/codework/VeriTac/examples/gemmini_blind_search.py",
+      "run",
+      "--task",
+      "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/tasks/mixed_cache.json",
+      "--out",
+      "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/runs/mixed_cache",
+      "--rounds",
+      "4",
+      "--model",
+      "dgxspark-glm/glm-5.3-flash",
+      "--model-timeout",
+      "900",
+      "--proof-timeout",
+      "600",
+      "--max-commands",
+      "4096"
+    ],
+    "status": "certified",
+    "rounds": [
+      "model_timeout",
+      "native_accepted",
+      "native_accepted",
+      "native_accepted"
+    ],
+    "input_reduction_vs_baseline": 0.41666666666666663,
+    "input_reduction_vs_best_existing": 0.2222222222222222
+  },
+  {
+    "task_id": "single_acc",
+    "exit_code": 0,
+    "output": "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/runs/single_acc",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/cake/Documents/codework/VeriTac/examples/gemmini_blind_search.py",
+      "run",
+      "--task",
+      "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/tasks/single_acc.json",
+      "--out",
+      "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/runs/single_acc",
+      "--rounds",
+      "4",
+      "--model",
+      "dgxspark-glm/glm-5.3-flash",
+      "--model-timeout",
+      "900",
+      "--proof-timeout",
+      "600",
+      "--max-commands",
+      "4096"
+    ],
+    "status": "certified",
+    "rounds": [
+      "model_timeout",
+      "model_timeout",
+      "native_accepted",
+      "native_accepted"
+    ],
+    "input_reduction_vs_baseline": 0.41666666666666663,
+    "input_reduction_vs_best_existing": 0.41666666666666663
+  }
+]

@@ -1,0 +1,19 @@
+/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/rejection_witnesses/flat_columns_tight_round1/counterexample.lean:59:4: error: failed to synthesize
+  Decidable (VeriTac.GemminiExact.Int8 1)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/rejection_witnesses/flat_columns_tight_round1/counterexample.lean:60:4: error: failed to synthesize
+  Decidable (VeriTac.GemminiExact.Int8 0)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/rejection_witnesses/flat_columns_tight_round1/counterexample.lean:65:4: error: failed to synthesize
+  Decidable (VeriTac.GemminiExact.Int8 1)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/rejection_witnesses/flat_columns_tight_round1/counterexample.lean:66:4: error: failed to synthesize
+  Decidable (VeriTac.GemminiExact.Int8 0)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+'SubmittedKernel.counterexample' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SubmittedKernel.inputA_domain' depends on axioms: [sorryAx]
+'SubmittedKernel.inputB_domain' depends on axioms: [sorryAx]

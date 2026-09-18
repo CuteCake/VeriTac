@@ -1,0 +1,26 @@
+{
+  "created_utc": "2026-09-17T09:23:41.029127+00:00",
+  "phase": "task preregistration before model proposals",
+  "tasks_sha256": {
+    "rows_tight.json": "16dad6e2653403677c5ca7ba5cac76bf559211523ecbf2474d4036db8e4b84a5",
+    "columns_tight.json": "58bd50e3349845de610cd5267574b7e2c33553262095bf5c603ad64f29aec568",
+    "square_tight.json": "b41f5b5e4b66746aaeacf054063ee88d2db494464224a776c461a617e4c2d69a",
+    "columns_cache.json": "f5631107745410ee382e3622a145f60445bf2f1f60952622329eae8b8b7751ab",
+    "mixed_cache.json": "9e8103e18081a7631ae75741e485cecf3c7fa60ae20df3c88ac8b26e1408958f",
+    "single_acc.json": "59c6e045cba2c972bc91cc3a0d1c808404793792897a2415a7ed8c7ef7ae3469"
+  },
+  "primary_objective": [
+    "modeled input DMA bytes",
+    "command count"
+  ],
+  "max_rounds_per_task": 4,
+  "model": "dgxspark-glm/glm-5.3-flash",
+  "input_exposure": "mathematical task, target capacities, full instruction semantics, command schema, previous own proposals and validator feedback only",
+  "held_out_definition": "Task configurations selected before experiment; no claim of exclusion from model training data. No optimized reference or repository access supplied to proposer.",
+  "final_acceptance": "kernel-checked byte certificate against unchanged formal sources and task",
+  "performance_scope": "modeled traffic and command counts only; no hardware speedup claim",
+  "comparison": "post-proposal scoring against existing baseline and best feasible existing batched B reuse; comparisons never supplied to proposer",
+  "failure_policy": "retain every attempt; distinguish malformed/rejected/timeout/tool failure; no controller-written repair",
+  "novelty_policy": "a different hash alone is not structural novelty; inspect scheduling and reuse mechanism against existing generators",
+  "budgets": "4 model calls per task; explicit per-call timeouts; unknown token usage stays null"
+}

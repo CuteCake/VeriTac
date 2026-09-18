@@ -1,0 +1,25 @@
+{
+  "observed_utc": "2026-09-17T10:21:51.868703+00:00",
+  "temp_root": "/private/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T",
+  "opencode_version": "1.18.31",
+  "version_exit_code": 0,
+  "potential_bootstrap_instruction_files": {
+    "/Users/cake/.config/opencode/AGENTS.md": false,
+    "/Users/cake/.claude/CLAUDE.md": false,
+    "/private/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/AGENTS.md": false,
+    "/private/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/AGENTS.md": false,
+    "/private/var/folders/nm/AGENTS.md": false,
+    "/private/var/folders/AGENTS.md": false,
+    "/private/var/AGENTS.md": false,
+    "/private/AGENTS.md": false,
+    "/AGENTS.md": false,
+    "/private/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/CLAUDE.md": false,
+    "/private/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/CLAUDE.md": false,
+    "/private/var/folders/nm/CLAUDE.md": false,
+    "/private/var/folders/CLAUDE.md": false,
+    "/private/var/CLAUDE.md": false,
+    "/private/CLAUDE.md": false,
+    "/CLAUDE.md": false
+  },
+  "scope": "observed bootstrap paths; tool-disabled sessions are not OS-hermetic"
+}

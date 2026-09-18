@@ -1,0 +1,25 @@
+{
+  "experiment": "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/compact_runs/mixed_cache",
+  "task_id": "mixed_cache",
+  "status": "no_certified_winner",
+  "rounds": [
+    {
+      "round": 1,
+      "status": "model_timeout"
+    },
+    {
+      "round": 2,
+      "status": "native_rejected"
+    },
+    {
+      "round": 3,
+      "status": "model_timeout"
+    },
+    {
+      "round": 4,
+      "status": "model_timeout"
+    }
+  ],
+  "isolation_enforced": true,
+  "winner": null
+}

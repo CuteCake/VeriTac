@@ -1,0 +1,95 @@
+{
+  "artifact_integrity": true,
+  "complete": true,
+  "certified_cases": 5,
+  "checked_outcomes": [
+    {
+      "task_id": "columns_cache",
+      "status": "certified",
+      "byte_certified": true,
+      "binary_sha256": "1e86c35962f088ba28a98056d8b06ecb59bd5d21fdf1f7ddacddffeac0250136",
+      "original_model_reply_matches_delivered_program": true,
+      "audited_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem_bytes_equal_delivered_bytes": true,
+      "task_and_command_binding": true,
+      "native_byte_replay": true,
+      "local_execution": true
+    },
+    {
+      "task_id": "columns_tight",
+      "status": "certified",
+      "byte_certified": true,
+      "binary_sha256": "73ca37939b74a0103a598d4b6d57ee9d07db6ff6f17c952a141f19382416a2f3",
+      "original_model_reply_matches_delivered_program": true,
+      "audited_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem_bytes_equal_delivered_bytes": true,
+      "task_and_command_binding": true,
+      "native_byte_replay": true,
+      "local_execution": true
+    },
+    {
+      "task_id": "mixed_cache",
+      "status": "certified",
+      "byte_certified": true,
+      "binary_sha256": "3430a473a03209b9d0d673b1f9b97f4efbc55876e4595182863dc26ba5dbf208",
+      "original_model_reply_matches_delivered_program": true,
+      "audited_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem_bytes_equal_delivered_bytes": true,
+      "task_and_command_binding": true,
+      "native_byte_replay": true,
+      "local_execution": true
+    },
+    {
+      "task_id": "rows_tight",
+      "status": "certified",
+      "byte_certified": true,
+      "binary_sha256": "e7ee121762bbff87db2d8670e9a5f8d550d9c2be7af3c14c2de50b89d448a65b",
+      "original_model_reply_matches_delivered_program": true,
+      "audited_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem_bytes_equal_delivered_bytes": true,
+      "task_and_command_binding": true,
+      "native_byte_replay": true,
+      "local_execution": true
+    },
+    {
+      "task_id": "single_acc",
+      "status": "certified",
+      "byte_certified": true,
+      "binary_sha256": "cc1c91eb19667a8b22cc93e3917942a981086efd6549055ccd38b0396ad44b0f",
+      "original_model_reply_matches_delivered_program": true,
+      "audited_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem_bytes_equal_delivered_bytes": true,
+      "task_and_command_binding": true,
+      "native_byte_replay": true,
+      "local_execution": true
+    },
+    {
+      "task_id": "square_tight",
+      "status": "no_certified_winner",
+      "byte_certified": false
+    }
+  ],
+  "pending": [],
+  "errors": [],
+  "scope": "binding audit and native replay; kernel proofs were checked during certification; no physical conformance claim"
+}

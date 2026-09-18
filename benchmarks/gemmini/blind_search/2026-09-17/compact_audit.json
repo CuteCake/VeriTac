@@ -1,0 +1,73 @@
+{
+  "artifact_integrity": true,
+  "complete": true,
+  "certified_cases": 3,
+  "checked_outcomes": [
+    {
+      "task_id": "columns_cache",
+      "status": "certified",
+      "byte_certified": true,
+      "binary_sha256": "7cd248594f046a77ec8a1e030853188a21fb38b18976fb435cc6e4257808de3c",
+      "original_model_reply_matches_delivered_program": true,
+      "audited_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem_bytes_equal_delivered_bytes": true,
+      "task_and_command_binding": true,
+      "native_byte_replay": true,
+      "local_execution": true
+    },
+    {
+      "task_id": "columns_tight",
+      "status": "certified",
+      "byte_certified": true,
+      "binary_sha256": "73ca37939b74a0103a598d4b6d57ee9d07db6ff6f17c952a141f19382416a2f3",
+      "original_model_reply_matches_delivered_program": true,
+      "audited_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem_bytes_equal_delivered_bytes": true,
+      "task_and_command_binding": true,
+      "native_byte_replay": true,
+      "local_execution": true
+    },
+    {
+      "task_id": "mixed_cache",
+      "status": "no_certified_winner",
+      "byte_certified": false
+    },
+    {
+      "task_id": "rows_tight",
+      "status": "no_certified_winner",
+      "byte_certified": false
+    },
+    {
+      "task_id": "single_acc",
+      "status": "certified",
+      "byte_certified": true,
+      "binary_sha256": "e9784278371ee99f051fb8f6611fab916164d7dc0d4a44407723094991985cce",
+      "original_model_reply_matches_delivered_program": true,
+      "audited_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem_bytes_equal_delivered_bytes": true,
+      "task_and_command_binding": true,
+      "native_byte_replay": true,
+      "local_execution": true
+    },
+    {
+      "task_id": "square_tight",
+      "status": "no_certified_winner",
+      "byte_certified": false
+    }
+  ],
+  "pending": [],
+  "errors": [],
+  "scope": "binding audit and native replay; kernel proofs were checked during certification; no physical conformance claim"
+}

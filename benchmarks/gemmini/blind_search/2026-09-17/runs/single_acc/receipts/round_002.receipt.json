@@ -1,0 +1,36 @@
+{
+  "events": {
+    "count": 1,
+    "errors": [],
+    "reply_text_chars": 0,
+    "reply_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "session_id": "ses_f5102798fffep4DQBZn6RGmQE9",
+    "tool_part_count": 0,
+    "tool_parts": [],
+    "unparsed_count": 0
+  },
+  "model": {
+    "argv_tail": [
+      "run",
+      "--format",
+      "json",
+      "--model",
+      "dgxspark-glm/glm-5.3-flash",
+      "--pure"
+    ],
+    "config_sha256": "b92a845a144fccfd5b9561afec08c2a3037512b93c0f03ed72f7502b1fff0c94",
+    "cwd_policy": "fresh system-temp directory outside the repository",
+    "duration_seconds": 900.022,
+    "error": "model call timed out after 900.0s",
+    "model": "dgxspark-glm/glm-5.3-flash",
+    "returncode": null,
+    "stderr_tail": "",
+    "timed_out": true
+  },
+  "prompt_sha256": "a75fbafd26a4948dbb26b280d37206904fa2f2a6227e11dea25f4d68a06e5a73",
+  "reason": "model call timed out after 900.0s",
+  "round": 2,
+  "started_utc": "2026-09-17T10:50:45Z",
+  "status": "model_timeout",
+  "usage": null
+}

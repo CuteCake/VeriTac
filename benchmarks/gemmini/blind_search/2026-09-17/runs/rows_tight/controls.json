@@ -1,0 +1,119 @@
+{
+  "scope": "native-validated modeled traffic; separate kernel certificate required",
+  "counts": {
+    "config_ex": 1,
+    "config_ld": 2,
+    "config_st": 1,
+    "mvin": 16,
+    "preload": 10,
+    "compute": 10,
+    "mvout": 5,
+    "fence": 1,
+    "mvin_A": 10,
+    "mvin_B": 6,
+    "compute_preloaded": 10,
+    "compute_accumulated": 0,
+    "dma_in_elems_int8": 4096,
+    "dma_out_elems_int32": 1280,
+    "dma_bytes": 9216,
+    "instructions": 46
+  },
+  "objective": [
+    4096,
+    46
+  ],
+  "controls": [
+    {
+      "name": "baseline",
+      "native_accepted": true,
+      "reason": "accepted",
+      "counts": {
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "mvin": 20,
+        "preload": 10,
+        "compute": 10,
+        "mvout": 5,
+        "fence": 1,
+        "mvin_A": 10,
+        "mvin_B": 10,
+        "compute_preloaded": 10,
+        "compute_accumulated": 0,
+        "dma_in_elems_int8": 5120,
+        "dma_out_elems_int32": 1280,
+        "dma_bytes": 10240,
+        "instructions": 50
+      },
+      "objective": [
+        5120,
+        50
+      ],
+      "command_sha256": "c529d7409971731ace79bf5c59bc57b2208c6adb1cf6b925ec65abda9b80f876"
+    },
+    {
+      "name": "existing_batched_b_1",
+      "native_accepted": true,
+      "reason": "accepted",
+      "counts": {
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "mvin": 20,
+        "preload": 10,
+        "compute": 10,
+        "mvout": 5,
+        "fence": 1,
+        "mvin_A": 10,
+        "mvin_B": 10,
+        "compute_preloaded": 10,
+        "compute_accumulated": 0,
+        "dma_in_elems_int8": 5120,
+        "dma_out_elems_int32": 1280,
+        "dma_bytes": 10240,
+        "instructions": 50
+      },
+      "objective": [
+        5120,
+        50
+      ],
+      "command_sha256": "cd718671be074935ba76edda24b49c07b80ee4c9a3ddae8418bdf84d1d9ee297"
+    },
+    {
+      "name": "existing_batched_b_2",
+      "native_accepted": true,
+      "reason": "accepted",
+      "counts": {
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "mvin": 16,
+        "preload": 10,
+        "compute": 10,
+        "mvout": 5,
+        "fence": 1,
+        "mvin_A": 10,
+        "mvin_B": 6,
+        "compute_preloaded": 6,
+        "compute_accumulated": 4,
+        "dma_in_elems_int8": 4096,
+        "dma_out_elems_int32": 1280,
+        "dma_bytes": 9216,
+        "instructions": 46
+      },
+      "objective": [
+        4096,
+        46
+      ],
+      "command_sha256": "4065cbeb5d5be6aeb7f5a97f427da84ac2e93bd82115e86d54a7dfae50a27e7f"
+    }
+  ],
+  "best_existing_control": "existing_batched_b_2",
+  "input_reduction_vs_baseline": 0.19999999999999996,
+  "input_reduction_vs_best_existing": 0.0,
+  "beats_best_existing_objective": false,
+  "exact_matches": [],
+  "fewer_a_loads_than_existing_controls": false,
+  "novelty": "requires manual mechanism review; a distinct hash is insufficient",
+  "hardware_latency": null
+}

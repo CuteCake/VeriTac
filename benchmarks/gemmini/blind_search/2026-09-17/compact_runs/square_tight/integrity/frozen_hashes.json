@@ -1,0 +1,82 @@
+{
+  "checker_plan": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/.lake/build/bin/gemmini_check",
+    "sha256": "6ea43ac2854817fe09d18d641e164e2a48faaef9867f75d805ba129dbf268f15"
+  },
+  "checker_program": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/.lake/build/bin/gemmini_program_check",
+    "sha256": "493b897809f46cec60cbb0386d1dae5d3cce3b30489797dad6b929badc5e5a4c"
+  },
+  "controller_backend": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/specializations/gemmini_gemm/backend.py",
+    "sha256": "2fd733514385be9cb276686f1d74b0c810f9dad087780d7d7121b9b18bc2af07"
+  },
+  "controller_blind_search": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/specializations/gemmini_gemm/blind_search.py",
+    "sha256": "166c0e4afc1f006d2943fa3c21cb5ddec42cba08d559f7cd18f7a29c95b99f7b"
+  },
+  "controller_certificate": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/specializations/gemmini_gemm/certificate.py",
+    "sha256": "49f813c2acb7b903577d89f92788bb4be65c1705e08d1b512b91bdad40ae1412"
+  },
+  "controller_compact_protocol": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/specializations/gemmini_gemm/compact_protocol.py",
+    "sha256": "bab09d0eda9e23475d2a885950502e51d03641aaa75e7107c51382f93d86dde4"
+  },
+  "controller_diagnostics": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/specializations/gemmini_gemm/diagnostics.py",
+    "sha256": "7eb0e16ae34bef9e30d2f512291be2f45e3cad1de9d2647e3e5024893df8015e"
+  },
+  "controller_encoding": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/specializations/gemmini_gemm/encoding.py",
+    "sha256": "eb5dd5d3afb13542a6aee5134a38f564b05348df85032696d133ade935fb188a"
+  },
+  "controller_lowering": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/specializations/gemmini_gemm/lowering.py",
+    "sha256": "e8712944566d1afd2945254f86ee12913ffe377cfb71c75bf6d57c70ae88706e"
+  },
+  "controller_schedule_ir": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/specializations/gemmini_gemm/schedule_ir.py",
+    "sha256": "1a059efd76c3beb00bb0d8156d7beb5858e7613a4d5dc33ed4254f5d512b29e1"
+  },
+  "lean_built_library": {
+    "kind": "dir",
+    "path": "/Users/cake/Documents/codework/VeriTac/.lake/build/lib/lean/VeriTac",
+    "sha256": "5b1ec3c4ee0bcaf66cf0d9230a081e76f868e9b06de4d6102ea6c3e4078277cc"
+  },
+  "lean_manifest": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/lake-manifest.json",
+    "sha256": "714f8e8fd087ea420cb6886cda6598c63ecab688ded1d21f6c42420e6a5396e2"
+  },
+  "lean_sources": {
+    "kind": "dir",
+    "path": "/Users/cake/Documents/codework/VeriTac/VeriTac",
+    "sha256": "85762666742348e32cfe48f67d2502be3b22878369efb306dadeff3b2e5b7124"
+  },
+  "lean_toolchain": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/lean-toolchain",
+    "sha256": "507ad76e41019e2adbec1b3647e9e417c797902a1ed7238ba9a5a4ef048806d6"
+  },
+  "plan_checker_source": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/GemminiMain.lean",
+    "sha256": "2b868f14b74de68560214df0385913a1cd5a5d03251e028d47ed2ece0ac4f010"
+  },
+  "program_checker_source": {
+    "kind": "file",
+    "path": "/Users/cake/Documents/codework/VeriTac/GemminiProgramMain.lean",
+    "sha256": "2fc42c000455bb69f0fad550b6128b45f3712c22a64cc54ed96cc23b0f2e9764"
+  }
+}

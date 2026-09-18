@@ -1,0 +1,33 @@
+{
+  "experiment": "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/compact_runs/columns_cache",
+  "task_id": "columns_cache",
+  "status": "certified",
+  "rounds": [
+    {
+      "round": 1,
+      "status": "native_rejected"
+    },
+    {
+      "round": 2,
+      "status": "native_rejected"
+    },
+    {
+      "round": 3,
+      "status": "native_accepted"
+    },
+    {
+      "round": 4,
+      "status": "native_accepted"
+    }
+  ],
+  "isolation_enforced": true,
+  "winner": {
+    "round": 3,
+    "certified": true,
+    "objective": [
+      3072,
+      42
+    ],
+    "certification_path": "/Users/cake/Documents/codework/VeriTac/benchmarks/gemmini/blind_search/2026-09-17/compact_runs/columns_cache/certification/winner"
+  }
+}

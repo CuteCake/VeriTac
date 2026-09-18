@@ -1,0 +1,60 @@
+{
+  "kind": "concrete rejection witness, not an accepted kernel",
+  "kernel_proved": true,
+  "witness": {
+    "advisory_only": true,
+    "diagnostic": {
+      "advisory_only": true,
+      "authoritative_checker": "gemmini_program_check / VeriTac.Gemmini.Symbolic.check (existing Lean verifier is authoritative)",
+      "status": "output_obligation_mismatch",
+      "summary": "GEMM output obligation failed: a cell is unwritten or its input-product sequence differs from the specification (no counterexample value is invented)",
+      "facts": {
+        "cell_index": 0,
+        "row": 0,
+        "col": 0,
+        "written": true,
+        "product_sequence_matches": false
+      }
+    },
+    "found": true,
+    "row": 0,
+    "col": 0,
+    "actual": 1,
+    "expected": 0,
+    "sparse_inputs": {
+      "default": 0,
+      "ones": [
+        [
+          "a",
+          0
+        ],
+        [
+          "b",
+          64
+        ]
+      ]
+    },
+    "trials": 3,
+    "reason": "executed sparse input produces a different output"
+  },
+  "binary_sha256": "a8551ab20675908cdaa1b13b833dc1edefade89f230488529bd19fc66b442d42",
+  "audited_axioms": {
+    "counterexample": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "inputA_domain": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "inputB_domain": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "proof_sha256": "3e8009352b98636c234530717ba298a71e46836b55b86d81f3084c5b9553a3b5",
+  "kernel_check_seconds": 4.393
+}

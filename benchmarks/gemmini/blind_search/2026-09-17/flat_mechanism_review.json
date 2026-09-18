@@ -1,0 +1,36 @@
+{
+  "scope": "manual review of actual winning commands; model rationale is not evidence of cost or optimality",
+  "reviewed_utc": "2026-09-17T11:24:32.100465+00:00",
+  "cases": {
+    "rows_tight": {
+      "mechanism": "pair output-row tiles to share B",
+      "novelty": "rediscovery of existing batched-B mechanism"
+    },
+    "columns_tight": {
+      "mechanism": "pair output-column tiles to share A; repair overwriting of live partial sums",
+      "novelty": "not covered by registration-time generators"
+    },
+    "columns_cache": {
+      "mechanism": "keep both A reduction tiles resident, stream B; one accumulator tile",
+      "input_bytes_equal_A_plus_B": true,
+      "novelty": "not covered by registration-time generators"
+    },
+    "mixed_cache": {
+      "mechanism": "keep first row-block A tiles resident; share a streaming slot between B and the second row-block A using latched B weights",
+      "retained_weight_computes": 9,
+      "novelty": "not covered by registration-time generators"
+    },
+    "single_acc": {
+      "mechanism": "cache B across output-row tiles; reverse row traversal across column boundary and reuse last A tiles by recycling dead B storage",
+      "actual_input_bytes": 3584,
+      "model_claimed_input_bytes": 2560,
+      "actual_command_count": 49,
+      "model_claimed_command_count": 45,
+      "novelty": "not covered by registration-time generators",
+      "rationale_warning": "performance self-description is inaccurate; use actual command metrics"
+    },
+    "square_tight": {
+      "outcome": "four model generation timeouts; no valid proposal was received within budget"
+    }
+  }
+}

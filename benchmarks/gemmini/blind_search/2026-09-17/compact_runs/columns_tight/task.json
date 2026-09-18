@@ -1,0 +1,12 @@
+{
+  "id": "columns_tight",
+  "plan": {
+    "accumulator_rows": 32,
+    "dim": 16,
+    "k": 32,
+    "m": 16,
+    "n": 80,
+    "schedule": "baseline",
+    "scratchpad_rows": 32
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "kind": "concrete rejection witness, not an accepted kernel",
+  "kernel_proved": true,
+  "witness": {
+    "advisory_only": true,
+    "diagnostic": {
+      "advisory_only": true,
+      "authoritative_checker": "gemmini_program_check / VeriTac.Gemmini.Symbolic.check (existing Lean verifier is authoritative)",
+      "status": "output_obligation_mismatch",
+      "summary": "GEMM output obligation failed: a cell is unwritten or its input-product sequence differs from the specification (no counterexample value is invented)",
+      "facts": {
+        "cell_index": 0,
+        "row": 0,
+        "col": 0,
+        "written": true,
+        "product_sequence_matches": false
+      }
+    },
+    "found": true,
+    "row": 0,
+    "col": 0,
+    "actual": 1,
+    "expected": 0,
+    "sparse_inputs": {
+      "default": 0,
+      "ones": [
+        [
+          "a",
+          0
+        ],
+        [
+          "b",
+          64
+        ]
+      ]
+    },
+    "trials": 3,
+    "reason": "executed sparse input produces a different output"
+  },
+  "binary_sha256": "a8551ab20675908cdaa1b13b833dc1edefade89f230488529bd19fc66b442d42",
+  "proof_sha256": "4a5d2c2577e3229fbbd525eef506d9c004b55a8398f59b5af6d7020512d3751e",
+  "kernel_check_seconds": 4.389
+}

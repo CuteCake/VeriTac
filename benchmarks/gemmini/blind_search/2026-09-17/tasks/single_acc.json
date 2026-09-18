@@ -1,0 +1,12 @@
+{
+  "id": "single_acc",
+  "plan": {
+    "m": 48,
+    "n": 32,
+    "k": 32,
+    "dim": 16,
+    "schedule": "baseline",
+    "scratchpad_rows": 48,
+    "accumulator_rows": 16
+  }
+}

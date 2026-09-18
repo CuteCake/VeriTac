@@ -1,0 +1,347 @@
+{
+  "runs": "benchmarks/gemmini/blind_search/2026-09-17/runs",
+  "totals": {
+    "registered_tasks": 6,
+    "certified_tasks": 5,
+    "pending_tasks": 0,
+    "completed_rounds": 24,
+    "rounds_without_usage": 7,
+    "model_call_wall_seconds_sum": 13320.567,
+    "round_status_counts": {
+      "native_accepted": 16,
+      "native_rejected": 1,
+      "model_timeout": 7
+    },
+    "reported_tokens": {
+      "input": 125320,
+      "output": 174484,
+      "reasoning": 0,
+      "total": 299804
+    }
+  },
+  "cases": [
+    {
+      "task_id": "columns_cache",
+      "plan": {
+        "m": 16,
+        "n": 80,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 80,
+        "accumulator_rows": 16
+      },
+      "status": "certified",
+      "completed_rounds": 4,
+      "round_status_counts": {
+        "native_accepted": 4
+      },
+      "model_call_wall_seconds_sum": 768.109,
+      "rounds_with_unknown_usage": [],
+      "reported_tokens": {
+        "input": 29648,
+        "output": 14976,
+        "reasoning": 0,
+        "total": 44624
+      },
+      "first_native_accepted_round": 1,
+      "byte_certified": true,
+      "input_bytes": 3072,
+      "old_best_input_bytes": 5120,
+      "input_reduction_vs_old_best": 0.4,
+      "proof_check_seconds": 19.585,
+      "local_execution": true,
+      "spike_execution": null,
+      "winner_round": 1,
+      "command_count": 42,
+      "counts": {
+        "compute": 10,
+        "compute_accumulated": 0,
+        "compute_preloaded": 10,
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "dma_bytes": 8192,
+        "dma_in_elems_int8": 3072,
+        "dma_out_elems_int32": 1280,
+        "fence": 1,
+        "instructions": 42,
+        "mvin": 12,
+        "mvin_A": 2,
+        "mvin_B": 10,
+        "mvout": 5,
+        "preload": 10
+      },
+      "input_reduction_vs_baseline": 0.4
+    },
+    {
+      "task_id": "columns_tight",
+      "plan": {
+        "m": 16,
+        "n": 80,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 32
+      },
+      "status": "certified",
+      "completed_rounds": 4,
+      "round_status_counts": {
+        "native_rejected": 1,
+        "native_accepted": 3
+      },
+      "model_call_wall_seconds_sum": 1599.025,
+      "rounds_with_unknown_usage": [],
+      "reported_tokens": {
+        "input": 30974,
+        "output": 40437,
+        "reasoning": 0,
+        "total": 71411
+      },
+      "first_native_accepted_round": 2,
+      "byte_certified": true,
+      "input_bytes": 4096,
+      "old_best_input_bytes": 5120,
+      "input_reduction_vs_old_best": 0.19999999999999996,
+      "proof_check_seconds": 19.725,
+      "local_execution": true,
+      "spike_execution": null,
+      "winner_round": 2,
+      "command_count": 46,
+      "counts": {
+        "compute": 10,
+        "compute_accumulated": 0,
+        "compute_preloaded": 10,
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "dma_bytes": 9216,
+        "dma_in_elems_int8": 4096,
+        "dma_out_elems_int32": 1280,
+        "fence": 1,
+        "instructions": 46,
+        "mvin": 16,
+        "mvin_A": 6,
+        "mvin_B": 10,
+        "mvout": 5,
+        "preload": 10
+      },
+      "input_reduction_vs_baseline": 0.19999999999999996
+    },
+    {
+      "task_id": "mixed_cache",
+      "plan": {
+        "m": 32,
+        "n": 48,
+        "k": 48,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 64,
+        "accumulator_rows": 32
+      },
+      "status": "certified",
+      "completed_rounds": 4,
+      "round_status_counts": {
+        "model_timeout": 1,
+        "native_accepted": 3
+      },
+      "model_call_wall_seconds_sum": 2767.676,
+      "rounds_with_unknown_usage": [
+        1
+      ],
+      "reported_tokens": {
+        "input": 22595,
+        "output": 50714,
+        "reasoning": 0,
+        "total": 73309
+      },
+      "first_native_accepted_round": 2,
+      "byte_certified": true,
+      "input_bytes": 5376,
+      "old_best_input_bytes": 6912,
+      "input_reduction_vs_old_best": 0.2222222222222222,
+      "proof_check_seconds": 31.614,
+      "local_execution": true,
+      "spike_execution": null,
+      "winner_round": 3,
+      "command_count": 68,
+      "counts": {
+        "compute": 18,
+        "compute_accumulated": 9,
+        "compute_preloaded": 9,
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "dma_bytes": 11520,
+        "dma_in_elems_int8": 5376,
+        "dma_out_elems_int32": 1536,
+        "fence": 1,
+        "instructions": 68,
+        "mvin": 21,
+        "mvin_A": 12,
+        "mvin_B": 9,
+        "mvout": 6,
+        "preload": 18
+      },
+      "input_reduction_vs_baseline": 0.41666666666666663
+    },
+    {
+      "task_id": "rows_tight",
+      "plan": {
+        "m": 80,
+        "n": 16,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 32
+      },
+      "status": "certified",
+      "completed_rounds": 4,
+      "round_status_counts": {
+        "native_accepted": 4
+      },
+      "model_call_wall_seconds_sum": 1953.507,
+      "rounds_with_unknown_usage": [],
+      "reported_tokens": {
+        "input": 31588,
+        "output": 39181,
+        "reasoning": 0,
+        "total": 70769
+      },
+      "first_native_accepted_round": 1,
+      "byte_certified": true,
+      "input_bytes": 4096,
+      "old_best_input_bytes": 4096,
+      "input_reduction_vs_old_best": 0.0,
+      "proof_check_seconds": 19.474,
+      "local_execution": true,
+      "spike_execution": null,
+      "winner_round": 1,
+      "command_count": 46,
+      "counts": {
+        "compute": 10,
+        "compute_accumulated": 0,
+        "compute_preloaded": 10,
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "dma_bytes": 9216,
+        "dma_in_elems_int8": 4096,
+        "dma_out_elems_int32": 1280,
+        "fence": 1,
+        "instructions": 46,
+        "mvin": 16,
+        "mvin_A": 10,
+        "mvin_B": 6,
+        "mvout": 5,
+        "preload": 10
+      },
+      "input_reduction_vs_baseline": 0.19999999999999996
+    },
+    {
+      "task_id": "single_acc",
+      "plan": {
+        "m": 48,
+        "n": 32,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 48,
+        "accumulator_rows": 16
+      },
+      "status": "certified",
+      "completed_rounds": 4,
+      "round_status_counts": {
+        "model_timeout": 2,
+        "native_accepted": 2
+      },
+      "model_call_wall_seconds_sum": 2632.125,
+      "rounds_with_unknown_usage": [
+        1,
+        2
+      ],
+      "reported_tokens": {
+        "input": 10515,
+        "output": 29176,
+        "reasoning": 0,
+        "total": 39691
+      },
+      "first_native_accepted_round": 3,
+      "byte_certified": true,
+      "input_bytes": 3584,
+      "old_best_input_bytes": 6144,
+      "input_reduction_vs_old_best": 0.41666666666666663,
+      "proof_check_seconds": 21.643,
+      "local_execution": true,
+      "spike_execution": null,
+      "winner_round": 3,
+      "command_count": 49,
+      "counts": {
+        "compute": 12,
+        "compute_accumulated": 0,
+        "compute_preloaded": 12,
+        "config_ex": 1,
+        "config_ld": 2,
+        "config_st": 1,
+        "dma_bytes": 9728,
+        "dma_in_elems_int8": 3584,
+        "dma_out_elems_int32": 1536,
+        "fence": 1,
+        "instructions": 49,
+        "mvin": 14,
+        "mvin_A": 10,
+        "mvin_B": 4,
+        "mvout": 6,
+        "preload": 12
+      },
+      "input_reduction_vs_baseline": 0.41666666666666663
+    },
+    {
+      "task_id": "square_tight",
+      "plan": {
+        "m": 48,
+        "n": 48,
+        "k": 32,
+        "dim": 16,
+        "schedule": "baseline",
+        "scratchpad_rows": 32,
+        "accumulator_rows": 32
+      },
+      "status": "no_certified_winner",
+      "completed_rounds": 4,
+      "round_status_counts": {
+        "model_timeout": 4
+      },
+      "model_call_wall_seconds_sum": 3600.125,
+      "rounds_with_unknown_usage": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reported_tokens": {
+        "input": null,
+        "output": null,
+        "reasoning": null,
+        "total": null
+      },
+      "first_native_accepted_round": null,
+      "byte_certified": false,
+      "input_bytes": null,
+      "old_best_input_bytes": null,
+      "input_reduction_vs_old_best": null,
+      "proof_check_seconds": null,
+      "local_execution": null,
+      "spike_execution": null
+    }
+  ],
+  "measurement_notes": [
+    "Token sums cover only reported usage; timed-out responses may have consumed unreported tokens.",
+    "Summed model-call wall time is not elapsed experiment time or GPU execution time; tasks run concurrently.",
+    "Input bytes are modeled full-tile DMA traffic, not measured DRAM transactions or hardware latency.",
+    "Old-best controls are the baseline and feasible batched-B generators fixed at registration.",
+    "Provider cost zero is not evidence of zero compute cost."
+  ]
+}

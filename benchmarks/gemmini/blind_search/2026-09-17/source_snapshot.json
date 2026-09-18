@@ -1,0 +1,51 @@
+{
+  "purpose": "source audit snapshot; execute from original package layout, not this flat snapshot directory",
+  "base_commit": "ca72e2026efdbeb4aab64b51cf26c11cdbfef394",
+  "sources": {
+    "controller_backend": {
+      "original": "specializations/gemmini_gemm/backend.py",
+      "snapshot": "source_snapshot/controller_backend.py",
+      "sha256": "2fd733514385be9cb276686f1d74b0c810f9dad087780d7d7121b9b18bc2af07"
+    },
+    "controller_blind_search": {
+      "original": "specializations/gemmini_gemm/blind_search.py",
+      "snapshot": "source_snapshot/controller_blind_search.py",
+      "sha256": "cf98e32b57c46249165cdd581956752d48e31a0b9339609412401648e92b046b"
+    },
+    "controller_certificate": {
+      "original": "specializations/gemmini_gemm/certificate.py",
+      "snapshot": "source_snapshot/controller_certificate.py",
+      "sha256": "49f813c2acb7b903577d89f92788bb4be65c1705e08d1b512b91bdad40ae1412"
+    },
+    "controller_diagnostics": {
+      "original": "specializations/gemmini_gemm/diagnostics.py",
+      "snapshot": "source_snapshot/controller_diagnostics.py",
+      "sha256": "7eb0e16ae34bef9e30d2f512291be2f45e3cad1de9d2647e3e5024893df8015e"
+    },
+    "controller_encoding": {
+      "original": "specializations/gemmini_gemm/encoding.py",
+      "snapshot": "source_snapshot/controller_encoding.py",
+      "sha256": "eb5dd5d3afb13542a6aee5134a38f564b05348df85032696d133ade935fb188a"
+    },
+    "controller_lowering": {
+      "original": "specializations/gemmini_gemm/lowering.py",
+      "snapshot": "source_snapshot/controller_lowering.py",
+      "sha256": "e8712944566d1afd2945254f86ee12913ffe377cfb71c75bf6d57c70ae88706e"
+    },
+    "examples/gemmini_blind_search.py": {
+      "original": "examples/gemmini_blind_search.py",
+      "snapshot": "source_snapshot/gemmini_blind_search.py",
+      "sha256": "1d3ab0a8f79a58ecd1d96fbc582b30ee60792a8da6227d6b57504ceecd809158"
+    },
+    "specializations/gemmini_gemm/evaluation.py": {
+      "original": "specializations/gemmini_gemm/evaluation.py",
+      "snapshot": "source_snapshot/evaluation.py",
+      "sha256": "f710a99a8f2b6199656f6bedf339fa748f303e0917df35035eb59cb0abc13bd3"
+    },
+    "specializations/gemmini_gemm/schedule_ir.py": {
+      "original": "specializations/gemmini_gemm/schedule_ir.py",
+      "snapshot": "source_snapshot/schedule_ir.py",
+      "sha256": "f0f3d2912caf5348455916c5a55fe2aeea9536bd20ca5df6f9723182bb802a1c"
+    }
+  }
+}
