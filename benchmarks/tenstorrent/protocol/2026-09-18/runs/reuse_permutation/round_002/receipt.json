@@ -1,0 +1,241 @@
+{
+  "model": {
+    "cwd": "/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/veritac-blind-model-z45aovcz",
+    "cwd_policy": "fresh system-temp directory outside the repository",
+    "duration_seconds": 65.505,
+    "error": null,
+    "returncode": 0,
+    "timed_out": false
+  },
+  "proposal": {
+    "program": [
+      {
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "op": "read",
+        "slot": 0,
+        "src": 1
+      },
+      {
+        "op": "reserve",
+        "slot": 1
+      },
+      {
+        "op": "read",
+        "slot": 1,
+        "src": 0
+      },
+      {
+        "op": "wait_reads"
+      },
+      {
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "dst": 0,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "dst": 2,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "op": "publish",
+        "slot": 1
+      },
+      {
+        "op": "acquire",
+        "slot": 1
+      },
+      {
+        "dst": 1,
+        "op": "write",
+        "slot": 1
+      },
+      {
+        "dst": 3,
+        "op": "write",
+        "slot": 1
+      },
+      {
+        "op": "wait_writes"
+      },
+      {
+        "op": "release",
+        "slot": 0
+      },
+      {
+        "op": "release",
+        "slot": 1
+      }
+    ],
+    "rationale": "Round-1 program was accepted (objective [2,16,2]); resubmitting with an optimality argument. expected=[1,0,1,0] forces dst0,dst2<-src1 and dst1,dst3<-src0, so >=2 reads and >=4 writes (one per destination) are mandatory. Waits: publish requires an initialized value with no pending read, and non-wait ops must be valid at every reachable state under arbitrary DMA order, so >=1 wait_reads; release requires no pending transfer, and write completions are arbitrarily ordered, so >=1 wait_writes after writes are pending. Hence waits >=2, achieved. Commands: each used slot needs reserve/publish/acquire/release (final state requires all slots free), giving 2+2+1+2+2+4+1+2=16, and no op can be dropped: reads and writes are forced by the spec, waits are forced as above, and reserve/publish/acquire/release are precondition paths to write and to the all-free final state. A single-slot plan reuses slots via extra release/reserve cycles, costing >=4 waits, so it is lexicographically worse. Peak live slots: one wait_reads must cover both reads, so both slots are reserved before it, giving peak 2, which is also the minimum consistent with waits=2. Safety for every completion order: wait_reads blocks until both reads land; wait_writes blocks until all four writes land; slots are never released or reused with pending transfers; all write destinations are distinct so no destination conflict. Final state: pc=end, no pending transfers, all slots free, outputs initialized with origins 1,0,1,0 matching expected."
+  },
+  "round": 2,
+  "status": "native_accepted",
+  "tool_count": 0,
+  "usage": {
+    "cache": {
+      "read": 0,
+      "write": 0
+    },
+    "cost": 0,
+    "input": 4516,
+    "output": 1405,
+    "reasoning": 0,
+    "total": 5921
+  },
+  "verdict": {
+    "accepted": true,
+    "authority": "native protocol filter, not a Lean certificate",
+    "counts": {
+      "barriers": 2,
+      "commands": 16,
+      "input_bytes": 1024,
+      "output_bytes": 2048,
+      "peak_live_slots": 2,
+      "read": 2,
+      "wait_reads": 1,
+      "wait_writes": 1,
+      "write": 4
+    },
+    "objective": [
+      2,
+      16,
+      2
+    ],
+    "reason": null,
+    "states_explored": 54,
+    "status": "accepted",
+    "trace": [
+      {
+        "action": "issue",
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "read",
+        "slot": 0,
+        "src": 1
+      },
+      {
+        "action": "issue",
+        "op": "reserve",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "op": "read",
+        "slot": 1,
+        "src": 0
+      },
+      {
+        "action": "complete_read",
+        "slot": 0,
+        "src": 1
+      },
+      {
+        "action": "complete_read",
+        "slot": 1,
+        "src": 0
+      },
+      {
+        "action": "issue",
+        "op": "wait_reads"
+      },
+      {
+        "action": "issue",
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "dst": 0,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "dst": 2,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "publish",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "op": "acquire",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "dst": 1,
+        "op": "write",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "dst": 3,
+        "op": "write",
+        "slot": 1
+      },
+      {
+        "action": "complete_write",
+        "dst": 0,
+        "origin": 1,
+        "slot": 0
+      },
+      {
+        "action": "complete_write",
+        "dst": 2,
+        "origin": 1,
+        "slot": 0
+      },
+      {
+        "action": "complete_write",
+        "dst": 1,
+        "origin": 0,
+        "slot": 1
+      },
+      {
+        "action": "complete_write",
+        "dst": 3,
+        "origin": 0,
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "op": "wait_writes"
+      },
+      {
+        "action": "issue",
+        "op": "release",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "release",
+        "slot": 1
+      }
+    ],
+    "trace_truncated": false
+  }
+}

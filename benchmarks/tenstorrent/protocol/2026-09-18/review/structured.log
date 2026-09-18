@@ -1,0 +1,2 @@
+trials: 4000 accepted: 1444 mismatches: 0
+native dist: {'unsafe': 2424, 'accepted': 1444, 'incomplete': 69, 'wrong-output': 63}

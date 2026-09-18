@@ -1,0 +1,35 @@
+Design a correct restricted Blackhole asynchronous page-copy protocol. The task and acceptance rules are fixed. You have no tools. Return only JSON {"program":[...],"rationale":"..."}. Use 1..128 flat instructions with the exact op fields below. There is no optimized reference implementation. Minimize explicit wait_reads+wait_writes count, then command count, then peak live slots, while meeting the exact output specification. Only correct programs count. All allowed asynchronous completion orders must be safe, not just one favorable timing.
+
+# Overnight scope (controller-defined, frozen interface v1)
+Target: Blackhole, one Tensix core, ONE data-movement RISC-V kernel, one NoC, asynchronous copies with arbitrary completion order. No compute/FP, no multi-core, no multiple issuer threads. Genuine CB lifecycle and async protocol subset, not a claim of complete TT support. Each slot has a separate CB of exactly one page. page_bytes multiple of 32. Spec is exact tile/page permutation or replication: output page d must equal input page expected[d] bit-for-bit. Input/output disjoint DRAM buffers. Distinct slots disjoint L1.
+Task JSON exactly {"id":str,"input_pages":positive int,"expected":[source page index,...],"slots":positive int,"page_bytes":positive multiple32}.
+Proposal JSON {"program":[instructions],"rationale":str}. Flat only initially.
+Ops and exact fields:
+{"op":"reserve","slot":s}
+{"op":"read","slot":s,"src":i}
+{"op":"wait_reads"}
+{"op":"publish","slot":s}
+{"op":"acquire","slot":s}
+{"op":"write","slot":s,"dst":d}
+{"op":"wait_writes"}
+{"op":"release","slot":s}
+State: pc, each slot phase free/reserved/published/acquired, optional value origin, pending transfers (direction,slot,source or destination), optional output origins per destination.
+reserve requires free; transitions reserved, clears value.
+read requires reserved, no read/write pending for same slot; src in range; clears value, adds pending read (origin=src). At completion fills slot.
+publish requires reserved, value initialized, no pending read; transitions published.
+acquire requires published; transitions acquired.
+write requires acquired+initialized, no pending read for slot, no pending write for destination; dst valid; adds pending write (origin=slot value). Multiple writes from same acquired slot allowed if destinations distinct. Slot cannot be reused until ALL its writes complete.
+release requires acquired and no pending transfer on slot; free+clears value.
+wait_reads/wait_writes are BLOCKING until respective pending queue empty; not errors while other completions possible.
+Invalid non-wait op at ANY reachable state = unsafe, even if some other event ordering would avoid it. No implicit scheduling assumption that DMA finishes early.
+At each step issuer may issue next op if enabled, or ANY pending DMA can complete. Pending reads/writes not FIFO. Final needs pc=end, no pending transfers, ALL slots free, ALL outputs initialized with expected origins. Failure distinction unsafe/deadlock/wrong-output/budget/incomplete.
+Termination for this finite one-issuer scope: progress events decrease 2*(remaining issued ops)+pending_count; waiting without completion is stuttering excluded from finite event semantics; physical progress requires DMA/eventual scheduling fairness. Never claim unconditional silicon liveness.
+Score lexicographic: #wait_reads + #wait_writes, then total commands, then peak live slots. Count input/output bytes separately. No performance claim from barrier count.
+Trusted formal acceptance is Lean proof of a restricted protocol claim, NOT emitted C++ or final bytes. Backend emitter, C++ compiler, Metalium implementation, ttsim and hardware correspondence are explicit external assumptions/evidence.
+
+
+TASK:
+{"expected": [0, 1], "id": "pair", "input_pages": 2, "page_bytes": 512, "slots": 2}
+
+YOUR PREVIOUS PROPOSALS AND FACTUAL FEEDBACK:
+[]

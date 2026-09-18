@@ -1,0 +1,1554 @@
+{
+  "certification_attempts": [
+    {
+      "certificate": {
+        "accepted": true,
+        "axioms": {
+          "accepted": [
+            "propext"
+          ],
+          "outputs": [
+            "Quot.sound",
+            "propext"
+          ],
+          "progress": [
+            "Quot.sound",
+            "propext"
+          ],
+          "safe": [
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        "kernel_check_seconds": 4.058,
+        "log": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/permutation/certificate_round_001/protocol_certificate.log",
+        "native_verdict": {
+          "accepted": true,
+          "authority": "native protocol filter, not a Lean certificate",
+          "counts": {
+            "barriers": 4,
+            "commands": 28,
+            "input_bytes": 2048,
+            "output_bytes": 2048,
+            "peak_live_slots": 2,
+            "read": 4,
+            "wait_reads": 2,
+            "wait_writes": 2,
+            "write": 4
+          },
+          "objective": [
+            4,
+            28,
+            2
+          ],
+          "reason": null,
+          "states_explored": 51,
+          "status": "accepted",
+          "trace": [
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 0,
+              "src": 2
+            },
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 1,
+              "src": 0
+            },
+            {
+              "action": "complete_read",
+              "slot": 0,
+              "src": 2
+            },
+            {
+              "action": "complete_read",
+              "slot": 1,
+              "src": 0
+            },
+            {
+              "action": "issue",
+              "op": "wait_reads"
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "dst": 0,
+              "op": "write",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "dst": 1,
+              "op": "write",
+              "slot": 1
+            },
+            {
+              "action": "complete_write",
+              "dst": 0,
+              "origin": 2,
+              "slot": 0
+            },
+            {
+              "action": "complete_write",
+              "dst": 1,
+              "origin": 0,
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "wait_writes"
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 0,
+              "src": 3
+            },
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 1,
+              "src": 1
+            },
+            {
+              "action": "complete_read",
+              "slot": 0,
+              "src": 3
+            },
+            {
+              "action": "complete_read",
+              "slot": 1,
+              "src": 1
+            },
+            {
+              "action": "issue",
+              "op": "wait_reads"
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "dst": 2,
+              "op": "write",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "dst": 3,
+              "op": "write",
+              "slot": 1
+            },
+            {
+              "action": "complete_write",
+              "dst": 2,
+              "origin": 3,
+              "slot": 0
+            },
+            {
+              "action": "complete_write",
+              "dst": 3,
+              "origin": 1,
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "wait_writes"
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 1
+            }
+          ],
+          "trace_truncated": false
+        },
+        "nodes": 51,
+        "payload_semantics": "immutable input pages and exact copies, represented by data origins",
+        "progress_assumption": "finite event semantics; physical scheduling and DMA eventual progress assumed",
+        "reason": "kernel-checked protocol graph certificate",
+        "request": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/permutation/certificate_round_001/request.json",
+        "request_sha256": "e5bceadf8c9cf485594b10ed731147eaa29c4571c53c0eb81da4d6062fb856d7",
+        "scope": "single-issuer asynchronous protocol IR; NOT emitted C++/machine code/hardware proof",
+        "source": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/permutation/certificate_round_001/protocol_certificate.lean",
+        "source_sha256": "8336dfe223bd25fde594c8c8771bdcfa21400d3cecfbeba2e5d76151c8ec95ce"
+      },
+      "objective": [
+        4,
+        28,
+        2
+      ],
+      "round": 1
+    }
+  ],
+  "config": {
+    "contract_sha256": "494c93bd47905e5f5de73ac71e4d52e110bd10f340af20546f96cd842336cba8",
+    "model": "dgxspark-glm/glm-5.3-flash",
+    "model_timeout": 900,
+    "proof_timeout": 600,
+    "rounds": 3,
+    "scope": "restricted protocol IR; NOT final machine-code proof",
+    "started_utc": "2026-09-18T10:14:32.871894+00:00",
+    "synthetic_model": false,
+    "task": {
+      "expected": [
+        2,
+        0,
+        3,
+        1
+      ],
+      "id": "permutation",
+      "input_pages": 4,
+      "page_bytes": 512,
+      "slots": 2
+    },
+    "task_sha256": "bd6f38b26725f6abfd5b1621ef416b56887d21bca01005525d3b1750f7780b51"
+  },
+  "finished_utc": "2026-09-18T10:20:54.264743+00:00",
+  "rounds": [
+    {
+      "proposal": {
+        "program": [
+          {
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "op": "read",
+            "slot": 0,
+            "src": 2
+          },
+          {
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "op": "read",
+            "slot": 1,
+            "src": 0
+          },
+          {
+            "op": "wait_reads"
+          },
+          {
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "dst": 1,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "op": "wait_writes"
+          },
+          {
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "op": "release",
+            "slot": 1
+          },
+          {
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "op": "read",
+            "slot": 0,
+            "src": 3
+          },
+          {
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "op": "read",
+            "slot": 1,
+            "src": 1
+          },
+          {
+            "op": "wait_reads"
+          },
+          {
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "dst": 3,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "op": "wait_writes"
+          },
+          {
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "op": "release",
+            "slot": 1
+          }
+        ],
+        "rationale": "Two rounds of two overlapping copies through slots 0/1. Round 1: read src2->slot0 and src0->slot1 concurrently, one blocking wait_reads guarantees both values initialized under any DMA completion order before publish/acquire; writes go to dst0 (origin 2) and dst1 (origin 0), matching expected[0]=2, expected[1]=0. One wait_writes drains both pending writes so releases are valid regardless of completion order. Round 2 repeats with src3->dst2 and src1->dst3, matching expected[2]=3, expected[3]=1. Every non-wait op is enabled in all reachable interleavings: reads target distinct slots, writes target distinct destinations from acquired+initialized slots, and slots are reused only after wait_writes+release. Minimality: each of the 4 page copies strictly needs reserve/read/publish/acquire/write/release (6 ops each = 24); two read batches force 2 wait_reads (publish needs initialized value, only observable via blocking wait), and writes preceding every release force 2 wait_writes; 1-slot alternative would need 8 waits, so 4 waits / 28 commands / peak 2 live slots is lexicographically optimal."
+      },
+      "round": 1,
+      "status": "native_accepted",
+      "verdict": {
+        "accepted": true,
+        "authority": "native protocol filter, not a Lean certificate",
+        "counts": {
+          "barriers": 4,
+          "commands": 28,
+          "input_bytes": 2048,
+          "output_bytes": 2048,
+          "peak_live_slots": 2,
+          "read": 4,
+          "wait_reads": 2,
+          "wait_writes": 2,
+          "write": 4
+        },
+        "objective": [
+          4,
+          28,
+          2
+        ],
+        "reason": null,
+        "states_explored": 51,
+        "status": "accepted",
+        "trace": [
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 2
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 1,
+            "src": 0
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 2
+          },
+          {
+            "action": "complete_read",
+            "slot": 1,
+            "src": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "dst": 1,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "action": "complete_write",
+            "dst": 0,
+            "origin": 2,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 1,
+            "origin": 0,
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 3
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 1,
+            "src": 1
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 3
+          },
+          {
+            "action": "complete_read",
+            "slot": 1,
+            "src": 1
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "dst": 3,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "action": "complete_write",
+            "dst": 2,
+            "origin": 3,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 3,
+            "origin": 1,
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 1
+          }
+        ],
+        "trace_truncated": false
+      }
+    },
+    {
+      "proposal": {
+        "program": [
+          {
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "op": "read",
+            "slot": 0,
+            "src": 2
+          },
+          {
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "op": "read",
+            "slot": 1,
+            "src": 0
+          },
+          {
+            "op": "wait_reads"
+          },
+          {
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "dst": 1,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "op": "wait_writes"
+          },
+          {
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "op": "release",
+            "slot": 1
+          },
+          {
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "op": "read",
+            "slot": 0,
+            "src": 3
+          },
+          {
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "op": "read",
+            "slot": 1,
+            "src": 1
+          },
+          {
+            "op": "wait_reads"
+          },
+          {
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "dst": 3,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "op": "wait_writes"
+          },
+          {
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "op": "release",
+            "slot": 1
+          }
+        ],
+        "rationale": "Resubmission of the round-1 accepted program (objective [4,28,2]); it is provably lexicographically optimal. Wait bound: all four expected origins are distinct, so each slot (one page, value from a single read) serves exactly one destination; 4 slot-uses / 2 slots force >=2 rounds. In each round, publish requires an initialized value with no pending read, and the only way to observe read completion is blocking wait_reads, so each round needs >=1 wait_reads. Reusing a slot requires release, which requires no pending transfer on the slot; since a non-wait op invalid at ANY reachable state is unsafe, wait_writes must precede every release round, giving >=1 wait_writes per round. Hence >=4 waits; 1-slot scheduling would need 8, and interleaving rounds cannot share waits because round-2 reads cannot be issued until slots are freed by wait_writes+release, which is after round-1's wait_reads. Command bound: each slot-use strictly needs reserve/read/publish/acquire/write/release (write needs acquired+initialized; acquire needs published; final state needs all slots free), i.e. 24 + 4 waits = 28; no op is droppable and no write can serve two distinct destinations. Peak live slots is 2, the task's slot count, already minimal given two concurrent reads are needed to keep one round. Trace-safety: reads target distinct slots, writes target distinct destinations, and every non-wait op is enabled under all DMA completion orders (verified by the native filter's 51-state exploration)."
+      },
+      "round": 2,
+      "status": "native_accepted",
+      "verdict": {
+        "accepted": true,
+        "authority": "native protocol filter, not a Lean certificate",
+        "counts": {
+          "barriers": 4,
+          "commands": 28,
+          "input_bytes": 2048,
+          "output_bytes": 2048,
+          "peak_live_slots": 2,
+          "read": 4,
+          "wait_reads": 2,
+          "wait_writes": 2,
+          "write": 4
+        },
+        "objective": [
+          4,
+          28,
+          2
+        ],
+        "reason": null,
+        "states_explored": 51,
+        "status": "accepted",
+        "trace": [
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 2
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 1,
+            "src": 0
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 2
+          },
+          {
+            "action": "complete_read",
+            "slot": 1,
+            "src": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "dst": 1,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "action": "complete_write",
+            "dst": 0,
+            "origin": 2,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 1,
+            "origin": 0,
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 3
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 1,
+            "src": 1
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 3
+          },
+          {
+            "action": "complete_read",
+            "slot": 1,
+            "src": 1
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "dst": 3,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "action": "complete_write",
+            "dst": 2,
+            "origin": 3,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 3,
+            "origin": 1,
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 1
+          }
+        ],
+        "trace_truncated": false
+      }
+    },
+    {
+      "proposal": {
+        "program": [
+          {
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "op": "read",
+            "slot": 0,
+            "src": 2
+          },
+          {
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "op": "read",
+            "slot": 1,
+            "src": 0
+          },
+          {
+            "op": "wait_reads"
+          },
+          {
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "dst": 1,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "op": "wait_writes"
+          },
+          {
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "op": "release",
+            "slot": 1
+          },
+          {
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "op": "read",
+            "slot": 0,
+            "src": 3
+          },
+          {
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "op": "read",
+            "slot": 1,
+            "src": 1
+          },
+          {
+            "op": "wait_reads"
+          },
+          {
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "dst": 3,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "op": "wait_writes"
+          },
+          {
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "op": "release",
+            "slot": 1
+          }
+        ],
+        "rationale": "Resubmission of the twice-accepted program (objective [4,28,2], verified safe by the native filter's 51-state exploration over all DMA completion orders). Lower bounds: all four expected origins are distinct, so each single-page slot-use serves exactly one destination; 4 slot-uses / 2 slots force >=2 rounds. A slot can hold only one pending read at a time, and round-2 reads cannot be issued until slots are freed by wait_writes+release (which is after round-1 wait_reads), so reads batch only within a round: publish requires an initialized value with no pending read and only blocking wait_reads observes read completion, giving >=1 wait_reads per round. Reuse requires release, which requires no pending transfer on the slot; since a non-wait op invalid at ANY reachable state is unsafe, wait_writes must precede each round's releases (writes precede every release), giving >=1 wait_writes per round. Hence >=4 waits; a 1-slot schedule would need 8, and extra slots are unavailable (slots=2). Command bound: each slot-use strictly needs reserve/read/publish/acquire/write/release (write needs acquired+initialized; acquire needs published; final state needs all slots free), i.e. 24 + 4 waits = 28; no op is droppable and one write cannot serve two distinct expected origins. Peak live slots is 2, the task's slot count, already minimal. Correctness: round 1 maps src2->dst0 and src0->dst1, round 2 maps src3->dst2 and src1->dst3, matching expected=[2,0,3,1]; reads target distinct slots, writes target distinct destinations, and every non-wait op is enabled under all completion orders, with no reliance on DMA finishing early."
+      },
+      "round": 3,
+      "status": "native_accepted",
+      "verdict": {
+        "accepted": true,
+        "authority": "native protocol filter, not a Lean certificate",
+        "counts": {
+          "barriers": 4,
+          "commands": 28,
+          "input_bytes": 2048,
+          "output_bytes": 2048,
+          "peak_live_slots": 2,
+          "read": 4,
+          "wait_reads": 2,
+          "wait_writes": 2,
+          "write": 4
+        },
+        "objective": [
+          4,
+          28,
+          2
+        ],
+        "reason": null,
+        "states_explored": 51,
+        "status": "accepted",
+        "trace": [
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 2
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 1,
+            "src": 0
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 2
+          },
+          {
+            "action": "complete_read",
+            "slot": 1,
+            "src": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "dst": 1,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "action": "complete_write",
+            "dst": 0,
+            "origin": 2,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 1,
+            "origin": 0,
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 3
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 1,
+            "src": 1
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 3
+          },
+          {
+            "action": "complete_read",
+            "slot": 1,
+            "src": 1
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "dst": 3,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "action": "complete_write",
+            "dst": 2,
+            "origin": 3,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 3,
+            "origin": 1,
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 1
+          }
+        ],
+        "trace_truncated": false
+      }
+    }
+  ],
+  "status": "certified",
+  "winner": {
+    "certificate": {
+      "accepted": true,
+      "axioms": {
+        "accepted": [
+          "propext"
+        ],
+        "outputs": [
+          "Quot.sound",
+          "propext"
+        ],
+        "progress": [
+          "Quot.sound",
+          "propext"
+        ],
+        "safe": [
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "kernel_check_seconds": 4.058,
+      "log": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/permutation/certificate_round_001/protocol_certificate.log",
+      "native_verdict": {
+        "accepted": true,
+        "authority": "native protocol filter, not a Lean certificate",
+        "counts": {
+          "barriers": 4,
+          "commands": 28,
+          "input_bytes": 2048,
+          "output_bytes": 2048,
+          "peak_live_slots": 2,
+          "read": 4,
+          "wait_reads": 2,
+          "wait_writes": 2,
+          "write": 4
+        },
+        "objective": [
+          4,
+          28,
+          2
+        ],
+        "reason": null,
+        "states_explored": 51,
+        "status": "accepted",
+        "trace": [
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 2
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 1,
+            "src": 0
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 2
+          },
+          {
+            "action": "complete_read",
+            "slot": 1,
+            "src": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "dst": 1,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "action": "complete_write",
+            "dst": 0,
+            "origin": 2,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 1,
+            "origin": 0,
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 3
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 1,
+            "src": 1
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 3
+          },
+          {
+            "action": "complete_read",
+            "slot": 1,
+            "src": 1
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "dst": 3,
+            "op": "write",
+            "slot": 1
+          },
+          {
+            "action": "complete_write",
+            "dst": 2,
+            "origin": 3,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 3,
+            "origin": 1,
+            "slot": 1
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 1
+          }
+        ],
+        "trace_truncated": false
+      },
+      "nodes": 51,
+      "payload_semantics": "immutable input pages and exact copies, represented by data origins",
+      "progress_assumption": "finite event semantics; physical scheduling and DMA eventual progress assumed",
+      "reason": "kernel-checked protocol graph certificate",
+      "request": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/permutation/certificate_round_001/request.json",
+      "request_sha256": "e5bceadf8c9cf485594b10ed731147eaa29c4571c53c0eb81da4d6062fb856d7",
+      "scope": "single-issuer asynchronous protocol IR; NOT emitted C++/machine code/hardware proof",
+      "source": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/permutation/certificate_round_001/protocol_certificate.lean",
+      "source_sha256": "8336dfe223bd25fde594c8c8771bdcfa21400d3cecfbeba2e5d76151c8ec95ce"
+    },
+    "objective": [
+      4,
+      28,
+      2
+    ],
+    "round": 1
+  }
+}

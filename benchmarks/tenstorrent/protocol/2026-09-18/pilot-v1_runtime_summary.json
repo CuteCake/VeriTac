@@ -1,0 +1,82 @@
+[
+  {
+    "kind": "live",
+    "task_id": "pair",
+    "main_returncode": 0,
+    "protocol_certificate_sha256": "7dd189ab157cf2782d0580eb76769768c199bb9af25b0dd7348f6c43392a968a",
+    "success": true,
+    "extra_returncode": 0,
+    "host_binary_sha256": "aae7c17a07cc713b94d49d9ae1021028efc5897ed78fdb76622d776118596322",
+    "output_cases": 6
+  },
+  {
+    "kind": "live",
+    "task_id": "permutation",
+    "main_returncode": 0,
+    "protocol_certificate_sha256": "8336dfe223bd25fde594c8c8771bdcfa21400d3cecfbeba2e5d76151c8ec95ce",
+    "success": true,
+    "extra_returncode": 0,
+    "host_binary_sha256": "a1134efebc135ec86bf194824c767489f7e6680aa59c777dd0877d909d335c59",
+    "output_cases": 6
+  },
+  {
+    "kind": "live",
+    "task_id": "replication",
+    "main_returncode": 0,
+    "protocol_certificate_sha256": "eab08bf4b546263151bf47ae302b363f75c375c916de3852c01db84e9c12111d",
+    "success": true,
+    "extra_returncode": 0,
+    "host_binary_sha256": "d946e12f5813813da721d74d3a84f83ff8261ab0acb84fd1b81b3c5914dc7a91",
+    "output_cases": 6
+  },
+  {
+    "kind": "live",
+    "task_id": "reuse_permutation",
+    "main_returncode": 0,
+    "protocol_certificate_sha256": "9572200e5fa33473b86bf6618057643e23e2b81030d25cced420ce94c220aa5c",
+    "success": true,
+    "extra_returncode": 0,
+    "host_binary_sha256": "f7ba430dbb236c911ded126f7b2f52110340589ef9bb8df4d2e8aba08320600a",
+    "output_cases": 6
+  },
+  {
+    "kind": "serial",
+    "task_id": "pair",
+    "main_returncode": 0,
+    "protocol_certificate_sha256": "0976ff72717c0dd454d15a1349beeaab17ddd709c0822400be18f41eec3aa251",
+    "success": true,
+    "extra_returncode": 0,
+    "host_binary_sha256": "cdf81e46d097cf1d61b7d921527374b850a5d6ad3e549245fd897c07dc0a3c6a",
+    "output_cases": 6
+  },
+  {
+    "kind": "serial",
+    "task_id": "permutation",
+    "main_returncode": 0,
+    "protocol_certificate_sha256": "70c74c1ddb2d5210667d28cfab6bc54714fe10454ba4240aefd73375589027bd",
+    "success": true,
+    "extra_returncode": 0,
+    "host_binary_sha256": "724c441eaab404ceee41a198a9a2366e28b6a9e28bb0d3a57fe5bd6d61c840f6",
+    "output_cases": 6
+  },
+  {
+    "kind": "serial",
+    "task_id": "replication",
+    "main_returncode": 0,
+    "protocol_certificate_sha256": "9d4f947a977250924e2785464fdf35e92ff8fc506c59ef7923abe4ceeaf23dc1",
+    "success": true,
+    "extra_returncode": 0,
+    "host_binary_sha256": "aacb96c7623062c09dc32456b734ca6f7885c9a651e7260d99697908ed7d13fc",
+    "output_cases": 6
+  },
+  {
+    "kind": "serial",
+    "task_id": "reuse_permutation",
+    "main_returncode": 0,
+    "protocol_certificate_sha256": "3de753eef9592b8154cd4755bb10e445c7e16c4c5ab95fdc5a9a02c33c6bad9a",
+    "success": true,
+    "extra_returncode": 0,
+    "host_binary_sha256": "5a2ae602bb5fd936167b70edd45075020ba52d91ab687b6550ee81dcfd5fab39",
+    "output_cases": 6
+  }
+]

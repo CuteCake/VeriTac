@@ -1,0 +1,12 @@
+{
+  "id": "replication",
+  "input_pages": 1,
+  "expected": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "slots": 1,
+  "page_bytes": 512
+}

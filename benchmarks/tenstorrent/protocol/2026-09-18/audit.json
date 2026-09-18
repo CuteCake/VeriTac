@@ -1,0 +1,335 @@
+{
+  "success": true,
+  "formal_and_search_fingerprint_unchanged": true,
+  "certified_model_tasks": 4,
+  "model_rounds": 12,
+  "round_statuses": [
+    "native_accepted",
+    "native_accepted",
+    "native_accepted",
+    "native_accepted",
+    "native_accepted",
+    "native_accepted",
+    "native_accepted",
+    "native_accepted",
+    "native_accepted",
+    "native_accepted",
+    "native_accepted",
+    "native_accepted"
+  ],
+  "unique_model_sessions": 12,
+  "reported_tokens": {
+    "input": 53941,
+    "output": 19182,
+    "total": 73123
+  },
+  "summed_model_call_seconds": 1019.221,
+  "unknown_usage_rounds": 0,
+  "runtime_programs": 8,
+  "runtime_full_output_cases": 48,
+  "rows": [
+    {
+      "task_id": "pair",
+      "model_objective": [
+        2,
+        14,
+        2
+      ],
+      "model_counts": {
+        "read": 2,
+        "write": 2,
+        "wait_reads": 1,
+        "wait_writes": 1,
+        "commands": 14,
+        "peak_live_slots": 2,
+        "input_bytes": 1024,
+        "output_bytes": 1024,
+        "barriers": 2
+      },
+      "serial_objective": [
+        4,
+        16,
+        1
+      ],
+      "serial_counts": {
+        "read": 2,
+        "write": 2,
+        "wait_reads": 2,
+        "wait_writes": 2,
+        "commands": 16,
+        "peak_live_slots": 1,
+        "input_bytes": 1024,
+        "output_bytes": 1024,
+        "barriers": 4
+      },
+      "strong_control_objective": [
+        2,
+        14,
+        2
+      ],
+      "selected_round": 1,
+      "certificate": {
+        "source_sha256": "7dd189ab157cf2782d0580eb76769768c199bb9af25b0dd7348f6c43392a968a",
+        "axioms": {
+          "accepted": [
+            "propext"
+          ],
+          "safe": [
+            "Quot.sound",
+            "propext"
+          ],
+          "progress": [
+            "Quot.sound",
+            "propext"
+          ],
+          "outputs": [
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        "nodes": 23
+      },
+      "kernel_check_seconds": 3.713
+    },
+    {
+      "task_id": "permutation",
+      "model_objective": [
+        4,
+        28,
+        2
+      ],
+      "model_counts": {
+        "read": 4,
+        "write": 4,
+        "wait_reads": 2,
+        "wait_writes": 2,
+        "commands": 28,
+        "peak_live_slots": 2,
+        "input_bytes": 2048,
+        "output_bytes": 2048,
+        "barriers": 4
+      },
+      "serial_objective": [
+        8,
+        32,
+        1
+      ],
+      "serial_counts": {
+        "read": 4,
+        "write": 4,
+        "wait_reads": 4,
+        "wait_writes": 4,
+        "commands": 32,
+        "peak_live_slots": 1,
+        "input_bytes": 2048,
+        "output_bytes": 2048,
+        "barriers": 8
+      },
+      "strong_control_objective": [
+        4,
+        28,
+        2
+      ],
+      "selected_round": 1,
+      "certificate": {
+        "source_sha256": "8336dfe223bd25fde594c8c8771bdcfa21400d3cecfbeba2e5d76151c8ec95ce",
+        "axioms": {
+          "accepted": [
+            "propext"
+          ],
+          "safe": [
+            "Quot.sound",
+            "propext"
+          ],
+          "progress": [
+            "Quot.sound",
+            "propext"
+          ],
+          "outputs": [
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        "nodes": 51
+      },
+      "kernel_check_seconds": 4.058
+    },
+    {
+      "task_id": "replication",
+      "model_objective": [
+        2,
+        11,
+        1
+      ],
+      "model_counts": {
+        "read": 1,
+        "write": 4,
+        "wait_reads": 1,
+        "wait_writes": 1,
+        "commands": 11,
+        "peak_live_slots": 1,
+        "input_bytes": 512,
+        "output_bytes": 2048,
+        "barriers": 2
+      },
+      "serial_objective": [
+        8,
+        32,
+        1
+      ],
+      "serial_counts": {
+        "read": 4,
+        "write": 4,
+        "wait_reads": 4,
+        "wait_writes": 4,
+        "commands": 32,
+        "peak_live_slots": 1,
+        "input_bytes": 2048,
+        "output_bytes": 2048,
+        "barriers": 8
+      },
+      "strong_control_objective": [
+        2,
+        11,
+        1
+      ],
+      "selected_round": 1,
+      "certificate": {
+        "source_sha256": "eab08bf4b546263151bf47ae302b363f75c375c916de3852c01db84e9c12111d",
+        "axioms": {
+          "accepted": [
+            "propext"
+          ],
+          "safe": [
+            "Quot.sound",
+            "propext"
+          ],
+          "progress": [
+            "Quot.sound",
+            "propext"
+          ],
+          "outputs": [
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        "nodes": 39
+      },
+      "kernel_check_seconds": 4.024
+    },
+    {
+      "task_id": "reuse_permutation",
+      "model_objective": [
+        2,
+        16,
+        2
+      ],
+      "model_counts": {
+        "read": 2,
+        "write": 4,
+        "wait_reads": 1,
+        "wait_writes": 1,
+        "commands": 16,
+        "peak_live_slots": 2,
+        "input_bytes": 1024,
+        "output_bytes": 2048,
+        "barriers": 2
+      },
+      "serial_objective": [
+        8,
+        32,
+        1
+      ],
+      "serial_counts": {
+        "read": 4,
+        "write": 4,
+        "wait_reads": 4,
+        "wait_writes": 4,
+        "commands": 32,
+        "peak_live_slots": 1,
+        "input_bytes": 2048,
+        "output_bytes": 2048,
+        "barriers": 8
+      },
+      "strong_control_objective": [
+        2,
+        16,
+        2
+      ],
+      "selected_round": 1,
+      "certificate": {
+        "source_sha256": "9572200e5fa33473b86bf6618057643e23e2b81030d25cced420ce94c220aa5c",
+        "axioms": {
+          "accepted": [
+            "propext"
+          ],
+          "safe": [
+            "Quot.sound",
+            "propext"
+          ],
+          "progress": [
+            "Quot.sound",
+            "propext"
+          ],
+          "outputs": [
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        "nodes": 54
+      },
+      "kernel_check_seconds": 4.11
+    }
+  ],
+  "runtime": [
+    {
+      "case": "live_pair",
+      "full_output_cases": 6,
+      "host_binary_sha256": "aae7c17a07cc713b94d49d9ae1021028efc5897ed78fdb76622d776118596322",
+      "device_elf_sha256": "8852b8c09bc9a2429f2df66128b4d8a08721a81f188613bc3a5d382d8553dd35"
+    },
+    {
+      "case": "serial_pair",
+      "full_output_cases": 6,
+      "host_binary_sha256": "cdf81e46d097cf1d61b7d921527374b850a5d6ad3e549245fd897c07dc0a3c6a",
+      "device_elf_sha256": "34d2ea2e87be8f6b2f81f6fdcb02a32609856112c246ab67ad3d8f602957739f"
+    },
+    {
+      "case": "live_permutation",
+      "full_output_cases": 6,
+      "host_binary_sha256": "a1134efebc135ec86bf194824c767489f7e6680aa59c777dd0877d909d335c59",
+      "device_elf_sha256": "8bbce4797f54368339ff71f6484a7a8fcf3a5d819ce22b7f443b7cc25d9ed5bd"
+    },
+    {
+      "case": "serial_permutation",
+      "full_output_cases": 6,
+      "host_binary_sha256": "724c441eaab404ceee41a198a9a2366e28b6a9e28bb0d3a57fe5bd6d61c840f6",
+      "device_elf_sha256": "58647c384142ffb388db554beb0611022c5f14d74be74e832eadf7d2b72fd845"
+    },
+    {
+      "case": "live_replication",
+      "full_output_cases": 6,
+      "host_binary_sha256": "d946e12f5813813da721d74d3a84f83ff8261ab0acb84fd1b81b3c5914dc7a91",
+      "device_elf_sha256": "02624d96235144f7c223828be3f5f80d502bfe9b6b4cb8235236d93640cbfd56"
+    },
+    {
+      "case": "serial_replication",
+      "full_output_cases": 6,
+      "host_binary_sha256": "aacb96c7623062c09dc32456b734ca6f7885c9a651e7260d99697908ed7d13fc",
+      "device_elf_sha256": "7deab92e08553e6823627f55fbdc289195750b62022f45955cf62420ae3947a9"
+    },
+    {
+      "case": "live_reuse_permutation",
+      "full_output_cases": 6,
+      "host_binary_sha256": "f7ba430dbb236c911ded126f7b2f52110340589ef9bb8df4d2e8aba08320600a",
+      "device_elf_sha256": "8dc1c763aa3d2ae163620b4f499ed2943b734ae2965c081c8d97eece404cac81"
+    },
+    {
+      "case": "serial_reuse_permutation",
+      "full_output_cases": 6,
+      "host_binary_sha256": "5a2ae602bb5fd936167b70edd45075020ba52d91ab687b6550ee81dcfd5fab39",
+      "device_elf_sha256": "dafd6df1cbf2e659c96e78a74ed25f4faf01b0498a0cc60d3f25b99c1352270e"
+    }
+  ],
+  "scope": "artifact binding and replay audit; original Lean kernel checks are separate evidence; NO compiled-byte correctness theorem or hardware performance claim"
+}

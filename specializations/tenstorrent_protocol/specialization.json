@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "id": "tenstorrent_protocol",
+  "status": "experimental proof-backed protocol IR with local official-simulator evidence; no final executable theorem",
+  "computation": "Exact byte-preserving page permutation and replication",
+  "target": "Restricted Blackhole Metalium: one Tensix, one data-movement issuer, one NoC, one-page circular buffers",
+  "implementation": [
+    "specializations/tenstorrent_protocol/protocol.py",
+    "specializations/tenstorrent_protocol/adapter.py",
+    "specializations/tenstorrent_protocol/certificate.py",
+    "specializations/tenstorrent_protocol/search.py",
+    "specializations/tenstorrent_protocol/runtime"
+  ],
+  "formal_sources": [
+    "VeriTac/Tenstorrent/GraphCertificate.lean",
+    "VeriTac/Tenstorrent/Protocol.lean"
+  ],
+  "entrypoints": {
+    "protocol_cli": "specializations/tenstorrent_protocol/__main__.py",
+    "local_simulator_setup": "specializations/tenstorrent_protocol/runtime/setup_local.sh",
+    "metalium_emission_and_replay": "specializations/tenstorrent_protocol/runtime/runner.py"
+  },
+  "proof_scope": "A Lean-checked finite state graph covers all modeled issue/DMA-completion interleavings, safe issue, well-founded event paths, and exact terminal output origins for arbitrary immutable page payloads",
+  "boundaries": [
+    "One issuer, one Tensix and NoC; no floating point, compute kernels, multi-core or multi-issuer claim",
+    "Exact-copy primitives and disjoint immutable input, output and slot regions are assumptions of the model",
+    "Physical scheduling and eventual DMA completion are separate progress assumptions",
+    "Metalium C++, compiler, runtime, ELF and silicon correspondence are not formally proved",
+    "Static barrier counts and simulator elapsed time are not hardware performance measurements",
+    "IR frontend accepts at most 128 instructions; this runtime-argument emitter supports at most 112"
+  ],
+  "evidence": ["benchmarks/tenstorrent/protocol/2026-09-18"]
+}

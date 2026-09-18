@@ -1,0 +1,10 @@
+{
+  "kind": "live",
+  "task_id": "reuse_permutation",
+  "main_returncode": 0,
+  "protocol_certificate_sha256": "9572200e5fa33473b86bf6618057643e23e2b81030d25cced420ce94c220aa5c",
+  "success": true,
+  "extra_returncode": 0,
+  "host_binary_sha256": "f7ba430dbb236c911ded126f7b2f52110340589ef9bb8df4d2e8aba08320600a",
+  "output_cases": 6
+}

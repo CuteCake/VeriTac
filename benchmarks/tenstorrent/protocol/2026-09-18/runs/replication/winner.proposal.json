@@ -1,0 +1,52 @@
+{
+  "program": [
+    {
+      "op": "reserve",
+      "slot": 0
+    },
+    {
+      "op": "read",
+      "slot": 0,
+      "src": 0
+    },
+    {
+      "op": "wait_reads"
+    },
+    {
+      "op": "publish",
+      "slot": 0
+    },
+    {
+      "op": "acquire",
+      "slot": 0
+    },
+    {
+      "dst": 0,
+      "op": "write",
+      "slot": 0
+    },
+    {
+      "dst": 1,
+      "op": "write",
+      "slot": 0
+    },
+    {
+      "dst": 2,
+      "op": "write",
+      "slot": 0
+    },
+    {
+      "dst": 3,
+      "op": "write",
+      "slot": 0
+    },
+    {
+      "op": "wait_writes"
+    },
+    {
+      "op": "release",
+      "slot": 0
+    }
+  ],
+  "rationale": "Single slot, one source page replicated to 4 destinations. One read issues the sole input DMA; wait_reads is mandatory before publish because publish requires an initialized value and no pending read, and completion order is arbitrary, so we cannot assume the read lands early. After acquire, all four writes are issued from the same acquired slot to distinct destinations (each dst checked against pending writes only for that destination, so distinct dsts never conflict), reusing the single acquired page value. A single wait_writes drains all four pending writes, satisfying release's no-pending-transfer precondition without per-write waits. This yields the lexicographic minimum: barrier count 2 (one wait_reads + one wait_writes \u2014 the read must complete before publish and the writes before release, and with one slot no cross-slot overlap can hide them), 11 total commands (reserve, read, wait_reads, publish, acquire, 4 writes, wait_writes, release; no reserve/read/publish/acquire can be elided per the phase machine), and peak live slots 1. All orders safe: reads complete before any publish check relies on them; writes complete before release; destinations distinct so no pending-write conflict; output origins are slot 0's value (origin src 0) matching expected [0,0,0,0]. No unstated FIFO or early-DMA assumption; blocking waits are the only synchronization and are never taken in a state where they could stall forever."
+}

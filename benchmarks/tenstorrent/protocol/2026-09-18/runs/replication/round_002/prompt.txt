@@ -1,0 +1,35 @@
+Design a correct restricted Blackhole asynchronous page-copy protocol. The task and acceptance rules are fixed. You have no tools. Return only JSON {"program":[...],"rationale":"..."}. Use 1..128 flat instructions with the exact op fields below. There is no optimized reference implementation. Minimize explicit wait_reads+wait_writes count, then command count, then peak live slots, while meeting the exact output specification. Only correct programs count. All allowed asynchronous completion orders must be safe, not just one favorable timing.
+
+# Overnight scope (controller-defined, frozen interface v1)
+Target: Blackhole, one Tensix core, ONE data-movement RISC-V kernel, one NoC, asynchronous copies with arbitrary completion order. No compute/FP, no multi-core, no multiple issuer threads. Genuine CB lifecycle and async protocol subset, not a claim of complete TT support. Each slot has a separate CB of exactly one page. page_bytes multiple of 32. Spec is exact tile/page permutation or replication: output page d must equal input page expected[d] bit-for-bit. Input/output disjoint DRAM buffers. Distinct slots disjoint L1.
+Task JSON exactly {"id":str,"input_pages":positive int,"expected":[source page index,...],"slots":positive int,"page_bytes":positive multiple32}.
+Proposal JSON {"program":[instructions],"rationale":str}. Flat only initially.
+Ops and exact fields:
+{"op":"reserve","slot":s}
+{"op":"read","slot":s,"src":i}
+{"op":"wait_reads"}
+{"op":"publish","slot":s}
+{"op":"acquire","slot":s}
+{"op":"write","slot":s,"dst":d}
+{"op":"wait_writes"}
+{"op":"release","slot":s}
+State: pc, each slot phase free/reserved/published/acquired, optional value origin, pending transfers (direction,slot,source or destination), optional output origins per destination.
+reserve requires free; transitions reserved, clears value.
+read requires reserved, no read/write pending for same slot; src in range; clears value, adds pending read (origin=src). At completion fills slot.
+publish requires reserved, value initialized, no pending read; transitions published.
+acquire requires published; transitions acquired.
+write requires acquired+initialized, no pending read for slot, no pending write for destination; dst valid; adds pending write (origin=slot value). Multiple writes from same acquired slot allowed if destinations distinct. Slot cannot be reused until ALL its writes complete.
+release requires acquired and no pending transfer on slot; free+clears value.
+wait_reads/wait_writes are BLOCKING until respective pending queue empty; not errors while other completions possible.
+Invalid non-wait op at ANY reachable state = unsafe, even if some other event ordering would avoid it. No implicit scheduling assumption that DMA finishes early.
+At each step issuer may issue next op if enabled, or ANY pending DMA can complete. Pending reads/writes not FIFO. Final needs pc=end, no pending transfers, ALL slots free, ALL outputs initialized with expected origins. Failure distinction unsafe/deadlock/wrong-output/budget/incomplete.
+Termination for this finite one-issuer scope: progress events decrease 2*(remaining issued ops)+pending_count; waiting without completion is stuttering excluded from finite event semantics; physical progress requires DMA/eventual scheduling fairness. Never claim unconditional silicon liveness.
+Score lexicographic: #wait_reads + #wait_writes, then total commands, then peak live slots. Count input/output bytes separately. No performance claim from barrier count.
+Trusted formal acceptance is Lean proof of a restricted protocol claim, NOT emitted C++ or final bytes. Backend emitter, C++ compiler, Metalium implementation, ttsim and hardware correspondence are explicit external assumptions/evidence.
+
+
+TASK:
+{"expected": [0, 0, 0, 0], "id": "replication", "input_pages": 1, "page_bytes": 512, "slots": 1}
+
+YOUR PREVIOUS PROPOSALS AND FACTUAL FEEDBACK:
+[{"proposal": {"program": [{"op": "reserve", "slot": 0}, {"op": "read", "slot": 0, "src": 0}, {"op": "wait_reads"}, {"op": "publish", "slot": 0}, {"op": "acquire", "slot": 0}, {"dst": 0, "op": "write", "slot": 0}, {"dst": 1, "op": "write", "slot": 0}, {"dst": 2, "op": "write", "slot": 0}, {"dst": 3, "op": "write", "slot": 0}, {"op": "wait_writes"}, {"op": "release", "slot": 0}], "rationale": "Single slot, one source page replicated to 4 destinations. One read issues the sole input DMA; wait_reads is mandatory before publish because publish requires an initialized value and no pending read, and completion order is arbitrary, so we cannot assume the read lands early. After acquire, all four writes are issued from the same acquired slot to distinct destinations (each dst checked against pending writes only for that destination, so distinct dsts never conflict), reusing the single acquired page value. A single wait_writes drains all four pending writes, satisfying release's no-pending-transfer precondition without per-write waits. This yields the lexicographic minimum: barrier count 2 (one wait_reads + one wait_writes \u2014 the read must complete before publish and the writes before release, and with one slot no cross-slot overlap can hide them), 11 total commands (reserve, read, wait_reads, publish, acquire, 4 writes, wait_writes, release; no reserve/read/publish/acquire can be elided per the phase machine), and peak live slots 1. All orders safe: reads complete before any publish check relies on them; writes complete before release; destinations distinct so no pending-write conflict; output origins are slot 0's value (origin src 0) matching expected [0,0,0,0]. No unstated FIFO or early-DMA assumption; blocking waits are the only synchronization and are never taken in a state where they could stall forever."}, "round": 1, "status": "native_accepted", "verdict": {"accepted": true, "authority": "native protocol filter, not a Lean certificate", "counts": {"barriers": 2, "commands": 11, "input_bytes": 512, "output_bytes": 2048, "peak_live_slots": 1, "read": 1, "wait_reads": 1, "wait_writes": 1, "write": 4}, "objective": [2, 11, 1], "reason": null, "states_explored": 39, "status": "accepted", "trace": [{"action": "issue", "op": "reserve", "slot": 0}, {"action": "issue", "op": "read", "slot": 0, "src": 0}, {"action": "complete_read", "slot": 0, "src": 0}, {"action": "issue", "op": "wait_reads"}, {"action": "issue", "op": "publish", "slot": 0}, {"action": "issue", "op": "acquire", "slot": 0}, {"action": "issue", "dst": 0, "op": "write", "slot": 0}, {"action": "issue", "dst": 1, "op": "write", "slot": 0}, {"action": "issue", "dst": 2, "op": "write", "slot": 0}, {"action": "issue", "dst": 3, "op": "write", "slot": 0}, {"action": "complete_write", "dst": 0, "origin": 0, "slot": 0}, {"action": "complete_write", "dst": 1, "origin": 0, "slot": 0}, {"action": "complete_write", "dst": 2, "origin": 0, "slot": 0}, {"action": "complete_write", "dst": 3, "origin": 0, "slot": 0}, {"action": "issue", "op": "wait_writes"}, {"action": "issue", "op": "release", "slot": 0}], "trace_truncated": false}}]

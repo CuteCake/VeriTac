@@ -1,0 +1,20 @@
+--- a/tt_metal/distributed/multihost/mpi_distributed_context.hpp
++++ b/tt_metal/distributed/multihost/mpi_distributed_context.hpp
+@@ -4,6 +4,7 @@
+ 
+ #pragma once
+ 
++#define OMPI_SKIP_MPICXX 1
+ #include <mpi.h>
+ #include <memory>
+ #include <optional>
+--- a/tools/scaleout/src/generate_rank_bindings.cpp
++++ b/tools/scaleout/src/generate_rank_bindings.cpp
+@@ -39,6 +39,7 @@
+ #include "generate_rank_bindings_helpers.hpp"
+ 
+ #ifdef OPEN_MPI
++#define OMPI_SKIP_MPICXX 1
+ #include <mpi.h>
+ #endif
+ 

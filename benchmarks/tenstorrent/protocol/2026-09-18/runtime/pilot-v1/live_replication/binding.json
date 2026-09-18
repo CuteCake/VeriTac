@@ -1,0 +1,10 @@
+{
+  "kind": "live",
+  "task_id": "replication",
+  "main_returncode": 0,
+  "protocol_certificate_sha256": "eab08bf4b546263151bf47ae302b363f75c375c916de3852c01db84e9c12111d",
+  "success": true,
+  "extra_returncode": 0,
+  "host_binary_sha256": "d946e12f5813813da721d74d3a84f83ff8261ab0acb84fd1b81b3c5914dc7a91",
+  "output_cases": 6
+}

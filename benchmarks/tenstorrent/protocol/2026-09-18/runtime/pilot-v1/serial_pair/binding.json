@@ -1,0 +1,10 @@
+{
+  "kind": "serial",
+  "task_id": "pair",
+  "main_returncode": 0,
+  "protocol_certificate_sha256": "0976ff72717c0dd454d15a1349beeaab17ddd709c0822400be18f41eec3aa251",
+  "success": true,
+  "extra_returncode": 0,
+  "host_binary_sha256": "cdf81e46d097cf1d61b7d921527374b850a5d6ad3e549245fd897c07dc0a3c6a",
+  "output_cases": 6
+}

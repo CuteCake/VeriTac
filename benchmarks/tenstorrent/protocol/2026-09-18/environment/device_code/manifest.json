@@ -1,0 +1,250 @@
+[
+  {
+    "case": "serial_permutation",
+    "cache_folder": "/root/.cache/tt-metal-cache/14747254335105150972/kernels/dm_slot_copy/8674926765049649059",
+    "source_sha256": "9676735b320cd42b7e986c8f457a82387f068bd0dec419621304068d7e579711",
+    "files": {
+      "kernel_includes.hpp": {
+        "sha256": "e708827ad05e84108e3fb13ad7928b15030fbab52e60a9abc9609e65c8532303",
+        "bytes": 111
+      },
+      "chlkc_descriptors.h": {
+        "sha256": "ece93ef6de51b43c3db78a04259f8ddf82a4ad551e43a87e5cd726c2fbe54173",
+        "bytes": 6261
+      },
+      "brisc.elf": {
+        "sha256": "58647c384142ffb388db554beb0611022c5f14d74be74e832eadf7d2b72fd845",
+        "bytes": 268692
+      },
+      "brisc.elf.xip.elf": {
+        "sha256": "c17c5a1019f5b2e3bb9160a91fbe807e463300a8d892668bff7ee0cbb28ef8bd",
+        "bytes": 268692
+      },
+      "brisc.elf.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "brisck.o.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  },
+  {
+    "case": "serial_pair",
+    "cache_folder": "/root/.cache/tt-metal-cache/14747254335105150972/kernels/dm_slot_copy/2409079173030182320",
+    "source_sha256": "9676735b320cd42b7e986c8f457a82387f068bd0dec419621304068d7e579711",
+    "files": {
+      "kernel_includes.hpp": {
+        "sha256": "572f3b0b7c49b9abed139e0530bb5769a7d028a2775b426f6e69c8209c786294",
+        "bytes": 104
+      },
+      "chlkc_descriptors.h": {
+        "sha256": "ece93ef6de51b43c3db78a04259f8ddf82a4ad551e43a87e5cd726c2fbe54173",
+        "bytes": 6261
+      },
+      "brisc.elf": {
+        "sha256": "34d2ea2e87be8f6b2f81f6fdcb02a32609856112c246ab67ad3d8f602957739f",
+        "bytes": 268684
+      },
+      "brisc.elf.xip.elf": {
+        "sha256": "eae79675ef1ebc59e9e5af6c0f5535afc402966b5791edc933d374eedd76f7b6",
+        "bytes": 268684
+      },
+      "brisc.elf.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "brisck.o.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  },
+  {
+    "case": "live_pair",
+    "cache_folder": "/root/.cache/tt-metal-cache/14747254335105150972/kernels/dm_slot_copy/11924098471146721483",
+    "source_sha256": "9676735b320cd42b7e986c8f457a82387f068bd0dec419621304068d7e579711",
+    "files": {
+      "kernel_includes.hpp": {
+        "sha256": "8e54afc0e24019008a7d14a07e63487619c7028838a3eef053b30fc3465b4213",
+        "bytes": 102
+      },
+      "chlkc_descriptors.h": {
+        "sha256": "ece93ef6de51b43c3db78a04259f8ddf82a4ad551e43a87e5cd726c2fbe54173",
+        "bytes": 6261
+      },
+      "brisc.elf": {
+        "sha256": "8852b8c09bc9a2429f2df66128b4d8a08721a81f188613bc3a5d382d8553dd35",
+        "bytes": 268684
+      },
+      "brisc.elf.xip.elf": {
+        "sha256": "1788bb29797f1aa6caba997feeccd0c5cbcf4a5d9dfd56a258b7fe5a5661180b",
+        "bytes": 268684
+      },
+      "brisc.elf.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "brisck.o.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  },
+  {
+    "case": "live_replication",
+    "cache_folder": "/root/.cache/tt-metal-cache/14747254335105150972/kernels/dm_slot_copy/14466510304888780537",
+    "source_sha256": "9676735b320cd42b7e986c8f457a82387f068bd0dec419621304068d7e579711",
+    "files": {
+      "kernel_includes.hpp": {
+        "sha256": "e5eba342a5e7d64a1c6a64f2695a5d29ee53cc27ac906823bf9ec275d18add47",
+        "bytes": 109
+      },
+      "chlkc_descriptors.h": {
+        "sha256": "025163214ca866a6208cf3debbaeab139d00ebe1f78651465d39703a6ea7d7ed",
+        "bytes": 6266
+      },
+      "brisc.elf": {
+        "sha256": "02624d96235144f7c223828be3f5f80d502bfe9b6b4cb8235236d93640cbfd56",
+        "bytes": 268692
+      },
+      "brisc.elf.xip.elf": {
+        "sha256": "d2f68b26906adf381553d43e7eb0c030aed5cd23fd94a9823bdd602024ee5800",
+        "bytes": 268692
+      },
+      "brisc.elf.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "brisck.o.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  },
+  {
+    "case": "serial_reuse_permutation",
+    "cache_folder": "/root/.cache/tt-metal-cache/14747254335105150972/kernels/dm_slot_copy/13266380107670644506",
+    "source_sha256": "9676735b320cd42b7e986c8f457a82387f068bd0dec419621304068d7e579711",
+    "files": {
+      "kernel_includes.hpp": {
+        "sha256": "fe75ec6b4c3fa10f73afc951d275648d9c3ca50f92aa4fa164ed07b24f56b244",
+        "bytes": 117
+      },
+      "chlkc_descriptors.h": {
+        "sha256": "ece93ef6de51b43c3db78a04259f8ddf82a4ad551e43a87e5cd726c2fbe54173",
+        "bytes": 6261
+      },
+      "brisc.elf": {
+        "sha256": "dafd6df1cbf2e659c96e78a74ed25f4faf01b0498a0cc60d3f25b99c1352270e",
+        "bytes": 268700
+      },
+      "brisc.elf.xip.elf": {
+        "sha256": "3b62dc19261d517355172135175acb621a078307e8f67cae9902638dca4fa61e",
+        "bytes": 268700
+      },
+      "brisc.elf.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "brisck.o.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  },
+  {
+    "case": "live_reuse_permutation",
+    "cache_folder": "/root/.cache/tt-metal-cache/14747254335105150972/kernels/dm_slot_copy/2882557553711688987",
+    "source_sha256": "9676735b320cd42b7e986c8f457a82387f068bd0dec419621304068d7e579711",
+    "files": {
+      "kernel_includes.hpp": {
+        "sha256": "9801edbeaea7e7f4971e02e2a3bc4ecf3d811649e951f4c9d8008cffffbd412d",
+        "bytes": 115
+      },
+      "chlkc_descriptors.h": {
+        "sha256": "ece93ef6de51b43c3db78a04259f8ddf82a4ad551e43a87e5cd726c2fbe54173",
+        "bytes": 6261
+      },
+      "brisc.elf": {
+        "sha256": "8dc1c763aa3d2ae163620b4f499ed2943b734ae2965c081c8d97eece404cac81",
+        "bytes": 268696
+      },
+      "brisc.elf.xip.elf": {
+        "sha256": "83d54e970644f3c1c5b7633e509fe983cbc553d511533ba14e3ccf2fea0515fd",
+        "bytes": 268696
+      },
+      "brisc.elf.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "brisck.o.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  },
+  {
+    "case": "serial_replication",
+    "cache_folder": "/root/.cache/tt-metal-cache/14747254335105150972/kernels/dm_slot_copy/12148590250215952980",
+    "source_sha256": "9676735b320cd42b7e986c8f457a82387f068bd0dec419621304068d7e579711",
+    "files": {
+      "kernel_includes.hpp": {
+        "sha256": "8683c15d07c3a270e20717423aad62e4681b6b8fa8de96edc0e15db1b4205c72",
+        "bytes": 111
+      },
+      "chlkc_descriptors.h": {
+        "sha256": "025163214ca866a6208cf3debbaeab139d00ebe1f78651465d39703a6ea7d7ed",
+        "bytes": 6266
+      },
+      "brisc.elf": {
+        "sha256": "7deab92e08553e6823627f55fbdc289195750b62022f45955cf62420ae3947a9",
+        "bytes": 268692
+      },
+      "brisc.elf.xip.elf": {
+        "sha256": "09ffef13dbb9ad917afc0e7fe352adcbc907730c873d49b4146406e18c02b7f4",
+        "bytes": 268692
+      },
+      "brisc.elf.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "brisck.o.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  },
+  {
+    "case": "live_permutation",
+    "cache_folder": "/root/.cache/tt-metal-cache/14747254335105150972/kernels/dm_slot_copy/10730195362025059625",
+    "source_sha256": "9676735b320cd42b7e986c8f457a82387f068bd0dec419621304068d7e579711",
+    "files": {
+      "kernel_includes.hpp": {
+        "sha256": "160c3b808b1707b3c4cdd8809987278c8ead61d9630bd5ec98bbcee182ee0f1f",
+        "bytes": 109
+      },
+      "chlkc_descriptors.h": {
+        "sha256": "ece93ef6de51b43c3db78a04259f8ddf82a4ad551e43a87e5cd726c2fbe54173",
+        "bytes": 6261
+      },
+      "brisc.elf": {
+        "sha256": "8bbce4797f54368339ff71f6484a7a8fcf3a5d819ce22b7f443b7cc25d9ed5bd",
+        "bytes": 268692
+      },
+      "brisc.elf.xip.elf": {
+        "sha256": "737e4a152133bea54509f66adfa890a60d48dc25b14b67a732562cd3e008fe10",
+        "bytes": 268692
+      },
+      "brisc.elf.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "brisck.o.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  }
+]

@@ -1,0 +1,27 @@
+2026-09-18 10:27:09.264 | info     |           Metal | Disabling multi-erisc mode with simulator/emule target device (rtoptions.cpp:392)
+2026-09-18 10:27:09.265 | info     |          Device | Opening user mode device driver (tt_cluster.cpp:223)
+2026-09-18 10:27:09.265 | info     |             UMD | Cluster constructor started. (cluster.cpp:408)
+2026-09-18 10:27:09.266 | warning  |             UMD | Chip 0 has inconsistent ETH harvesting information between harvest mask and number of harvested. Board unknown expects 0 units, but harvesting mask indicates 2 units. (cluster_descriptor.cpp:1353)
+2026-09-18 10:27:09.266 | info     |             UMD | Creating Simulation device (cluster.cpp:285)
+2026-09-18 10:27:09.269 | info     | EmulationDriver | TTSimTTDevice chip_id=0 PCI vendor_id=0x1e52 device_id=0xb140 (tt_sim_tt_device.cpp:130)
+2026-09-18 10:27:09.269 | info     |             UMD | Cluster constructor completed. (cluster.cpp:683)
+2026-09-18 10:27:09.269 | info     |             UMD | Starting devices in cluster (cluster.cpp:1292)
+2026-09-18 10:27:09.269 | info     |             UMD | Starting devices in cluster completed. (cluster.cpp:1300)
+2026-09-18 10:27:09.291 | info     |     Distributed | Using auto discovery to generate mesh graph. (metal_env.cpp:422)
+2026-09-18 10:27:09.291 | info     |     Distributed | Constructing control plane using auto-discovery (no mesh graph descriptor). (metal_env.cpp:484)
+2026-09-18 10:27:09.291 | info     |          Fabric | Logical multi-mesh adjacency: intermesh degree histogram {0:1}; intra-mesh degree histograms mesh0 {0:1} (topology_mapper_utils.cpp:3186)
+2026-09-18 10:27:09.291 | info     |          Fabric | Physical multi-mesh adjacency: intermesh degree histogram {0:1}; intra-mesh degree histograms mesh0 {0:1} (topology_mapper_utils.cpp:3194)
+INPUT_CHECKSUM 4f14602b86af7236
+EXPECTED_OUTPUT_CHECKSUM 29e402710a96d01d
+OUTPUT_CHECKSUM 29e402710a96d01d
+PAGES 4 input_pages=1 output_pages=4 slots=1 page_bytes=512
+VERIFY OK 4
+2026-09-18 10:27:09.489 | info     |    BuildKernels | JIT cache stats: 8/9 hits (88.9%) [8 cached, 0 build-once dedup, 0 merged artifacts, 0 merged genfiles] (build_cache_telemetry.cpp:258)
+2026-09-18 10:27:09.489 | info     |    BuildKernels | JIT telemetry: 28 registered TelemetryTokens (build_cache_telemetry.cpp:325)
+2026-09-18 10:27:09.491 | info     |          Device | Closing user mode device drivers (tt_cluster.cpp:519)
+2026-09-18 10:27:09.491 | info     |             UMD | Closing devices in cluster (cluster.cpp:1305)
+2026-09-18 10:27:09.491 | info     |             UMD | Closing devices in cluster completed. (cluster.cpp:1314)
+2026-09-18 10:27:09.491 | info     |             UMD | Cluster destructor started. (cluster.cpp:1020)
+2026-09-18 10:27:09.491 | info     |             UMD | Cluster destructor completed. (cluster.cpp:1023)
+2026-09-18 10:27:09.491 | info     | EmulationDriver | Sending exit signal to remote... (tt_sim_communicator.cpp:295)
+[7099] 0.1 seconds (85.0 KHz)

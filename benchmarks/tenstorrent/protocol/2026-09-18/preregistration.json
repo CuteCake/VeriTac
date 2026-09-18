@@ -1,0 +1,62 @@
+{
+  "phase": "registered before model trials",
+  "tasks": [
+    "pair",
+    "permutation",
+    "replication",
+    "reuse_permutation"
+  ],
+  "model": "dgxspark-glm/glm-5.3-flash",
+  "rounds_per_task": 3,
+  "model_timeout_seconds": 900,
+  "max_commands": 128,
+  "native_state_cap": 200000,
+  "proof_timeout_seconds": 600,
+  "model_exposure": "fixed task, protocol operation semantics, objective, own prior proposals and factual checker counterexample; no generated baseline or optimization recipe",
+  "acceptance": "strict parse + exhaustive native filter + final kernel proof; unknown and timeout never accepted",
+  "objective": [
+    "explicit read/write barrier count",
+    "command count",
+    "peak live slots"
+  ],
+  "control": "serial per-output copy generated independently, evaluated after proposals",
+  "performance_claim": "none; barriers and byte counts are abstract static metrics",
+  "runtime": "official Blackhole ttsim v1.10.8 on local Mac Studio via Linux ARM64 container; generated Metalium binaries",
+  "scope": "protocol IR theorem plus independent simulator evidence, not a final executable theorem",
+  "controls": [
+    "serial per-output copy",
+    "controller-written batched distinct-source reuse, created before model runs and withheld"
+  ],
+  "novelty_claim": "none: initial protocol optimization pilot, compare both controls, not only naive serial",
+  "registered_utc": "2026-09-18T10:14:27.650015+00:00",
+  "max_parallel_model_calls": 3,
+  "task_sha256": {
+    "pair.json": "71d4e18e96812cf99162b72a9a9390cbd461a57e81e647d04409c9778e3f2e25",
+    "permutation.json": "022847d8246228c0bda17cfbafb127594429c5c55f1cffdd7aa53e9e4497be68",
+    "replication.json": "1d7e4f17391b2d0a1d65f7d7a4ef7842e770dbcee4837e9652b2abb16db39689",
+    "reuse_permutation.json": "832399601d60aaa55262f1848ef1ee2963269d4807537c59b826605e6de3b109"
+  },
+  "controller_fingerprint": {
+    ".lake/build/lib/lean/VeriTac/Tenstorrent/GraphCertificate.olean": "fda9c90447631c0204497f4cb35ed6e93cdad1f47cb0bf3cc66b61d1bfc32a90",
+    ".lake/build/lib/lean/VeriTac/Tenstorrent/Protocol.olean": "f42c3130b348e344048191bd1b83f553b6d619d669dbfbcef5fbb5e9ffc02741",
+    "VeriTac/Tenstorrent/GraphCertificate.lean": "c76ae6a415f812198f470cc01fd59e47870b6c7529ef42282533f5d35b209a0b",
+    "VeriTac/Tenstorrent/Protocol.lean": "17ca3b5d735aff797c2e11bf53db86f8d8f338d5cf4ab1c8f47979d52dedb205",
+    "lake-manifest.json": "714f8e8fd087ea420cb6886cda6598c63ecab688ded1d21f6c42420e6a5396e2",
+    "lakefile.lean": "0208c5cc849c089cce10b8089e90d8b8bec3d351a6af5126cc0093d5450b5b39",
+    "lean-toolchain": "507ad76e41019e2adbec1b3647e9e417c797902a1ed7238ba9a5a4ef048806d6",
+    "specializations/gemmini_gemm/blind_search.py": "166c0e4afc1f006d2943fa3c21cb5ddec42cba08d559f7cd18f7a29c95b99f7b",
+    "specializations/tenstorrent_protocol/__init__.py": "1dafad9e082de5f3f3afc92020a82d7d6be82ad7bf1a242f7377df156f303372",
+    "specializations/tenstorrent_protocol/__main__.py": "b3596381d30b00a619a976b2caea5b07a2aaed0b658fbf2412418a9a1a39b558",
+    "specializations/tenstorrent_protocol/adapter.py": "847be596a232021ad48503640dd62a304437f04fe5b1e8522a89e6e22b339f2c",
+    "specializations/tenstorrent_protocol/certificate.py": "258c5e6ad631136ceef08cfcf0335c05ad56d51151e4947da27eaa64a59e1788",
+    "specializations/tenstorrent_protocol/protocol.py": "0e8571e2dccce085cd9ea1bc6a3e27f87a442237bb2b456ad179333210b95198",
+    "specializations/tenstorrent_protocol/search.py": "54d48eb910811f3c97de7fb57079b61071f33232822f6a640c3bb1683049bbce"
+  },
+  "driver_sha256": "c1638676c7180e897a76b317bd221f7778881b984e955438c20731619cb795ca",
+  "controls_sha256": {
+    "pair.json": "98d3e3ed849bc7512b9631ed13fe8a2cd68ec9cf82bdd89a09a4b484ce79cda0",
+    "permutation.json": "9ba218471715299b4b42aaff8cf0799fe1d1ac5d96eac8c5923b1807f420064d",
+    "replication.json": "21c43431046c76c3249e7afcd4c5b58128f1ae8ec9883eb7692d46eacfad84b5",
+    "reuse_permutation.json": "b1206f4f7ba930a52c9ee235466f9a4b668adad1d8f88bacd3692716f80d9bf5"
+  }
+}

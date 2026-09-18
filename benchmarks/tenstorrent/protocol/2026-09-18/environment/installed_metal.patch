@@ -1,0 +1,46 @@
+diff --git a/tools/scaleout/src/generate_rank_bindings.cpp b/tools/scaleout/src/generate_rank_bindings.cpp
+index d26a2e27..b0cb8fca 100644
+--- a/tools/scaleout/src/generate_rank_bindings.cpp
++++ b/tools/scaleout/src/generate_rank_bindings.cpp
+@@ -39,6 +39,7 @@
+ #include "generate_rank_bindings_helpers.hpp"
+ 
+ #ifdef OPEN_MPI
++#define OMPI_SKIP_MPICXX 1
+ #include <mpi.h>
+ #endif
+ 
+diff --git a/tt_metal/distributed/multihost/mpi_distributed_context.hpp b/tt_metal/distributed/multihost/mpi_distributed_context.hpp
+index f238dc36..669e6f8b 100644
+--- a/tt_metal/distributed/multihost/mpi_distributed_context.hpp
++++ b/tt_metal/distributed/multihost/mpi_distributed_context.hpp
+@@ -4,6 +4,7 @@
+ 
+ #pragma once
+ 
++#define OMPI_SKIP_MPICXX 1
+ #include <mpi.h>
+ #include <memory>
+ #include <optional>
+diff --git a/tt_metal/impl/streaming_profiler/spsc_marker_decode.hpp b/tt_metal/impl/streaming_profiler/spsc_marker_decode.hpp
+index aa42fc6b..e6717912 100644
+--- a/tt_metal/impl/streaming_profiler/spsc_marker_decode.hpp
++++ b/tt_metal/impl/streaming_profiler/spsc_marker_decode.hpp
+@@ -17,11 +17,16 @@
+ #include <span>
+ #include <vector>
+ 
++#if defined(__aarch64__)
++// Local ARM64 build portability: use the existing SIMDe dependency.
++#define SIMDE_ENABLE_NATIVE_ALIASES
++#include <simde/x86/avx2.h>
++#else
+ #include <immintrin.h>
+-
+ #if !defined(__AVX2__)
+ #error "the streaming profiler decode is AVX2 code; build for x86-64-v3 or newer"
+ #endif
++#endif
+ 
+ #include "hostdev/streaming_profiler_common.h"
+ #include "spsc_packet.h"

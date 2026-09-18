@@ -1,0 +1,84 @@
+{
+  "program": [
+    {
+      "op": "reserve",
+      "slot": 0
+    },
+    {
+      "op": "read",
+      "slot": 0,
+      "src": 1
+    },
+    {
+      "op": "reserve",
+      "slot": 1
+    },
+    {
+      "op": "read",
+      "slot": 1,
+      "src": 0
+    },
+    {
+      "op": "wait_reads"
+    },
+    {
+      "op": "publish",
+      "slot": 0
+    },
+    {
+      "op": "acquire",
+      "slot": 0
+    },
+    {
+      "dst": 0,
+      "op": "write",
+      "slot": 0
+    },
+    {
+      "dst": 2,
+      "op": "write",
+      "slot": 0
+    },
+    {
+      "op": "publish",
+      "slot": 1
+    },
+    {
+      "op": "acquire",
+      "slot": 1
+    },
+    {
+      "dst": 1,
+      "op": "write",
+      "slot": 1
+    },
+    {
+      "dst": 3,
+      "op": "write",
+      "slot": 1
+    },
+    {
+      "op": "wait_writes"
+    },
+    {
+      "op": "release",
+      "slot": 0
+    },
+    {
+      "op": "release",
+      "slot": 1
+    }
+  ],
+  "task": {
+    "expected": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "id": "reuse_permutation",
+    "input_pages": 2,
+    "page_bytes": 512,
+    "slots": 2
+  }
+}

@@ -1,0 +1,842 @@
+{
+  "certification_attempts": [
+    {
+      "certificate": {
+        "accepted": true,
+        "axioms": {
+          "accepted": [
+            "propext"
+          ],
+          "outputs": [
+            "Quot.sound",
+            "propext"
+          ],
+          "progress": [
+            "Quot.sound",
+            "propext"
+          ],
+          "safe": [
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        "kernel_check_seconds": 4.024,
+        "log": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/replication/certificate_round_001/protocol_certificate.log",
+        "native_verdict": {
+          "accepted": true,
+          "authority": "native protocol filter, not a Lean certificate",
+          "counts": {
+            "barriers": 2,
+            "commands": 11,
+            "input_bytes": 512,
+            "output_bytes": 2048,
+            "peak_live_slots": 1,
+            "read": 1,
+            "wait_reads": 1,
+            "wait_writes": 1,
+            "write": 4
+          },
+          "objective": [
+            2,
+            11,
+            1
+          ],
+          "reason": null,
+          "states_explored": 39,
+          "status": "accepted",
+          "trace": [
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 0,
+              "src": 0
+            },
+            {
+              "action": "complete_read",
+              "slot": 0,
+              "src": 0
+            },
+            {
+              "action": "issue",
+              "op": "wait_reads"
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "dst": 0,
+              "op": "write",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "dst": 1,
+              "op": "write",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "dst": 2,
+              "op": "write",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "dst": 3,
+              "op": "write",
+              "slot": 0
+            },
+            {
+              "action": "complete_write",
+              "dst": 0,
+              "origin": 0,
+              "slot": 0
+            },
+            {
+              "action": "complete_write",
+              "dst": 1,
+              "origin": 0,
+              "slot": 0
+            },
+            {
+              "action": "complete_write",
+              "dst": 2,
+              "origin": 0,
+              "slot": 0
+            },
+            {
+              "action": "complete_write",
+              "dst": 3,
+              "origin": 0,
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "wait_writes"
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 0
+            }
+          ],
+          "trace_truncated": false
+        },
+        "nodes": 39,
+        "payload_semantics": "immutable input pages and exact copies, represented by data origins",
+        "progress_assumption": "finite event semantics; physical scheduling and DMA eventual progress assumed",
+        "reason": "kernel-checked protocol graph certificate",
+        "request": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/replication/certificate_round_001/request.json",
+        "request_sha256": "a9af49f19f7b6dc298fba8c32a110bbb144912f7fd7dd3890d167cb48d88790b",
+        "scope": "single-issuer asynchronous protocol IR; NOT emitted C++/machine code/hardware proof",
+        "source": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/replication/certificate_round_001/protocol_certificate.lean",
+        "source_sha256": "eab08bf4b546263151bf47ae302b363f75c375c916de3852c01db84e9c12111d"
+      },
+      "objective": [
+        2,
+        11,
+        1
+      ],
+      "round": 1
+    }
+  ],
+  "config": {
+    "contract_sha256": "494c93bd47905e5f5de73ac71e4d52e110bd10f340af20546f96cd842336cba8",
+    "model": "dgxspark-glm/glm-5.3-flash",
+    "model_timeout": 900,
+    "proof_timeout": 600,
+    "rounds": 3,
+    "scope": "restricted protocol IR; NOT final machine-code proof",
+    "started_utc": "2026-09-18T10:14:32.872341+00:00",
+    "synthetic_model": false,
+    "task": {
+      "expected": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "id": "replication",
+      "input_pages": 1,
+      "page_bytes": 512,
+      "slots": 1
+    },
+    "task_sha256": "4173dcfb9bc6e8be08ddd01107170f769921fc7e24d609283bd9a4426972bfac"
+  },
+  "finished_utc": "2026-09-18T10:16:34.490862+00:00",
+  "rounds": [
+    {
+      "proposal": {
+        "program": [
+          {
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "op": "read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "op": "wait_reads"
+          },
+          {
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "dst": 1,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "dst": 3,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "op": "wait_writes"
+          },
+          {
+            "op": "release",
+            "slot": 0
+          }
+        ],
+        "rationale": "Single slot, one source page replicated to 4 destinations. One read issues the sole input DMA; wait_reads is mandatory before publish because publish requires an initialized value and no pending read, and completion order is arbitrary, so we cannot assume the read lands early. After acquire, all four writes are issued from the same acquired slot to distinct destinations (each dst checked against pending writes only for that destination, so distinct dsts never conflict), reusing the single acquired page value. A single wait_writes drains all four pending writes, satisfying release's no-pending-transfer precondition without per-write waits. This yields the lexicographic minimum: barrier count 2 (one wait_reads + one wait_writes \u2014 the read must complete before publish and the writes before release, and with one slot no cross-slot overlap can hide them), 11 total commands (reserve, read, wait_reads, publish, acquire, 4 writes, wait_writes, release; no reserve/read/publish/acquire can be elided per the phase machine), and peak live slots 1. All orders safe: reads complete before any publish check relies on them; writes complete before release; destinations distinct so no pending-write conflict; output origins are slot 0's value (origin src 0) matching expected [0,0,0,0]. No unstated FIFO or early-DMA assumption; blocking waits are the only synchronization and are never taken in a state where they could stall forever."
+      },
+      "round": 1,
+      "status": "native_accepted",
+      "verdict": {
+        "accepted": true,
+        "authority": "native protocol filter, not a Lean certificate",
+        "counts": {
+          "barriers": 2,
+          "commands": 11,
+          "input_bytes": 512,
+          "output_bytes": 2048,
+          "peak_live_slots": 1,
+          "read": 1,
+          "wait_reads": 1,
+          "wait_writes": 1,
+          "write": 4
+        },
+        "objective": [
+          2,
+          11,
+          1
+        ],
+        "reason": null,
+        "states_explored": 39,
+        "status": "accepted",
+        "trace": [
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 1,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 3,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 0,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 1,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 2,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 3,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          }
+        ],
+        "trace_truncated": false
+      }
+    },
+    {
+      "proposal": {
+        "program": [
+          {
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "op": "read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "op": "wait_reads"
+          },
+          {
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "dst": 1,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "dst": 3,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "op": "wait_writes"
+          },
+          {
+            "op": "release",
+            "slot": 0
+          }
+        ],
+        "rationale": "Resubmission of the previously accepted protocol; it is already lexicographically minimal. Barrier count 2: wait_reads is unavoidable because publish requires an initialized value with no pending read, and completion order is arbitrary, so the issuer cannot assume the read lands early; wait_writes is unavoidable because release requires no pending transfer on the slot. Command count 11 is minimal: reserve/read/publish/acquire/release are each forced by the phase machine (one slot, one value), exactly 4 writes are required for the 4 distinct destinations in expected [0,0,0,0], and the two waits cannot be elided. Peak live slots 1 since a single slot suffices. All orders safe: after issuing read, only wait_reads is issuable, which blocks until the read completes (no deadlock \u2014 the pending read is the sole event the protocol needs); the four writes target distinct destinations so no pending-write conflict arises regardless of completion interleaving; multiple writes from one acquired slot are explicitly allowed; wait_writes blocks until all four complete, then release is valid. Outputs all carry origin src 0, matching expected. No FIFO or early-DMA assumption; the blocking waits are never issued where their pending queues could be empty-forever since each is preceded by issuing the transfers it drains."
+      },
+      "round": 2,
+      "status": "native_accepted",
+      "verdict": {
+        "accepted": true,
+        "authority": "native protocol filter, not a Lean certificate",
+        "counts": {
+          "barriers": 2,
+          "commands": 11,
+          "input_bytes": 512,
+          "output_bytes": 2048,
+          "peak_live_slots": 1,
+          "read": 1,
+          "wait_reads": 1,
+          "wait_writes": 1,
+          "write": 4
+        },
+        "objective": [
+          2,
+          11,
+          1
+        ],
+        "reason": null,
+        "states_explored": 39,
+        "status": "accepted",
+        "trace": [
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 1,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 3,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 0,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 1,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 2,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 3,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          }
+        ],
+        "trace_truncated": false
+      }
+    },
+    {
+      "proposal": {
+        "program": [
+          {
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "op": "read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "op": "wait_reads"
+          },
+          {
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "dst": 1,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "dst": 3,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "op": "wait_writes"
+          },
+          {
+            "op": "release",
+            "slot": 0
+          }
+        ],
+        "rationale": "Resubmission of the twice-accepted minimal protocol. With 1 input page and expected [0,0,0,0], one slot suffices. Barrier count 2 is forced: wait_reads must precede publish (publish requires initialized value, no pending read, and DMA completion order is arbitrary), and wait_writes must precede release (release requires no pending transfer). Command count 11 is minimal: reserve/read/publish/acquire/release are each mandated by the phase machine, exactly 4 writes are required for the 4 distinct destinations, and neither wait is elidable. Peak live slots 1. All completion orders safe: the four writes target distinct destinations so no pending-write conflict; multiple writes from one acquired slot are explicitly allowed; wait_reads/wait_writes are issued only after the transfers they drain are pending, so they cannot stall forever; outputs all carry origin src 0 matching expected. No FIFO or early-DMA assumption."
+      },
+      "round": 3,
+      "status": "native_accepted",
+      "verdict": {
+        "accepted": true,
+        "authority": "native protocol filter, not a Lean certificate",
+        "counts": {
+          "barriers": 2,
+          "commands": 11,
+          "input_bytes": 512,
+          "output_bytes": 2048,
+          "peak_live_slots": 1,
+          "read": 1,
+          "wait_reads": 1,
+          "wait_writes": 1,
+          "write": 4
+        },
+        "objective": [
+          2,
+          11,
+          1
+        ],
+        "reason": null,
+        "states_explored": 39,
+        "status": "accepted",
+        "trace": [
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 1,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 3,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 0,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 1,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 2,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 3,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          }
+        ],
+        "trace_truncated": false
+      }
+    }
+  ],
+  "status": "certified",
+  "winner": {
+    "certificate": {
+      "accepted": true,
+      "axioms": {
+        "accepted": [
+          "propext"
+        ],
+        "outputs": [
+          "Quot.sound",
+          "propext"
+        ],
+        "progress": [
+          "Quot.sound",
+          "propext"
+        ],
+        "safe": [
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "kernel_check_seconds": 4.024,
+      "log": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/replication/certificate_round_001/protocol_certificate.log",
+      "native_verdict": {
+        "accepted": true,
+        "authority": "native protocol filter, not a Lean certificate",
+        "counts": {
+          "barriers": 2,
+          "commands": 11,
+          "input_bytes": 512,
+          "output_bytes": 2048,
+          "peak_live_slots": 1,
+          "read": 1,
+          "wait_reads": 1,
+          "wait_writes": 1,
+          "write": 4
+        },
+        "objective": [
+          2,
+          11,
+          1
+        ],
+        "reason": null,
+        "states_explored": 39,
+        "status": "accepted",
+        "trace": [
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 0,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 1,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 2,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "dst": 3,
+            "op": "write",
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 0,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 1,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 2,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "complete_write",
+            "dst": 3,
+            "origin": 0,
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          }
+        ],
+        "trace_truncated": false
+      },
+      "nodes": 39,
+      "payload_semantics": "immutable input pages and exact copies, represented by data origins",
+      "progress_assumption": "finite event semantics; physical scheduling and DMA eventual progress assumed",
+      "reason": "kernel-checked protocol graph certificate",
+      "request": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/replication/certificate_round_001/request.json",
+      "request_sha256": "a9af49f19f7b6dc298fba8c32a110bbb144912f7fd7dd3890d167cb48d88790b",
+      "scope": "single-issuer asynchronous protocol IR; NOT emitted C++/machine code/hardware proof",
+      "source": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/replication/certificate_round_001/protocol_certificate.lean",
+      "source_sha256": "eab08bf4b546263151bf47ae302b363f75c375c916de3852c01db84e9c12111d"
+    },
+    "objective": [
+      2,
+      11,
+      1
+    ],
+    "round": 1
+  }
+}

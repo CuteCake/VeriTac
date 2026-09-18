@@ -1,0 +1,10 @@
+{
+  "kind": "serial",
+  "task_id": "reuse_permutation",
+  "main_returncode": 0,
+  "protocol_certificate_sha256": "3de753eef9592b8154cd4755bb10e445c7e16c4c5ab95fdc5a9a02c33c6bad9a",
+  "success": true,
+  "extra_returncode": 0,
+  "host_binary_sha256": "5a2ae602bb5fd936167b70edd45075020ba52d91ab687b6550ee81dcfd5fab39",
+  "output_cases": 6
+}

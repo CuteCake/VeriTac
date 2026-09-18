@@ -1,0 +1,13 @@
+{
+  "architecture": "Linux aarch64",
+  "metal_commit": "ad232e1cd799adf53841774805bc73fc5605b634",
+  "sha256": {
+    "/opt/tt/sim/libttsim_bh.so": "0c3a5af653e7feec018f6d1ce3bba116967a951c150fcaa03ad6521e8ec88065",
+    "/opt/tt/sim/soc_descriptor.yaml": "2aa71c2d4321c186d2958ee05a82db4c4c405c4420ed31c1d592f490994942ef",
+    "/opt/tt/build/tt_metal/libtt_metal.so": "ae98451821fee33edd449b20b5b1f7cc7686aa42c807829a73b3a874babbff61",
+    "/opt/tt/install/lib/libtt_metal.so": "8b362302797742cf0c8bc83f63201b7d5cc48fbffa6258bbe496a22559becb39",
+    "/opt/tt/tt-metal/runtime/sfpi/compiler/bin/riscv-tt-elf-g++": "e37d8b4d109a70c94fbc5b85460413bcdbbce788eb87e685b93b79a1e83879f6"
+  },
+  "compiler": "g++-14 (Ubuntu 14.2.0-4ubuntu2~24.04.1) 14.2.0",
+  "sfpi": "riscv-tt-elf-g++ (tenstorrent/sfpi:7.79.0[946]) 15.1.0"
+}

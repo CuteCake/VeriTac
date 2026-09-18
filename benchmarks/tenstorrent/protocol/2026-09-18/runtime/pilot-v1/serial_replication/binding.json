@@ -1,0 +1,10 @@
+{
+  "kind": "serial",
+  "task_id": "replication",
+  "main_returncode": 0,
+  "protocol_certificate_sha256": "9d4f947a977250924e2785464fdf35e92ff8fc506c59ef7923abe4ceeaf23dc1",
+  "success": true,
+  "extra_returncode": 0,
+  "host_binary_sha256": "aacb96c7623062c09dc32456b734ca6f7885c9a651e7260d99697908ed7d13fc",
+  "output_cases": 6
+}

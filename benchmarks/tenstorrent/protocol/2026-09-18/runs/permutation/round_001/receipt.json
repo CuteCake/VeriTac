@@ -1,0 +1,359 @@
+{
+  "model": {
+    "cwd": "/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/veritac-blind-model-379fir4u",
+    "cwd_policy": "fresh system-temp directory outside the repository",
+    "duration_seconds": 190.084,
+    "error": null,
+    "returncode": 0,
+    "timed_out": false
+  },
+  "proposal": {
+    "program": [
+      {
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "op": "read",
+        "slot": 0,
+        "src": 2
+      },
+      {
+        "op": "reserve",
+        "slot": 1
+      },
+      {
+        "op": "read",
+        "slot": 1,
+        "src": 0
+      },
+      {
+        "op": "wait_reads"
+      },
+      {
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "dst": 0,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "op": "publish",
+        "slot": 1
+      },
+      {
+        "op": "acquire",
+        "slot": 1
+      },
+      {
+        "dst": 1,
+        "op": "write",
+        "slot": 1
+      },
+      {
+        "op": "wait_writes"
+      },
+      {
+        "op": "release",
+        "slot": 0
+      },
+      {
+        "op": "release",
+        "slot": 1
+      },
+      {
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "op": "read",
+        "slot": 0,
+        "src": 3
+      },
+      {
+        "op": "reserve",
+        "slot": 1
+      },
+      {
+        "op": "read",
+        "slot": 1,
+        "src": 1
+      },
+      {
+        "op": "wait_reads"
+      },
+      {
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "dst": 2,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "op": "publish",
+        "slot": 1
+      },
+      {
+        "op": "acquire",
+        "slot": 1
+      },
+      {
+        "dst": 3,
+        "op": "write",
+        "slot": 1
+      },
+      {
+        "op": "wait_writes"
+      },
+      {
+        "op": "release",
+        "slot": 0
+      },
+      {
+        "op": "release",
+        "slot": 1
+      }
+    ],
+    "rationale": "Two rounds of two overlapping copies through slots 0/1. Round 1: read src2->slot0 and src0->slot1 concurrently, one blocking wait_reads guarantees both values initialized under any DMA completion order before publish/acquire; writes go to dst0 (origin 2) and dst1 (origin 0), matching expected[0]=2, expected[1]=0. One wait_writes drains both pending writes so releases are valid regardless of completion order. Round 2 repeats with src3->dst2 and src1->dst3, matching expected[2]=3, expected[3]=1. Every non-wait op is enabled in all reachable interleavings: reads target distinct slots, writes target distinct destinations from acquired+initialized slots, and slots are reused only after wait_writes+release. Minimality: each of the 4 page copies strictly needs reserve/read/publish/acquire/write/release (6 ops each = 24); two read batches force 2 wait_reads (publish needs initialized value, only observable via blocking wait), and writes preceding every release force 2 wait_writes; 1-slot alternative would need 8 waits, so 4 waits / 28 commands / peak 2 live slots is lexicographically optimal."
+  },
+  "round": 1,
+  "status": "native_accepted",
+  "tool_count": 0,
+  "usage": {
+    "cache": {
+      "read": 0,
+      "write": 0
+    },
+    "cost": 0,
+    "input": 3295,
+    "output": 4795,
+    "reasoning": 0,
+    "total": 8090
+  },
+  "verdict": {
+    "accepted": true,
+    "authority": "native protocol filter, not a Lean certificate",
+    "counts": {
+      "barriers": 4,
+      "commands": 28,
+      "input_bytes": 2048,
+      "output_bytes": 2048,
+      "peak_live_slots": 2,
+      "read": 4,
+      "wait_reads": 2,
+      "wait_writes": 2,
+      "write": 4
+    },
+    "objective": [
+      4,
+      28,
+      2
+    ],
+    "reason": null,
+    "states_explored": 51,
+    "status": "accepted",
+    "trace": [
+      {
+        "action": "issue",
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "read",
+        "slot": 0,
+        "src": 2
+      },
+      {
+        "action": "issue",
+        "op": "reserve",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "op": "read",
+        "slot": 1,
+        "src": 0
+      },
+      {
+        "action": "complete_read",
+        "slot": 0,
+        "src": 2
+      },
+      {
+        "action": "complete_read",
+        "slot": 1,
+        "src": 0
+      },
+      {
+        "action": "issue",
+        "op": "wait_reads"
+      },
+      {
+        "action": "issue",
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "dst": 0,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "publish",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "op": "acquire",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "dst": 1,
+        "op": "write",
+        "slot": 1
+      },
+      {
+        "action": "complete_write",
+        "dst": 0,
+        "origin": 2,
+        "slot": 0
+      },
+      {
+        "action": "complete_write",
+        "dst": 1,
+        "origin": 0,
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "op": "wait_writes"
+      },
+      {
+        "action": "issue",
+        "op": "release",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "release",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "read",
+        "slot": 0,
+        "src": 3
+      },
+      {
+        "action": "issue",
+        "op": "reserve",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "op": "read",
+        "slot": 1,
+        "src": 1
+      },
+      {
+        "action": "complete_read",
+        "slot": 0,
+        "src": 3
+      },
+      {
+        "action": "complete_read",
+        "slot": 1,
+        "src": 1
+      },
+      {
+        "action": "issue",
+        "op": "wait_reads"
+      },
+      {
+        "action": "issue",
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "dst": 2,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "publish",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "op": "acquire",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "dst": 3,
+        "op": "write",
+        "slot": 1
+      },
+      {
+        "action": "complete_write",
+        "dst": 2,
+        "origin": 3,
+        "slot": 0
+      },
+      {
+        "action": "complete_write",
+        "dst": 3,
+        "origin": 1,
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "op": "wait_writes"
+      },
+      {
+        "action": "issue",
+        "op": "release",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "release",
+        "slot": 1
+      }
+    ],
+    "trace_truncated": false
+  }
+}

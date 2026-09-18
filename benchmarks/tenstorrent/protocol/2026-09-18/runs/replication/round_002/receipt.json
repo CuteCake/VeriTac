@@ -1,0 +1,189 @@
+{
+  "model": {
+    "cwd": "/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/veritac-blind-model-lxf8yu8w",
+    "cwd_policy": "fresh system-temp directory outside the repository",
+    "duration_seconds": 36.538,
+    "error": null,
+    "returncode": 0,
+    "timed_out": false
+  },
+  "proposal": {
+    "program": [
+      {
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "op": "read",
+        "slot": 0,
+        "src": 0
+      },
+      {
+        "op": "wait_reads"
+      },
+      {
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "dst": 0,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "dst": 1,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "dst": 2,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "dst": 3,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "op": "wait_writes"
+      },
+      {
+        "op": "release",
+        "slot": 0
+      }
+    ],
+    "rationale": "Resubmission of the previously accepted protocol; it is already lexicographically minimal. Barrier count 2: wait_reads is unavoidable because publish requires an initialized value with no pending read, and completion order is arbitrary, so the issuer cannot assume the read lands early; wait_writes is unavoidable because release requires no pending transfer on the slot. Command count 11 is minimal: reserve/read/publish/acquire/release are each forced by the phase machine (one slot, one value), exactly 4 writes are required for the 4 distinct destinations in expected [0,0,0,0], and the two waits cannot be elided. Peak live slots 1 since a single slot suffices. All orders safe: after issuing read, only wait_reads is issuable, which blocks until the read completes (no deadlock \u2014 the pending read is the sole event the protocol needs); the four writes target distinct destinations so no pending-write conflict arises regardless of completion interleaving; multiple writes from one acquired slot are explicitly allowed; wait_writes blocks until all four complete, then release is valid. Outputs all carry origin src 0, matching expected. No FIFO or early-DMA assumption; the blocking waits are never issued where their pending queues could be empty-forever since each is preceded by issuing the transfers it drains."
+  },
+  "round": 2,
+  "status": "native_accepted",
+  "tool_count": 0,
+  "usage": {
+    "cache": {
+      "read": 0,
+      "write": 0
+    },
+    "cost": 0,
+    "input": 4276,
+    "output": 594,
+    "reasoning": 0,
+    "total": 4870
+  },
+  "verdict": {
+    "accepted": true,
+    "authority": "native protocol filter, not a Lean certificate",
+    "counts": {
+      "barriers": 2,
+      "commands": 11,
+      "input_bytes": 512,
+      "output_bytes": 2048,
+      "peak_live_slots": 1,
+      "read": 1,
+      "wait_reads": 1,
+      "wait_writes": 1,
+      "write": 4
+    },
+    "objective": [
+      2,
+      11,
+      1
+    ],
+    "reason": null,
+    "states_explored": 39,
+    "status": "accepted",
+    "trace": [
+      {
+        "action": "issue",
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "read",
+        "slot": 0,
+        "src": 0
+      },
+      {
+        "action": "complete_read",
+        "slot": 0,
+        "src": 0
+      },
+      {
+        "action": "issue",
+        "op": "wait_reads"
+      },
+      {
+        "action": "issue",
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "dst": 0,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "dst": 1,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "dst": 2,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "dst": 3,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "action": "complete_write",
+        "dst": 0,
+        "origin": 0,
+        "slot": 0
+      },
+      {
+        "action": "complete_write",
+        "dst": 1,
+        "origin": 0,
+        "slot": 0
+      },
+      {
+        "action": "complete_write",
+        "dst": 2,
+        "origin": 0,
+        "slot": 0
+      },
+      {
+        "action": "complete_write",
+        "dst": 3,
+        "origin": 0,
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "wait_writes"
+      },
+      {
+        "action": "issue",
+        "op": "release",
+        "slot": 0
+      }
+    ],
+    "trace_truncated": false
+  }
+}

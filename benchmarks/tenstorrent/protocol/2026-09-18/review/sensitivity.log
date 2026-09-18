@@ -1,0 +1,3 @@
+publish ignores pending read trials=600 caught=0 ORACLE BLIND
+write ignores pending dst    trials=600 caught=0 ORACLE BLIND
+directed duplicate-destination case: {'reference': 'unsafe', 'original': 'unsafe', 'mutant': 'accepted'}

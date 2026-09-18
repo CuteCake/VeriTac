@@ -1,0 +1,23 @@
+{
+  "contract_sha256": "494c93bd47905e5f5de73ac71e4d52e110bd10f340af20546f96cd842336cba8",
+  "model": "dgxspark-glm/glm-5.3-flash",
+  "model_timeout": 900,
+  "proof_timeout": 600,
+  "rounds": 3,
+  "scope": "restricted protocol IR; NOT final machine-code proof",
+  "started_utc": "2026-09-18T10:16:34.493118+00:00",
+  "synthetic_model": false,
+  "task": {
+    "expected": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "id": "reuse_permutation",
+    "input_pages": 2,
+    "page_bytes": 512,
+    "slots": 2
+  },
+  "task_sha256": "bef18731a813dab36a7bf3b761fc774f6aa23427f6d70abd17d53025823b003b"
+}

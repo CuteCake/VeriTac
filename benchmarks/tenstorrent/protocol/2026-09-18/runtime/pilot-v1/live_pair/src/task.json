@@ -1,0 +1,10 @@
+{
+  "id": "pair",
+  "input_pages": 2,
+  "expected": [
+    0,
+    1
+  ],
+  "slots": 2,
+  "page_bytes": 512
+}

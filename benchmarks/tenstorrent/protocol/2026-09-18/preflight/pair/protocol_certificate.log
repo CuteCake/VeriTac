@@ -1,0 +1,22 @@
+/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/preflight/pair/protocol_certificate.lean:35:68: error: Tactic `decide` failed for proposition
+  checkCertificate task program nodes = true
+because its `Decidable` instance
+  instDecidableEqBool (checkCertificate task program nodes) true
+did not reduce to `isTrue` or `isFalse`.
+
+Reduction got stuck at the `Decidable` instance
+  match checkCertificate task program nodes, true with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯
+/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/preflight/pair/protocol_certificate.lean:45:2: error: Type mismatch
+  accepted_output_all_payloads task program nodes accepted s h done
+has type
+  ∀ (input : ℕ → ?m.10), outputPayloads input s = List.map (fun i => some (input i)) task.expected
+but is expected to have type
+  outputPayloads input s = List.map (fun i => some (input i)) task.expected
+'SubmittedProtocol.accepted' depends on axioms: [propext, sorryAx, Quot.sound]
+'SubmittedProtocol.safe' depends on axioms: [propext, sorryAx, Quot.sound]
+'SubmittedProtocol.progress' depends on axioms: [propext, sorryAx, Quot.sound]
+'SubmittedProtocol.outputs' depends on axioms: [propext, sorryAx, Quot.sound]

@@ -1,0 +1,12 @@
+{
+  "id": "permutation",
+  "input_pages": 4,
+  "expected": [
+    2,
+    0,
+    3,
+    1
+  ],
+  "slots": 2,
+  "page_bytes": 512
+}

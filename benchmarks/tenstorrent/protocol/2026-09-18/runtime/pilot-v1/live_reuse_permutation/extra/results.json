@@ -1,0 +1,53 @@
+{
+  "scope": "official ttsim execution evidence, not proof or hardware latency",
+  "binary_sha256": "f7ba430dbb236c911ded126f7b2f52110340589ef9bb8df4d2e8aba08320600a",
+  "binary_unchanged": true,
+  "cases": [
+    {
+      "pattern": "zero",
+      "seed": 0,
+      "returncode": 0,
+      "all_bytes_match": true,
+      "expected_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+      "output_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+      "output_bytes": 2048
+    },
+    {
+      "pattern": "ones",
+      "seed": 0,
+      "returncode": 0,
+      "all_bytes_match": true,
+      "expected_sha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+      "output_sha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+      "output_bytes": 2048
+    },
+    {
+      "pattern": "alternating",
+      "seed": 0,
+      "returncode": 0,
+      "all_bytes_match": true,
+      "expected_sha256": "61abd843db0cae1cec70273558995282a805b6ada84a7b7b5fd37908ed4c0c35",
+      "output_sha256": "61abd843db0cae1cec70273558995282a805b6ada84a7b7b5fd37908ed4c0c35",
+      "output_bytes": 2048
+    },
+    {
+      "pattern": "lcg",
+      "seed": 0,
+      "returncode": 0,
+      "all_bytes_match": true,
+      "expected_sha256": "e989ae2ad571b0799e161aa70dc5359f83e42da1356a837089a5b833a335c6c8",
+      "output_sha256": "e989ae2ad571b0799e161aa70dc5359f83e42da1356a837089a5b833a335c6c8",
+      "output_bytes": 2048
+    },
+    {
+      "pattern": "lcg",
+      "seed": 917,
+      "returncode": 0,
+      "all_bytes_match": true,
+      "expected_sha256": "91c0b52eb51f0ddf1c3b98609487739194d9fca7751afed8bd3fe0d0eb65de54",
+      "output_sha256": "91c0b52eb51f0ddf1c3b98609487739194d9fca7751afed8bd3fe0d0eb65de54",
+      "output_bytes": 2048
+    }
+  ],
+  "success": true
+}

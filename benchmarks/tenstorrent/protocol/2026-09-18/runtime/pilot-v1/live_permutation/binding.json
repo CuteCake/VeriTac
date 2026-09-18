@@ -1,0 +1,10 @@
+{
+  "kind": "live",
+  "task_id": "permutation",
+  "main_returncode": 0,
+  "protocol_certificate_sha256": "8336dfe223bd25fde594c8c8771bdcfa21400d3cecfbeba2e5d76151c8ec95ce",
+  "success": true,
+  "extra_returncode": 0,
+  "host_binary_sha256": "a1134efebc135ec86bf194824c767489f7e6680aa59c777dd0877d909d335c59",
+  "output_cases": 6
+}

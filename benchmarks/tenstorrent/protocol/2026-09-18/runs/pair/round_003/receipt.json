@@ -1,0 +1,207 @@
+{
+  "model": {
+    "cwd": "/var/folders/nm/xhv4jn255d50xnjtylf64brr0000gn/T/veritac-blind-model-a3lubgmb",
+    "cwd_policy": "fresh system-temp directory outside the repository",
+    "duration_seconds": 27.193,
+    "error": null,
+    "returncode": 0,
+    "timed_out": false
+  },
+  "proposal": {
+    "program": [
+      {
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "op": "reserve",
+        "slot": 1
+      },
+      {
+        "op": "read",
+        "slot": 0,
+        "src": 0
+      },
+      {
+        "op": "read",
+        "slot": 1,
+        "src": 1
+      },
+      {
+        "op": "wait_reads"
+      },
+      {
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "op": "publish",
+        "slot": 1
+      },
+      {
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "op": "acquire",
+        "slot": 1
+      },
+      {
+        "dst": 0,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "dst": 1,
+        "op": "write",
+        "slot": 1
+      },
+      {
+        "op": "wait_writes"
+      },
+      {
+        "op": "release",
+        "slot": 0
+      },
+      {
+        "op": "release",
+        "slot": 1
+      }
+    ],
+    "rationale": "Third submission of the twice-accepted program, optimal on the lexicographic objective [2,14,2]. Waits=2 is the minimum: publish needs an initialized value with no pending read and release needs no pending transfer, so at least one wait_reads and one wait_writes are unavoidable. With waits fixed at 2, expected=[0,1] requires two distinct pages live simultaneously (peak-1 would force a second reserve/read cycle, i.e. 4 waits, losing the primary criterion), so each slot runs exactly reserve+read+publish+acquire+write+release = 6 commands, giving 12+2=14 commands minimum. Safety under arbitrary completion order: both reads are issued before the single blocking wait_reads, which drains the entire non-FIFO read queue, so both slots are initialized at every state where publish/acquire/write executes; writes target distinct destinations from distinct acquired slots, and the single blocking wait_writes drains all pending writes before either release. Final state: pc=end, no pending transfers, all slots free, dst0 origin 0 and dst1 origin 1 matching expected=[0,1]. Peak live slots = 2. No timing assumptions beyond DMA eventual-completion fairness; all interleavings are safe."
+  },
+  "round": 3,
+  "status": "native_accepted",
+  "tool_count": 0,
+  "usage": {
+    "cache": {
+      "read": 0,
+      "write": 0
+    },
+    "cost": 0,
+    "input": 5331,
+    "output": 487,
+    "reasoning": 0,
+    "total": 5818
+  },
+  "verdict": {
+    "accepted": true,
+    "authority": "native protocol filter, not a Lean certificate",
+    "counts": {
+      "barriers": 2,
+      "commands": 14,
+      "input_bytes": 1024,
+      "output_bytes": 1024,
+      "peak_live_slots": 2,
+      "read": 2,
+      "wait_reads": 1,
+      "wait_writes": 1,
+      "write": 2
+    },
+    "objective": [
+      2,
+      14,
+      2
+    ],
+    "reason": null,
+    "states_explored": 23,
+    "status": "accepted",
+    "trace": [
+      {
+        "action": "issue",
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "reserve",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "op": "read",
+        "slot": 0,
+        "src": 0
+      },
+      {
+        "action": "issue",
+        "op": "read",
+        "slot": 1,
+        "src": 1
+      },
+      {
+        "action": "complete_read",
+        "slot": 0,
+        "src": 0
+      },
+      {
+        "action": "complete_read",
+        "slot": 1,
+        "src": 1
+      },
+      {
+        "action": "issue",
+        "op": "wait_reads"
+      },
+      {
+        "action": "issue",
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "publish",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "acquire",
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "dst": 0,
+        "op": "write",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "dst": 1,
+        "op": "write",
+        "slot": 1
+      },
+      {
+        "action": "complete_write",
+        "dst": 0,
+        "origin": 0,
+        "slot": 0
+      },
+      {
+        "action": "complete_write",
+        "dst": 1,
+        "origin": 1,
+        "slot": 1
+      },
+      {
+        "action": "issue",
+        "op": "wait_writes"
+      },
+      {
+        "action": "issue",
+        "op": "release",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "release",
+        "slot": 1
+      }
+    ],
+    "trace_truncated": false
+  }
+}

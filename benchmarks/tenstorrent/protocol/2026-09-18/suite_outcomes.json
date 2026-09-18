@@ -1,0 +1,785 @@
+[
+  {
+    "task_id": "replication",
+    "status": "certified",
+    "winner": {
+      "round": 1,
+      "objective": [
+        2,
+        11,
+        1
+      ],
+      "certificate": {
+        "accepted": true,
+        "reason": "kernel-checked protocol graph certificate",
+        "scope": "single-issuer asynchronous protocol IR; NOT emitted C++/machine code/hardware proof",
+        "progress_assumption": "finite event semantics; physical scheduling and DMA eventual progress assumed",
+        "payload_semantics": "immutable input pages and exact copies, represented by data origins",
+        "nodes": 39,
+        "native_verdict": {
+          "status": "accepted",
+          "reason": null,
+          "trace": [
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 0,
+              "src": 0
+            },
+            {
+              "action": "complete_read",
+              "slot": 0,
+              "src": 0
+            },
+            {
+              "action": "issue",
+              "op": "wait_reads"
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 0,
+              "dst": 0
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 0,
+              "dst": 1
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 0,
+              "dst": 2
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 0,
+              "dst": 3
+            },
+            {
+              "action": "complete_write",
+              "slot": 0,
+              "dst": 0,
+              "origin": 0
+            },
+            {
+              "action": "complete_write",
+              "slot": 0,
+              "dst": 1,
+              "origin": 0
+            },
+            {
+              "action": "complete_write",
+              "slot": 0,
+              "dst": 2,
+              "origin": 0
+            },
+            {
+              "action": "complete_write",
+              "slot": 0,
+              "dst": 3,
+              "origin": 0
+            },
+            {
+              "action": "issue",
+              "op": "wait_writes"
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 0
+            }
+          ],
+          "states_explored": 39,
+          "trace_truncated": false,
+          "accepted": true,
+          "authority": "native protocol filter, not a Lean certificate",
+          "counts": {
+            "read": 1,
+            "write": 4,
+            "wait_reads": 1,
+            "wait_writes": 1,
+            "commands": 11,
+            "peak_live_slots": 1,
+            "input_bytes": 512,
+            "output_bytes": 2048,
+            "barriers": 2
+          },
+          "objective": [
+            2,
+            11,
+            1
+          ]
+        },
+        "source": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/replication/certificate_round_001/protocol_certificate.lean",
+        "source_sha256": "eab08bf4b546263151bf47ae302b363f75c375c916de3852c01db84e9c12111d",
+        "request": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/replication/certificate_round_001/request.json",
+        "request_sha256": "a9af49f19f7b6dc298fba8c32a110bbb144912f7fd7dd3890d167cb48d88790b",
+        "log": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/replication/certificate_round_001/protocol_certificate.log",
+        "axioms": {
+          "accepted": [
+            "propext"
+          ],
+          "safe": [
+            "Quot.sound",
+            "propext"
+          ],
+          "progress": [
+            "Quot.sound",
+            "propext"
+          ],
+          "outputs": [
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        "kernel_check_seconds": 4.024
+      }
+    },
+    "round_statuses": [
+      "native_accepted",
+      "native_accepted",
+      "native_accepted"
+    ]
+  },
+  {
+    "task_id": "pair",
+    "status": "certified",
+    "winner": {
+      "round": 1,
+      "objective": [
+        2,
+        14,
+        2
+      ],
+      "certificate": {
+        "accepted": true,
+        "reason": "kernel-checked protocol graph certificate",
+        "scope": "single-issuer asynchronous protocol IR; NOT emitted C++/machine code/hardware proof",
+        "progress_assumption": "finite event semantics; physical scheduling and DMA eventual progress assumed",
+        "payload_semantics": "immutable input pages and exact copies, represented by data origins",
+        "nodes": 23,
+        "native_verdict": {
+          "status": "accepted",
+          "reason": null,
+          "trace": [
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 0,
+              "src": 0
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 1,
+              "src": 1
+            },
+            {
+              "action": "complete_read",
+              "slot": 0,
+              "src": 0
+            },
+            {
+              "action": "complete_read",
+              "slot": 1,
+              "src": 1
+            },
+            {
+              "action": "issue",
+              "op": "wait_reads"
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 0,
+              "dst": 0
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 1,
+              "dst": 1
+            },
+            {
+              "action": "complete_write",
+              "slot": 0,
+              "dst": 0,
+              "origin": 0
+            },
+            {
+              "action": "complete_write",
+              "slot": 1,
+              "dst": 1,
+              "origin": 1
+            },
+            {
+              "action": "issue",
+              "op": "wait_writes"
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 1
+            }
+          ],
+          "states_explored": 23,
+          "trace_truncated": false,
+          "accepted": true,
+          "authority": "native protocol filter, not a Lean certificate",
+          "counts": {
+            "read": 2,
+            "write": 2,
+            "wait_reads": 1,
+            "wait_writes": 1,
+            "commands": 14,
+            "peak_live_slots": 2,
+            "input_bytes": 1024,
+            "output_bytes": 1024,
+            "barriers": 2
+          },
+          "objective": [
+            2,
+            14,
+            2
+          ]
+        },
+        "source": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/pair/certificate_round_001/protocol_certificate.lean",
+        "source_sha256": "7dd189ab157cf2782d0580eb76769768c199bb9af25b0dd7348f6c43392a968a",
+        "request": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/pair/certificate_round_001/request.json",
+        "request_sha256": "250302e73cb5185788bd5a01f992ca298090e53dc157d24b383c1f32e750af93",
+        "log": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/pair/certificate_round_001/protocol_certificate.log",
+        "axioms": {
+          "accepted": [
+            "propext"
+          ],
+          "safe": [
+            "Quot.sound",
+            "propext"
+          ],
+          "progress": [
+            "Quot.sound",
+            "propext"
+          ],
+          "outputs": [
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        "kernel_check_seconds": 3.713
+      }
+    },
+    "round_statuses": [
+      "native_accepted",
+      "native_accepted",
+      "native_accepted"
+    ]
+  },
+  {
+    "task_id": "permutation",
+    "status": "certified",
+    "winner": {
+      "round": 1,
+      "objective": [
+        4,
+        28,
+        2
+      ],
+      "certificate": {
+        "accepted": true,
+        "reason": "kernel-checked protocol graph certificate",
+        "scope": "single-issuer asynchronous protocol IR; NOT emitted C++/machine code/hardware proof",
+        "progress_assumption": "finite event semantics; physical scheduling and DMA eventual progress assumed",
+        "payload_semantics": "immutable input pages and exact copies, represented by data origins",
+        "nodes": 51,
+        "native_verdict": {
+          "status": "accepted",
+          "reason": null,
+          "trace": [
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 0,
+              "src": 2
+            },
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 1,
+              "src": 0
+            },
+            {
+              "action": "complete_read",
+              "slot": 0,
+              "src": 2
+            },
+            {
+              "action": "complete_read",
+              "slot": 1,
+              "src": 0
+            },
+            {
+              "action": "issue",
+              "op": "wait_reads"
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 0,
+              "dst": 0
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 1,
+              "dst": 1
+            },
+            {
+              "action": "complete_write",
+              "slot": 0,
+              "dst": 0,
+              "origin": 2
+            },
+            {
+              "action": "complete_write",
+              "slot": 1,
+              "dst": 1,
+              "origin": 0
+            },
+            {
+              "action": "issue",
+              "op": "wait_writes"
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 0,
+              "src": 3
+            },
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 1,
+              "src": 1
+            },
+            {
+              "action": "complete_read",
+              "slot": 0,
+              "src": 3
+            },
+            {
+              "action": "complete_read",
+              "slot": 1,
+              "src": 1
+            },
+            {
+              "action": "issue",
+              "op": "wait_reads"
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 0,
+              "dst": 2
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 1,
+              "dst": 3
+            },
+            {
+              "action": "complete_write",
+              "slot": 0,
+              "dst": 2,
+              "origin": 3
+            },
+            {
+              "action": "complete_write",
+              "slot": 1,
+              "dst": 3,
+              "origin": 1
+            },
+            {
+              "action": "issue",
+              "op": "wait_writes"
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 1
+            }
+          ],
+          "states_explored": 51,
+          "trace_truncated": false,
+          "accepted": true,
+          "authority": "native protocol filter, not a Lean certificate",
+          "counts": {
+            "read": 4,
+            "write": 4,
+            "wait_reads": 2,
+            "wait_writes": 2,
+            "commands": 28,
+            "peak_live_slots": 2,
+            "input_bytes": 2048,
+            "output_bytes": 2048,
+            "barriers": 4
+          },
+          "objective": [
+            4,
+            28,
+            2
+          ]
+        },
+        "source": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/permutation/certificate_round_001/protocol_certificate.lean",
+        "source_sha256": "8336dfe223bd25fde594c8c8771bdcfa21400d3cecfbeba2e5d76151c8ec95ce",
+        "request": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/permutation/certificate_round_001/request.json",
+        "request_sha256": "e5bceadf8c9cf485594b10ed731147eaa29c4571c53c0eb81da4d6062fb856d7",
+        "log": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/permutation/certificate_round_001/protocol_certificate.log",
+        "axioms": {
+          "accepted": [
+            "propext"
+          ],
+          "safe": [
+            "Quot.sound",
+            "propext"
+          ],
+          "progress": [
+            "Quot.sound",
+            "propext"
+          ],
+          "outputs": [
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        "kernel_check_seconds": 4.058
+      }
+    },
+    "round_statuses": [
+      "native_accepted",
+      "native_accepted",
+      "native_accepted"
+    ]
+  },
+  {
+    "task_id": "reuse_permutation",
+    "status": "certified",
+    "winner": {
+      "round": 1,
+      "objective": [
+        2,
+        16,
+        2
+      ],
+      "certificate": {
+        "accepted": true,
+        "reason": "kernel-checked protocol graph certificate",
+        "scope": "single-issuer asynchronous protocol IR; NOT emitted C++/machine code/hardware proof",
+        "progress_assumption": "finite event semantics; physical scheduling and DMA eventual progress assumed",
+        "payload_semantics": "immutable input pages and exact copies, represented by data origins",
+        "nodes": 54,
+        "native_verdict": {
+          "status": "accepted",
+          "reason": null,
+          "trace": [
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 0,
+              "src": 1
+            },
+            {
+              "action": "issue",
+              "op": "reserve",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "read",
+              "slot": 1,
+              "src": 0
+            },
+            {
+              "action": "complete_read",
+              "slot": 0,
+              "src": 1
+            },
+            {
+              "action": "complete_read",
+              "slot": 1,
+              "src": 0
+            },
+            {
+              "action": "issue",
+              "op": "wait_reads"
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 0,
+              "dst": 0
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 0,
+              "dst": 2
+            },
+            {
+              "action": "issue",
+              "op": "publish",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "acquire",
+              "slot": 1
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 1,
+              "dst": 1
+            },
+            {
+              "action": "issue",
+              "op": "write",
+              "slot": 1,
+              "dst": 3
+            },
+            {
+              "action": "complete_write",
+              "slot": 0,
+              "dst": 0,
+              "origin": 1
+            },
+            {
+              "action": "complete_write",
+              "slot": 0,
+              "dst": 2,
+              "origin": 1
+            },
+            {
+              "action": "complete_write",
+              "slot": 1,
+              "dst": 1,
+              "origin": 0
+            },
+            {
+              "action": "complete_write",
+              "slot": 1,
+              "dst": 3,
+              "origin": 0
+            },
+            {
+              "action": "issue",
+              "op": "wait_writes"
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 0
+            },
+            {
+              "action": "issue",
+              "op": "release",
+              "slot": 1
+            }
+          ],
+          "states_explored": 54,
+          "trace_truncated": false,
+          "accepted": true,
+          "authority": "native protocol filter, not a Lean certificate",
+          "counts": {
+            "read": 2,
+            "write": 4,
+            "wait_reads": 1,
+            "wait_writes": 1,
+            "commands": 16,
+            "peak_live_slots": 2,
+            "input_bytes": 1024,
+            "output_bytes": 2048,
+            "barriers": 2
+          },
+          "objective": [
+            2,
+            16,
+            2
+          ]
+        },
+        "source": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/reuse_permutation/certificate_round_001/protocol_certificate.lean",
+        "source_sha256": "9572200e5fa33473b86bf6618057643e23e2b81030d25cced420ce94c220aa5c",
+        "request": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/reuse_permutation/certificate_round_001/request.json",
+        "request_sha256": "e1ad89be433c8ab77076827a61ec4d6f0c30d803a186a15f1adc54bb2aeacf63",
+        "log": "/Users/cake/Documents/codework/VeriTac/benchmarks/tenstorrent/protocol/2026-09-18/runs/reuse_permutation/certificate_round_001/protocol_certificate.log",
+        "axioms": {
+          "accepted": [
+            "propext"
+          ],
+          "safe": [
+            "Quot.sound",
+            "propext"
+          ],
+          "progress": [
+            "Quot.sound",
+            "propext"
+          ],
+          "outputs": [
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        "kernel_check_seconds": 4.11
+      }
+    },
+    "round_statuses": [
+      "native_accepted",
+      "native_accepted",
+      "native_accepted"
+    ]
+  }
+]

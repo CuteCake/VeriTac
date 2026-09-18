@@ -1,0 +1,4 @@
+'SubmittedProtocol.accepted' depends on axioms: [propext]
+'SubmittedProtocol.safe' depends on axioms: [propext, Quot.sound]
+'SubmittedProtocol.progress' depends on axioms: [propext, Quot.sound]
+'SubmittedProtocol.outputs' depends on axioms: [propext, Quot.sound]

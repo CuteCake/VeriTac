@@ -1,0 +1,19 @@
+--- a/tt_metal/impl/streaming_profiler/spsc_marker_decode.hpp
++++ b/tt_metal/impl/streaming_profiler/spsc_marker_decode.hpp
+@@ -17,10 +17,15 @@
+ #include <span>
+ #include <vector>
+ 
++#if defined(__aarch64__)
++// Local ARM64 build portability: use the existing SIMDe dependency.
++#define SIMDE_ENABLE_NATIVE_ALIASES
++#include <simde/x86/avx2.h>
++#else
+ #include <immintrin.h>
+-
+ #if !defined(__AVX2__)
+ #error "the streaming profiler decode is AVX2 code; build for x86-64-v3 or newer"
++#endif
+ #endif
+ 
+ #include "hostdev/streaming_profiler_common.h"

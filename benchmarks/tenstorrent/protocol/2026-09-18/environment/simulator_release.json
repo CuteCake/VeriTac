@@ -1,0 +1,7 @@
+{
+  "tag": "v1.10.8",
+  "asset": "libttsim_bh_aarch64.so",
+  "url": "https://github.com/tenstorrent/ttsim/releases/download/v1.10.8/libttsim_bh_aarch64.so",
+  "release_digest": "sha256:0c3a5af653e7feec018f6d1ce3bba116967a951c150fcaa03ad6521e8ec88065",
+  "installed_sha256": "0c3a5af653e7feec018f6d1ce3bba116967a951c150fcaa03ad6521e8ec88065"
+}

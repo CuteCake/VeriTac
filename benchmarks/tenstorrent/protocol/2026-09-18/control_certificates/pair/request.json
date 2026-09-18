@@ -1,0 +1,78 @@
+{
+  "program": [
+    {
+      "op": "reserve",
+      "slot": 0
+    },
+    {
+      "op": "read",
+      "slot": 0,
+      "src": 0
+    },
+    {
+      "op": "wait_reads"
+    },
+    {
+      "op": "publish",
+      "slot": 0
+    },
+    {
+      "op": "acquire",
+      "slot": 0
+    },
+    {
+      "dst": 0,
+      "op": "write",
+      "slot": 0
+    },
+    {
+      "op": "wait_writes"
+    },
+    {
+      "op": "release",
+      "slot": 0
+    },
+    {
+      "op": "reserve",
+      "slot": 0
+    },
+    {
+      "op": "read",
+      "slot": 0,
+      "src": 1
+    },
+    {
+      "op": "wait_reads"
+    },
+    {
+      "op": "publish",
+      "slot": 0
+    },
+    {
+      "op": "acquire",
+      "slot": 0
+    },
+    {
+      "dst": 1,
+      "op": "write",
+      "slot": 0
+    },
+    {
+      "op": "wait_writes"
+    },
+    {
+      "op": "release",
+      "slot": 0
+    }
+  ],
+  "task": {
+    "expected": [
+      0,
+      1
+    ],
+    "id": "pair",
+    "input_pages": 2,
+    "page_bytes": 512,
+    "slots": 2
+  }
+}

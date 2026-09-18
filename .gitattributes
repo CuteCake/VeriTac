@@ -1,3 +1,7 @@
 # Preserve measured shader sources and raw sanitizer logs byte-for-byte.
 benchmarks/attention/results/generated_kernel/*.metal -text -whitespace
 benchmarks/attention/results/*.log -text -whitespace
+
+# Unified diff context lines require a leading space, including blank lines.
+# Preserve vendored patches verbatim, including their recorded hashes.
+*.patch whitespace=-blank-at-eol,-blank-at-eof

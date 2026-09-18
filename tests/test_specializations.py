@@ -13,7 +13,7 @@ from specializations.catalog import ROOT, describe, list_specializations
 
 class SpecializationTests(unittest.TestCase):
     def test_discovery_does_not_load_hardware_dependencies(self):
-        code = "from specializations.catalog import list_specializations; import sys; assert len(list_specializations()) == 4; assert not any(n in sys.modules for n in ('torch', 'numpy', 'mlx'))"
+        code = "from specializations.catalog import list_specializations; import sys; assert len(list_specializations()) == 5; assert not any(n in sys.modules for n in ('torch', 'numpy', 'mlx'))"
         subprocess.run([sys.executable, '-c', code], cwd=ROOT, check=True)
 
     def test_catalog_paths_resolve_and_scopes_are_explicit(self):

@@ -1,0 +1,73 @@
+{
+  "program": [
+    {
+      "op": "reserve",
+      "slot": 0
+    },
+    {
+      "op": "read",
+      "slot": 0,
+      "src": 1
+    },
+    {
+      "op": "reserve",
+      "slot": 1
+    },
+    {
+      "op": "read",
+      "slot": 1,
+      "src": 0
+    },
+    {
+      "op": "wait_reads"
+    },
+    {
+      "op": "publish",
+      "slot": 0
+    },
+    {
+      "op": "acquire",
+      "slot": 0
+    },
+    {
+      "dst": 0,
+      "op": "write",
+      "slot": 0
+    },
+    {
+      "dst": 2,
+      "op": "write",
+      "slot": 0
+    },
+    {
+      "op": "publish",
+      "slot": 1
+    },
+    {
+      "op": "acquire",
+      "slot": 1
+    },
+    {
+      "dst": 1,
+      "op": "write",
+      "slot": 1
+    },
+    {
+      "dst": 3,
+      "op": "write",
+      "slot": 1
+    },
+    {
+      "op": "wait_writes"
+    },
+    {
+      "op": "release",
+      "slot": 0
+    },
+    {
+      "op": "release",
+      "slot": 1
+    }
+  ],
+  "rationale": "expected requires dst0,dst2 <- src1 and dst1,dst3 <- src0. Use slot0 for src1 and slot1 for src0, exploiting the rule that one acquired slot may write multiple distinct destinations. Sequence: reserve both slots, issue both reads, then a single wait_reads (mandatory: publish requires value initialized and no pending read, and non-wait ops must be valid at every reachable state, so publish cannot be issued before read completion under arbitrary DMA order). After wait_reads, publish+acquire both slots, issue all 4 writes (destinations distinct, so no dst conflict; no pending reads remain). A single wait_writes is mandatory before release, since release requires no pending transfer on the slot and write completion order is arbitrary. Then release both slots. Final state: pc=end, no pending transfers, all slots free, dst0=1, dst1=0, dst2=1, dst3=0 matching expected. Safety holds for every completion order: wait_reads blocks until both reads land, wait_writes blocks until all four writes land, and slots are never reused before their writes complete. Optimality: wait_reads >=1 (publish precondition) and wait_writes >=1 (release precondition with pending writes), so 2 waits is minimal; using both slots in parallel is what keeps it at 2 (a single-slot sequential plan would need 2+2). Command count 16 is forced: 2 reserve + 2 read + 1 wait_reads + 2 publish + 2 acquire + 4 write + 1 wait_writes + 2 release, one write per destination. Peak live slots = 2."
+}

@@ -1,0 +1,35 @@
+{
+  "tests": {
+    "command": "python3 -m unittest discover -s tests",
+    "run": 339,
+    "skipped": 1,
+    "success": true,
+    "seconds": 58.384,
+    "log_sha256": "896793834c8f2ab1595060b6d4257aff48fc83ed67fff550018464c4efc7b68d"
+  },
+  "formal_and_search_registration_unchanged": true,
+  "original_gemmini_acceptance_unchanged": true,
+  "implementation_sha256": {
+    "VeriTac/Tenstorrent/GraphCertificate.lean": "c76ae6a415f812198f470cc01fd59e47870b6c7529ef42282533f5d35b209a0b",
+    "VeriTac/Tenstorrent/Protocol.lean": "17ca3b5d735aff797c2e11bf53db86f8d8f338d5cf4ab1c8f47979d52dedb205",
+    "specializations/tenstorrent_protocol/__init__.py": "1dafad9e082de5f3f3afc92020a82d7d6be82ad7bf1a242f7377df156f303372",
+    "specializations/tenstorrent_protocol/__main__.py": "b3596381d30b00a619a976b2caea5b07a2aaed0b658fbf2412418a9a1a39b558",
+    "specializations/tenstorrent_protocol/adapter.py": "847be596a232021ad48503640dd62a304437f04fe5b1e8522a89e6e22b339f2c",
+    "specializations/tenstorrent_protocol/certificate.py": "258c5e6ad631136ceef08cfcf0335c05ad56d51151e4947da27eaa64a59e1788",
+    "specializations/tenstorrent_protocol/protocol.py": "0e8571e2dccce085cd9ea1bc6a3e27f87a442237bb2b456ad179333210b95198",
+    "specializations/tenstorrent_protocol/runtime/__init__.py": "37199e0c13af617963e769dd1936e6bcd709ccf27ba5ea4c825f506b43baf2b3",
+    "specializations/tenstorrent_protocol/runtime/emit_cpp.py": "d9372a9294188a09e387e1ee046c483b5b15891f81dad05f455af8c3b09891eb",
+    "specializations/tenstorrent_protocol/runtime/patches/metal-arm64-profiler.patch": "c73b9795acbcbef61be416870491730ccd2abc71666e98130831a5ec3c98a721",
+    "specializations/tenstorrent_protocol/runtime/patches/metal-mpi-c-bindings.patch": "8f443f8b78bbd1839d6eb1ecedd9f5db022e46d6b8c5ea47fd6342deea03ebdc",
+    "specializations/tenstorrent_protocol/runtime/replay_cases.py": "118736ad44064cb847b42537d81c4db550a59d1f2d32e9a6da8f254747960c6f",
+    "specializations/tenstorrent_protocol/runtime/runner.py": "89159bcc629fb5954855eac660ad2de0381ad471618668ae14e3b0e510249d8b",
+    "specializations/tenstorrent_protocol/runtime/setup_local.sh": "1ba0789611838574fbf36ab0b3f9bff3e7b0c9e89528e840630aef1cf99acd18",
+    "specializations/tenstorrent_protocol/search.py": "54d48eb910811f3c97de7fb57079b61071f33232822f6a640c3bb1683049bbce",
+    "tests/test_tenstorrent_adapters.py": "f69e5682b118c2c588e70bc19dad8f186cb3e3338c3a75a364426ad8db4ee51b",
+    "tests/test_tenstorrent_certificate.py": "b29ff3be5e8564b04f092c93166437b1fcdac8bab3317e76a958de5510695244",
+    "tests/test_tenstorrent_protocol.py": "52da414a26f8e2cc348e6adb233386d5f8dda7123e259d0a415fed25a800456d",
+    "tests/test_tenstorrent_runtime.py": "a210b1f51f8d50eeb58fd1ef1c974aa139e21739cafdda12ecf43d58f3de858b",
+    "tests/test_tenstorrent_search.py": "a7dc18a550471fa378ff2b0121cc24057cb39f27c8d67a20efc9948eadddbbd1"
+  },
+  "scope": "Unit/integration tests and artifact audit complement the recorded Lean checks; not compiled-byte proof."
+}

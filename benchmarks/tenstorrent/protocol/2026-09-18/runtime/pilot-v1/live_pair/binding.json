@@ -1,0 +1,10 @@
+{
+  "kind": "live",
+  "task_id": "pair",
+  "main_returncode": 0,
+  "protocol_certificate_sha256": "7dd189ab157cf2782d0580eb76769768c199bb9af25b0dd7348f6c43392a968a",
+  "success": true,
+  "extra_returncode": 0,
+  "host_binary_sha256": "aae7c17a07cc713b94d49d9ae1021028efc5897ed78fdb76622d776118596322",
+  "output_cases": 6
+}

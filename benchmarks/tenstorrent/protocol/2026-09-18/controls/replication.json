@@ -1,0 +1,545 @@
+{
+  "task": {
+    "id": "replication",
+    "input_pages": 1,
+    "expected": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": 1,
+    "page_bytes": 512
+  },
+  "controls": [
+    {
+      "kind": "serial",
+      "program": [
+        {
+          "op": "reserve",
+          "slot": 0
+        },
+        {
+          "op": "read",
+          "slot": 0,
+          "src": 0
+        },
+        {
+          "op": "wait_reads"
+        },
+        {
+          "op": "publish",
+          "slot": 0
+        },
+        {
+          "op": "acquire",
+          "slot": 0
+        },
+        {
+          "op": "write",
+          "slot": 0,
+          "dst": 0
+        },
+        {
+          "op": "wait_writes"
+        },
+        {
+          "op": "release",
+          "slot": 0
+        },
+        {
+          "op": "reserve",
+          "slot": 0
+        },
+        {
+          "op": "read",
+          "slot": 0,
+          "src": 0
+        },
+        {
+          "op": "wait_reads"
+        },
+        {
+          "op": "publish",
+          "slot": 0
+        },
+        {
+          "op": "acquire",
+          "slot": 0
+        },
+        {
+          "op": "write",
+          "slot": 0,
+          "dst": 1
+        },
+        {
+          "op": "wait_writes"
+        },
+        {
+          "op": "release",
+          "slot": 0
+        },
+        {
+          "op": "reserve",
+          "slot": 0
+        },
+        {
+          "op": "read",
+          "slot": 0,
+          "src": 0
+        },
+        {
+          "op": "wait_reads"
+        },
+        {
+          "op": "publish",
+          "slot": 0
+        },
+        {
+          "op": "acquire",
+          "slot": 0
+        },
+        {
+          "op": "write",
+          "slot": 0,
+          "dst": 2
+        },
+        {
+          "op": "wait_writes"
+        },
+        {
+          "op": "release",
+          "slot": 0
+        },
+        {
+          "op": "reserve",
+          "slot": 0
+        },
+        {
+          "op": "read",
+          "slot": 0,
+          "src": 0
+        },
+        {
+          "op": "wait_reads"
+        },
+        {
+          "op": "publish",
+          "slot": 0
+        },
+        {
+          "op": "acquire",
+          "slot": 0
+        },
+        {
+          "op": "write",
+          "slot": 0,
+          "dst": 3
+        },
+        {
+          "op": "wait_writes"
+        },
+        {
+          "op": "release",
+          "slot": 0
+        }
+      ],
+      "verdict": {
+        "status": "accepted",
+        "reason": null,
+        "trace": [
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "write",
+            "slot": 0,
+            "dst": 0
+          },
+          {
+            "action": "complete_write",
+            "slot": 0,
+            "dst": 0,
+            "origin": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "write",
+            "slot": 0,
+            "dst": 1
+          },
+          {
+            "action": "complete_write",
+            "slot": 0,
+            "dst": 1,
+            "origin": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "write",
+            "slot": 0,
+            "dst": 2
+          },
+          {
+            "action": "complete_write",
+            "slot": 0,
+            "dst": 2,
+            "origin": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "write",
+            "slot": 0,
+            "dst": 3
+          },
+          {
+            "action": "complete_write",
+            "slot": 0,
+            "dst": 3,
+            "origin": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          }
+        ],
+        "states_explored": 41,
+        "trace_truncated": false,
+        "accepted": true,
+        "authority": "native protocol filter, not a Lean certificate",
+        "counts": {
+          "read": 4,
+          "write": 4,
+          "wait_reads": 4,
+          "wait_writes": 4,
+          "commands": 32,
+          "peak_live_slots": 1,
+          "input_bytes": 2048,
+          "output_bytes": 2048,
+          "barriers": 8
+        },
+        "objective": [
+          8,
+          32,
+          1
+        ]
+      }
+    },
+    {
+      "kind": "controller_preexisting_batched_reuse",
+      "program": [
+        {
+          "op": "reserve",
+          "slot": 0
+        },
+        {
+          "op": "read",
+          "slot": 0,
+          "src": 0
+        },
+        {
+          "op": "wait_reads"
+        },
+        {
+          "op": "publish",
+          "slot": 0
+        },
+        {
+          "op": "acquire",
+          "slot": 0
+        },
+        {
+          "op": "write",
+          "slot": 0,
+          "dst": 0
+        },
+        {
+          "op": "write",
+          "slot": 0,
+          "dst": 1
+        },
+        {
+          "op": "write",
+          "slot": 0,
+          "dst": 2
+        },
+        {
+          "op": "write",
+          "slot": 0,
+          "dst": 3
+        },
+        {
+          "op": "wait_writes"
+        },
+        {
+          "op": "release",
+          "slot": 0
+        }
+      ],
+      "verdict": {
+        "status": "accepted",
+        "reason": null,
+        "trace": [
+          {
+            "action": "issue",
+            "op": "reserve",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "complete_read",
+            "slot": 0,
+            "src": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_reads"
+          },
+          {
+            "action": "issue",
+            "op": "publish",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "acquire",
+            "slot": 0
+          },
+          {
+            "action": "issue",
+            "op": "write",
+            "slot": 0,
+            "dst": 0
+          },
+          {
+            "action": "issue",
+            "op": "write",
+            "slot": 0,
+            "dst": 1
+          },
+          {
+            "action": "issue",
+            "op": "write",
+            "slot": 0,
+            "dst": 2
+          },
+          {
+            "action": "issue",
+            "op": "write",
+            "slot": 0,
+            "dst": 3
+          },
+          {
+            "action": "complete_write",
+            "slot": 0,
+            "dst": 0,
+            "origin": 0
+          },
+          {
+            "action": "complete_write",
+            "slot": 0,
+            "dst": 1,
+            "origin": 0
+          },
+          {
+            "action": "complete_write",
+            "slot": 0,
+            "dst": 2,
+            "origin": 0
+          },
+          {
+            "action": "complete_write",
+            "slot": 0,
+            "dst": 3,
+            "origin": 0
+          },
+          {
+            "action": "issue",
+            "op": "wait_writes"
+          },
+          {
+            "action": "issue",
+            "op": "release",
+            "slot": 0
+          }
+        ],
+        "states_explored": 39,
+        "trace_truncated": false,
+        "accepted": true,
+        "authority": "native protocol filter, not a Lean certificate",
+        "counts": {
+          "read": 1,
+          "write": 4,
+          "wait_reads": 1,
+          "wait_writes": 1,
+          "commands": 11,
+          "peak_live_slots": 1,
+          "input_bytes": 512,
+          "output_bytes": 2048,
+          "barriers": 2
+        },
+        "objective": [
+          2,
+          11,
+          1
+        ]
+      }
+    }
+  ],
+  "exposure": "not supplied to live model"
+}

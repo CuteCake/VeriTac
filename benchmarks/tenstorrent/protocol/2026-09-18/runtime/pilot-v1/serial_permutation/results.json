@@ -1,0 +1,317 @@
+{
+  "schema": "veritac-tenstorrent-runtime-results-v1",
+  "started_utc": "2026-09-18T10:27:17Z",
+  "status": "verified",
+  "exit_code": 0,
+  "ttsim_disclaimer": "runtime evidence only; not proof, not timing",
+  "task": {
+    "id": "permutation",
+    "input_pages": 4,
+    "expected": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "slots": 2,
+    "page_bytes": 512
+  },
+  "proposal_rationale": "Registered serial control, not AI-generated",
+  "program_len": 32,
+  "protocol_check": {
+    "status": "accepted",
+    "reason": null,
+    "trace": [
+      {
+        "action": "issue",
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "read",
+        "slot": 0,
+        "src": 2
+      },
+      {
+        "action": "complete_read",
+        "slot": 0,
+        "src": 2
+      },
+      {
+        "action": "issue",
+        "op": "wait_reads"
+      },
+      {
+        "action": "issue",
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "write",
+        "slot": 0,
+        "dst": 0
+      },
+      {
+        "action": "complete_write",
+        "slot": 0,
+        "dst": 0,
+        "origin": 2
+      },
+      {
+        "action": "issue",
+        "op": "wait_writes"
+      },
+      {
+        "action": "issue",
+        "op": "release",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "read",
+        "slot": 0,
+        "src": 0
+      },
+      {
+        "action": "complete_read",
+        "slot": 0,
+        "src": 0
+      },
+      {
+        "action": "issue",
+        "op": "wait_reads"
+      },
+      {
+        "action": "issue",
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "write",
+        "slot": 0,
+        "dst": 1
+      },
+      {
+        "action": "complete_write",
+        "slot": 0,
+        "dst": 1,
+        "origin": 0
+      },
+      {
+        "action": "issue",
+        "op": "wait_writes"
+      },
+      {
+        "action": "issue",
+        "op": "release",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "read",
+        "slot": 0,
+        "src": 3
+      },
+      {
+        "action": "complete_read",
+        "slot": 0,
+        "src": 3
+      },
+      {
+        "action": "issue",
+        "op": "wait_reads"
+      },
+      {
+        "action": "issue",
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "write",
+        "slot": 0,
+        "dst": 2
+      },
+      {
+        "action": "complete_write",
+        "slot": 0,
+        "dst": 2,
+        "origin": 3
+      },
+      {
+        "action": "issue",
+        "op": "wait_writes"
+      },
+      {
+        "action": "issue",
+        "op": "release",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "reserve",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "read",
+        "slot": 0,
+        "src": 1
+      },
+      {
+        "action": "complete_read",
+        "slot": 0,
+        "src": 1
+      },
+      {
+        "action": "issue",
+        "op": "wait_reads"
+      },
+      {
+        "action": "issue",
+        "op": "publish",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "acquire",
+        "slot": 0
+      },
+      {
+        "action": "issue",
+        "op": "write",
+        "slot": 0,
+        "dst": 3
+      },
+      {
+        "action": "complete_write",
+        "slot": 0,
+        "dst": 3,
+        "origin": 1
+      },
+      {
+        "action": "issue",
+        "op": "wait_writes"
+      },
+      {
+        "action": "issue",
+        "op": "release",
+        "slot": 0
+      }
+    ],
+    "states_explored": 41,
+    "trace_truncated": false
+  },
+  "emitted_artifacts": {
+    "host_main.cpp": {
+      "sha256": "b22f02010f1e4100aae13a9530eeb0770f3e80bebfd9fb75b2b57843545e4325",
+      "bytes": 8986
+    },
+    "input_gen.hpp": {
+      "sha256": "7b3a4ef7df83fe47052c4dad21b972b457007daca50bcef1db163ac6b5a3552b",
+      "bytes": 949
+    },
+    "kernels/dm_slot_copy.cpp": {
+      "sha256": "9676735b320cd42b7e986c8f457a82387f068bd0dec419621304068d7e579711",
+      "bytes": 3804
+    },
+    "CMakeLists.txt": {
+      "sha256": "ab89e1b0e907a3ac63c46be7569a80434179ed9db71b6da7d6c41b07f6af3e90",
+      "bytes": 1012
+    },
+    "task.json": {
+      "sha256": "022847d8246228c0bda17cfbafb127594429c5c55f1cffdd7aa53e9e4497be68",
+      "bytes": 129
+    },
+    "proposal.json": {
+      "sha256": "156943ea249b766db8a40036cfe261d0a2febe45b656646eeb6c73b1d83fe68c",
+      "bytes": 1748
+    }
+  },
+  "input_seed": 305419896,
+  "input_pattern": "lcg",
+  "cpu_reference": {
+    "input_sha256": "98f4d6c102bb29a554d15e0f63157654d2f6fde4a83aec84b47dcd83f54f3d11",
+    "expected_output_sha256": "0f3f18741efcef5244ab25c7319318b642c74374b58a84282ebc9114ef355f2a",
+    "input_checksum_fnv1a64": "fe9f28bffd0b7bb5",
+    "expected_output_checksum_fnv1a64": "2c423b6d187896bd",
+    "input_bytes": 2048,
+    "output_bytes": 2048
+  },
+  "tt_metal_env": {
+    "home": "/opt/tt/tt-metal",
+    "mode": "package",
+    "prefix": "/opt/tt/install",
+    "source": null
+  },
+  "cmake_configure": {
+    "cmd": [
+      "cmake",
+      "-S",
+      "/opt/tt/artifacts/pilot-v1/serial_permutation/main/src",
+      "-B",
+      "/opt/tt/artifacts/pilot-v1/serial_permutation/main/build",
+      "-DCMAKE_PREFIX_PATH=/opt/tt/install"
+    ],
+    "exit": 0,
+    "seconds": 0.1,
+    "log": "-- The CXX compiler identification is GNU 14.2.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/g++-14 - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Found nlohmann_json: /usr/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake (found version \"3.11.3\") \n-- Found umd at /opt/tt/install/lib/cmake/umd\n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n-- Found Threads: TRUE  \n-- Found TT-Metalium at /opt/tt/install/lib/cmake/tt-metalium\n-- Configuring done (0.1s)\n-- Generating done (0.0s)\n-- Build files have been written to: /opt/tt/artifacts/pilot-v1/serial_permutation/main/build\n"
+  },
+  "cmake_build": {
+    "cmd": [
+      "cmake",
+      "--build",
+      "<build>",
+      "-j",
+      "1"
+    ],
+    "exit": 0,
+    "seconds": 1.9,
+    "log": "[ 50%] Building CXX object CMakeFiles/veritac_tt_protocol.dir/host_main.cpp.o\n[100%] Linking CXX executable veritac_tt_protocol\n[100%] Built target veritac_tt_protocol\n"
+  },
+  "binary_sha256": "724c441eaab404ceee41a198a9a2366e28b6a9e28bb0d3a57fe5bd6d61c840f6",
+  "run": {
+    "exit": 0,
+    "seconds": 0.3,
+    "stdout": "2026-09-18 10:27:19.125 | info     |           Metal | Disabling multi-erisc mode with simulator/emule target device (rtoptions.cpp:392)\n2026-09-18 10:27:19.126 | info     |          Device | Opening user mode device driver (tt_cluster.cpp:223)\n2026-09-18 10:27:19.126 | info     |             UMD | Cluster constructor started. (cluster.cpp:408)\n2026-09-18 10:27:19.127 | warning  |             UMD | Chip 0 has inconsistent ETH harvesting information between harvest mask and number of harvested. Board unknown expects 0 units, but harvesting mask indicates 2 units. (cluster_descriptor.cpp:1353)\n2026-09-18 10:27:19.127 | info     |             UMD | Creating Simulation device (cluster.cpp:285)\n2026-09-18 10:27:19.130 | info     | EmulationDriver | TTSimTTDevice chip_id=0 PCI vendor_id=0x1e52 device_id=0xb140 (tt_sim_tt_device.cpp:130)\n2026-09-18 10:27:19.130 | info     |             UMD | Cluster constructor completed. (cluster.cpp:683)\n2026-09-18 10:27:19.130 | info     |             UMD | Starting devices in cluster (cluster.cpp:1292)\n2026-09-18 10:27:19.130 | info     |             UMD | Starting devices in cluster completed. (cluster.cpp:1300)\n2026-09-18 10:27:19.152 | info     |     Distributed | Using auto discovery to generate mesh graph. (metal_env.cpp:422)\n2026-09-18 10:27:19.152 | info     |     Distributed | Constructing control plane using auto-discovery (no mesh graph descriptor). (metal_env.cpp:484)\n2026-09-18 10:27:19.152 | info     |          Fabric | Logical multi-mesh adjacency: intermesh degree histogram {0:1}; intra-mesh degree histograms mesh0 {0:1} (topology_mapper_utils.cpp:3186)\n2026-09-18 10:27:19.152 | info     |          Fabric | Physical multi-mesh adjacency: intermesh degree histogram {0:1}; intra-mesh degree histograms mesh0 {0:1} (topology_mapper_utils.cpp:3194)\nINPUT_CHECKSUM fe9f28bffd0b7bb5\nEXPECTED_OUTPUT_CHECKSUM 2c423b6d187896bd\nOUTPUT_CHECKSUM 2c423b6d187896bd\nPAGES 4 input_pages=4 output_pages=4 slots=2 page_bytes=512\nVERIFY OK 4\n2026-09-18 10:27:19.355 | info     |    BuildKernels | JIT cache stats: 8/9 hits (88.9%) [8 cached, 0 build-once dedup, 0 merged artifacts, 0 merged genfiles] (build_cache_telemetry.cpp:258)\n2026-09-18 10:27:19.355 | info     |    BuildKernels | JIT telemetry: 28 registered TelemetryTokens (build_cache_telemetry.cpp:325)\n2026-09-18 10:27:19.356 | info     |          Device | Closing user mode device drivers (tt_cluster.cpp:519)\n2026-09-18 10:27:19.356 | info     |             UMD | Closing devices in cluster (cluster.cpp:1305)\n2026-09-18 10:27:19.356 | info     |             UMD | Closing devices in cluster completed. (cluster.cpp:1314)\n2026-09-18 10:27:19.356 | info     |             UMD | Cluster destructor started. (cluster.cpp:1020)\n2026-09-18 10:27:19.356 | info     |             UMD | Cluster destructor completed. (cluster.cpp:1023)\n2026-09-18 10:27:19.356 | info     | EmulationDriver | Sending exit signal to remote... (tt_sim_communicator.cpp:295)\n[7677] 0.1 seconds (87.4 KHz)\n",
+    "env_passthrough": []
+  },
+  "device_checksums": {
+    "INPUT_CHECKSUM": "fe9f28bffd0b7bb5",
+    "EXPECTED_OUTPUT_CHECKSUM": "2c423b6d187896bd",
+    "OUTPUT_CHECKSUM": "2c423b6d187896bd"
+  },
+  "full_output_matches_python_reference": true,
+  "output_sha256": "0f3f18741efcef5244ab25c7319318b642c74374b58a84282ebc9114ef355f2a",
+  "output_checksum_fnv1a64": "2c423b6d187896bd",
+  "note": "Device outputs bit-match the CPU reference on the executed schedule. This is runtime evidence only: not a Lean proof, not a ttsim-proof, and not a performance/timing claim.",
+  "finished_utc": "2026-09-18T10:27:19Z"
+}
